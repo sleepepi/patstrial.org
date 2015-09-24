@@ -11,10 +11,17 @@
   margin-right: -15px;
   height: $footer-height;
   border-top: 5px solid $brown;
+  position: relative;
 }
 
 @media screen and (min-width: $screen-md-min) {
   .footer {
     padding: 40px 50px;
   }
+}
+
+.footer-on-top {
+  position: absolute;
+  top: -45px;
+  right: 0px;
 }
