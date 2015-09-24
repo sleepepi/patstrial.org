@@ -1,34 +1,12 @@
-@-webkit-keyframes wiggle {
-  0% {
-    -ms-transform: rotate(0deg); /* IE 9 */
-    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
-    transform: rotate(0deg);
-  }
+@keyframes wiggle {
   25% {
-    -ms-transform: rotate(7deg); /* IE 9 */
-    -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
     transform: rotate(7deg);
   }
-  50% {
-    -ms-transform: rotate(0deg); /* IE 9 */
-    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
-    transform: rotate(0deg);
-  }
   75% {
-    -ms-transform: rotate(-7deg); /* IE 9 */
-    -webkit-transform: rotate(-7deg); /* Chrome, Safari, Opera */
     transform: rotate(-7deg);
-  }
-  100% {
-    -ms-transform: rotate(0deg); /* IE 9 */
-    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
-    transform: rotate(0deg);
   }
 }
 
 img.wiggle:hover {
-  -webkit-animation: wiggle 2s linear infinite;
-  -moz-animation: wiggle 2s linear infinite;
-  -ms-animation: wiggle 2s linear infinite;
   animation: wiggle 2s linear infinite;
 }
