@@ -14,11 +14,11 @@ class User < ActiveRecord::Base
 
   # Overriding Devise built-in active_for_authentication? method
   def active_for_authentication?
-    super and not self.deleted?
+    super && !deleted?
   end
 
   def destroy
     super
-    update_column :updated_at, Time.now
+    update_column :updated_at, Time.zone.now
   end
 end
