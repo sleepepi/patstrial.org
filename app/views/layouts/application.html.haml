@@ -22,9 +22,9 @@
     = javascript_tag "var root_url='#{request.script_name + '/'}';var auth_token='#{form_authenticity_token}';"
   %body
     .center
-      = image_tag 'pats-boy.png', alt: '', class: 'img-responsive', style: 'margin: 0 auto; display: inline-block'
+      = image_tag 'pats-boy.png', alt: '', class: 'img-responsive wiggle', style: 'margin: 0 auto; display: inline-block'
       %h1.brand.dark-purple{ style: 'font-size: 96px; display: inline-block' } PATS
-      = image_tag 'pats-girl.png', alt: '', class: 'img-responsive', style: 'margin: 0 auto; display: inline-block'
+      = image_tag 'pats-girl.png', alt: '', class: 'img-responsive wiggle', style: 'margin: 0 auto; display: inline-block'
     = render 'layouts/flash_messages'
     .container
       = yield
