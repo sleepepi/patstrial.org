@@ -8,13 +8,13 @@
 }
 
 .flash-alert {
-  background-color: $alert-warning-bg;
+  background-color: $pink-bg;
+  color: $pink-color;
   background-image: none;
-  color: #333;
 }
 
 .flash-notice {
-  background-color: $alert-success-bg;
-  color: #333;
+  background-color: $purple-light-bg;
+  color: $purple-light-color;
   background-image: none;
 }

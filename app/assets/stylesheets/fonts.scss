@@ -22,3 +22,28 @@
   src: asset-url('opensans/OpenSans-Bold.woff') format('woff'),
        asset-url('opensans/OpenSans-Bold.ttf') format('truetype');
 }
+
+
+@font-face {
+  font-family: 'Jokerman';
+  font-style: normal;
+  font-weight: 300;
+  src: asset-url('jokerman/Jokerman.woff') format('woff'),
+       asset-url('jokerman/Jokerman.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Jokerman';
+  font-style: normal;
+  font-weight: 400;
+  src: asset-url('jokerman/Jokerman.woff') format('woff'),
+       asset-url('jokerman/Jokerman.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Jokerman';
+  font-style: normal;
+  font-weight: 700;
+  src: asset-url('jokerman/Jokerman.woff') format('woff'),
+       asset-url('jokerman/Jokerman.ttf') format('truetype');
+}

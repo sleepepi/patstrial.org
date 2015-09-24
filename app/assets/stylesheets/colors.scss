@@ -1,0 +1,104 @@
+.color-container {
+  padding: 20px;
+  margin: 0px -15px;
+}
+
+.brown {
+  background-color: $brown-bg;
+  color: $brown-color;
+}
+
+.brown-light {
+  background-color: $brown-light-bg;
+  color: $brown-light-color;
+}
+
+.purple {
+  background-color: $purple-bg;
+  color: $purple-color;
+}
+
+.purple-light {
+  background-color: $purple-light-bg;
+  color: $purple-light-color;
+}
+
+.pink {
+  background-color: $pink-bg;
+  color: $pink-color;
+}
+
+.white-on-brown {
+  background-color: $brown-bg;
+  color: white;
+}
+
+.white-on-brown-light {
+  background-color: $brown-light-bg;
+  color: white;
+}
+
+.white-on-purple {
+  background-color: $purple-bg;
+  color: white;
+}
+
+.white-on-purple-light {
+  background-color: $purple-light-bg;
+  color: white;
+}
+
+.white-on-pink {
+  background-color: $pink-bg;
+  color: white;
+}
+
+.brown-on-white {
+  background-color: white;
+  color: $brown-bg;
+}
+
+.brown-light-on-white {
+  background-color: white;
+  color: $brown-light-bg;
+}
+
+.purple-on-white {
+  background-color: white;
+  color: $purple-bg;
+}
+
+.purple-light-on-white {
+  background-color: white;
+  color: $purple-light-bg;
+}
+
+.pink-on-white {
+  background-color: white;
+  color: $pink-bg;
+}
+
+.dark-brown {
+  background-color: white;
+  color: $brown-color;
+}
+
+.dark-brown-light {
+  background-color: white;
+  color: $brown-light-color;
+}
+
+.dark-purple {
+  background-color: white;
+  color: $purple-color;
+}
+
+.dark-purple-light {
+  background-color: white;
+  color: $purple-light-color;
+}
+
+.dark-pink {
+  background-color: white;
+  color: $pink-color;
+}

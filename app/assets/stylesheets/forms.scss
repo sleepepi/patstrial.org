@@ -13,10 +13,9 @@
 
 @media screen and (min-width: $screen-sm-min) {
   .sign-up-form-title {
-    background-color: #337ab7;
-    color: #FFF;
-    font-weight: 300;
-    // display: block;
+    background-color: $purple-bg;
+    color: white;
+    font-family: 'Jokerman', 'Open Sans', sans-serif;
     border-radius: 0px;
     font-size: 24px;
     margin: -20px -20px 20px -20px;
@@ -27,7 +26,7 @@
 
   .sign-up-form {
     overflow: hidden;
-    border: 1px solid #2e6da4;
+    border: 1px solid $purple-color;
     padding: 20px;
     background-color: #FFF;
     background-color: rgba(255, 255, 255, 0.25);

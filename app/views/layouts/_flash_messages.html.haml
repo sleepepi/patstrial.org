@@ -1,8 +1,10 @@
 - if flash[:notice]
   .flash-notice
-    .lead.center
+    %p.lead.center
+      %span.brand Awesome!
       = flash[:notice].html_safe
 - if flash[:alert]
   .flash-alert
-    .lead.center
+    %p.lead.center
+      %span.brand Oh no!
       = flash[:alert].html_safe
