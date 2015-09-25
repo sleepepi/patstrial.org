@@ -1,15 +1,11 @@
 .container
-  .color-container
-    %h1.brand.dark-purple Dashboard
-    %h4.brand.purple-on-white Pediatric Adenotonsillectomy Trial for Snoring
-
-.container
   .row
     .col-md-3{ style: 'border-color: 1px solid black' }
       %div{ style: 'margin-top:30px;margin-bottom: 30px' }
-        = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
+        = link_to root_path do
+          = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
       %ul.left-menu
-        %li.left-menu-header About
+        %li.left-menu-header Dashboard
         %li.active= link_to 'Home', '#home'
         %li= link_to 'Recruitment Efforts', '#recruitment-efforts'
         %li= link_to 'Publications', '#publications'
@@ -19,7 +15,8 @@
         %li= link_to 'In Conclusion', '#in-conclusion'
     .col-md-9{ style: 'border-color: 1px solid red' }
       .color-container.dark-brown
-        %h1.brand About
+        %h1.brand Dashboard
+        %h4.brand.brown-on-white Pediatric Adenotonsillectomy Trial for Snoring
       %a.anchor-top{ name: 'home'}
       .color-container.brown
         %h2.brand Home
