@@ -1,0 +1,43 @@
+ul.left-menu {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  li {
+    position: relative;
+    display: block;
+    a {
+      position: relative;
+      display: block;
+      padding: 7px 15px;
+      // border-radius: 4px;
+      border-bottom: 2px solid transparent;
+    }
+    a:hover, a:focus {
+      text-decoration: none;
+      background-color: $purple-light-bg;
+      color: $purple-light-color;
+      border-color: $purple-color;
+    }
+  }
+  li.left-menu-header {
+    @include brand;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 5px;
+    font-size: 85%;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #51586a;
+    text-transform: uppercase;
+  }
+  li + .left-menu-header {
+    margin-top: 20px;
+  }
+
+  li.active {
+    a, a:hover, a:focus {
+      color: $purple-color;
+      background-color: $purple-bg;
+    }
+  }
+}

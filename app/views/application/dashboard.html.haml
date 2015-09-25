@@ -2,3 +2,61 @@
   .color-container
     %h1.brand.dark-purple Dashboard
     %h4.brand.purple-on-white Pediatric Adenotonsillectomy Trial for Snoring
+
+.container
+  .row
+    .col-md-3{ style: 'border-color: 1px solid black' }
+      %div{ style: 'margin-top:30px;margin-bottom: 30px' }
+        = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
+      %ul.left-menu
+        %li.left-menu-header About
+        %li.active= link_to 'Home', dashboard_path
+        %li= link_to 'Publications', dashboard_path
+        %li.left-menu-header More
+        %li= link_to 'Interesting Article', dashboard_path
+        %li= link_to 'Publications', dashboard_path
+        %li.left-menu-header Final Thoughts
+        %li= link_to 'In Conclusion', dashboard_path
+    .col-md-9{ style: 'border-color: 1px solid red' }
+      .color-container.dark-brown
+        %h1.brand About
+      .color-container.brown
+        %h2.brand Home
+        %p.lead
+          Welcome to your personalized dashboard!
+        %p.lead
+          Here you are able to see the current live statistics of the
+          PATS Trial recruitment efforts. If you have any questions, don't
+          hesitate to
+          = mail_to ENV['support_email'], 'contact us'
+          if you have any questions!
+
+      .color-container.brown-light
+        %h2.brand Publications
+        %ul.lead
+          %li Publication 1
+          %li Publication 2
+          %li Publication 3
+
+      .color-container.dark-purple
+        %h1.brand More
+
+      .color-container.purple
+        %h2.brand Interesting Article
+        %p.lead
+          Here's a
+          = link_to 'link', dashboard_path
+          to an interesting article about adenotonsillectomy.
+
+      .color-container.dark-pink
+        %h1.brand Final Thoughts
+
+      .color-container.pink
+        %h2.brand In Conclusion
+
+= render 'layouts/background_image_slide'
+
+.purple
+  .container
+    .color-container
+      = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'

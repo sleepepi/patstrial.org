@@ -1,3 +1,7 @@
-.brand {
+@mixin brand {
   font-family: 'Jokerman', 'Open Sans', sans-serif;
+}
+
+.brand {
+  @include brand;
 }

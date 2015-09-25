@@ -13,9 +13,9 @@
 
 @media screen and (min-width: $screen-sm-min) {
   .sign-up-form-title {
+    @include brand;
     background-color: $purple-bg;
     color: white;
-    font-family: 'Jokerman', 'Open Sans', sans-serif;
     border-radius: 0px;
     font-size: 24px;
     margin: -20px -20px 20px -20px;
