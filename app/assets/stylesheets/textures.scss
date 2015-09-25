@@ -30,3 +30,9 @@
   @include dark-texture;
   background-image: asset-url('textures/swings.jpg');
 }
+
+.chalkboard-texture {
+  @include tile-texture;
+  @include dark-texture;
+  background-image: asset-url('textures/black_paper.png');
+}
