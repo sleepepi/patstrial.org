@@ -17,6 +17,9 @@ img.wiggle:hover {
 }
 
 .windowed-inner {
-  border: 12px inset $brown-light;
+  border-top: 12px solid $brown-color;
+  border-right: 12px solid $brown-light-bg;
+  border-bottom: 12px solid $brown-light-bg;
+  border-left: 12px solid $brown-light-color;
   padding: 20px;
 }
