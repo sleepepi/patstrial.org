@@ -1,0 +1,28 @@
+.dark-purple
+  .container
+    .color-container
+      %h1.brand Credits
+      %h4.brand.purple-on-white Special thanks to the following:
+
+
+.purple
+  .container
+    .color-container
+      %ul.lead
+        %li
+          %strong Joel S. Rube
+          %br
+          %small Artist of PATS Boy, PATS Girl, and PATS Logo
+        %li
+          %strong= link_to 'Unsplash', 'https://unsplash.com', target: '_blank'
+          %br
+          %small Source of free high-resolution photos.
+
+= render 'layouts/background_image_slide'
+
+.purple
+  .container
+    .color-container
+      = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
+
+

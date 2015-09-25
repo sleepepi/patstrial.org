@@ -10,3 +10,13 @@
 img.wiggle:hover {
   animation: wiggle 2s linear infinite;
 }
+
+.windowed {
+  border: 5px solid $brown;
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+}
+
+.windowed-inner {
+  border: 12px inset $brown-light;
+  padding: 20px;
+}

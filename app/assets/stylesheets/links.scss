@@ -1,0 +1,14 @@
+a.title-link, a.footer-link {
+  text-decoration: none;
+  color: $purple-color;
+  transition: all .2s ease; /* Fade to color for Chrome and Safari */
+  -webkit-backface-visibility: hidden; /* Fix for transition flickering */
+}
+
+a.title-link:hover {
+  color: $purple;
+}
+
+// a.footer-link:hover {
+//   color: white;
+// }

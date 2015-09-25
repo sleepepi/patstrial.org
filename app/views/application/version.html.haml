@@ -1,10 +1,13 @@
 - @title = 'Version'
 
-.color-container.dark-purple
-  %h1.brand Version
+.container
+  .color-container.dark-purple
+    %h1.brand Version
 
-.color-container.purple-light
-  .center
-    %p.lead
-      Current version
-      %strong.white-on-purple-light= PatstrialOrg::VERSION::STRING
+.container
+  .purple
+    .color-container
+      .center
+        %p.lead
+          Current version
+          %strong.white-on-purple= PatstrialOrg::VERSION::STRING

@@ -1,23 +1,32 @@
-.color-container.dark-purple
-  %h1.brand Welcome to the PATS Trial Website!
+.dark-purple
+  .container
+    .color-container
+      %h1.brand Welcome to the PATS Trial Website!
+      %h4.brand.purple-on-white Pediatric Adenotonsillectomy Trial for Snoring
 
-.color-container.purple
-  %p.lead
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-.color-container.purple-light
-  %h2.brand Useful Links
-  %p.lead
-    - if current_user
-      = link_to 'Dashboard', dashboard_path, style: 'color: white;font-weight:bold', class: 'brand'
-      &middot;
-      = link_to 'Sign Out', destroy_user_session_path, style: 'color: white;font-weight:bold', class: 'brand'
-    - else
-      = link_to 'Login', new_user_session_path, style: 'color: white;font-weight:bold', class: 'brand'
-      &middot;
-      = link_to 'Sign Up', new_user_registration_path, style: 'color: white;font-weight:bold', class: 'brand'
+.purple
+  .container
+    .color-container
+      %h2.brand About the Trial
+      %p.lead
+        The purpose of this study is to evaluate the effects of early
+        adenotonsillectomy (eAT) on the behavior, sleep-disordered breathing
+        symptoms and quality of life for children who snore, but do not have
+        obstructive sleep apnea, as well as identify factors that moderate
+        responses to the surgery. Half of participants will receive eAT, while
+        the other half will be observed with watchful waiting and supportive
+        care.
+      %p.lead
+        Read more on
+        = succeed '.' do
+          = link_to 'ClinicalTrials.gov', 'https://clinicaltrials.gov/', target: '_blank'
+
+- if false
+  .purple-light
+    .container
+      .color-container
+        %h2.brand
+          Another Title
+        %p.lead
+          More Text
