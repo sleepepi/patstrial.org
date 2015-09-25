@@ -1,0 +1,31 @@
+- if current_page?(root_path)
+  .center
+    = image_tag 'pats-boy.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
+    %h1.brand.dark-purple{ style: 'font-size: 96px; display: inline-block' }
+      = link_to 'PATS', root_path, class: 'title-link'
+    = image_tag 'pats-girl.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
+- else
+  %nav.navbar.navbar-default.navbar-fixed-top
+    .container
+      .navbar-header
+        %button.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '.navbar-full-menu' } }
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = image_tag 'pats-boy.png', alt: '', style: 'height:40px;padding-top:10px'
+        = link_to 'PATS', root_path, class: 'navbar-brand brand'
+        = image_tag 'pats-girl.png', alt: '', style: 'height:40px;padding-top:10px;padding-right:15px'
+      .collapse.navbar-collapse.navbar-full-menu
+        %ul.nav.navbar-nav
+          %li{ class: "#{'active' if current_page?(theme_path)}" }= link_to 'Theme', theme_path
+          %li{ class: "#{'active' if current_page?(window_path)}" }= link_to 'Window', window_path
+          %li{ class: "#{'active' if current_page?(credits_path)}" }= link_to 'Credits', credits_path
+        - if current_user
+          %ul.nav.navbar-nav.navbar-right
+            %li{ class: "#{'active' if current_page?(dashboard_path)}" }= link_to current_user.first_name, dashboard_path
+            %li= link_to 'Logout', destroy_user_session_path
+        - else
+          %form.navbar-form.navbar-right
+            = link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' unless current_page?(new_user_registration_path)
+            = link_to 'Sign in', new_user_session_path, class: 'btn btn-primary'

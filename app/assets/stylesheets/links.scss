@@ -1,6 +1,6 @@
 .anchor-top {
   position: relative;
-  top: 0px; // -($header-height);
+  top: -($header-height);
   display: block;
   height: 0;
   width:0;

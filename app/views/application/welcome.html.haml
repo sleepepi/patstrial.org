@@ -22,11 +22,21 @@
         = succeed '.' do
           = link_to 'ClinicalTrials.gov', 'https://clinicaltrials.gov/', target: '_blank'
 
-- if false
-  .purple-light
-    .container
-      .color-container
-        %h2.brand
-          Another Title
-        %p.lead
-          More Text
+.purple-light-on-white
+  .container
+    .color-container
+      %h2.brand
+        Where do I go from here?
+      .row
+        .col-sm-4
+          .center
+            %p.lead
+              = link_to 'Theme', theme_path
+        .col-sm-4
+          .center
+            %p.lead
+              = link_to 'Window', window_path
+        .col-sm-4
+          .center
+            %p.lead
+              = link_to 'Credits', theme_path
