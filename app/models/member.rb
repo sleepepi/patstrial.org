@@ -10,4 +10,8 @@ class Member < ActiveRecord::Base
   def name
     "#{first_name} #{last_name}"
   end
+
+  def name_was
+    "#{first_name_was} #{last_name_was}"
+  end
 end

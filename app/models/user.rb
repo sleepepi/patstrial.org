@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def name_was
+    "#{first_name_was} #{last_name_was}"
+  end
+
   # Overriding Devise built-in active_for_authentication? method
   def active_for_authentication?
     super && !deleted? && approved?
