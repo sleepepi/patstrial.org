@@ -34,7 +34,7 @@
 
     &.left-menu-header {
       @include brand;
-      color: #51586a;
+      color: $gray;
       font-size: 85%;
       font-weight: normal;
       letter-spacing: 1px;
@@ -46,7 +46,7 @@
 
     // Add a margin to the top of a menu header if it has other menu items
     // preceding it
-    & + .left-menu-header {
+    + .left-menu-header {
       margin-top: 20px;
     }
   }
