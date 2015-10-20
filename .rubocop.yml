@@ -1,0 +1,10 @@
+AllCops:
+  DisplayCopNames: true
+  RunRailsCops: true
+# Documentation:
+#   Enabled: false
+# Temporary increase for line length
+Metrics/LineLength:
+  Max: 1000
+Metrics/MethodLength:
+  Max: 5
