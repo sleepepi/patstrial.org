@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root to: 'admin#index'
+    resources :users
+  end
+
   scope module: 'application' do
     get :credits
     get :dashboard

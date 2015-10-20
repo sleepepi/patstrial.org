@@ -2,18 +2,22 @@ require 'test_helper'
 
 # Tests accessibility of public static pages on the website
 class ApplicationControllerTest < ActionController::TestCase
+  setup do
+    @viewer = users(:viewer)
+  end
+
   test 'should get credits' do
     get :credits
     assert_response :success
   end
 
-  test 'should get dashboard for regular user' do
-    login(users(:regular))
+  test 'should get dashboard as viewer' do
+    login(@viewer)
     get :dashboard
     assert_response :success
   end
 
-  test 'should not get dashboard for logged out user' do
+  test 'should not get dashboard as logged out user' do
     get :dashboard
     assert_redirected_to new_user_session_path
   end

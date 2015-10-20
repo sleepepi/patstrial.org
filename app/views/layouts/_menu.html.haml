@@ -14,13 +14,15 @@
           %span.icon-bar
           %span.icon-bar
         = image_tag 'pats-boy.png', alt: '', style: 'height:40px;padding-top:10px'
-        = link_to 'PATS', root_path, class: 'navbar-brand brand'
+        = link_to 'PATS', dashboard_path, class: 'navbar-brand brand'
         = image_tag 'pats-girl.png', alt: '', style: 'height:40px;padding-top:10px;padding-right:15px'
       .collapse.navbar-collapse.navbar-full-menu
         %ul.nav.navbar-nav
           %li{ class: "#{'active' if current_page?(theme_path)}" }= link_to 'Theme', theme_path
           %li{ class: "#{'active' if current_page?(window_path)}" }= link_to 'Window', window_path
           %li{ class: "#{'active' if current_page?(credits_path)}" }= link_to 'Credits', credits_path
+          - if current_user && current_user.admin?
+            %li{ class: (%r{^admin/} =~ params[:controller] ? 'active' : nil) }= link_to 'Admin', admin_root_path
         - if current_user
           %form.navbar-form.navbar-right
             = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary'

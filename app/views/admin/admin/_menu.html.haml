@@ -1,0 +1,9 @@
+%div{ style: 'margin-top:30px;margin-bottom: 30px' }
+  = link_to dashboard_path do
+    = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
+%ul.left-menu
+  %li.left-menu-header Admin
+  %li{ class: current_page?(admin_root_path) ? 'active' : nil }
+    = link_to 'Dashboard', admin_root_path
+  %li{ class: params[:controller] == 'admin/users' ? 'active' : nil }
+    = link_to 'Users', admin_users_path

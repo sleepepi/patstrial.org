@@ -1,5 +1,10 @@
 ## 2.0.0
 
+### Enhancements
+- **User Changes**
+  - Added admin, editor, and viewer roles for internal pages of website
+  - Users must be approved before being able to complete login
+
 ## 1.0.0 (October 20, 2015)
 
 - Skeleton files to initialize Rails application with testing framework and continuous integration

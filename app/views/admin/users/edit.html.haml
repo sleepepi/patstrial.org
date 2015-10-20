@@ -1,0 +1,16 @@
+- @title = "Edit User: #{@user.name}"
+
+.container
+  .row
+    .col-md-3
+      = render 'admin/admin/menu'
+    .col-md-9
+      .color-container.brown
+        %h1.brand
+          = @user.name
+        %h4.brand
+          Edit User
+
+      .color-container
+        = render 'form'
+

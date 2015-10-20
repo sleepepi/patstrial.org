@@ -1,3 +1,4 @@
+# Used to flag models as deleted
 module Deletable
   extend ActiveSupport::Concern
 

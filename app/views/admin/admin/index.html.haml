@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-md-3
+      = render 'admin/admin/menu'
+    .col-md-9
+      .color-container.brown
+        %h1.brand Admin Dashboard
+        %h4.brand.brown Pediatric Adenotonsillectomy Trial for Snoring
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p.lead
+          Welcome to the admin dashboard!
+        %p.lead
+          As an admin you may:
+          %ul
+            %li
+              = link_to 'approve and set user roles', admin_users_path

@@ -1,14 +1,29 @@
-system_admin:
+admin:
   first_name: System
   last_name: Admin
   email: system_admin@example.com
   encrypted_password: ""
-  system_admin: true
+  admin: true
+  approved: true
 
-regular:
-  first_name: Regular
+editor:
+  first_name: Editor
   last_name: User
-  email: regular@example.com
+  email: editor@example.com
+  editor: true
+  approved: true
+
+viewer:
+  first_name: Viewer
+  last_name: User
+  email: viewer@example.com
+  encrypted_password: ""
+  approved: true
+
+pending:
+  first_name: Pending
+  last_name: Approval
+  email: pending@example.com
   encrypted_password: ""
 
 deleted:

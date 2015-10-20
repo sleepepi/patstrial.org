@@ -1,0 +1,34 @@
+.container
+  .row
+    .col-md-3
+      = render 'admin/admin/menu'
+    .col-md-9
+      .color-container.purple-on-white
+        %h1.brand= @user.name
+        %h4.brand= @user.email
+
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p.lead
+          You may
+          = link_to 'edit this user', edit_admin_user_path(@user)
+          to approve their website access and to change their roles.
+
+
+      %table.table.table-striped
+        %tbody
+          %tr
+            %td Name
+            %td= @user.name
+          %tr
+            %td Email
+            %td= @user.email
+          %tr
+            %td Website Access
+            %td= @user.approved? ? 'Approved' : 'Pending'
+          %tr
+            %td Admin
+            %td= @user.admin?
+          %tr
+            %td Editor
+            %td= @user.admin?
