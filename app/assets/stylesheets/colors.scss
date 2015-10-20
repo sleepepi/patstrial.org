@@ -1,12 +1,12 @@
 @mixin white-links {
   a {
-    color: white;
+    color: $white;
   }
 }
 
 .color-container {
-  padding: 20px;
   margin: 0px -15px;
+  padding: 20px;
 }
 
 .brown {
@@ -41,7 +41,7 @@
 
 .white-on-brown {
   background-color: $brown-bg;
-  color: white;
+  color: $white;
   a {
     color: $brown-color;
   }
@@ -49,7 +49,8 @@
 
 .white-on-brown-light {
   background-color: $brown-light-bg;
-  color: white;
+  color: $white;
+
   a {
     color: $brown-light-color;
   }
@@ -57,7 +58,8 @@
 
 .white-on-purple {
   background-color: $purple-bg;
-  color: white;
+  color: $white;
+
   a {
     color: $purple-color;
   }
@@ -65,7 +67,8 @@
 
 .white-on-purple-light {
   background-color: $purple-light-bg;
-  color: white;
+  color: $white;
+
   a {
     color: $purple-light-color;
   }
@@ -73,87 +76,98 @@
 
 .white-on-pink {
   background-color: $pink-bg;
-  color: white;
+  color: $white;
+
   a {
     color: $pink-color;
   }
 }
 
 .brown-on-white {
-  background-color: white;
+  background-color: $white;
   color: $brown-bg;
+
   a {
     color: $brown-color;
   }
 }
 
 .brown-light-on-white {
-  background-color: white;
+  background-color: $white;
   color: $brown-light-bg;
+
   a {
     color: $brown-light-color;
   }
 }
 
 .purple-on-white {
-  background-color: white;
+  background-color: $white;
   color: $purple-bg;
+
   a {
     color: $purple-color;
   }
 }
 
 .purple-light-on-white {
-  background-color: white;
+  background-color: $white;
   color: $purple-light-bg;
+
   a {
     color: $purple-light-color;
   }
 }
 
 .pink-on-white {
-  background-color: white;
+  background-color: $white;
   color: $pink-bg;
+
   a {
     color: $pink-color;
   }
 }
 
 .dark-brown {
-  background-color: white;
+  background-color: $white;
   color: $brown-color;
+
   a {
     color: $brown-bg;
   }
 }
 
 .dark-brown-light {
-  background-color: white;
+  background-color: $white;
   color: $brown-light-color;
+
   a {
     color: $brown-light-bg;
   }
 }
 
 .dark-purple {
-  background-color: white;
+  background-color: $white;
   color: $purple-color;
+
   a {
     color: $purple-bg;
   }
 }
 
 .dark-purple-light {
-  background-color: white;
+  background-color: $white;
   color: $purple-light-color;
+
   a {
     color: $purple-light-bg;
   }
 }
 
 .dark-pink {
-  background-color: white;
+  background-color: $white;
   color: $pink-color;
+
   a {
     color: $pink-bg;
   }
