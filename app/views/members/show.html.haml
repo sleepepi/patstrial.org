@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.purple-on-white
+        %h1.brand= @member.name
+        %h4.brand= @member.email
+
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p.lead
+          = link_to 'Edit Member', edit_member_path(@member)
+
+      %table.table.table-striped
+        %tr
+          %td First name
+          %td= @member.first_name
+        %tr
+          %td Last name
+          %td= @member.last_name
+        %tr
+          %td Email
+          %td= @member.email
+        %tr
+          %td Phone
+          %td= @member.phone
+        %tr
+          %td Role
+          %td= @member.role

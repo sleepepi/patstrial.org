@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.brown
+        %h1.brand Editor Dashboard
+        %h4.brand.brown Pediatric Adenotonsillectomy Trial for Snoring
+
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p.lead
+          You may edit the members in the directory here.
+
+      = render 'members/members'

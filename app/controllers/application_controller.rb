@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
     order = column_name.blank? ? default_order : [column_name, direction].compact.join(' ')
     order
   end
+
+  def check_editor
+    redirect_to dashboard_path, alert: 'Only editors may access that page.' unless current_user.editor?
+  end
 end

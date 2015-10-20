@@ -1,0 +1,45 @@
+= form_for(@member, html: { class: 'form-horizontal' }) do |f|
+  - if @member.errors.any?
+    .bs-callout.bs-callout-danger
+      %h4
+        = pluralize(@member.errors.count, "error")
+        prohibited this member from being saved
+
+      %ul
+        - @member.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :first_name, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :first_name
+
+  .form-group
+    = f.label :last_name, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :last_name
+
+  .form-group
+    = f.label :email, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :email
+
+  .form-group
+    = f.label :phone, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :phone
+
+  .form-group
+    = f.label :role, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :role
+
+  .form-group
+    = f.label :deleted, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.check_box :deleted
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit nil, class: 'btn btn-primary'
+      = link_to 'cancel', @member.new_record? ? @member : members_path, class: ''
