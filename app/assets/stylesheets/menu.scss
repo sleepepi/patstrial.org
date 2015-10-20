@@ -1,43 +1,53 @@
-ul.left-menu {
+// This is for UL elements
+.left-menu {
+  list-style: none;
   margin-bottom: 0;
   padding-left: 0;
-  list-style: none;
+
   li {
-    position: relative;
     display: block;
+    position: relative;
+
     a {
-      position: relative;
+      border-bottom: 2px solid transparent;
       display: block;
       padding: 7px 15px;
-      // border-radius: 4px;
-      border-bottom: 2px solid transparent;
+      position: relative;
     }
-    a:hover, a:focus {
-      text-decoration: none;
-      background-color: $purple-light-bg;
-      color: $purple-light-color;
-      border-color: $purple-color;
-    }
-  }
-  li.left-menu-header {
-    @include brand;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 5px;
-    font-size: 85%;
-    font-weight: normal;
-    letter-spacing: 1px;
-    color: #51586a;
-    text-transform: uppercase;
-  }
-  li + .left-menu-header {
-    margin-top: 20px;
-  }
 
-  li.active {
-    a, a:hover, a:focus {
-      color: $purple-color;
-      background-color: $purple-bg;
+    a:hover,
+    a:focus {
+      background-color: $purple-light-bg;
+      border-color: $purple-color;
+      color: $purple-light-color;
+      text-decoration: none;
+    }
+
+    &.active {
+      a,
+      a:hover,
+      a:focus {
+        background-color: $purple-bg;
+        color: $purple-color;
+      }
+    }
+
+    &.left-menu-header {
+      @include brand;
+      color: #51586a;
+      font-size: 85%;
+      font-weight: normal;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      padding-left: 15px;
+      padding-right: 15px;
+      text-transform: uppercase;
+    }
+
+    // Add a margin to the top of a menu header if it has other menu items
+    // preceding it
+    & + .left-menu-header {
+      margin-top: 20px;
     }
   }
 }
