@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :members
   namespace :admin do
     root to: 'admin#index'
     resources :users
@@ -7,12 +6,18 @@ Rails.application.routes.draw do
 
   scope module: 'application' do
     get :credits
-    get :dashboard
     get :theme
     get :version
     get :welcome
     get :window
   end
+
+  scope module: 'internal' do
+    get :dashboard
+    get :directory
+  end
+
+  resources :members
 
   devise_for :users, path_names: { sign_up: 'join',
                                    sign_in: 'login',

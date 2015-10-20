@@ -6,6 +6,7 @@
   - Users must be approved before being able to complete login
 - **Directory Changes**
   - Editors can now create and update member listings in the directory
+  - Approved viewers can view the directory from their dashboard
 
 ## 1.0.0 (October 20, 2015)
 

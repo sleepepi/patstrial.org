@@ -1,0 +1,15 @@
+%div{ style: 'margin-top:30px;margin-bottom: 30px' }
+  = link_to dashboard_path do
+    = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
+%ul.left-menu
+  %li.left-menu-header Dashboard
+  %li{ class: (current_page?(dashboard_path) ? 'active' : nil) }
+    = link_to 'Home', dashboard_path
+  %li{ class: (current_page?(directory_path) ? 'active' : nil) }
+    = link_to 'Directory', directory_path
+  %li= link_to 'Recruitment Efforts', '#recruitment-efforts'
+  %li= link_to 'Publications', '#publications'
+  %li.left-menu-header More
+  %li= link_to 'Interesting Article', '#interesting-article'
+  %li.left-menu-header Final Thoughts
+  %li= link_to 'In Conclusion', '#in-conclusion'

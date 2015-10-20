@@ -11,17 +11,6 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should get dashboard as viewer' do
-    login(@viewer)
-    get :dashboard
-    assert_response :success
-  end
-
-  test 'should not get dashboard as logged out user' do
-    get :dashboard
-    assert_redirected_to new_user_session_path
-  end
-
   test 'should get theme' do
     get :theme
     assert_response :success

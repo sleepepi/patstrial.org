@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-md-3
+      = render 'internal/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand Directory
+        %h4.brand.brown-on-white Pediatric Adenotonsillectomy Trial for Snoring
+
+      %table.table.table-striped
+        %thead
+          %tr
+            = th_sort_field @order, 'members.last_name', 'Name'
+            = th_sort_field @order, 'members.email', 'Email'
+            = th_sort_field @order, 'members.phone', 'Phone'
+            = th_sort_field @order, 'members.role', 'Role'
+
+        - @members.each do |member|
+          %tr
+            %td= member.name
+            %td= member.email
+            %td= member.phone
+            %td= member.role
+
+      .center
+        = paginate @members, theme: 'bootstrap'
