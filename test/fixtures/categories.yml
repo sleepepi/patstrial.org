@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Manuals
+  description: MyText
+  top_level: TOPLEVEL
+  slug: manuals
+  position: 1
+  archived: false
+  deleted: false
+
+two:
+  name: Protocols
+  description: MyText
+  top_level: TOPLEVEL
+  slug: protocol
+  position: 2
+  archived: false
+  deleted: false

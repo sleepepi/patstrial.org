@@ -1,0 +1,29 @@
+%table.table.table-striped
+  %thead
+    %tr
+      = th_sort_field @order, 'categories.position', 'Position'
+      = th_sort_field @order, 'categories.name', 'Name'
+      = th_sort_field @order, 'categories.top_level', 'Top level'
+      = th_sort_field @order, 'categories.slug', 'Slug'
+      = th_sort_field @order, 'categories.archived', 'Archived'
+      %th Actions
+
+  %tr
+    %td.center{ colspan: 7 }
+      = link_to new_category_path do
+        .glyphicon.glyphicon-plus
+        Add New Category
+
+  - @categories.each do |category|
+    %tr
+      %td= category.position
+      %td= link_to category.name, category
+      %td= category.top_level
+      %td= category.slug
+      %td= category.archived
+      %td
+        = link_to 'Edit', edit_category_path(category), class: 'btn btn-default btn-xs'
+        = link_to 'Delete', category, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Category #{category.name}?" }
+
+.center
+  = paginate @categories, theme: 'bootstrap'

@@ -5,3 +5,5 @@
   %li.left-menu-header Editor Dashboard
   %li{ class: params[:controller] == 'members' ? 'active' : nil }
     = link_to 'Members', members_path
+  %li{ class: params[:controller] == 'categories' ? 'active' : nil }
+    = link_to 'Categories', categories_path

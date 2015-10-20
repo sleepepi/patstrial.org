@@ -1,0 +1,16 @@
+- @title = "Edit Category: #{@category.name_was}"
+
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.brown
+        %h1.brand
+          = @category.name_was
+        %h4.brand
+          Edit Category
+
+      .color-container
+        = render 'form'
+

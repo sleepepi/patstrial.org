@@ -52,7 +52,8 @@ class MembersController < ApplicationController
   private
 
   def set_member
-    @member = Member.find_by_id params[:id]
+    @member = Member.current.find_by_id params[:id]
+    empty_response_or_root_path(members_path) unless @member
   end
 
   def member_params

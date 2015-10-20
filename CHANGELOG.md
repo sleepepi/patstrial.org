@@ -7,6 +7,8 @@
 - **Directory Changes**
   - Editors can now create and update member listings in the directory
   - Approved viewers can view the directory from their dashboard
+- **Document Changes**
+  - Editors can now create and update document categories to organize documents
 
 ## 1.0.0 (October 20, 2015)
 
