@@ -9,6 +9,8 @@
   - Approved viewers can view the directory from their dashboard
 - **Document Changes**
   - Editors can now create and update document categories to organize documents
+- **General Changes**
+  - Added link to ClinicalTrials.gov
 
 ## 1.0.0 (October 20, 2015)
 
