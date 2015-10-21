@@ -4,11 +4,15 @@
     / %span.dark-purple.brand PATS
     = image_tag 'pats-boy.png', alt: '', height: '40px', style: 'text-align:right'
   .row
-    .col-xs-4.nowrap
+    .col-xs-5.nowrap
       &copy; 2015 PATS Trial
-    .col-xs-4
+    .col-xs-2
       .brand.center.dark-purple{ style: 'background-color:transparent' }
         = link_to 'P', root_path, class: 'footer-link'
-    .col-xs-4.nowrap.text-right
+    .col-xs-5.nowrap.text-right
       Funded By
-      = link_to 'National Heart, Lung, and Blood Institute', 'https://clinicaltrials.gov/show/NCT02562040', target: '_blank'
+      = link_to 'https://clinicaltrials.gov/show/NCT02562040', target: '_blank' do
+        %span.visible-xs-inline.visible-sm-inline
+          NHLBI
+        %span.hidden-xs.hidden-sm
+          National Heart, Lung, and Blood Institute
