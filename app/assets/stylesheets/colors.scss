@@ -9,37 +9,37 @@
   padding: 20px;
 }
 
-.brown {
+.brown-fill {
   @include white-links;
   background-color: $brown-bg;
   color: $brown-color;
 }
 
-.brown-light {
+.brown-light-fill {
   @include white-links;
   background-color: $brown-light-bg;
   color: $brown-light-color;
 }
 
-.purple {
+.purple-fill {
   @include white-links;
   background-color: $purple-bg;
   color: $purple-color;
 }
 
-.purple-light {
+.purple-light-fill {
   @include white-links;
   background-color: $purple-light-bg;
   color: $purple-light-color;
 }
 
-.pink {
+.pink-fill {
   @include white-links;
   background-color: $pink-bg;
   color: $pink-color;
 }
 
-.white-on-brown {
+.brown-fill-white {
   background-color: $brown-bg;
   color: $white;
   a {
@@ -47,7 +47,7 @@
   }
 }
 
-.white-on-brown-light {
+.brown-light-fill-white {
   background-color: $brown-light-bg;
   color: $white;
 
@@ -56,7 +56,7 @@
   }
 }
 
-.white-on-purple {
+.purple-fill-white {
   background-color: $purple-bg;
   color: $white;
 
@@ -65,7 +65,7 @@
   }
 }
 
-.white-on-purple-light {
+.purple-light-fill-white {
   background-color: $purple-light-bg;
   color: $white;
 
@@ -74,7 +74,7 @@
   }
 }
 
-.white-on-pink {
+.pink-fill-white {
   background-color: $pink-bg;
   color: $white;
 
@@ -83,7 +83,7 @@
   }
 }
 
-.brown-on-white {
+.brown {
   background-color: $white;
   color: $brown-bg;
 
@@ -92,7 +92,7 @@
   }
 }
 
-.brown-light-on-white {
+.brown-light {
   background-color: $white;
   color: $brown-light-bg;
 
@@ -101,7 +101,7 @@
   }
 }
 
-.purple-on-white {
+.purple {
   background-color: $white;
   color: $purple-bg;
 
@@ -119,7 +119,7 @@
   }
 }
 
-.pink-on-white {
+.pink {
   background-color: $white;
   color: $pink-bg;
 

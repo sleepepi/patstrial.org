@@ -5,9 +5,9 @@
     .col-md-9
       .color-container.dark-brown
         %h1.brand Dashboard
-        %h4.brand.brown-on-white Pediatric Adenotonsillectomy Trial for Snoring
+        %h4.brand.brown Pediatric Adenotonsillectomy Trial for Snoring
       %a.anchor-top{ name: 'home'}
-      .color-container.brown
+      .color-container.brown-fill
         %h2.brand Home
         %p.lead
           Welcome to your personalized dashboard!
@@ -19,7 +19,7 @@
           if you have any questions!
 
       %a.anchor-top{ name: 'recruitment-efforts'}
-      .color-container.brown-light{ style: 'border-color: transparent' }
+      .color-container.brown-light-fill{ style: 'border-color: transparent' }
         %h2.brand Recruitment Efforts
         %table.table
           %thead
@@ -30,26 +30,26 @@
             %tr
               %th Overall
               %th
-                %span.white-on-brown{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 49
+                %span.brown-fill-white{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 49
                 of 100
           %tbody
             %tr
               %td Boston
               %td
-                %span.white-on-brown{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 20
+                %span.brown-fill-white{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 20
                 of 40
             %tr
               %td Site 2
               %td
-                %span.white-on-brown{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 24
+                %span.brown-fill-white{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 24
                 of 40
             %tr
               %td Site 3
               %td
-                %span.white-on-brown{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 5
+                %span.brown-fill-white{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 5
                 of 20
       %a.anchor-top{ name: 'publications'}
-      .color-container.brown
+      .color-container.brown-fill
         %h2.brand Publications
         %ul.lead
           %li Publication 1
@@ -60,7 +60,7 @@
         %h1.brand More
 
       %a.anchor-top{ name: 'interesting-article'}
-      .color-container.purple
+      .color-container.purple-fill
         %h2.brand Interesting Article
         %p.lead
           Here's a
@@ -71,12 +71,12 @@
         %h1.brand Final Thoughts
 
       %a.anchor-top{ name: 'in-conclusion'}
-      .color-container.pink
+      .color-container.pink-fill
         %h2.brand In Conclusion
 
 = render 'layouts/background_image_slide'
 
-.purple
+.purple-fill
   .container
     .color-container
       = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
