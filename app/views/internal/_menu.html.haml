@@ -9,6 +9,10 @@
     = link_to 'Directory', directory_path, class: (current_page?(directory_path) ? 'active' : nil)
   %li= link_to 'Recruitment Efforts', '#recruitment-efforts'
   %li= link_to 'Publications', '#publications'
+  %li.left-menu-header Documents
+  - Category.current.each do |category|
+    - if category.documents.present?
+      %li= link_to category.name, '#'
   %li.left-menu-header More
   %li= link_to 'Interesting Article', '#interesting-article'
   %li.left-menu-header Final Thoughts

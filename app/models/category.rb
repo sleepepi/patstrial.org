@@ -10,4 +10,8 @@ class Category < ActiveRecord::Base
   validates :slug, format: { with: /\A[a-z][a-z0-9\-]*\Z/ }
 
   # Model Methods
+
+  def documents
+    [1,2]
+  end
 end

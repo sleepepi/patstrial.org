@@ -1,20 +1,22 @@
-.flash-alert, .flash-notice {
-  position: relative;
-  padding-top: 10px;
+.flash-alert,
+.flash-notice {
   padding-bottom: 10px;
+  padding-top: 10px;
+  position: relative;
+
   .lead {
-    margin: 0px;
+    margin: 0;
   }
 }
 
 .flash-alert {
   background-color: $pink-bg;
-  color: $pink-color;
   background-image: none;
+  color: $pink-color;
 }
 
 .flash-notice {
   background-color: $purple-light-bg;
-  color: $purple-light-color;
   background-image: none;
+  color: $purple-light-color;
 }

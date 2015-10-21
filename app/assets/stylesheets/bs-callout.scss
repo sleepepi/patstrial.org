@@ -1,18 +1,18 @@
 // Base styles (regardless of theme)
 
 .bs-callout {
+  border-left: 5px solid $gray-lighter;
   margin: 20px 0;
   padding: 15px 30px 15px 15px;
-  border-left: 5px solid #eee;
-}
 
-.bs-callout h4 {
-  margin-top: 0;
-  font-weight: 500;
-}
+  h4 {
+    font-weight: 500;
+    margin-top: 0;
+  }
 
-.bs-callout p:last-child {
-  margin-bottom: 0;
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .bs-callout code,
@@ -27,11 +27,13 @@
   border-color: $panel-danger-border;
   color: $panel-danger-text;
 }
+
 .bs-callout-warning {
   background-color: $panel-warning-heading-bg;
   border-color: $panel-warning-border;
   color: $panel-warning-text;
 }
+
 .bs-callout-info {
   background-color: $panel-info-heading-bg;
   border-color: $panel-info-border;

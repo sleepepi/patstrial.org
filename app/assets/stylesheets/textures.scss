@@ -1,8 +1,8 @@
 // Mixin for textures that stretch
 @mixin cover-texture {
-  background-repeat: no-repeat;
-  background-position: center;
   background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   -ms-behavior: asset-url('ie8/backgroundsize.min.htc');
 }
@@ -21,8 +21,8 @@
   @include cover-texture;
   @include dark-texture;
   background-image: asset-url('textures/bridge.jpg');
-  border-top: 5px solid $purple;
   border-bottom: 5px solid $purple-light;
+  border-top: 5px solid $purple;
 }
 
 .swings-texture {

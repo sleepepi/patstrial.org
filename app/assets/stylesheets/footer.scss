@@ -1,16 +1,16 @@
 .footer-container {
-  position: absolute;
   bottom: 0;
-  width: 100%;
   height: $footer-height;
+  position: absolute;
+  width: 100%;
 }
 
 .footer {
-  padding: 40px 25px;
+  border-top: 5px solid $brown;
+  height: $footer-height;
   margin-left: -15px;
   margin-right: -15px;
-  height: $footer-height;
-  border-top: 5px solid $brown;
+  padding: 40px 25px;
   position: relative;
 }
 
@@ -22,6 +22,6 @@
 
 .footer-on-top {
   position: absolute;
+  right: 0;
   top: -45px;
-  right: 0px;
 }

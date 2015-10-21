@@ -2,24 +2,25 @@
   25% {
     transform: rotate(7deg);
   }
+
   75% {
     transform: rotate(-7deg);
   }
 }
 
-img.wiggle:hover {
+.wiggle:hover {
   animation: wiggle 2s linear infinite;
 }
 
 .windowed {
   border: 5px solid $brown;
-  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  box-shadow: 0 3px 8px $shadow-light;
 }
 
 .windowed-inner {
-  border-top: 12px solid $brown-color;
-  border-right: 12px solid $brown-light-bg;
   border-bottom: 12px solid $brown-light-bg;
   border-left: 12px solid $brown-light-color;
+  border-right: 12px solid $brown-light-bg;
+  border-top: 12px solid $brown-color;
   padding: 20px;
 }
