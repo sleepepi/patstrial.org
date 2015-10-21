@@ -2,10 +2,10 @@
 
 one:
   category: one
-  document: MyString
+  document: test_01.doc
   archived: false
 
 two:
   category: one
-  document: MyString
+  document: test_01.docx
   archived: false

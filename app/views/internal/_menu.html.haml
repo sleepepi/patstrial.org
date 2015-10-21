@@ -7,13 +7,13 @@
     = link_to 'Home', dashboard_path, class: (current_page?(dashboard_path) ? 'active' : nil)
   %li
     = link_to 'Directory', directory_path, class: (current_page?(directory_path) ? 'active' : nil)
-  %li= link_to 'Recruitment Efforts', '#recruitment-efforts'
-  %li= link_to 'Publications', '#publications'
   %li.left-menu-header Documents
-  - Category.current.each do |category|
-    - if category.documents.present?
-      %li= link_to category.name, '#'
-  %li.left-menu-header More
-  %li= link_to 'Interesting Article', '#interesting-article'
-  %li.left-menu-header Final Thoughts
-  %li= link_to 'In Conclusion', '#in-conclusion'
+  - Category.current.where(archived: false).each do |category|
+    - if category.documents.where(archived: false).present?
+      %li= link_to category.name, internal_category_path(category.slug)
+  - if current_user.admin?
+    %li.left-menu-header Admin
+    %li= link_to 'Dashboard', admin_root_path
+  - if current_user.editor?
+    %li.left-menu-header Editor
+    %li= link_to 'Dashboard', editor_path

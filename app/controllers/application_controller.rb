@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
     column_name = (model.column_names.collect { |c| model.table_name + '.' + c }.find { |c| c == params_column })
     column_name.blank? ? default_order : [column_name, direction].compact.join(' ')
   end
+
+  def empty_response_or_root_path(path = root_path)
+    respond_to do |format|
+      format.html { redirect_to path }
+      format.js { render nothing: true }
+      format.json { head :no_content }
+    end
+  end
 end

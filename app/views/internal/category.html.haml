@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-3
+      = render 'internal/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand= @category.name
+        %h4.brand.brown
+          = @category.description
+
+
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Name
+            %th Size
+
+        - @category.documents.where(archived: false).each do |document|
+          %tr
+            %td= link_to document.name, internal_category_document_path(@category.slug, document.id)
+            %td
+              %code= number_to_human_size document.document.size

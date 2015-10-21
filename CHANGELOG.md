@@ -10,7 +10,8 @@
 - **Document Changes**
   - Editors can now create and update document categories to organize documents
   - Editors can now upload documents to categories
-  - Editors can archive existing documents
+  - Editors can archive existing documents and categories
+  - Viewers can now download documents
 - **General Changes**
   - Added link to ClinicalTrials.gov
 

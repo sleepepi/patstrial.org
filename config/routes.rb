@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'editor' do
-    get '/editor' => 'editor#index'
+    get 'editor' => 'editor#index'
     resources :categories do
       resources :documents do
         collection do
@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   scope module: 'internal' do
     get :dashboard
     get :directory
+    get 'documents/:category', action: :category, as: :internal_category
+    get 'documents/:category/:document_id', action: :document, as: :internal_category_document
   end
 
   devise_for :users, path_names: { sign_up: 'join',

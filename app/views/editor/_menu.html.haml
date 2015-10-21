@@ -2,6 +2,8 @@
   = link_to dashboard_path do
     = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
 %ul.left-menu
+  %li.left-menu-header Dashboard
+  %li= link_to 'Home', dashboard_path
   %li.left-menu-header Editor
   %li
     = link_to 'Dashboard', editor_path, class: (current_page?(editor_path) ? 'active' : nil)
