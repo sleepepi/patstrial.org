@@ -7,8 +7,8 @@
         %h1.brand Dashboard
         %h4.brand.brown Pediatric Adenotonsillectomy Trial for Snoring
       %a.anchor-top{ name: 'home'}
-      .color-container.brown-fill
-        %h2.brand Home
+      .color-container.brown-light
+        %h2.brand.dark-brown-light Home
         %p.lead
           Welcome to your personalized dashboard!
         %p.lead
@@ -19,9 +19,9 @@
           if you have any questions!
 
       %a.anchor-top{ name: 'recruitment-efforts'}
-      .color-container.brown-light-fill{ style: 'border-color: transparent' }
-        %h2.brand Recruitment Efforts
-        %table.table
+      .color-container.brown-light{ style: 'border-color: transparent' }
+        %h2.brand.dark-brown-light Recruitment Efforts
+        %table.table.table-striped
           %thead
             %tr
               %th Site
@@ -49,8 +49,8 @@
                 %span.brown-fill-white{ style: 'display:inline-block;padding: 2px 4px; border-radius:4px' } 5
                 of 20
       %a.anchor-top{ name: 'publications'}
-      .color-container.brown-fill
-        %h2.brand Publications
+      .color-container.brown-light
+        %h2.brand.dark-brown-light Publications
         %ul.lead
           %li Publication 1
           %li Publication 2
@@ -60,8 +60,8 @@
         %h1.brand More
 
       %a.anchor-top{ name: 'interesting-article'}
-      .color-container.purple-fill
-        %h2.brand Interesting Article
+      .color-container.purple-light
+        %h2.brand.dark-purple-light Interesting Article
         %p.lead
           Here's a
           = link_to 'link', dashboard_path
@@ -71,8 +71,8 @@
         %h1.brand Final Thoughts
 
       %a.anchor-top{ name: 'in-conclusion'}
-      .color-container.pink-fill
-        %h2.brand In Conclusion
+      .color-container.pink
+        %h2.brand.dark-pink In Conclusion
 
 = render 'layouts/background_image_slide'
 
