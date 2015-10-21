@@ -856,8 +856,8 @@ $navbar-default-toggle-border-color:       $purple-color;
 //
 //##
 
-// $code-color:                  #c7254e
-// $code-bg:                     #f9f2f4
+$code-color: $purple-color; //                 #c7254e
+$code-bg:    $purple-bg;  //               #f9f2f4
 
 // $kbd-color:                   #fff
 // $kbd-bg:                      #333

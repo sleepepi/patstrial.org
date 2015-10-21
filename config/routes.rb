@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :categories
   namespace :admin do
     root to: 'admin#index'
     resources :users
@@ -13,12 +12,22 @@ Rails.application.routes.draw do
     get :window
   end
 
+  scope module: 'editor' do
+    get '/editor' => 'editor#index'
+    resources :categories do
+      resources :documents do
+        collection do
+          post :upload, action: :create_multiple
+        end
+      end
+    end
+    resources :members
+  end
+
   scope module: 'internal' do
     get :dashboard
     get :directory
   end
-
-  resources :members
 
   devise_for :users, path_names: { sign_up: 'join',
                                    sign_in: 'login',

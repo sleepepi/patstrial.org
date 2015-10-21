@@ -24,6 +24,7 @@
 
 # CarrierWave
 /carrierwave/**/*
+/test/support/*
 
 # Other Files
 

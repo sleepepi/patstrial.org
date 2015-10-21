@@ -24,7 +24,7 @@
           - if current_user && current_user.admin?
             %li{ class: (%r{^admin/} =~ params[:controller] ? 'active' : nil) }= link_to 'Admin', admin_root_path
           - if current_user && current_user.editor?
-            %li{ class: (%w(members categories).include?(params[:controller]) ? 'active' : nil) }= link_to 'Manage', members_path
+            %li{ class: (%w(members categories).include?(params[:controller]) ? 'active' : nil) }= link_to 'Editor', editor_path
         - if current_user
           %form.navbar-form.navbar-right
             = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary'

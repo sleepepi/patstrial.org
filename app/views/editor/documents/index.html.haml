@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand
+          = link_to @category, style: 'text-decoration:none' do
+            %span.glyphicon.glyphicon-level-up
+          = @category.name
+        %h4.brand.brown Documents
+
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p.lead
+          You may
+          %strong archive documents
+          you wish to hide from the menu.
+
+      = render 'documents'

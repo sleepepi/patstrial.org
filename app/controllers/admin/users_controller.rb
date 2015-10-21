@@ -1,7 +1,6 @@
 # Allows admins to approve new users and specify user roles
 class Admin::UsersController < Admin::AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_without_user, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/users
   def index
@@ -34,9 +33,6 @@ class Admin::UsersController < Admin::AdminController
 
   def set_user
     @user = User.current.find_by_id params[:id]
-  end
-
-  def redirect_without_user
     empty_response_or_root_path(admin_users_path) unless @user
   end
 

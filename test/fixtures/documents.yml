@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  document: MyString
+  archived: false
+
+two:
+  category: one
+  document: MyString
+  archived: false

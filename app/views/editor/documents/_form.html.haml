@@ -1,0 +1,27 @@
+= form_for [@category, @document], html: { class: 'form-horizontal' } do |f|
+  - if @document.errors.any?
+    .bs-callout.bs-callout-danger
+      %h4
+        = pluralize @document.errors.count, 'error'
+        prohibited this document from being saved
+
+      %ul
+        - @document.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :document, 'Document', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.file_field :document, class: 'form-control'
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      .checkbox
+        %label
+          = f.check_box :archived
+          Archived
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit nil, class: 'btn btn-primary'
+      = link_to 'cancel', @document.new_record? ? [@category, @document] : category_documents_path(@category), class: ''

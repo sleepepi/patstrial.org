@@ -1,7 +1,7 @@
 require 'test_helper'
 
 # Editors should be able to create and update member directory listings
-class MembersControllerTest < ActionController::TestCase
+class Editor::MembersControllerTest < ActionController::TestCase
   setup do
     @editor = users(:editor)
     @viewer = users(:viewer)

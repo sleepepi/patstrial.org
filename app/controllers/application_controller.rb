@@ -22,8 +22,4 @@ class ApplicationController < ActionController::Base
     column_name = (model.column_names.collect { |c| model.table_name + '.' + c }.find { |c| c == params_column })
     column_name.blank? ? default_order : [column_name, direction].compact.join(' ')
   end
-
-  def check_editor
-    redirect_to dashboard_path, alert: 'Only editors may access that page.' unless current_user.editor?
-  end
 end

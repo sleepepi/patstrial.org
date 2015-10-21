@@ -1,0 +1,16 @@
+- @title = "Edit Document: #{@document.name}"
+
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand
+          = @document.name
+        %h4.brand.brown
+          Edit Document
+
+      .color-container
+        = render 'form'
+

@@ -9,9 +9,8 @@ class Category < ActiveRecord::Base
   validates :slug, uniqueness: { scope: :deleted }
   validates :slug, format: { with: /\A[a-z][a-z0-9\-]*\Z/ }
 
-  # Model Methods
+  # Model Relationships
+  has_many :documents
 
-  def documents
-    [1,2]
-  end
+  # Model Methods
 end

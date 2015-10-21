@@ -1,8 +1,6 @@
 # Allows editors to create and update members in the directory
 # Members are purely listings, and are not related to user logins
-class MembersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :check_editor
+class Editor::MembersController < Editor::EditorController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members

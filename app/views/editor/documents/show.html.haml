@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.dark-purple
+        %h1.brand
+          = link_to category_documents_path(@category), style: 'text-decoration:none' do
+            %span.glyphicon.glyphicon-level-up
+          = @document.name
+        %h4.brand.purple
+          = @document.extension
+          %code= number_to_human_size @document.document.size
+
+      .color-container.dark-brown
+        %p.lead
+          = link_to 'Edit Document', edit_category_document_path(@category, @document)
+
+      %table.table.table-striped
+        %tr
+          %td Name
+          %td= @document.name
+
+        %tr
+          %td Archived
+          %td= @document.archived

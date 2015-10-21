@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CategoriesControllerTest < ActionController::TestCase
+class Editor::CategoriesControllerTest < ActionController::TestCase
   setup do
     @editor = users(:editor)
     @viewer = users(:viewer)

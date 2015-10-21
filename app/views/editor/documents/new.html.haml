@@ -1,0 +1,23 @@
+- @title = 'New Document'
+
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand
+          New Document
+        %h4.brand.brown
+          Documents can be one of:
+          %code doc
+          %code docx
+          %code pdf
+          %code rtf
+          %code xls
+          %code xlsx
+          %code csv
+
+      .color-container
+        = render 'form'
+

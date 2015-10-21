@@ -2,8 +2,10 @@
   = link_to dashboard_path do
     = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
 %ul.left-menu
-  %li.left-menu-header Editor Dashboard
+  %li.left-menu-header Editor
   %li
-    = link_to 'Members', members_path, class: (params[:controller] == 'members' ? 'active' : nil)
+    = link_to 'Dashboard', editor_path, class: (current_page?(editor_path) ? 'active' : nil)
   %li
-    = link_to 'Categories', categories_path, class: (params[:controller] == 'categories' ? 'active' : nil)
+    = link_to 'Members', members_path, class: (params[:controller] == 'editor/members' ? 'active' : nil)
+  %li
+    = link_to 'Categories', categories_path, class: (%w(editor/categories editor/documents).include?(params[:controller]) ? 'active' : nil)

@@ -1,7 +1,5 @@
 # Allows editors to create and update categories that organize document uploads
-class CategoriesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :check_editor
+class Editor::CategoriesController < Editor::EditorController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
