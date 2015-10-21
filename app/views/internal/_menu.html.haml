@@ -3,10 +3,10 @@
     = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
 %ul.left-menu
   %li.left-menu-header Dashboard
-  %li{ class: (current_page?(dashboard_path) ? 'active' : nil) }
-    = link_to 'Home', dashboard_path
-  %li{ class: (current_page?(directory_path) ? 'active' : nil) }
-    = link_to 'Directory', directory_path
+  %li
+    = link_to 'Home', dashboard_path, class: (current_page?(dashboard_path) ? 'active' : nil)
+  %li
+    = link_to 'Directory', directory_path, class: (current_page?(directory_path) ? 'active' : nil)
   %li= link_to 'Recruitment Efforts', '#recruitment-efforts'
   %li= link_to 'Publications', '#publications'
   %li.left-menu-header More

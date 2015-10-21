@@ -3,7 +3,7 @@
     = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
 %ul.left-menu
   %li.left-menu-header Admin
-  %li{ class: current_page?(admin_root_path) ? 'active' : nil }
-    = link_to 'Dashboard', admin_root_path
-  %li{ class: params[:controller] == 'admin/users' ? 'active' : nil }
-    = link_to 'Users', admin_users_path
+  %li
+    = link_to 'Dashboard', admin_root_path, class: (current_page?(admin_root_path) ? 'active' : nil)
+  %li
+    = link_to 'Users', admin_users_path, class: (params[:controller] == 'admin/users' ? 'active' : nil)

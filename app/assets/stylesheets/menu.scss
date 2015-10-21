@@ -9,27 +9,19 @@
     position: relative;
 
     a {
-      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
       display: block;
       padding: 7px 15px;
       position: relative;
     }
 
+    a.active,
     a:hover,
     a:focus {
-      background-color: $purple-light-bg;
+      background-color: $purple-bg;
       border-color: $purple-color;
-      color: $purple-light-color;
+      color: $purple-color;
       text-decoration: none;
-    }
-
-    &.active {
-      a,
-      a:hover,
-      a:focus {
-        background-color: $purple-bg;
-        color: $purple-color;
-      }
     }
 
     &.left-menu-header {

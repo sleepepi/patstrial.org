@@ -3,7 +3,7 @@
     = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
 %ul.left-menu
   %li.left-menu-header Editor Dashboard
-  %li{ class: params[:controller] == 'members' ? 'active' : nil }
-    = link_to 'Members', members_path
-  %li{ class: params[:controller] == 'categories' ? 'active' : nil }
-    = link_to 'Categories', categories_path
+  %li
+    = link_to 'Members', members_path, class: (params[:controller] == 'members' ? 'active' : nil)
+  %li
+    = link_to 'Categories', categories_path, class: (params[:controller] == 'categories' ? 'active' : nil)
