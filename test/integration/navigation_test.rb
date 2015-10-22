@@ -13,6 +13,14 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert_equal I18n.t('devise.sessions.signed_in'), flash[:notice]
   end
 
+  test 'generic viewers should be able to login' do
+    get '/dashboard'
+    assert_redirected_to new_user_session_path
+
+    sign_in_as_viewer(viewers(:one))
+    assert_equal '/dashboard', path
+  end
+
   test 'deleted users should be not be allowed to login' do
     get '/dashboard'
     assert_redirected_to new_user_session_path

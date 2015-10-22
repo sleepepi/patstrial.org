@@ -1,7 +1,7 @@
 # Allows viewers, editors, and admins to view internal pages and reports, and
 # download documents
 class InternalController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_viewer_or_current_user!
   before_action :set_category, only: [:category, :document]
   before_action :set_document, only: [:document]
 

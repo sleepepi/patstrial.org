@@ -6,6 +6,7 @@
   - Users must be approved before being able to complete login
 - **Admin Changes**
   - Admins can create and update generic username and password viewer logins
+  - Viewer logins have read-only access to the internal site
 - **Directory Changes**
   - Editors can now create and update member listings in the directory
   - Approved viewers can view the directory from their dashboard

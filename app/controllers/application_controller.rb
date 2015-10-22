@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || dashboard_path
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit :first_name, :last_name, :email,
@@ -28,6 +32,18 @@ class ApplicationController < ActionController::Base
       format.html { redirect_to path }
       format.js { render nothing: true }
       format.json { head :no_content }
+    end
+  end
+
+  def current_viewer
+    @current_viewer ||= Viewer.find_by_id(session[:viewer_id]) if session[:viewer_id]
+  end
+  helper_method :current_viewer
+
+  def authenticate_viewer_or_current_user!
+    unless current_viewer || current_user
+      flash[:alert] = I18n.t('devise.failure.unauthenticated')
+      redirect_to new_user_session_path
     end
   end
 end

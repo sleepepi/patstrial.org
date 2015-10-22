@@ -21,11 +21,12 @@
           %li{ class: "#{'active' if current_page?(theme_path)}" }= link_to 'Theme', theme_path
           %li{ class: "#{'active' if current_page?(window_path)}" }= link_to 'Window', window_path
           %li{ class: "#{'active' if current_page?(credits_path)}" }= link_to 'Credits', credits_path
-        - if current_user
+        - if current_user || current_viewer
           %form.navbar-form.navbar-right
             = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary'
           %ul.nav.navbar-nav.navbar-right
-            %li{ class: "#{'active' if current_page?(dashboard_path)}" }= link_to current_user.first_name, dashboard_path
+            - name = current_user ? current_user.first_name : current_viewer.username
+            %li= link_to name, dashboard_path
         - else
           %form.navbar-form.navbar-right
             = link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' unless current_page?(new_user_registration_path)

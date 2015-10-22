@@ -19,6 +19,10 @@ class ActionController::TestCase
     @request.env['devise.mapping'] = Devise.mappings[resource]
     sign_in(resource.class.name.downcase.to_sym, resource)
   end
+
+  def login_viewer(resource)
+    session[:viewer_id] = resource.id
+  end
 end
 
 class ActionDispatch::IntegrationTest
@@ -26,6 +30,11 @@ class ActionDispatch::IntegrationTest
     user.update password: password, password_confirmation: password
     post_via_redirect '/login', user: { email: user.email, password: password }
     user
+  end
+
+  def sign_in_as_viewer(viewer)
+    viewer.update password: viewer.password_plain, password_confirmation: viewer.password_plain
+    post_via_redirect '/login', user: { email: viewer.username, password: viewer.password_plain }
   end
 end
 

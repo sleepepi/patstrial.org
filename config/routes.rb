@@ -35,9 +35,10 @@ Rails.application.routes.draw do
     get 'documents/:category/:document_id', action: :document, as: :internal_category_document
   end
 
-  devise_for :users, path_names: { sign_up: 'join',
-                                   sign_in: 'login',
-                                   sign_out: 'logout' },
+  devise_for :users, controllers: { sessions: 'sessions' },
+                     path_names:  { sign_up: 'join',
+                                    sign_in: 'login',
+                                    sign_out: 'logout' },
                      path: ''
 
   root to: 'application#welcome'
