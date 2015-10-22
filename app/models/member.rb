@@ -5,6 +5,9 @@ class Member < ActiveRecord::Base
 
   # Model Validation
   validates :first_name, :last_name, presence: true
+
+  # Model Relationships
+  belongs_to :site
   has_many :committee_members
   has_many :committees, -> { order(:position) }, through: :committee_members
 
@@ -16,5 +19,9 @@ class Member < ActiveRecord::Base
 
   def name_was
     "#{first_name_was} #{last_name_was}"
+  end
+
+  def name_reverse
+    "#{last_name}, #{first_name}"
   end
 end

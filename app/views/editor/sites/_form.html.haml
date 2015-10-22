@@ -1,0 +1,40 @@
+- if @site.new_record?
+  - url = editor_sites_path
+  - method = :post
+- else
+  - url = editor_site_path(@site)
+  - method = :patch
+= form_for @site, url: url, method: method, html: { class: 'form-horizontal' } do |f|
+  - if @site.errors.any?
+    .bs-callout.bs-callout-danger
+      %h4
+        = pluralize @site.errors.count, 'error'
+        prohibited this site from being saved
+
+      %ul
+        - @site.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :name, class: 'form-control', data: { object: 'create-slug', target: '#site_slug' }
+
+  .form-group
+    = f.label :slug, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :slug, class: 'form-control'
+
+  .form-group
+    = f.label :address, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :address, class: 'form-control'
+      .bs-callout.bs-callout-info
+        %h4 Address Format
+        %p
+          "City, State, Country, Zip Code"
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit nil, class: 'btn btn-primary'
+      = link_to 'cancel', url, class: ''

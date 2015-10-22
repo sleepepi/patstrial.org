@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :committees do
       resources :committee_members, path: 'members'
     end
+    resources :sites
   end
 
   scope module: 'editor' do

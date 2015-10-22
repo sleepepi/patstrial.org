@@ -14,6 +14,9 @@
   - Editors can now create and update committees
   - Editors can add and remove members from committees
   - Viewers can view committees from their dashboard
+- **Site Changes**
+  - Editors can now created and update sites
+  - Editors can add members to sites
 - **Document Changes**
   - Editors can now create and update document categories to organize documents
   - Editors can now upload documents to categories

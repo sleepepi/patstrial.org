@@ -1,0 +1,34 @@
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.purple
+        %h1.brand= @site.name
+        %h4.brand
+          = @site.slug
+
+      .color-container.dark-brown
+        %p.lead
+          = link_to 'Edit Site', edit_editor_site_path(@site)
+
+      %table.table.table-striped
+        %tr
+          %td Name
+          %td= @site.name
+
+        %tr
+          %td Slug
+          %td= @site.slug
+
+        %tr
+          %td Address
+          %td= @site.address
+
+        %tr
+          %td Members
+          %td
+            %ul.list-unstyled
+              - @site.members.each do |member|
+                %li
+                  = link_to member.name_reverse, member

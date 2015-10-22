@@ -1,4 +1,4 @@
-- @title = 'New Committee'
+- @title = "Edit Site: #{@site.name_was}"
 
 .container
   .row
@@ -7,9 +7,9 @@
     .col-md-9
       .color-container.dark-brown
         %h1.brand
-          New Committee
+          = @site.name_was
         %h4.brand.brown
-          Committees are made up of committee members.
+          Edit Site
 
       .color-container
         = render 'form'

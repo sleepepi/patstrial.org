@@ -14,6 +14,9 @@
 
       %table.table.table-striped
         %tr
+          %td Site
+          %td= link_to @member.site.name, editor_site_path(@member.site) if @member.site
+        %tr
           %td First name
           %td= @member.first_name
         %tr

@@ -1,0 +1,23 @@
+%table.table.table-striped
+  %thead
+    %tr
+      = th_sort_field @order, 'sites.name', 'Name'
+      = th_sort_field @order, 'sites.address', 'Address'
+      %th Actions
+
+  %tr
+    %td.center{ colspan: 3 }
+      = link_to new_editor_site_path do
+        .glyphicon.glyphicon-plus
+        Add New Site
+
+  - @sites.each do |site|
+    %tr
+      %td= link_to site.name, editor_site_path(site)
+      %td= site.address
+      %td
+        = link_to 'Edit', edit_editor_site_path(site), class: 'btn btn-default btn-xs'
+        = link_to 'Delete', editor_site_path(site), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Site #{site.name}?" }
+
+.center
+  = paginate @sites, theme: 'bootstrap'
