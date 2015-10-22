@@ -10,6 +10,7 @@
 - **Directory Changes**
   - Editors can now create and update member listings in the directory
   - Approved viewers can view the directory from their dashboard
+  - Members in directory are grouped by site
 - **Committee Changes**
   - Editors can now create and update committees
   - Editors can add and remove members from committees

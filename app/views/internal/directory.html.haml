@@ -7,20 +7,21 @@
         %h1.brand Directory
         %h4.brand.brown Pediatric Adenotonsillectomy Trial for Snoring
 
-      %table.table.table-striped.purple
-        %thead
-          %tr
-            = th_sort_field @order, 'members.last_name', 'Name'
-            = th_sort_field @order, 'members.email', 'Email'
-            = th_sort_field @order, 'members.phone', 'Phone'
-            = th_sort_field @order, 'members.role', 'Role'
+      - @members.group_by(&:site).sort{|a,b| ((a[0] ? a[0].name : '_') <=> (b[0] ? b[0].name : '_'))}.each do |site, members|
+        .color-container.purple-light
+          %h2.brand.dark-purple-light= site ? site.name : 'No Site'
 
-        - @members.each do |member|
-          %tr
-            %td= member.name
-            %td= member.email
-            %td= member.phone
-            %td= member.role
+          %table.table.table-striped.purple
+            %thead
+              %tr
+                = th_sort_field @order, 'members.last_name', 'Name'
+                = th_sort_field @order, 'members.email', 'Email'
+                = th_sort_field @order, 'members.phone', 'Phone'
+                = th_sort_field @order, 'members.role', 'Role'
 
-      .center
-        = paginate @members, theme: 'bootstrap'
+            - members.each do |member|
+              %tr
+                %td= member.name
+                %td= member.email
+                %td= link_to member.phone, "tel:#{member.phone}" if member.phone.present?
+                %td= member.role

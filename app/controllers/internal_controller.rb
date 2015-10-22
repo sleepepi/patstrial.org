@@ -10,7 +10,7 @@ class InternalController < ApplicationController
 
   def directory
     @order = scrub_order(Member, params[:order], 'members.last_name')
-    @members = Member.current.order(@order).page(params[:page]).per(40)
+    @members = Member.current.order(@order).includes(:site)
   end
 
   def category
