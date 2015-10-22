@@ -23,19 +23,19 @@
 // Themes for different contexts
 
 .bs-callout-danger {
-  background-color: $panel-danger-heading-bg;
-  border-color: $panel-danger-border;
-  color: $panel-danger-text;
+  background-color: $pink-bg;
+  border-color: $pink-color;
+  color: $pink-color;
 }
 
 .bs-callout-warning {
-  background-color: $panel-warning-heading-bg;
-  border-color: $panel-warning-border;
-  color: $panel-warning-text;
+  background-color: $purple-bg;
+  border-color: $purple-color;
+  color: $purple-color;
 }
 
 .bs-callout-info {
-  background-color: $panel-info-heading-bg;
-  border-color: $panel-info-border;
-  color: $panel-info-text;
+  background-color: $brown-light-bg;
+  border-color: $brown;
+  color: $brown-light-color;
 }
