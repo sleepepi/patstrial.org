@@ -9,3 +9,5 @@
     = link_to 'Dashboard', admin_root_path, class: (current_page?(admin_root_path) ? 'active' : nil)
   %li
     = link_to 'Users', admin_users_path, class: (params[:controller] == 'admin/users' ? 'active' : nil)
+  %li
+    = link_to 'Viewers', viewers_path, class: (params[:controller] == 'admin/viewers' ? 'active' : nil)

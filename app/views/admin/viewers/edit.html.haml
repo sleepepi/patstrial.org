@@ -1,4 +1,4 @@
-- @title = "Edit User: #{@user.name_was}"
+- @title = "Edit Viewer: #{@viewer.username_was}"
 
 .container
   .row
@@ -7,9 +7,9 @@
     .col-md-9
       .color-container.dark-brown
         %h1.brand
-          = @user.name_was
+          = @viewer.username_was
         %h4.brand.brown
-          Edit User
+          Edit Viewer
 
       .color-container
         = render 'form'

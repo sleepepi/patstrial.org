@@ -1,0 +1,24 @@
+.container
+  .row
+    .col-md-3
+      = render 'admin/menu'
+    .col-md-9
+      .color-container.dark-purple
+        %h1.brand= @viewer.username
+        %h4.brand.purple
+          You can change the viewer's password by clicking edit.
+
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p.lead
+          = link_to 'Edit Viewer', edit_viewer_path(@viewer)
+
+      %table.table.table-striped.table-fixed
+        %tr
+          %td Username
+          %td= @viewer.username
+        %tr
+          %td Password
+          %td
+            %span.masked{ data: { object: 'click-to-view', content: @viewer.password_plain } }
+              = '*' * @viewer.password_plain.to_s.size

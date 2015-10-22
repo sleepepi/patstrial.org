@@ -1,0 +1,25 @@
+%table.table.table-striped.table-fixed
+  %thead
+    %tr
+      = th_sort_field @order, 'viewers.username', 'Username'
+      %th Password
+      %th Actions
+
+  %tr
+    %td.center{ colspan: 3 }
+      = link_to new_viewer_path do
+        .glyphicon.glyphicon-plus
+        Add New Viewer
+
+  - @viewers.each do |viewer|
+    %tr
+      %td= link_to viewer.username, viewer
+      %td
+        %span.masked{ data: { object: 'click-to-view', content: viewer.password_plain } }
+          = '*' * viewer.password_plain.to_s.size
+      %td
+        = link_to 'Edit', edit_viewer_path(viewer), class: 'btn btn-default btn-xs'
+        = link_to 'Delete', viewer, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Viewer #{viewer.username}?" }
+
+.center
+  = paginate @viewers, theme: 'bootstrap'

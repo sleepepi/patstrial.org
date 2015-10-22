@@ -1,0 +1,43 @@
+= form_for @viewer, html: { class: 'form-horizontal' } do |f|
+  - if @viewer.errors.any?
+    .bs-callout.bs-callout-danger
+      %h4
+        = pluralize @viewer.errors.count, 'error'
+        prohibited this viewer from being saved
+
+      %ul
+        - @viewer.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :username, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :username, class: 'form-control'
+      .bs-callout.bs-callout-info
+        %h4 Naming convention
+        %ul
+          %li
+            Must start with a letter
+            %code a-z
+            %code A-Z
+            followed by letters
+            = succeed ',' do
+              %code a-z
+              %code A-Z
+            or numbers
+            = succeed '.' do
+              %code 0-9
+        %p
+          Ex:
+          %code AwesomeUser1
+
+
+  .form-group
+    = f.label :password, nil, class: 'col-md-2 control-label '
+    .col-md-10
+      = f.text_field :password, value: @viewer.password_plain, class: 'form-control'
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit nil, class: 'btn btn-primary'
+      = link_to 'cancel', @viewer.new_record? ? @viewer : viewers_path, class: ''

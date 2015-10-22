@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  scope module: 'admin' do
+    resources :viewers
+  end
+
   scope module: 'application' do
     get :credits
     get :theme
