@@ -18,8 +18,8 @@
         = image_tag 'pats-girl.png', alt: '', style: 'height:40px;padding-top:10px;padding-right:15px'
       .collapse.navbar-collapse.navbar-full-menu
         %ul.nav.navbar-nav
-          %li{ class: "#{'active' if current_page?(theme_path)}" }= link_to 'Theme', theme_path
-          %li{ class: "#{'active' if current_page?(window_path)}" }= link_to 'Window', window_path
+          %li{ class: "#{'active' if current_page?(sites_path)}" }= link_to 'Sites', sites_path
+          %li{ class: "#{'active' if current_page?(window_path)}" }= link_to 'Contact', contact_path
           %li{ class: "#{'active' if current_page?(credits_path)}" }= link_to 'Credits', credits_path
         - if current_user || current_viewer
           %form.navbar-form.navbar-right

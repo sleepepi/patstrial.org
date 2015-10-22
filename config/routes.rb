@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'external/sites'
+
   namespace :admin do
     root to: 'admin#index'
     resources :users
@@ -45,6 +47,11 @@ Rails.application.routes.draw do
     get :directory
     get 'documents/:category', action: :category, as: :internal_category
     get 'documents/:category/:document_id', action: :document, as: :internal_category_document
+  end
+
+  scope module: 'external' do
+    get :contact
+    get :sites
   end
 
   devise_for :users, controllers: { sessions: 'sessions' },

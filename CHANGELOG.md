@@ -25,6 +25,8 @@
   - Viewers can now download documents
 - **General Changes**
   - Added link to ClinicalTrials.gov
+  - Public list of participating sites added
+  - Public contact page added
 
 ## 1.0.0 (October 20, 2015)
 

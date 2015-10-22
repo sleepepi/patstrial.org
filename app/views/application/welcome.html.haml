@@ -26,17 +26,39 @@
   .container
     .color-container
       %h2.brand
-        Where do I go from here?
-      .row
-        .col-sm-4
-          .center
-            %p.lead
-              = link_to 'Theme', theme_path
-        .col-sm-4
-          .center
-            %p.lead
-              = link_to 'Window', window_path
-        .col-sm-4
-          .center
-            %p.lead
-              = link_to 'Credits', theme_path
+        Interested in participating?
+
+.container
+  .color-container
+    .row
+      .col-sm-3.hidden-xs.chalkboard{ style: 'position:relative' }
+        %div{ style: 'position:absolute;bottom:0px;' }
+          = image_tag 'pats-boy.png', style: 'max-width:100%', class: 'wiggle'
+      .col-sm-9
+        .windowed
+          .windowed-inner.chalkboard-texture.chalkboard
+            %h1.brand.chalkboard-title
+              Brochure
+            %ul.chalkboard-text
+              %li Find out about the study!
+              %li Is your child eligible?
+              %li
+                Are you located near a
+                = succeed '?' do
+                  = link_to 'recruitment site', sites_path
+              %li
+                = link_to 'Contact us', contact_path
+                with any questions!
+
+
+.purple-light-fill
+  .container
+    .color-container
+      %h2.brand Trial Staff Login
+      %p.lead
+        - if current_user || current_viewer
+          = link_to 'Go To Dashboard', dashboard_path, class: 'btn btn-lg btn-primary btn-block'
+        - else
+          = link_to 'Login', new_user_session_path, class: 'btn btn-lg btn-primary btn-block'
+
+= render 'layouts/background_image_slide'
