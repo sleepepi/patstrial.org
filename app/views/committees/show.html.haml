@@ -1,0 +1,25 @@
+- @title = @committee.name
+.container
+  .row
+    .col-md-3
+      = render 'internal/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand= @title
+        %h4.brand.brown Committees
+
+      .color-container.purple-light{ style: 'border-color: transparent' }
+        %h2.brand.dark-purple-light Members
+        %table.table.table-striped.purple
+          %thead
+            %tr
+              %th Name
+              %th Email
+              %th Phone
+              %th Role
+          - @committee.members.each do |member|
+            %tr
+              %td= member.name
+              %td= member.email
+              %td= member.phone
+              %td= member.role

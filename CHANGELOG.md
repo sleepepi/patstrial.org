@@ -13,6 +13,7 @@
 - **Committee Changes**
   - Editors can now create and update committees
   - Editors can add and remove members from committees
+  - Viewers can view committees from their dashboard
 - **Document Changes**
   - Editors can now create and update document categories to organize documents
   - Editors can now upload documents to categories

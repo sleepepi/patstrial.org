@@ -13,6 +13,12 @@ class InternalControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should get dashboard as generic viewer' do
+    login_viewer(@generic_viewer)
+    get :dashboard
+    assert_response :success
+  end
+
   test 'should not get dashboard as anonymous user' do
     get :dashboard
     assert_redirected_to new_user_session_path

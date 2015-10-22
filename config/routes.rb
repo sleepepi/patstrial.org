@@ -34,6 +34,11 @@ Rails.application.routes.draw do
     resources :members
   end
 
+  scope module: 'committees' do
+    get 'committees', action: :index, as: :committees
+    get 'committees/:committee', action: :show, as: :committee
+  end
+
   scope module: 'internal' do
     get :dashboard
     get :directory
