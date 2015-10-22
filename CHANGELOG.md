@@ -10,6 +10,9 @@
 - **Directory Changes**
   - Editors can now create and update member listings in the directory
   - Approved viewers can view the directory from their dashboard
+- **Committee Changes**
+  - Editors can now create and update committees
+  - Editors can add and remove members from committees
 - **Document Changes**
   - Editors can now create and update document categories to organize documents
   - Editors can now upload documents to categories

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Committee One
+  slug: committee-one
+  deleted: false
+
+two:
+  name: Committee Two
+  slug: committee-two
+  deleted: false

@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand Committees
+        %h4.brand.brown Editor Dashboard
+
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p.lead
+          You may edit the committees and upload documents here.
+
+      = render 'committees'

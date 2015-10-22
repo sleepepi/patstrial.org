@@ -1,0 +1,16 @@
+- @title = "Edit Committee: #{@committee.name_was}"
+
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand
+          = @committee.name_was
+        %h4.brand.brown
+          Edit Committee
+
+      .color-container
+        = render 'form'
+

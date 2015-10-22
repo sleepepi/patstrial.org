@@ -1,0 +1,36 @@
+- if @committee.new_record?
+  - url = editor_committees_path
+  - method = :post
+- else
+  - url = editor_committee_path(@committee)
+  - method = :patch
+= form_for @committee, url: url, method: method, html: { class: 'form-horizontal' } do |f|
+  - if @committee.errors.any?
+    .bs-callout.bs-callout-danger
+      %h4
+        = pluralize @committee.errors.count, 'error'
+        prohibited this committee from being saved
+
+      %ul
+        - @committee.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :name, class: 'form-control', data: { object: 'create-slug', target: '#committee_slug' }
+
+  .form-group
+    = f.label :slug, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :slug, class: 'form-control'
+
+  .form-group
+    = f.label :position, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.number_field :position, class: 'form-control'
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit nil, class: 'btn btn-primary'
+      = link_to 'cancel', url, class: ''

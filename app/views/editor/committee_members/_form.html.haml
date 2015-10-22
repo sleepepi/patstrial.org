@@ -1,0 +1,27 @@
+- if @committee_member.new_record?
+  - url = editor_committee_committee_members_path(@committee)
+  - method = :post
+- else
+  - url = editor_committee_committee_member_path(@committee, @committee_member)
+  - method = :patch
+
+= form_for @committee_member, url: url, method: method, html: { class: 'form-horizontal' } do |f|
+  - if @committee_member.errors.any?
+    .bs-callout.bs-callout-danger
+      %h4
+        = pluralize @committee_member.errors.count, 'error'
+        prohibited this committee member from being saved
+
+      %ul
+        - @committee_member.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :member_id, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.select :member_id, Member.current.collect { |m| [m.name, m.id] }, { include_blank: true }, class: 'form-control'
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit nil, class: 'btn btn-primary'
+      = link_to 'cancel', url, class: ''

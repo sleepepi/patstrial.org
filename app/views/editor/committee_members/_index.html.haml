@@ -1,0 +1,7 @@
+%ul.list-unstyled
+  - @committee.committee_members.each do |committee_member|
+    %li
+      = link_to committee_member.member.name, committee_member.member
+      = link_to 'Remove', editor_committee_committee_member_path(@committee, committee_member), method: :delete, data: { confirm: "Are you sure you want to remove Committee Member #{committee_member.member.name}?" }, class: 'btn btn-xs btn-danger'
+  %li= link_to 'Add Committee Member', new_editor_committee_committee_member_path(@committee), class: 'btn btn-xs btn-primary'
+

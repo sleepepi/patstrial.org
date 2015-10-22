@@ -28,3 +28,6 @@
         %tr
           %td Role
           %td= @member.role
+        %tr
+          %td Committees
+          %td= @member.committees.collect { |c| link_to c.name, editor_committee_path(c) }.join(', ').html_safe

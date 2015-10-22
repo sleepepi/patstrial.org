@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     get :window
   end
 
+  namespace :editor do
+    resources :committees do
+      resources :committee_members, path: 'members'
+    end
+  end
+
   scope module: 'editor' do
     get 'editor' => 'editor#index'
     resources :categories do

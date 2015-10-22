@@ -1,0 +1,31 @@
+.container
+  .row
+    .col-md-3
+      = render 'editor/menu'
+    .col-md-9
+      .color-container.purple
+        %h1.brand= @committee.name
+        %h4.brand
+          = @committee.slug
+
+      .color-container.dark-brown
+        %p.lead
+          = link_to 'Edit Committee', edit_editor_committee_path(@committee)
+          = link_to 'Add Committee Member', new_editor_committee_committee_member_path(@committee)
+
+      %table.table.table-striped
+        %tr
+          %td Name
+          %td= @committee.name
+
+        %tr
+          %td Slug
+          %td= @committee.slug
+
+        %tr
+          %td Position
+          %td= @committee.position
+
+        %tr
+          %td Members
+          %td= render 'editor/committee_members/index'

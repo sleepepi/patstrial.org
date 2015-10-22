@@ -5,6 +5,8 @@ class Member < ActiveRecord::Base
 
   # Model Validation
   validates :first_name, :last_name, presence: true
+  has_many :committee_members
+  has_many :committees, -> { order(:position) }, through: :committee_members
 
   # Model Methods
 

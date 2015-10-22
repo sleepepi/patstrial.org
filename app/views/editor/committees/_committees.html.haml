@@ -1,0 +1,25 @@
+%table.table.table-striped
+  %thead
+    %tr
+      = th_sort_field @order, 'committees.position', 'Position'
+      = th_sort_field @order, 'committees.name', 'Name'
+      = th_sort_field @order, 'committees.slug', 'Slug'
+      %th Actions
+
+  %tr
+    %td.center{ colspan: 4 }
+      = link_to new_editor_committee_path do
+        .glyphicon.glyphicon-plus
+        Add New Committee
+
+  - @committees.each do |committee|
+    %tr
+      %td= committee.position
+      %td= link_to committee.name, editor_committee_path(committee)
+      %td= committee.slug
+      %td
+        = link_to 'Edit', edit_editor_committee_path(committee), class: 'btn btn-default btn-xs'
+        = link_to 'Delete', editor_committee_path(committee), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Committee #{committee.name}?" }
+
+.center
+  = paginate @committees, theme: 'bootstrap'

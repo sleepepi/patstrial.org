@@ -15,3 +15,11 @@ two:
   phone: MyString
   role: MyString
   deleted: false
+
+three:
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  phone: MyString
+  role: MyString
+  deleted: false
