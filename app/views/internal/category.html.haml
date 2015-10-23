@@ -7,15 +7,30 @@
         %h1.brand= @category.name
         %h4.brown= @category.description
 
+      .color-container.dark-purple
+        %table.table.table-striped
+          %col{ width: '1%' }
+          %thead
+            %tr
+              %th
+              = th_sort_field @order, 'documents.document', 'Name'
+              %th Size
+              = th_sort_field @order, 'documents.created_at', 'Uploaded'
 
-      %table.table.table-striped
-        %thead
-          %tr
-            %th Name
-            %th Size
+          - @documents.where(archived: false).each do |document|
+            %tr
+              %td
+                %span.glyphicon.glyphicon-file
+              %td= link_to document.name, internal_category_document_path(@category.slug, document.id)
+              %td
+                %code= number_to_human_size document.document.size
+              %td= document.created_at.strftime("%m-%d-%Y")
 
-        - @category.documents.where(archived: false).each do |document|
-          %tr
-            %td= link_to document.name, internal_category_document_path(@category.slug, document.id)
-            %td
-              %code= number_to_human_size document.document.size
+        .center
+          = paginate @documents, theme: 'bootstrap'
+
+      .color-container.dark-purple
+        %p.lead.center
+          %span.glyphicon.glyphicon-comment
+          = mail_to ENV['support_email'], 'Email us'
+          if a document is outdated or you can't find a specific document.

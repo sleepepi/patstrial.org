@@ -14,6 +14,8 @@ class InternalController < ApplicationController
   end
 
   def category
+    @order = scrub_order(Document, params[:order], 'documents.document')
+    @documents = @category.documents.order(@order).page(params[:page]).per(40)
   end
 
   def document
