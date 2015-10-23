@@ -19,7 +19,7 @@
   .form-group
     = f.label :member_id, nil, class: 'col-md-2 control-label'
     .col-md-10
-      = f.select :member_id, Member.current.collect { |m| [m.name, m.id] }, { include_blank: true }, class: 'form-control'
+      = f.select :member_id, Member.current.order(:last_name, :first_name).collect { |m| [m.name_reverse, m.id] }, { include_blank: true }, class: 'form-control'
 
   .form-group
     .col-md-10.col-md-offset-2
