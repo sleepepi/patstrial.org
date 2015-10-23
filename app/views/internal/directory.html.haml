@@ -5,13 +5,13 @@
     .col-md-9
       .color-container.dark-brown
         %h1.brand Directory
-        %h4.brand.brown Pediatric Adenotonsillectomy Trial for Snoring
+        %h4.brown Pediatric Adenotonsillectomy Trial for Snoring
 
       - @members.group_by(&:site).sort{|a,b| ((a[0] ? a[0].name : '_') <=> (b[0] ? b[0].name : '_'))}.each do |site, members|
-        .color-container.purple-light
-          %h2.brand.dark-purple-light= site ? site.name : 'No Site'
+        .color-container.dark-purple
+          %h2= site ? site.name : 'No Site'
 
-          %table.table.table-striped.purple
+          %table.table.table-striped
             %thead
               %tr
                 = th_sort_field @order, 'members.last_name', 'Name'

@@ -5,22 +5,25 @@
     .col-md-9
       .color-container.dark-brown
         %h1.brand Dashboard
-        %h4.brand.brown Pediatric Adenotonsillectomy Trial for Snoring
+        %h4.brown Pediatric Adenotonsillectomy Trial for Snoring
       %a.anchor-top{ name: 'home'}
       .color-container.brown-light
-        %h2.brand.dark-brown-light Home
+        %h2.dark-brown-light Home
         %p.lead
           Welcome to your personalized dashboard!
         %p.lead
           Here you are able to see the current live statistics of the
-          PATS Trial recruitment efforts. If you have any questions, don't
+          PATS Trial recruitment efforts.
+        %p.lead
+          %span.glyphicon.glyphicon-comment.dark-brown
+          If you have any questions, don't
           hesitate to
           = mail_to ENV['support_email'], 'contact us'
           if you have any questions!
 
       %a.anchor-top{ name: 'recruitment-efforts'}
       .color-container.brown-light{ style: 'border-color: transparent' }
-        %h2.brand.dark-brown-light Recruitment Efforts
+        %h2.dark-brown-light Recruitment Efforts
         %table.table.table-striped
           %thead
             %tr
@@ -50,7 +53,7 @@
                 of 20
       %a.anchor-top{ name: 'publications'}
       .color-container.brown-light
-        %h2.brand.dark-brown-light Publications
+        %h2.dark-brown-light Publications
         %ul.lead
           %li Publication 1
           %li Publication 2
@@ -61,7 +64,7 @@
 
       %a.anchor-top{ name: 'interesting-article'}
       .color-container.purple-light
-        %h2.brand.dark-purple-light Interesting Article
+        %h2.dark-purple-light Interesting Article
         %p.lead
           Here's a
           = link_to 'link', dashboard_path
@@ -72,4 +75,4 @@
 
       %a.anchor-top{ name: 'in-conclusion'}
       .color-container.pink
-        %h2.brand.dark-pink In Conclusion
+        %h2.dark-pink In Conclusion

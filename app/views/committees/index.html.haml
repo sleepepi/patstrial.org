@@ -6,12 +6,16 @@
     .col-md-9
       .color-container.dark-brown
         %h1.brand= @title
-        %h4.brand.brown Pediatric Adenotonsillectomy Trial for Snoring
+        %h4.brown Pediatric Adenotonsillectomy Trial for Snoring
 
       - Committee.order(:position).current.each do |committee|
-        .color-container.purple-light{ style: 'border-color: transparent' }
-          %h2.brand.purple= link_to committee.name, committee_path(committee.slug)
-          %table.table.table-striped.purple
+        .color-container.dark-purple{ style: 'border-color: transparent' }
+          %h2
+            = committee.name
+            = link_to committee_path(committee.slug), class: 'btn btn-xs btn-default' do
+              Learn More
+              %span.glyphicon.glyphicon-new-window
+          %table.table.table-striped
             %thead
               %tr
                 %th Name
