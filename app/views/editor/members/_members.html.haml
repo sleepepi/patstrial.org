@@ -15,7 +15,7 @@
 
   - @members.each do |member|
     %tr
-      %td= link_to member.name, member
+      %td= link_to member.name_reverse, member
       %td= member.email
       %td= member.phone
       %td= member.role
