@@ -4,7 +4,7 @@ class Editor::CommitteesController < Editor::EditorController
 
   # GET /committees
   def index
-    @order = scrub_order(Committee, params[:order], 'committees.name')
+    @order = scrub_order(Committee, params[:order], 'committees.position')
     @committees = Committee.current.order(@order).page(params[:page]).per(40)
   end
 
