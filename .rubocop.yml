@@ -1,11 +1,15 @@
 AllCops:
   DisplayCopNames: true
   RunRailsCops: true
+  Exclude:
+    - 'db/**/*'
+    - 'db/schema.rb'
+    # - 'config/**/*'
+    # - 'script/**/*'
 # Documentation:
 #   Enabled: false
-# Temporary increase for line length
 Metrics/LineLength:
-  Max: 1000
+  Max: 120
 Metrics/MethodLength:
   Max: 5
 Style/ClassAndModuleChildren:
