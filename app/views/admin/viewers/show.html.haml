@@ -22,3 +22,6 @@
           %td
             %span.masked{ data: { object: 'click-to-view', content: @viewer.password_plain } }
               = '*' * @viewer.password_plain.to_s.size
+        %tr
+          %td Sign in Count
+          %td= number_with_delimiter @viewer.sign_in_count

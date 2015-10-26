@@ -7,6 +7,7 @@ class SessionsController < Devise::SessionsController
   def create
     viewer = Viewer.find_by_username params[:user][:email]
     if viewer && viewer.authenticate(params[:user][:password])
+      viewer.increment!(:sign_in_count)
       session[:viewer_id] = viewer.id
       redirect_to dashboard_path
     else
