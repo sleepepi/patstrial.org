@@ -14,6 +14,7 @@
 - **Committee Changes**
   - Editors can now create and update committees
   - Editors can add and remove members from committees
+  - Editors can set members as committee chairs
   - Viewers can view committees from their dashboard
 - **Site Changes**
   - Editors can now created and update sites

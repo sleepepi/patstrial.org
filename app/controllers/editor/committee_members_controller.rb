@@ -60,6 +60,6 @@ class Editor::CommitteeMembersController < Editor::EditorController
   end
 
   def committee_member_params
-    params.require(:committee_member).permit(:member_id)
+    params.require(:committee_member).permit(:member_id, :chair)
   end
 end
