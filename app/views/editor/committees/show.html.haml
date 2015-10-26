@@ -5,7 +5,7 @@
     .col-md-9
       .color-container.purple
         %h1.brand= @committee.name
-        %h4.brand
+        %h4
           = @committee.slug
 
       .color-container.dark-brown
@@ -17,6 +17,10 @@
         %tr
           %td Name
           %td= @committee.name
+
+        %tr
+          %td Description
+          %td= @committee.description
 
         %tr
           %td Slug

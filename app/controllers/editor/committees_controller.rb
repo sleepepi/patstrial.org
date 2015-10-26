@@ -54,6 +54,6 @@ class Editor::CommitteesController < Editor::EditorController
   end
 
   def committee_params
-    params.require(:committee).permit(:name, :slug, :position)
+    params.require(:committee).permit(:name, :description, :slug, :position)
   end
 end
