@@ -1,27 +1,3 @@
-.dark-purple
-  .container
-    .color-container
-      %h1.brand Welcome to the PATS Trial Website!
-      %h4.brand.purple Pediatric Adenotonsillectomy Trial for Snoring
-
-
-.purple-fill
-  .container
-    .color-container
-      %h2.brand About the Trial
-      %p.lead
-        The purpose of this study is to evaluate the effects of early
-        adenotonsillectomy (eAT) on the behavior, sleep-disordered breathing
-        symptoms and quality of life for children who snore, but do not have
-        obstructive sleep apnea, as well as identify factors that moderate
-        responses to the surgery. Half of participants will receive eAT, while
-        the other half will be observed with watchful waiting and supportive
-        care.
-      %p.lead
-        Read more on
-        = succeed '.' do
-          = link_to 'ClinicalTrials.gov', 'https://clinicaltrials.gov/show/NCT02562040', target: '_blank'
-
 .purple-light
   .container
     .color-container
@@ -61,4 +37,5 @@
         - else
           = link_to 'Login', new_user_session_path, class: 'btn btn-lg btn-primary btn-block'
 
-= render 'layouts/background_image_slide'
+- if false
+  = render 'layouts/background_image_slide'

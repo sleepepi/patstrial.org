@@ -1,11 +1,37 @@
 - if current_page?(root_path)
-  .center
-    = image_tag 'pats-boy.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
-    %h1.brand.dark-purple{ style: 'font-size: 96px; display: inline-block' }
-      = link_to 'PATS', root_path, class: 'title-link'
-    = image_tag 'pats-girl.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
-- else
-  %nav.navbar.navbar-default.navbar-fixed-top
+  .logo-header
+    - if false
+      .center
+        = image_tag 'pats-boy.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
+        %h1.brand.dark-purple{ style: 'font-size: 96px; display: inline-block' }
+          = link_to 'PATS', root_path, class: 'title-link'
+        = image_tag 'pats-girl.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
+    .dark-purple
+      .container
+        .color-container
+          %h1.brand Welcome to the PATS Trial Website!
+          %h4.brand.purple Pediatric Adenotonsillectomy Trial for Snoring
+    .purple-fill
+      .container
+        .color-container
+          %h2.brand About the Trial
+          %p.lead
+            The purpose of this study is to evaluate the effects of early
+            adenotonsillectomy (eAT) on the behavior, sleep-disordered breathing
+            symptoms and quality of life for children who snore, but do not have
+            obstructive sleep apnea, as well as identify factors that moderate
+            responses to the surgery. Half of participants will receive eAT, while
+            the other half will be observed with watchful waiting and supportive
+            care.
+          %p.lead
+            Read more on
+            = succeed '.' do
+              = link_to 'ClinicalTrials.gov', 'https://clinicaltrials.gov/show/NCT02562040', target: '_blank'
+
+
+
+%div{ class: (current_page?(root_path) ? 'navbar-outer' : nil) }
+  %nav.navbar.navbar-default{ class: current_page?(root_path) ? nil : 'navbar-fixed-top', data: { object: (current_page?(root_path) ? 'navbar-affix' : nil) } }
     .container
       .navbar-header
         %button.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '.navbar-full-menu' } }
@@ -14,10 +40,12 @@
           %span.icon-bar
           %span.icon-bar
         = image_tag 'pats-boy.png', alt: '', style: 'height:40px;padding-top:10px'
-        = link_to 'PATS', dashboard_path, class: 'navbar-brand brand'
+        = link_to 'PATS', root_path, class: 'navbar-brand brand'
         = image_tag 'pats-girl.png', alt: '', style: 'height:40px;padding-top:10px;padding-right:15px'
       .collapse.navbar-collapse.navbar-full-menu
         %ul.nav.navbar-nav
+          - if current_user || current_viewer
+            %li{ class: "#{'active' if current_page?(dashboard_path)}" }= link_to 'Dashboard', dashboard_path
           %li{ class: "#{'active' if current_page?(sites_path)}" }= link_to 'Sites', sites_path
           %li{ class: "#{'active' if current_page?(window_path)}" }= link_to 'Contact', contact_path
           %li{ class: "#{'active' if current_page?(credits_path)}" }= link_to 'Credits', credits_path

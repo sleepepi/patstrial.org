@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     get :credits
     get :theme
     get :version
-    get :welcome
     get :window
   end
 
@@ -51,6 +50,7 @@ Rails.application.routes.draw do
 
   scope module: 'external' do
     get :contact
+    get :home
     get :sites
   end
 
@@ -60,5 +60,5 @@ Rails.application.routes.draw do
                                     sign_out: 'logout' },
                      path: ''
 
-  root to: 'application#welcome'
+  root to: 'external#home'
 end

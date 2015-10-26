@@ -7,8 +7,7 @@ class ExternalControllerTest < ActionController::TestCase
     @generic_viewer = viewers(:one)
   end
 
-  test 'should get contact as anonymouse viewer' do
-    login(@viewer)
+  test 'should get contact as public viewer' do
     get :contact
     assert_response :success
   end
@@ -20,12 +19,29 @@ class ExternalControllerTest < ActionController::TestCase
   end
 
   test 'should get contact as viewer' do
+    login(@viewer)
     get :contact
     assert_response :success
   end
 
-  test 'should get sites as anonymouse viewer' do
+  test 'should get home as public viewer' do
+    get :home
+    assert_response :success
+  end
+
+  test 'should get home as generic viewer' do
+    login_viewer(@generic_viewer)
+    get :home
+    assert_response :success
+  end
+
+  test 'should get home as viewer' do
     login(@viewer)
+    get :home
+    assert_response :success
+  end
+
+  test 'should get sites as public viewer' do
     get :sites
     assert_response :success
   end
@@ -37,6 +53,7 @@ class ExternalControllerTest < ActionController::TestCase
   end
 
   test 'should get sites as viewer' do
+    login(@viewer)
     get :sites
     assert_response :success
   end

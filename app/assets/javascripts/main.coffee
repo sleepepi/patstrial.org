@@ -1,6 +1,7 @@
 @ready = () ->
   Turbolinks.enableProgressBar()
   fileDragReady()
+  affixReady()
 
 $(document).ready(ready)
 $(document)

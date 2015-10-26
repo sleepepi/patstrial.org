@@ -16,11 +16,6 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should get welcome' do
-    get :welcome
-    assert_response :success
-  end
-
   test 'should get window' do
     get :window
     assert_response :success
