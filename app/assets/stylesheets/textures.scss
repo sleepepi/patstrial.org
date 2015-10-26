@@ -36,3 +36,7 @@
   @include dark-texture;
   background-image: asset-url('textures/black_paper.png');
 }
+
+.purple-border-top {
+  border-top: 5px solid $purple;
+}

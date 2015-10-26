@@ -55,6 +55,7 @@ class Editor::SitesController < Editor::EditorController
   end
 
   def site_params
-    params.require(:site).permit(:name, :slug, :address)
+    params.require(:site).permit(:name, :slug, :address, :contact,
+                                 :recruiting_center, :coordinating_center)
   end
 end

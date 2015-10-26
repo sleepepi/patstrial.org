@@ -26,6 +26,18 @@
           %td= @site.address
 
         %tr
+          %td Contact
+          %td= @site.contact
+
+        %tr
+          %td Recruiting Center
+          %td= @site.recruiting_center?
+        %tr
+          %td Coordinating Center
+          %td= @site.coordinating_center?
+
+
+        %tr
           %td Members
           %td
             %ul.list-unstyled

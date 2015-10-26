@@ -1,0 +1,31 @@
+%a.anchor-top{ name: 'sites' }
+.dark-purple
+  .container
+    .color-container
+      %h1.brand Participating Sites
+
+    .row
+      .col-md-6
+        .color-container
+          %h2.heading-underline Recruiting Centers
+          - Site.order(:name).current.where(recruiting_center: true).each do |site|
+            .site-container
+              %h3= site.name
+              .site-contact-information
+                %p=site.address
+                %p=site.contact
+
+      .col-md-6
+        .color-container
+          %h2.heading-underline Coordinating Centers
+          - Site.order(:name).current.where(coordinating_center: true).each do |site|
+            .site-container
+              %h3= site.name
+              .site-contact-information
+                %p=site.address
+
+- if false
+  .purple
+    .container
+      .color-container
+        = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'

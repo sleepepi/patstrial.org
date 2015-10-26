@@ -6,6 +6,9 @@ class ExternalController < ApplicationController
   def home
   end
 
+  def participate
+  end
+
   def sites
   end
 end

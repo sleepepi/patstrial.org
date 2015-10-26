@@ -1,5 +1,5 @@
 - if current_page?(root_path)
-  .logo-header
+  .logo-header{ style: 'margin-top: -50px' }
     - if false
       .center
         = image_tag 'pats-boy.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
@@ -9,8 +9,14 @@
     .dark-purple
       .container
         .color-container
-          %h1.brand Welcome to the PATS Trial Website!
-          %h4.brand.purple Pediatric Adenotonsillectomy Trial for Snoring
+          .row
+            .col-sm-4.hidden-xs
+              = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
+            .col-sm-8
+              %h1.brand Welcome to PATS Trial!
+              %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
+
+    %a{ name: 'about' }
     .purple-fill
       .container
         .color-container
@@ -27,11 +33,37 @@
             Read more on
             = succeed '.' do
               = link_to 'ClinicalTrials.gov', 'https://clinicaltrials.gov/show/NCT02562040', target: '_blank'
-
-
-
-%div{ class: (current_page?(root_path) ? 'navbar-outer' : nil) }
-  %nav.navbar.navbar-default{ class: current_page?(root_path) ? nil : 'navbar-fixed-top', data: { object: (current_page?(root_path) ? 'navbar-affix' : nil) } }
+  .navbar-outer
+    %nav.navbar.navbar-default{ data: { object: 'navbar-affix' } }
+      .container
+        .navbar-header
+          %button.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '.navbar-full-menu' } }
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = image_tag 'pats-boy.png', alt: '', style: 'height:40px;padding-top:10px'
+          = link_to 'PATS', root_path, class: 'navbar-brand brand'
+          = image_tag 'pats-girl.png', alt: '', style: 'height:40px;padding-top:10px;padding-right:15px'
+        .collapse.navbar-collapse.navbar-full-menu
+          %ul.nav.navbar-nav
+            %li= link_to 'About', '#about', data: { object: 'remove-collapse-in', target: '.navbar-full-menu' }
+            %li= link_to 'Participate', '#participate', data: { object: 'remove-collapse-in', target: '.navbar-full-menu' }
+            %li= link_to 'Sites', '#sites', data: { object: 'remove-collapse-in', target: '.navbar-full-menu' }
+            %li= link_to 'Contact', '#contact', data: { object: 'remove-collapse-in', target: '.navbar-full-menu' }
+            - if false
+              %li= link_to 'Credits', credits_path
+          - if current_user || current_viewer
+            %form.navbar-form.navbar-right
+              = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary'
+            %ul.nav.navbar-nav.navbar-right.hidden-xs
+              - name = current_user ? current_user.first_name : current_viewer.username
+              %li= link_to "#{name}'s Dashboard", dashboard_path
+          - else
+            %form.navbar-form.navbar-right
+              = link_to 'Staff Login', new_user_session_path, class: 'btn btn-primary'
+- else
+  %nav.navbar.navbar-default.navbar-fixed-top
     .container
       .navbar-header
         %button.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '.navbar-full-menu' } }
@@ -40,22 +72,21 @@
           %span.icon-bar
           %span.icon-bar
         = image_tag 'pats-boy.png', alt: '', style: 'height:40px;padding-top:10px'
-        = link_to 'PATS', root_path, class: 'navbar-brand brand'
+        = link_to 'PATS', (current_user || current_viewer) ? dashboard_path : root_path, class: 'navbar-brand brand'
         = image_tag 'pats-girl.png', alt: '', style: 'height:40px;padding-top:10px;padding-right:15px'
       .collapse.navbar-collapse.navbar-full-menu
         %ul.nav.navbar-nav
           - if current_user || current_viewer
             %li{ class: "#{'active' if current_page?(dashboard_path)}" }= link_to 'Dashboard', dashboard_path
-          %li{ class: "#{'active' if current_page?(sites_path)}" }= link_to 'Sites', sites_path
-          %li{ class: "#{'active' if current_page?(window_path)}" }= link_to 'Contact', contact_path
-          %li{ class: "#{'active' if current_page?(credits_path)}" }= link_to 'Credits', credits_path
+            %li{ class: "#{'active' if current_page?(committees_path)}" }= link_to 'Committees', committees_path
+            %li{ class: "#{'active' if current_page?(directory_path)}" }= link_to 'Directory', directory_path
         - if current_user || current_viewer
           %form.navbar-form.navbar-right
             = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary'
-          %ul.nav.navbar-nav.navbar-right
+          %ul.nav.navbar-nav.navbar-right.hidden-xs
             - name = current_user ? current_user.first_name : current_viewer.username
             %li= link_to name, dashboard_path
         - else
           %form.navbar-form.navbar-right
             = link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' unless current_page?(new_user_registration_path)
-            = link_to 'Sign in', new_user_session_path, class: 'btn btn-primary'
+            = link_to 'Staff Login', new_user_session_path, class: 'btn btn-primary'

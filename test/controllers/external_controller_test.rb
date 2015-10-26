@@ -41,6 +41,23 @@ class ExternalControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should get participate as public viewer' do
+    get :participate
+    assert_response :success
+  end
+
+  test 'should get participate as generic viewer' do
+    login_viewer(@generic_viewer)
+    get :participate
+    assert_response :success
+  end
+
+  test 'should get participate as viewer' do
+    login(@viewer)
+    get :participate
+    assert_response :success
+  end
+
   test 'should get sites as public viewer' do
     get :sites
     assert_response :success

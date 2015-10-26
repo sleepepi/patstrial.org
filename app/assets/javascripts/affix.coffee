@@ -6,3 +6,8 @@
       top: () -> $('.logo-header').outerHeight(true) + affix_height + border_adjustment
       bottom: 0
   )
+
+$(document)
+  .on('click', '[data-object~="remove-collapse-in"]', () ->
+    $($(this).data('target')).removeClass('in')
+  )

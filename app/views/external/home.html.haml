@@ -1,41 +1,44 @@
-.purple-light
+- if false
+  .purple-light
+    .container
+      .color-container
+        %h2.brand
+          Interested in participating?
+
   .container
     .color-container
-      %h2.brand
-        Interested in participating?
-
-.container
-  .color-container
-    .row
-      .col-sm-3.hidden-xs.chalkboard{ style: 'position:relative' }
-        %div{ style: 'position:absolute;bottom:0px;' }
-          = image_tag 'pats-boy.png', style: 'max-width:100%', class: 'wiggle'
-      .col-sm-9
-        .windowed
-          .windowed-inner.chalkboard-texture.chalkboard
-            %h1.brand.chalkboard-title
-              Brochure
-            %ul.chalkboard-text
-              %li Find out about the study!
-              %li Is your child eligible?
-              %li
-                Are you located near a
-                = succeed '?' do
-                  = link_to 'recruitment site', sites_path
-              %li
-                = link_to 'Contact us', contact_path
-                with any questions!
+      .row
+        .col-sm-3.hidden-xs.chalkboard{ style: 'position:relative' }
+          %div{ style: 'position:absolute;bottom:0px;' }
+            = image_tag 'pats-boy.png', style: 'max-width:100%', class: 'wiggle'
+        .col-sm-9
+          .windowed
+            .windowed-inner.chalkboard-texture.chalkboard
+              %h1.brand.chalkboard-title
+                Brochure
+              %ul.chalkboard-text
+                %li Find out about the study!
+                %li Is your child eligible?
+                %li
+                  Are you located near a
+                  = succeed '?' do
+                    = link_to 'recruitment site', sites_path
+                %li
+                  = link_to 'Contact us', contact_path
+                  with any questions!
 
 
-.purple-light-fill
-  .container
-    .color-container
-      %h2.brand Trial Staff Login
-      %p.lead
-        - if current_user || current_viewer
-          = link_to 'Go To Dashboard', dashboard_path, class: 'btn btn-lg btn-primary btn-block'
-        - else
-          = link_to 'Login', new_user_session_path, class: 'btn btn-lg btn-primary btn-block'
+%div{ style: 'height: 2px' }
+  &nbsp;
+%a.anchor-top{ name: 'participate' }
+= render 'external/participate'
+
+.purple-border-top
+  = render 'external/sites'
+
+.purple-border-top
+  = render 'external/contact'
+
 
 - if false
   = render 'layouts/background_image_slide'

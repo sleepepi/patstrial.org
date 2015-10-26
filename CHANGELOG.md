@@ -18,12 +18,21 @@
 - **Site Changes**
   - Editors can now created and update sites
   - Editors can add members to sites
+  - Editors can specify the center type for sites
+    - ex: Recruiting Center, Coordinating Center
+  - Editors can add contact information to sites
 - **Document Changes**
   - Editors can now create and update document categories to organize documents
   - Editors can now upload documents to categories
   - Editors can archive existing documents and categories
   - Viewers can now download documents
 - **General Changes**
+  - Public home page includes:
+    - Information about the study
+    - Information on how to participate
+    - List of participating sites
+    - General contact information
+    - Internal login link for study staff
   - Added link to ClinicalTrials.gov
   - Public list of participating sites added
   - Public contact page added

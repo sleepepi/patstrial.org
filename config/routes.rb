@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   scope module: 'external' do
     get :contact
     get :home
+    get :participate
     get :sites
   end
 

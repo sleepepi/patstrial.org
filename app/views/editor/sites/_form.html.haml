@@ -35,6 +35,30 @@
           "City, State, Country, Zip Code"
 
   .form-group
+    = f.label :contact, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :contact, class: 'form-control'
+      .bs-callout.bs-callout-info
+        %h4 Contact Format
+        %p
+          "Contact Name, Phone, Email"
+
+  .form-group
+    = label_tag 'Center Type', nil, class: 'col-md-2 control-label'
+    .col-md-10
+      .checkbox
+        %label
+          = f.check_box :recruiting_center
+          Recruiting Center
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      .checkbox
+        %label
+          = f.check_box :coordinating_center
+          Coordinating Center
+
+  .form-group
     .col-md-10.col-md-offset-2
       = f.submit nil, class: 'btn btn-primary'
       = link_to 'cancel', url, class: ''
