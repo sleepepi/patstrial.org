@@ -3,9 +3,10 @@
     .color-container
       %h1
         %span.brand Participate
-        = link_to '#', data: { object: 'suppress-click' }, class: 'btn btn-primary', style: 'color:white' do
-          %span.glyphicon.glyphicon-file
-          Download Brochure
+        - if false
+          = link_to '#', data: { object: 'suppress-click' }, class: 'btn btn-primary', style: 'color:white' do
+            %span.glyphicon.glyphicon-file
+            Download Brochure
 
     .row
       .col-sm-2.hidden-xs
