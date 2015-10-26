@@ -21,7 +21,7 @@
 
             - members.each do |member|
               %tr
-                %td= member.name
+                %td= member.name_reverse
                 %td= member.email
                 %td= link_to member.phone, "tel:#{member.phone}" if member.phone.present?
                 %td= member.role

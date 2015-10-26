@@ -18,13 +18,13 @@
           %table.table.table-striped
             %thead
               %tr
-                %th Name
-                %th Email
-                %th Phone
-                %th Role
-            - committee.members.each do |member|
+                = th_sort_field @order, 'members.last_name', 'Name'
+                = th_sort_field @order, 'members.email', 'Email'
+                = th_sort_field @order, 'members.phone', 'Phone'
+                = th_sort_field @order, 'members.role', 'Role'
+            - committee.members.order(@order).each do |member|
               %tr
-                %td= member.name
+                %td= member.name_reverse
                 %td= member.email
                 %td= member.phone
                 %td= member.role

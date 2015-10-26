@@ -7,6 +7,7 @@ class CommitteesController < ApplicationController
   end
 
   def index
+    @order = scrub_order(Member, params[:order], 'members.last_name')
   end
 
   private
