@@ -13,6 +13,6 @@
     - if category.documents.where(archived: false).present?
       %li
         = link_to category.name, internal_category_path(category.slug), class: (current_page?(internal_category_path(category.slug)) ? 'active' : nil)
-  - if current_user && (current_user.setup_role?)
+  - if current_user && current_user.setup_role?
     %li.left-menu-header Setup
     %li= link_to 'Overview', setup_path

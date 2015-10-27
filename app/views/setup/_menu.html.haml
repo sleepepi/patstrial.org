@@ -4,17 +4,17 @@
   %li
     = link_to 'Overview', setup_path, class: (current_page?(setup_path) ? 'active' : nil)
 
+  - if current_user.editor?
+    %li
+      = link_to 'Committees', editor_committees_path, class: (params[:controller] == 'editor/committees' ? 'active' : nil)
+    %li
+      = link_to 'Documents', editor_categories_path, class: (%w(editor/categories editor/documents).include?(params[:controller]) ? 'active' : nil)
+    %li
+      = link_to 'Members', editor_members_path, class: (params[:controller] == 'editor/members' ? 'active' : nil)
+    %li
+      = link_to 'Sites', editor_sites_path, class: (params[:controller] == 'editor/sites' ? 'active' : nil)
   - if current_user.admin?
     %li
       = link_to 'Users', admin_users_path, class: (params[:controller] == 'admin/users' ? 'active' : nil)
     %li
       = link_to 'Viewers', admin_viewers_path, class: (params[:controller] == 'admin/viewers' ? 'active' : nil)
-  - if current_user.editor?
-    %li
-      = link_to 'Documents', editor_categories_path, class: (%w(editor/categories editor/documents).include?(params[:controller]) ? 'active' : nil)
-    %li
-      = link_to 'Committees', editor_committees_path, class: (params[:controller] == 'editor/committees' ? 'active' : nil)
-    %li
-      = link_to 'Members', editor_members_path, class: (params[:controller] == 'editor/members' ? 'active' : nil)
-    %li
-      = link_to 'Sites', editor_sites_path, class: (params[:controller] == 'editor/sites' ? 'active' : nil)
