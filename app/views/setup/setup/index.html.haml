@@ -1,0 +1,27 @@
+- @title = 'Setup'
+.container
+  .row
+    .col-md-3
+      = render 'setup/menu'
+    .col-md-9
+      .color-container.dark-brown
+        %h1.brand= @title
+        %h4 Pediatric Adenotonsillectomy Trial for Snoring
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p
+          Welcome to the setup overview!
+        - if current_user.admin?
+          %p
+            As an admin you may:
+            %ul
+              %li
+                = link_to 'approve and set user roles', admin_users_path
+        - if current_user.editor?
+          %p
+            As an editor you may:
+            %ul
+              %li
+                = link_to 'edit the directory', members_path
+              %li
+                = link_to 'edit categories and upload documents', categories_path

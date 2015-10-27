@@ -5,6 +5,7 @@ class Editor::EditorController < ApplicationController
 
   # GET /editor
   def index
+    redirect_to setup_path
   end
 
   protected

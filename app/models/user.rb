@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     update_column :updated_at, Time.zone.now
   end
 
+  def setup_role?
+    admin? || editor?
+  end
+
   private
 
   def notify_admins_in_background

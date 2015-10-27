@@ -1,6 +1,4 @@
-%div{ style: 'margin-top:30px;margin-bottom: 30px' }
-  = link_to dashboard_path do
-    = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
+= render 'layouts/menu_logo'
 %ul.left-menu
   %li.left-menu-header Dashboard
   %li
@@ -15,9 +13,6 @@
     - if category.documents.where(archived: false).present?
       %li
         = link_to category.name, internal_category_path(category.slug), class: (current_page?(internal_category_path(category.slug)) ? 'active' : nil)
-  - if current_user && current_user.admin?
-    %li.left-menu-header Admin
-    %li= link_to 'Dashboard', admin_root_path
-  - if current_user && current_user.editor?
-    %li.left-menu-header Editor
-    %li= link_to 'Dashboard', editor_path
+  - if current_user && (current_user.setup_role?)
+    %li.left-menu-header Setup
+    %li= link_to 'Overview', setup_path

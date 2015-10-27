@@ -1,7 +1,7 @@
 .container
   .row
     .col-md-3
-      = render 'admin/menu'
+      = render 'setup/menu'
     .col-md-9
       .color-container.dark-purple
         %h1.brand= @viewer.username
@@ -10,8 +10,8 @@
 
       %a.anchor-top{ name: 'home'}
       .color-container.dark-brown
-        %p.lead
-          = link_to 'Edit Viewer', edit_viewer_path(@viewer)
+        %p
+          = link_to 'Edit Viewer', edit_admin_viewer_path(@viewer)
 
       %table.table.table-striped.table-fixed
         %tr

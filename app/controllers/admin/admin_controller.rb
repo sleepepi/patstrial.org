@@ -5,6 +5,7 @@ class Admin::AdminController < ApplicationController
 
   # GET /admin
   def index
+    redirect_to setup_path
   end
 
   protected

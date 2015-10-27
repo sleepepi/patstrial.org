@@ -38,7 +38,7 @@ class Admin::ViewersControllerTest < ActionController::TestCase
     assert_difference('Viewer.count') do
       post :create, viewer: { username: 'Viewer3', password: @viewer.password_plain }
     end
-    assert_redirected_to viewer_path(assigns(:viewer))
+    assert_redirected_to admin_viewer_path(assigns(:viewer))
   end
 
   test 'should not create viewer as editor' do
@@ -76,7 +76,7 @@ class Admin::ViewersControllerTest < ActionController::TestCase
   test 'should update viewer as admin' do
     login(@admin)
     patch :update, id: @viewer, viewer: { username: 'Viewer4', password: 'Password New' }
-    assert_redirected_to viewer_path(assigns(:viewer))
+    assert_redirected_to admin_viewer_path(assigns(:viewer))
   end
 
   test 'should not update viewer as editor' do
@@ -90,7 +90,7 @@ class Admin::ViewersControllerTest < ActionController::TestCase
     assert_difference('Viewer.count', -1) do
       delete :destroy, id: @viewer
     end
-    assert_redirected_to viewers_path
+    assert_redirected_to admin_viewers_path
   end
 
   test 'should not destroy viewer as editor' do

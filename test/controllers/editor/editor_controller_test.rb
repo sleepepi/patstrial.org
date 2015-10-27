@@ -11,7 +11,7 @@ class Editor::EditorControllerTest < ActionController::TestCase
   test 'should get index as editor' do
     login(@editor)
     get :index
-    assert_response :success
+    assert_redirected_to setup_path
   end
 
   test 'should not get index as viewer' do

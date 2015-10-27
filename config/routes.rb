@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
+  get 'setup/index'
+
   get 'external/sites'
 
   namespace :admin do
-    root to: 'admin#index'
     resources :users
+    resources :viewers
   end
 
   scope module: 'admin' do
-    resources :viewers
+    get 'admin' => 'admin#index'
   end
 
   scope module: 'application' do
@@ -53,6 +55,10 @@ Rails.application.routes.draw do
     get :home
     get :participate
     get :sites
+  end
+
+  scope module: :setup do
+    get 'setup' => 'setup#index'
   end
 
   devise_for :users, controllers: { sessions: 'sessions' },

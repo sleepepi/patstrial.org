@@ -1,4 +1,10 @@
-= form_for @viewer, html: { class: 'form-horizontal' } do |f|
+- if @viewer.new_record?
+  - url = admin_viewers_path
+  - method = :post
+- else
+  - url = admin_viewer_path(@viewer)
+  - method = :patch
+= form_for @viewer, url: url, method: method, html: { class: 'form-horizontal' } do |f|
   - if @viewer.errors.any?
     .bs-callout.bs-callout-danger
       %h4
@@ -40,4 +46,4 @@
   .form-group
     .col-md-10.col-md-offset-2
       = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', @viewer.new_record? ? @viewer : viewers_path, class: ''
+      = link_to 'cancel', url, class: ''

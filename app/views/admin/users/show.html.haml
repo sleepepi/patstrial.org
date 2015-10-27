@@ -1,7 +1,7 @@
 .container
   .row
     .col-md-3
-      = render 'admin/menu'
+      = render 'setup/menu'
     .col-md-9
       .color-container.purple
         %h1.brand= @user.name
@@ -9,7 +9,7 @@
 
       %a.anchor-top{ name: 'home'}
       .color-container.dark-brown
-        %p.lead
+        %p
           You may
           = link_to 'edit this user', edit_admin_user_path(@user)
           to approve their website access and to change their roles.

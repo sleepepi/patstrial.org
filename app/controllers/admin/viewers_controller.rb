@@ -26,7 +26,7 @@ class Admin::ViewersController < Admin::AdminController
   def create
     @viewer = Viewer.new(viewer_params)
     if @viewer.save
-      redirect_to @viewer, notice: 'Viewer was successfully created.'
+      redirect_to admin_viewer_path(@viewer), notice: 'Viewer was successfully created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::ViewersController < Admin::AdminController
   # PATCH /viewers/1
   def update
     if @viewer.update(viewer_params)
-      redirect_to @viewer, notice: 'Viewer was successfully updated.'
+      redirect_to admin_viewer_path(@viewer), notice: 'Viewer was successfully updated.'
     else
       render :edit
     end
@@ -44,14 +44,14 @@ class Admin::ViewersController < Admin::AdminController
   # DELETE /viewers/1
   def destroy
     @viewer.destroy
-    redirect_to viewers_path, notice: 'Viewer was successfully destroyed.'
+    redirect_to admin_viewers_path, notice: 'Viewer was successfully destroyed.'
   end
 
   private
 
   def set_viewer
     @viewer = Viewer.find_by_id params[:id]
-    empty_response_or_root_path(viewers_path) unless @viewer
+    empty_response_or_root_path(admin_viewers_path) unless @viewer
   end
 
   def viewer_params
