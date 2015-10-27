@@ -15,20 +15,21 @@
             = link_to committee_path(committee.slug), class: 'btn btn-xs btn-default' do
               Learn More
               %span.glyphicon.glyphicon-new-window
-          %table.table.table-striped
-            %thead
-              %tr
-                %th
-                = th_sort_field @order, 'members.last_name', 'Name'
-                = th_sort_field @order, 'members.email', 'Email'
-                = th_sort_field @order, 'members.phone', 'Phone'
-                = th_sort_field @order, 'members.role', 'Role'
-            - committee.committee_members.includes(:member).order(@order).each do |committee_member|
-              %tr
-                %td
-                  - if committee_member.chair?
-                    %span.label.label-primary Chair
-                %td= committee_member.member.name_reverse
-                %td= committee_member.member.email
-                %td= committee_member.member.phone
-                %td= committee_member.member.role
+          %div.table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th
+                  = th_sort_field @order, 'members.last_name', 'Name'
+                  = th_sort_field @order, 'members.email', 'Email'
+                  = th_sort_field @order, 'members.phone', 'Phone'
+                  = th_sort_field @order, 'members.role', 'Role'
+              - committee.committee_members.includes(:member).order(@order).each do |committee_member|
+                %tr
+                  %td
+                    - if committee_member.chair?
+                      %span.label.label-primary Chair
+                  %td= committee_member.member.name_reverse
+                  %td= committee_member.member.email
+                  %td.nowrap= committee_member.member.phone
+                  %td= committee_member.member.role
