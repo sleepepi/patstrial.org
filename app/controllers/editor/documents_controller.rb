@@ -25,7 +25,7 @@ class Editor::DocumentsController < Editor::EditorController
   def create
     @document = @category.documents.new(document_params)
     if @document.save
-      redirect_to [@category, @document], notice: 'Document was successfully created.'
+      redirect_to editor_category_document_path(@category, @document), notice: 'Document was successfully created.'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class Editor::DocumentsController < Editor::EditorController
   # PATCH /:category_id/documents/1
   def update
     if @document.update(document_params)
-      redirect_to [@category, @document], notice: 'Document was successfully updated.'
+      redirect_to editor_category_document_path(@category, @document), notice: 'Document was successfully updated.'
     else
       render :edit
     end
@@ -52,19 +52,19 @@ class Editor::DocumentsController < Editor::EditorController
   # DELETE /:category_id/documents/1
   def destroy
     @document.destroy
-    redirect_to category_documents_path(@category), notice: 'Document was successfully destroyed.'
+    redirect_to editor_category_documents_path(@category), notice: 'Document was successfully destroyed.'
   end
 
   private
 
   def set_category
     @category = Category.current.find_by_id params[:category_id]
-    empty_response_or_root_path(categories_path) unless @category
+    empty_response_or_root_path(editor_categories_path) unless @category
   end
 
   def set_document
     @document = @category.documents.find_by_id params[:id]
-    empty_response_or_root_path(@category) unless @document
+    empty_response_or_root_path(editor_category_path(@category)) unless @document
   end
 
   def document_params

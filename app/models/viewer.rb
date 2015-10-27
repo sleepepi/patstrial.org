@@ -5,7 +5,7 @@ class Viewer < ActiveRecord::Base
   # Model Validation
   validates :username, presence: true, uniqueness: true
   validates :username, format: { with: /\A[a-zA-Z][a-zA-Z0-9]*\Z/ }
-  validates :password, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
 
   # Model Methods
 end

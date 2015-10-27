@@ -26,7 +26,7 @@ class Editor::MembersController < Editor::EditorController
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to @member, notice: 'Member was successfully created.'
+      redirect_to editor_member_path(@member), notice: 'Member was successfully created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Editor::MembersController < Editor::EditorController
   # PATCH /members/1
   def update
     if @member.update(member_params)
-      redirect_to @member, notice: 'Member was successfully updated.'
+      redirect_to editor_member_path(@member), notice: 'Member was successfully updated.'
     else
       render :edit
     end
@@ -44,14 +44,14 @@ class Editor::MembersController < Editor::EditorController
   # DELETE /members/1
   def destroy
     @member.destroy
-    redirect_to members_path, notice: 'Member was successfully destroyed.'
+    redirect_to editor_members_path, notice: 'Member was successfully destroyed.'
   end
 
   private
 
   def set_member
     @member = Member.current.find_by_id params[:id]
-    empty_response_or_root_path(members_path) unless @member
+    empty_response_or_root_path(editor_members_path) unless @member
   end
 
   def member_params

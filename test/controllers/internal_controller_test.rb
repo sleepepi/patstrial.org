@@ -71,6 +71,16 @@ class InternalControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should download PDF as viewer' do
+    login(@viewer)
+    get :document, category: categories(:one).slug, document_id: documents(:pdf)
+    assert_not_nil assigns(:category)
+    assert_not_nil assigns(:document)
+    assert_kind_of String, response.body
+    assert_equal File.binread(File.join(CarrierWave::Uploader::Base.root, assigns(:document).document.url)), response.body
+    assert_response :success
+  end
+
   test 'should download document as generic viewer' do
     login_viewer(@generic_viewer)
     get :document, category: categories(:one).slug, document_id: documents(:two)

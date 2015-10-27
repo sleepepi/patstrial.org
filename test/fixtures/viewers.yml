@@ -1,7 +1,9 @@
 one:
   username: Viewer1
   password_plain: Password1
+  description: Viewer 1 description
 
 two:
   username: Viewer2
   password_plain: Password2
+  description: Viewer 2 description

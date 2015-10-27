@@ -1,4 +1,10 @@
-= form_for @member, html: { class: 'form-horizontal' } do |f|
+- if @member.new_record?
+  - url = editor_members_path
+  - method = :post
+- else
+  - url = editor_member_path(@member)
+  - method = :patch
+= form_for @member, url: url, method: method, html: { class: 'form-horizontal' } do |f|
   - if @member.errors.any?
     .bs-callout.bs-callout-danger
       %h4
@@ -42,4 +48,4 @@
   .form-group
     .col-md-10.col-md-offset-2
       = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', @member.new_record? ? @member : members_path, class: ''
+      = link_to 'cancel', url, class: ''

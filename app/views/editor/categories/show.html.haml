@@ -1,19 +1,19 @@
 .container
   .row
     .col-md-3
-      = render 'editor/menu'
+      = render 'setup/menu'
     .col-md-9
       .color-container.purple
         %h1.brand= @category.name
-        %h4.brand
+        %h4
           = @category.top_level
           \/
           = @category.slug
 
       .color-container.dark-brown
         %p.lead
-          = link_to 'Edit Category', edit_category_path(@category)
-          = link_to 'View Documents', category_documents_path(@category)
+          = link_to 'Edit Category', edit_editor_category_path(@category)
+          = link_to 'View Documents', editor_category_documents_path(@category)
 
       %table.table.table-striped
         %tr
@@ -44,7 +44,7 @@
           %td Documents
           %td#documents_count= @category.documents.count
 
-      - fallback_url = new_category_document_path(@category)
+      - fallback_url = new_editor_category_document_path(@category)
       = link_to 'Upload New Document', fallback_url, class: 'btn btn-default'
-      %p.lead.filedrag.text-muted.purple-fill{ data: { object: 'dropfile', upload_url: upload_category_documents_path(@category, format: 'js'), fallback_url: fallback_url } }
+      %p.lead.filedrag.text-muted.purple-fill{ data: { object: 'dropfile', upload_url: upload_editor_category_documents_path(@category, format: 'js'), fallback_url: fallback_url } }
         Drag documents here to attach to category.

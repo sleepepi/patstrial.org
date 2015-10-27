@@ -44,6 +44,11 @@
       = f.text_field :password, value: @viewer.password_plain, class: 'form-control'
 
   .form-group
+    = f.label :description, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_area :description, class: 'form-control'
+
+  .form-group
     .col-md-10.col-md-offset-2
       = f.submit nil, class: 'btn btn-primary'
       = link_to 'cancel', url, class: ''

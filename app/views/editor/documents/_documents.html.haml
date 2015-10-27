@@ -7,17 +7,17 @@
 
   %tr
     %td.center{ colspan: 3 }
-      = link_to new_category_document_path(@category) do
+      = link_to new_editor_category_document_path(@category) do
         .glyphicon.glyphicon-plus
         Add New Document
 
   - @documents.each do |document|
     %tr
-      %td= link_to document.name, [@category, document]
+      %td= link_to document.name, editor_category_document_path(@category, document)
       %td= document.archived
       %td
-        = link_to 'Edit', edit_category_document_path(@category, document), class: 'btn btn-default btn-xs'
-        = link_to 'Delete', [@category, document], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Document #{document.name}?" }
+        = link_to 'Edit', edit_editor_category_document_path(@category, document), class: 'btn btn-default btn-xs'
+        = link_to 'Delete', editor_category_document_path(@category, document), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Document #{document.name}?" }
 
 .center
   = paginate @documents, theme: 'bootstrap'

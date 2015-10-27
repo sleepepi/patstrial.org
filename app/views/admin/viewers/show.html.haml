@@ -5,7 +5,7 @@
     .col-md-9
       .color-container.dark-purple
         %h1.brand= @viewer.username
-        %h4.brand.purple
+        %h4.purple
           You can change the viewer's password by clicking edit.
 
       %a.anchor-top{ name: 'home'}
@@ -25,3 +25,7 @@
         %tr
           %td Sign in Count
           %td= number_with_delimiter @viewer.sign_in_count
+
+        %tr
+          %td Description
+          %td= @viewer.description

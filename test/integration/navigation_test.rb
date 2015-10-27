@@ -21,6 +21,17 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert_equal '/dashboard', path
   end
 
+  test 'generic viewers should be able to logout' do
+    sign_in_as_viewer(viewers(:one))
+    assert_equal '/dashboard', path
+
+    get '/logout'
+    assert_redirected_to '/'
+
+    get '/dashboard'
+    assert_redirected_to new_user_session_path
+  end
+
   test 'deleted users should be not be allowed to login' do
     get '/dashboard'
     assert_redirected_to new_user_session_path

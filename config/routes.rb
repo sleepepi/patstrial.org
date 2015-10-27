@@ -20,14 +20,6 @@ Rails.application.routes.draw do
   end
 
   namespace :editor do
-    resources :committees do
-      resources :committee_members, path: 'members'
-    end
-    resources :sites
-  end
-
-  scope module: 'editor' do
-    get 'editor' => 'editor#index'
     resources :categories do
       resources :documents do
         collection do
@@ -35,7 +27,15 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :committees do
+      resources :committee_members, path: 'members'
+    end
     resources :members
+    resources :sites
+  end
+
+  scope module: 'editor' do
+    get 'editor' => 'editor#index'
   end
 
   scope module: 'committees' do

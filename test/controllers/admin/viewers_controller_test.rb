@@ -36,15 +36,26 @@ class Admin::ViewersControllerTest < ActionController::TestCase
   test 'should create viewer as admin' do
     login(@admin)
     assert_difference('Viewer.count') do
-      post :create, viewer: { username: 'Viewer3', password: @viewer.password_plain }
+      post :create, viewer: { username: 'Viewer3', password: @viewer.password_plain, description: @viewer.description }
     end
     assert_redirected_to admin_viewer_path(assigns(:viewer))
+  end
+
+  test 'should not create viewer with blank username' do
+    login(@admin)
+    assert_difference('Viewer.count', 0) do
+      post :create, viewer: { username: '', password: @viewer.password_plain, description: @viewer.description }
+    end
+    assert_not_nil assigns(:viewer)
+    assert assigns(:viewer).errors.size > 0
+    assert_equal ["can't be blank", "is invalid"], assigns(:viewer).errors[:username]
+    assert_template 'new'
   end
 
   test 'should not create viewer as editor' do
     login(@editor)
     assert_difference('Viewer.count', 0) do
-      post :create, viewer: { username: 'Viewer3', password: @viewer.password_plain }
+      post :create, viewer: { username: 'Viewer3', password: @viewer.password_plain, description: @viewer.description }
     end
     assert_redirected_to dashboard_path
   end
@@ -75,13 +86,22 @@ class Admin::ViewersControllerTest < ActionController::TestCase
 
   test 'should update viewer as admin' do
     login(@admin)
-    patch :update, id: @viewer, viewer: { username: 'Viewer4', password: 'Password New' }
+    patch :update, id: @viewer, viewer: { username: 'Viewer4', password: 'Password New', description: @viewer.description }
     assert_redirected_to admin_viewer_path(assigns(:viewer))
+  end
+
+  test 'should update viewer with blank username' do
+    login(@admin)
+    patch :update, id: @viewer, viewer: { username: '', password: 'Password New', description: @viewer.description }
+    assert_not_nil assigns(:viewer)
+    assert assigns(:viewer).errors.size > 0
+    assert_equal ["can't be blank", "is invalid"], assigns(:viewer).errors[:username]
+    assert_template 'edit'
   end
 
   test 'should not update viewer as editor' do
     login(@editor)
-    patch :update, id: @viewer, viewer: { username: 'Viewer4', password: 'Password New' }
+    patch :update, id: @viewer, viewer: { username: 'Viewer4', password: 'Password New', description: @viewer.description }
     assert_redirected_to dashboard_path
   end
 

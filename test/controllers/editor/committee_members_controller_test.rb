@@ -42,6 +42,17 @@ class Editor::CommitteeMembersControllerTest < ActionController::TestCase
     assert_redirected_to editor_committee_path(assigns(:committee))
   end
 
+  test 'should not create committee member without member' do
+    login(@editor)
+    assert_difference('CommitteeMember.count', 0) do
+      post :create, committee_id: @committee, committee_member: { member_id: '' }
+    end
+    assert_not_nil assigns(:committee_member)
+    assert assigns(:committee_member).errors.size > 0
+    assert_equal ["can't be blank"], assigns(:committee_member).errors[:member_id]
+    assert_template 'new'
+  end
+
   test 'should not create committee member as viewer' do
     login(@viewer)
     assert_difference('CommitteeMember.count', 0) do
@@ -80,6 +91,16 @@ class Editor::CommitteeMembersControllerTest < ActionController::TestCase
     assert_not_nil assigns(:committee)
     assert_not_nil assigns(:committee_member)
     assert_redirected_to editor_committee_path(assigns(:committee))
+  end
+
+  test 'should not update committee member without member' do
+    login(@editor)
+    patch :update, committee_id: @committee, id: @committee_member, committee_member: { member_id: '' }
+    assert_not_nil assigns(:committee)
+    assert_not_nil assigns(:committee_member)
+    assert assigns(:committee_member).errors.size > 0
+    assert_equal ["can't be blank"], assigns(:committee_member).errors[:member_id]
+    assert_template 'edit'
   end
 
   test 'should not update committee member as viewer' do

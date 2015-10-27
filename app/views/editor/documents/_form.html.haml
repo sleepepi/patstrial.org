@@ -1,4 +1,11 @@
-= form_for [@category, @document], html: { class: 'form-horizontal' } do |f|
+- if @document.new_record?
+  - url = editor_category_documents_path(@category)
+  - method = :post
+- else
+  - url = editor_category_document_path(@category, @document)
+  - method = :patch
+
+= form_for [@category, @document], url: url, method: method, html: { class: 'form-horizontal' } do |f|
   - if @document.errors.any?
     .bs-callout.bs-callout-danger
       %h4
@@ -24,4 +31,4 @@
   .form-group
     .col-md-10.col-md-offset-2
       = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', @document.new_record? ? [@category, @document] : category_documents_path(@category), class: ''
+      = link_to 'cancel', url, class: ''

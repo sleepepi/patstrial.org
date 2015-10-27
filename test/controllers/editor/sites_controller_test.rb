@@ -40,6 +40,17 @@ class Editor::SitesControllerTest < ActionController::TestCase
     assert_redirected_to editor_site_path(assigns(:site))
   end
 
+  test 'should not create site with blank name' do
+    login(@editor)
+    assert_difference('Site.count', 0) do
+      post :create, site: { name: '', slug: 'site-three', address: @site.address }
+    end
+    assert_not_nil assigns(:site)
+    assert assigns(:site).errors.size > 0
+    assert_equal ["can't be blank"], assigns(:site).errors[:name]
+    assert_template 'new'
+  end
+
   test 'should not create site as viewer' do
     login(@viewer)
     assert_difference('Site.count', 0) do
@@ -76,6 +87,15 @@ class Editor::SitesControllerTest < ActionController::TestCase
     login(@editor)
     patch :update, id: @site, site: { name: @site.name, slug: @site.slug, address: @site.address }
     assert_redirected_to editor_site_path(assigns(:site))
+  end
+
+  test 'should update site with blank name' do
+    login(@editor)
+    patch :update, id: @site, site: { name: '', slug: @site.slug, address: @site.address }
+    assert_not_nil assigns(:site)
+    assert assigns(:site).errors.size > 0
+    assert_equal ["can't be blank"], assigns(:site).errors[:name]
+    assert_template 'edit'
   end
 
   test 'should not update site as viewer' do

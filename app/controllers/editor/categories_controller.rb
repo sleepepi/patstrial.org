@@ -25,7 +25,7 @@ class Editor::CategoriesController < Editor::EditorController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to @category, notice: 'Category was successfully created.'
+      redirect_to editor_category_path(@category), notice: 'Category was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class Editor::CategoriesController < Editor::EditorController
   # PATCH /categories/1
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: 'Category was successfully updated.'
+      redirect_to editor_category_path(@category), notice: 'Category was successfully updated.'
     else
       render :edit
     end
@@ -43,14 +43,14 @@ class Editor::CategoriesController < Editor::EditorController
   # DELETE /categories/1
   def destroy
     @category.destroy
-    redirect_to categories_path, notice: 'Category was successfully destroyed.'
+    redirect_to editor_categories_path, notice: 'Category was successfully destroyed.'
   end
 
   private
 
   def set_category
     @category = Category.current.find_by_id params[:id]
-    empty_response_or_root_path(categories_path) unless @category
+    empty_response_or_root_path(editor_categories_path) unless @category
   end
 
   def category_params

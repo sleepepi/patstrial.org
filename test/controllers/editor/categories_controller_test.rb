@@ -37,7 +37,18 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
     assert_difference('Category.count') do
       post :create, category: { name: 'New Category', description: @category.description, top_level: @category.top_level, slug: 'new-category', position: @category.position, archived: @category.archived }
     end
-    assert_redirected_to category_path(assigns(:category))
+    assert_redirected_to editor_category_path(assigns(:category))
+  end
+
+  test 'should not create category with blank name' do
+    login(@editor)
+    assert_difference('Category.count', 0) do
+      post :create, category: { name: '', description: @category.description, top_level: @category.top_level, slug: 'new-category', position: @category.position, archived: @category.archived }
+    end
+    assert_not_nil assigns(:category)
+    assert assigns(:category).errors.size > 0
+    assert_equal ["can't be blank"], assigns(:category).errors[:name]
+    assert_template 'new'
   end
 
   test 'should not create category as viewer' do
@@ -75,7 +86,16 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
   test 'should update category as editor' do
     login(@editor)
     patch :update, id: @category, category: { name: @category.name, description: @category.description, top_level: @category.top_level, slug: @category.slug, position: @category.position, archived: @category.archived }
-    assert_redirected_to category_path(assigns(:category))
+    assert_redirected_to editor_category_path(assigns(:category))
+  end
+
+  test 'should not update category with blank name' do
+    login(@editor)
+    patch :update, id: @category, category: { name: '', description: @category.description, top_level: @category.top_level, slug: @category.slug, position: @category.position, archived: @category.archived }
+    assert_not_nil assigns(:category)
+    assert assigns(:category).errors.size > 0
+    assert_equal ["can't be blank"], assigns(:category).errors[:name]
+    assert_template 'edit'
   end
 
   test 'should not update category as viewer' do
@@ -89,7 +109,7 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
     assert_difference('Category.current.count', -1) do
       delete :destroy, id: @category
     end
-    assert_redirected_to categories_path
+    assert_redirected_to editor_categories_path
   end
 
   test 'should not destroy category as viewer' do

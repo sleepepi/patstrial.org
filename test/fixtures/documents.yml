@@ -9,3 +9,8 @@ two:
   category: one
   document: test_01.docx
   archived: false
+
+pdf:
+  category: one
+  document: test_01.pdf
+  archived: false

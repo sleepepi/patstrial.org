@@ -9,19 +9,19 @@
 
   %tr
     %td.center{ colspan: 5 }
-      = link_to new_member_path do
+      = link_to new_editor_member_path do
         .glyphicon.glyphicon-plus
         Add New Member
 
   - @members.each do |member|
     %tr
-      %td= link_to member.name_reverse, member
+      %td= link_to member.name_reverse, editor_member_path(member)
       %td= member.email
       %td= member.phone
       %td= member.role
       %td
-        = link_to 'Edit', edit_member_path(member), class: 'btn btn-default btn-xs'
-        = link_to 'Delete', member, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Member #{member.name}?" }
+        = link_to 'Edit', edit_editor_member_path(member), class: 'btn btn-default btn-xs'
+        = link_to 'Delete', editor_member_path(member), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Member #{member.name}?" }
 
 .center
   = paginate @members, theme: 'bootstrap'

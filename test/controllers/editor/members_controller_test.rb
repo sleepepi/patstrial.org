@@ -38,7 +38,19 @@ class Editor::MembersControllerTest < ActionController::TestCase
     assert_difference('Member.count') do
       post :create, member: { first_name: @member.first_name, last_name: @member.last_name, email: @member.email, phone: @member.phone, role: @member.role }
     end
-    assert_redirected_to member_path(assigns(:member))
+    assert_redirected_to editor_member_path(assigns(:member))
+  end
+
+  test 'should not create member with blank name' do
+    login(@editor)
+    assert_difference('Member.count', 0) do
+      post :create, member: { first_name: '', last_name: '', email: @member.email, phone: @member.phone, role: @member.role }
+    end
+    assert_not_nil assigns(:member)
+    assert assigns(:member).errors.size > 0
+    assert_equal ["can't be blank"], assigns(:member).errors[:first_name]
+    assert_equal ["can't be blank"], assigns(:member).errors[:last_name]
+    assert_template 'new'
   end
 
   test 'should not create member as viewer' do
@@ -76,7 +88,17 @@ class Editor::MembersControllerTest < ActionController::TestCase
   test 'should update member as editor' do
     login(@editor)
     patch :update, id: @member, member: { first_name: @member.first_name, last_name: @member.last_name, email: @member.email, phone: @member.phone, role: @member.role }
-    assert_redirected_to member_path(assigns(:member))
+    assert_redirected_to editor_member_path(assigns(:member))
+  end
+
+  test 'should not update member with blank name' do
+    login(@editor)
+    patch :update, id: @member, member: { first_name: '', last_name: '', email: @member.email, phone: @member.phone, role: @member.role }
+    assert_not_nil assigns(:member)
+    assert assigns(:member).errors.size > 0
+    assert_equal ["can't be blank"], assigns(:member).errors[:first_name]
+    assert_equal ["can't be blank"], assigns(:member).errors[:last_name]
+    assert_template 'edit'
   end
 
   test 'should not update member as viewer' do
@@ -90,7 +112,7 @@ class Editor::MembersControllerTest < ActionController::TestCase
     assert_difference('Member.current.count', -1) do
       delete :destroy, id: @member
     end
-    assert_redirected_to members_path
+    assert_redirected_to editor_members_path
   end
 
   test 'should not destroy member as viewer' do

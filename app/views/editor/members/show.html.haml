@@ -1,16 +1,16 @@
 .container
   .row
     .col-md-3
-      = render 'editor/menu'
+      = render 'setup/menu'
     .col-md-9
       .color-container.purple
         %h1.brand= @member.name
-        %h4.brand= @member.email
+        %h4= @member.email
 
       %a.anchor-top{ name: 'home'}
       .color-container.dark-brown
         %p.lead
-          = link_to 'Edit Member', edit_member_path(@member)
+          = link_to 'Edit Member', edit_editor_member_path(@member)
 
       %table.table.table-striped
         %tr

@@ -1,7 +1,7 @@
 $('#documents_count').html("<%= @category.documents.count %>");
 
 <% if @documents_count == @category.documents.count %>
-  <% fallback_url = new_category_document_path(@category) %>
+  <% fallback_url = new_editor_category_document_path(@category) %>
   $('.filedrag').html('An error occurred, the documents could not be uploaded!<br /><br />Please try again or <a href="<%= fallback_url %>">upload the documents</a> manually.');
 <% else %>
   $('.filedrag').html('Drag documents here to attach to category.<br /><br />Upload successful!<br />');
