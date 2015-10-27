@@ -23,5 +23,5 @@
               %tr
                 %td= member.name_reverse
                 %td= member.email
-                %td= link_to member.phone, "tel:#{member.phone}" if member.phone.present?
+                %td.nowrap= member.phone
                 %td= member.role

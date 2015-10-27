@@ -21,10 +21,10 @@
             %tr
               %td
                 %span.glyphicon.glyphicon-file
-              %td= link_to document.name, internal_category_document_path(@category.slug, document.id)
+              %td= link_to document.name, internal_category_document_path(@category.slug, document.id), data: { no_turbolink: true }
               %td
                 %code= number_to_human_size document.document.size
-              %td= document.created_at.strftime("%m-%d-%Y")
+              %td= document.created_at.strftime('%m-%d-%Y')
 
         .center
           = paginate @documents, theme: 'bootstrap'
