@@ -15,7 +15,9 @@
         =# image_tag user.avatar_url(18), style: 'vertical-align:text-bottom'
         = link_to user.name, admin_user_path(user)
       %td= user.email
-      %td=# recent_activity(user.current_sign_in_at)
+      %td
+        = time_ago_in_words user.current_sign_in_at
+        ago
       %td.center= user.approved?
       %td.center= user.admin?
       %td.center= user.editor?
