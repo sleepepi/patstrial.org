@@ -28,7 +28,7 @@
             %td= @user.approved? ? 'Approved' : 'Pending'
           %tr
             %td Admin
-            %td= @user.admin?
+            %td= simple_check @user.admin?
           %tr
             %td Editor
-            %td= @user.admin?
+            %td= simple_check @user.admin?

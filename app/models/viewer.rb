@@ -8,4 +8,10 @@ class Viewer < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
 
   # Model Methods
+
+  # Increments the sign in count and tracks the sign in time
+  def sign_in!
+    increment!(:sign_in_count)
+    update_column :current_sign_in_at, Time.zone.now
+  end
 end

@@ -15,4 +15,12 @@ module ApplicationHelper
       end
     end.html_safe
   end
+
+  def simple_check(checked)
+    if checked
+      content_tag :span, nil, class: %w(glyphicon glyphicon-ok text-success)
+    else
+      content_tag :span, nil, class: %w(glyphicon glyphicon-remove text-danger)
+    end
+  end
 end
