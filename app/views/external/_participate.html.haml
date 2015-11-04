@@ -16,37 +16,60 @@
         .color-container
           %h2.heading-underline What is PATS?
           %p
-            The Pediatric Adenotonsillectomy Trial for Snoring (PATS) is a
+            The Pediatric Adenotonsillectomy Trial for Snoring
+            = surround '(', ')' do
+              = abbr 'PATS'
+            is a
             research study looking at the best care for children who have
             snoring and breathing problems during sleep, but do not have apnea
             (stopping breathing during sleep). This problem is called mild sleep
-            disordered breathing (MSDB). It is not yet known whether MSDB is
-            associated with behavior or other health problems in children.
+            disordered breathing
+            = surround '(', ').' do
+              = abbr 'MSDB'
+            It is not yet known whether
+            = abbr 'MSDB'
+            is associated with behavior or other health problems in children.
 
           %p
-            A common treatment for MSDB is removal of the tonsils and adenoid,
+            A common treatment for
+            = abbr 'MSDB'
+            is removal of the tonsils and adenoid,
             but this has not been well studied. This study will help us learn
-            what the best treatment is for children with MSDB.
+            what the best treatment is for children with
+            = succeed '.' do
+              = abbr 'MSDB'
 
         .color-container
           %h2.heading-underline Why you and your child may choose to participate:
 
           %ul
-            %li Find out if your child has MSDB.
-            %li Learn about sleep disorders and treatments for MSDB.
+            %li
+              Find out if your child has
+              = succeed '.' do
+                = abbr 'MSDB'
+            %li
+              Learn about sleep disorders and treatments for
+              = succeed '.' do
+                = abbr 'MSDB'
             %li
               Get your child evaluated for behavior and health problems that may
-              be associated with MSDB.
+              be associated with
+              = succeed '.' do
+                = abbr 'MSDB'
             %li
               Comprehensive monitoring of your child over the course of 12
               months.
             %li
               Monitoring includes sleep studies, growth measurements, lab work,
-              blood pressure, behavior, and an evaluation by an Ear, Nose and
-              Throat (ENT) doctor.
+              blood pressure, behavior, and an evaluation by an Ear, Nose, and
+              Throat
+              = surround '(', ')' do
+                = abbr 'ENT'
+              doctor.
             %li
-              Help doctors learn more about MSDB and how they can help these
-              children.
+              Help doctors learn more about
+              = abbr 'MSDB'
+              and how they can help these children.
 
         .color-container
           %h2.heading-underline Who may participate?
@@ -70,7 +93,10 @@
               study
             %li
               Watchful Waiting with Supportive Care for 12 months. Re-evaluation
-              by the Ear, Nose and Throat (ENT) doctor for treatment at 12
+              by the Ear, Nose, and Throat
+              = surround '(', ')' do
+                = abbr 'ENT'
+              doctor for treatment at 12
               months for those in the Watchful Waiting with Supportive Care
               group.
 

@@ -23,12 +23,17 @@
           %h2.brand About the Trial
           %p
             The purpose of this study is to evaluate the effects of early
-            adenotonsillectomy (eAT) on the behavior, sleep-disordered breathing
+            adenotonsillectomy
+            = surround '(', ')' do
+              = abbr 'eAT'
+            on the behavior, sleep-disordered breathing
             symptoms and quality of life for children who snore, but do not have
             obstructive sleep apnea, as well as identify factors that moderate
-            responses to the surgery. Half of participants will receive eAT, while
-            the other half will be observed with watchful waiting and supportive
-            care.
+            responses to the surgery. Half of participants will receive
+            = succeed ',' do
+              = abbr 'eAT'
+            while the other half will be observed with watchful waiting and
+            supportive care.
           %p
             Read more on
             = succeed '.' do
