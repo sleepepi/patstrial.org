@@ -3,11 +3,6 @@ html {
   position: relative;
 }
 
-html,
-body {
-  overflow-x: hidden;
-}
-
 body {
   margin-bottom: $footer-height;
   padding-top: $header-height;
