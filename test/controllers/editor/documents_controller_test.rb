@@ -123,7 +123,7 @@ class Editor::DocumentsControllerTest < ActionController::TestCase
     patch :update, category_id: @category, id: @document, document: { document: fixture_file_upload('../../test/support/documents/test_01.txt'), archived: @document.archived }
     assert_not_nil assigns(:document)
     assert assigns(:document).errors.size > 0
-    assert_equal ["You are not allowed to upload \"txt\" files, allowed types: #{DocumentUploader.new.extension_white_list.join(', ')}"], assigns(:document).errors[:document]
+    assert assigns(:document).errors[:document].include? "You are not allowed to upload \"txt\" files, allowed types: #{DocumentUploader.new.extension_white_list.join(', ')}"
     assert_template 'edit'
   end
 
