@@ -1,3 +1,5 @@
+## 3.0.0
+
 ## 2.0.0 (November 6, 2015)
 
 ### Enhancements
