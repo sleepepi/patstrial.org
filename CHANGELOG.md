@@ -4,6 +4,7 @@
 - **Gem Changes**
   - Started testing Ruby 2.3.0-preview1
   - Updated to rails 4.2.5
+  - Updated to pg 0.18.4
 
 ## 2.0.0 (November 6, 2015)
 
