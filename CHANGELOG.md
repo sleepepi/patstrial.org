@@ -3,6 +3,10 @@
 ### Enhancements
 - **General Changes**
   - Several UI consistency changes
+- **Calculators Added**
+  - Added a Body Mass Index Z-Score calculator based on:
+    - http://www.cdc.gov/growthcharts/percentile_data_files.htm
+    - http://www.cdc.gov/growthcharts/data/zscore/bmiagerev.csv
 - **Gem Changes**
   - Started testing Ruby 2.3.0-preview1
   - Updated to rails 4.2.5

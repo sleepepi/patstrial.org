@@ -19,6 +19,13 @@ Rails.application.routes.draw do
     get :window
   end
 
+  namespace :calculators do
+    get :bmi_zscore, path: 'bmi-zscore'
+    post :bmi_zscore, path: 'bmi-zscore', action: :bmi_zscore_calculate, as: :bmi_zscore_calculate
+    get :bmi_zscore_result, path: 'bmi-zscore/result'
+    get :blood_pressure_percentile
+  end
+
   namespace :editor do
     resources :categories do
       resources :documents do

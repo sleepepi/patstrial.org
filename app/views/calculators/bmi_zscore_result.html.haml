@@ -1,0 +1,56 @@
+.container
+  %h1 BMI Z-Score Calculator Result
+
+  .jumobtron
+    %h1
+      Z-Score
+      %code= params[:zscore].to_f.round(2)
+
+  %table.table
+    %tr
+      %td Weight
+      %td
+        - if params[:weight_in_kg].present?
+          = params[:weight_in_kg]
+          kg
+        - elsif params[:weight_in_lb].present?
+          = params[:weight_in_lb]
+          lb
+    %tr
+      %td Height
+      %td
+        - if params[:height_in_cm].present?
+          = params[:height_in_cm]
+          cm
+        - elsif params[:height_in_in].present?
+          = params[:height_in_in]
+          in
+    %tr
+      %td Body Mass Index
+      %td= params[:bmi].to_f.round(2)
+    %tr
+      %td Gender
+      %td= params[:gender]
+    %tr
+      %td Date of Birth
+      %td= params[:dob]
+    %tr
+      %td Date of Visit
+      %td= params[:dov]
+    %tr
+      %td Age in Months
+      %td= params[:age_in_months].to_f.round(1)
+    %tr
+      %td L
+      %td= params[:l]
+    %tr
+      %td M
+      %td= params[:m]
+    %tr
+      %td S
+      %td= params[:s]
+    %tr
+      %td ZScore
+      %td= params[:zscore].to_f.round(2)
+
+  = link_to 'Back to BMI Z-Score Calculator', calculators_bmi_zscore_path(gender: params[:gender], weight_in_kg: params[:weight_in_kg], weight_in_lb: params[:weight_in_lb], height_in_cm: params[:height_in_cm], height_in_in: params[:height_in_in], dob: params[:dob], dov: params[:dov]), class: 'btn btn-primary'

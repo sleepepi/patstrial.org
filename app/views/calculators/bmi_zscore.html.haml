@@ -1,0 +1,61 @@
+.container
+  %h1 BMI Z-Score Calculator
+
+  = form_tag calculators_bmi_zscore_path, method: :post, class: 'form-horizontal' do
+    .form-group
+      = label :weight, 'Weight', class: 'col-md-2 control-label'
+      .col-md-10
+        .row
+          .col-xs-5
+            .input-group
+              = text_field_tag :weight_in_kg, params[:weight_in_kg], autocomplete: 'off', class: 'form-control'
+              %span.input-group-addon kg
+          .col-xs-2.center
+            .btn{ disabled: 'disabled', style: 'cursor: default' } OR
+          .col-xs-5
+            .input-group
+              = text_field_tag :weight_in_lb, params[:weight_in_lb], autocomplete: 'off', class: 'form-control'
+              %span.input-group-addon lb
+
+    .form-group
+      = label :height, 'Height', class: 'col-md-2 control-label'
+      .col-md-10
+        .row
+          .col-xs-5
+            .input-group
+              = text_field_tag :height_in_cm, params[:height_in_cm], autocomplete: 'off', class: 'form-control'
+              %span.input-group-addon cm
+          .col-xs-2.center
+            .btn{ disabled: 'disabled', style: 'cursor: default' } OR
+          .col-xs-5
+            .input-group
+              = text_field_tag :height_in_in, params[:height_in_in], autocomplete: 'off', class: 'form-control'
+              %span.input-group-addon in
+
+    .form-group
+      = label :gender, 'Gender', class: 'col-md-2 control-label'
+      .col-md-10
+        .btn-group{ data: { toggle: 'buttons' } }
+          = label :gender, '1', params[:gender] == '1', class: "btn btn-primary-custom #{'active' if params[:gender] == '1'}" do
+            = radio_button_tag :gender, 1, autocomplete: 'off'
+            Male
+          = label :gender, '2', params[:gender] == '2', class: "btn btn-primary-custom #{'active' if params[:gender] == '2'}" do
+            = radio_button_tag :gender, 2, autocomplete: 'off'
+            Female
+
+    .form-group
+      = label :dob, 'Date of Birth', class: 'col-md-2 control-label'
+      .col-md-10
+        = text_field_tag :dob, params[:dob], autocomplete: 'off', class: 'datepicker form-control', placeholder: 'mm/dd/yyyy', style: 'width: 120px'
+
+    .form-group
+      = label :dov, 'Date of Visit', class: 'col-md-2 control-label'
+      .col-md-10
+        = text_field_tag :dov, params[:dov], autocomplete: 'off', class: 'datepicker form-control', placeholder: 'mm/dd/yyyy', style: 'width: 120px'
+
+    .form-group
+      .col-md-10.col-md-offset-2
+        = submit_tag 'Calculate Z-Score', class: 'btn btn-primary'
+
+    - if @error
+      .alert.alert-danger{ role: 'alert' }= @error
