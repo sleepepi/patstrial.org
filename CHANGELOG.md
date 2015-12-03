@@ -1,5 +1,9 @@
 ## 3.0.0
 
+### Enhancements
+- **Gem Changes**
+  - Started testing Ruby 2.3.0-preview1
+
 ## 2.0.0 (November 6, 2015)
 
 ### Enhancements
