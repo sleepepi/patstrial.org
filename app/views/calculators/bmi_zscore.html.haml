@@ -1,6 +1,10 @@
-- @title = 'BMI Z-Score Calculator'
+- @title = 'Pediatric BMI Z-Score Calculator'
 .container
   %h1= @title
+
+  = render 'calculators/reference'
+
+  %hr
 
   = form_tag calculators_bmi_zscore_path, method: :post, class: 'form-horizontal' do
     .form-group
