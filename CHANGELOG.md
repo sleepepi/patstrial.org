@@ -1,6 +1,8 @@
 ## 3.0.0
 
 ### Enhancements
+- **General Changes**
+  - Several UI consistency changes
 - **Gem Changes**
   - Started testing Ruby 2.3.0-preview1
   - Updated to rails 4.2.5

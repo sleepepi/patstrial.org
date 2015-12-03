@@ -14,8 +14,7 @@
   width: 0;
 }
 
-a.title-link,
-a.footer-link {
+a.title-link {
   backface-visibility: hidden; // Fix for transition flickering
   color: $purple-color;
   text-decoration: none;
@@ -26,6 +25,8 @@ a.title-link:hover {
   color: $purple;
 }
 
-// a.footer-link:hover {
-//   color: white;
-// }
+a.footer-link {
+  backface-visibility: hidden;
+  text-decoration: none;
+  transition: all .2s ease;
+}
