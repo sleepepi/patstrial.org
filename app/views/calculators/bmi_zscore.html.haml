@@ -37,11 +37,11 @@
       = label :gender, 'Gender', class: 'col-md-2 control-label'
       .col-md-10
         .btn-group{ data: { toggle: 'buttons' } }
-          = label :gender, '1', params[:gender] == '1', class: "btn btn-primary-custom #{'active' if params[:gender] == '1'}" do
-            = radio_button_tag :gender, 1, autocomplete: 'off'
+          = label :gender, '1', class: "btn btn-primary-custom #{'active' if params[:gender] == '1'}" do
+            = radio_button_tag :gender, 1, params[:gender] == '1', autocomplete: 'off'
             Male
-          = label :gender, '2', params[:gender] == '2', class: "btn btn-primary-custom #{'active' if params[:gender] == '2'}" do
-            = radio_button_tag :gender, 2, autocomplete: 'off'
+          = label :gender, '2', class: "btn btn-primary-custom #{'active' if params[:gender] == '2'}" do
+            = radio_button_tag :gender, 2, params[:gender] == '2', autocomplete: 'off'
             Female
 
     .form-group
