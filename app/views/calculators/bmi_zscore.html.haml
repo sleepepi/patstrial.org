@@ -10,13 +10,13 @@
           .col-xs-5
             .input-group
               = text_field_tag :weight_in_kg, params[:weight_in_kg], autocomplete: 'off', class: 'form-control'
-              %span.input-group-addon kg
+              %span.input-group-addon.code kg
           .col-xs-2.center
             .btn{ disabled: 'disabled', style: 'cursor: default' } OR
           .col-xs-5
             .input-group
               = text_field_tag :weight_in_lb, params[:weight_in_lb], autocomplete: 'off', class: 'form-control'
-              %span.input-group-addon lb
+              %span.input-group-addon.code lb
 
     .form-group
       = label :height, 'Height', class: 'col-md-2 control-label'
@@ -25,13 +25,13 @@
           .col-xs-5
             .input-group
               = text_field_tag :height_in_cm, params[:height_in_cm], autocomplete: 'off', class: 'form-control'
-              %span.input-group-addon cm
+              %span.input-group-addon.code cm
           .col-xs-2.center
             .btn{ disabled: 'disabled', style: 'cursor: default' } OR
           .col-xs-5
             .input-group
               = text_field_tag :height_in_in, params[:height_in_in], autocomplete: 'off', class: 'form-control'
-              %span.input-group-addon in
+              %span.input-group-addon.code in
 
     .form-group
       = label :gender, 'Gender', class: 'col-md-2 control-label'
