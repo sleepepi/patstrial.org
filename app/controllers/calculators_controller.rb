@@ -1,36 +1,16 @@
 # Publicly available calculators
 class CalculatorsController < ApplicationController
+  def index
+  end
+
   def bmi_zscore
   end
 
   def bmi_zscore_calculate
-    dob = parse_date(params[:dob])
-    dov = parse_date(params[:dov])
-    if dob && dov
-      age_in_months = (dov - dob).days / 1.month
-      params[:age_in_months] = age_in_months
-    end
-
-    gender = nil
-    if params[:gender] == '1'
-      gender = 1
-    elsif params[:gender] == '2'
-      gender = 2
-    end
-
-    height = nil
-    if params[:height_in_cm].present?
-      height = params[:height_in_cm].to_f / 100
-    elsif params[:height_in_in].present?
-      height = params[:height_in_in].to_f * 0.0254
-    end
-
-    weight = nil
-    if params[:weight_in_kg].present?
-      weight = params[:weight_in_kg].to_f
-    elsif params[:weight_in_lb].present?
-      weight = params[:weight_in_lb].to_f * 0.453592
-    end
+    age_in_months = compute_age_in_months
+    gender = compute_gender
+    height = compute_height
+    weight = compute_weight
 
     if age_in_months && age_in_months >= 24 && gender && height && height > 0 && weight && weight > 0
       bmi = Calculators::BmiZscore.compute_bmi(height, weight)
@@ -44,6 +24,9 @@ class CalculatorsController < ApplicationController
       params[:zscore] = zscore
 
       redirect_to calculators_bmi_zscore_result_path(zscore_params)
+    elsif age_in_months && age_in_months < 24
+      @error = 'The age of the child most be at least 24 months.'
+      render :bmi_zscore
     else
       @error = 'Please enter all parameters.'
       render :bmi_zscore
@@ -56,10 +39,43 @@ class CalculatorsController < ApplicationController
   def blood_pressure_percentile
   end
 
+  def blood_pressure_percentile_calculate
+    age_in_months = compute_age_in_months
+    gender = compute_gender
+    height = compute_height
+    systolic = compute_systolic
+    diastolic = compute_diastolic
+
+    if age_in_months && age_in_months >= 24 && gender && height && height > 0 && systolic && systolic > 0 && diastolic && diastolic > 0
+      lms = Calculators::BloodPressurePercentile.lookup_lms(gender, age_in_months)
+      zscore = Calculators::BloodPressurePercentile.compute_zscore(height * 100, lms[:l], lms[:m], lms[:s])
+
+      params[:l] = lms[:l]
+      params[:m] = lms[:m]
+      params[:s] = lms[:s]
+      params[:zscore] = zscore
+      params[:bpp] = 'Unknown' # bpp
+      redirect_to calculators_blood_pressure_percentile_result_path(bpp_params)
+    elsif age_in_months && age_in_months < 24
+      @error = 'The age of the child most be at least 24 months.'
+      render :blood_pressure_percentile
+    else
+      @error = 'Please enter all parameters.'
+      render :blood_pressure_percentile
+    end
+  end
+
+  def blood_pressure_percentile_result
+  end
+
   private
 
   def zscore_params
-    params.permit(:weight_in_kg, :weight_in_lb, :height_in_in, :height_in_cm, :gender, :dob, :dov, :age_in_months, :l, :m, :s, :zscore, :bmi)
+    params.permit(:weight, :weight_units, :height, :height_units, :gender, :dob, :dov, :age_in_months, :l, :m, :s, :zscore, :bmi)
+  end
+
+  def bpp_params
+    params.permit(:height, :height_units, :systolic, :diastolic, :gender, :dob, :dov, :age_in_months, :l, :m, :s, :zscore, :bpp)
   end
 
   def parse_date(date_string, default_date: nil)
@@ -70,5 +86,43 @@ class CalculatorsController < ApplicationController
     end
   rescue
     default_date
+  end
+
+  def compute_age_in_months
+    dob = parse_date(params[:dob])
+    dov = parse_date(params[:dov])
+    if dob && dov
+      age_in_months = (dov - dob).days / 1.month
+      params[:age_in_months] = age_in_months
+    end
+    age_in_months
+  end
+
+  def compute_gender
+    %w(1 2).include?(params[:gender]) ? params[:gender].to_i : nil
+  end
+
+  def compute_height
+    if params[:height_units] == 'cm'
+      params[:height].to_f / 100
+    elsif params[:height_units] == 'in'
+      params[:height].to_f * 0.0254
+    end
+  end
+
+  def compute_weight
+    if params[:weight_units] == 'kg'
+      params[:weight].to_f
+    elsif params[:weight_units] == 'lb'
+      params[:weight].to_f * 0.453592
+    end
+  end
+
+  def compute_systolic
+    params[:systolic].to_i if params[:systolic].present?
+  end
+
+  def compute_diastolic
+    params[:diastolic].to_i if params[:diastolic].present?
   end
 end

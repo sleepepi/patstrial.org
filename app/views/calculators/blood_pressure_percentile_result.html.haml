@@ -1,0 +1,62 @@
+- @title = 'Blood Pressure Percentile Calculator'
+.container
+  %h1= @title
+
+  = render 'calculators/reference_bpp'
+
+  %hr
+
+  .jumbotron
+    %h1
+      Blood Pressure Percentile
+      %code= params[:bpp].to_f.round(2)
+    = link_to calculators_blood_pressure_percentile_path(gender: params[:gender], height: params[:height], height_units: params[:height_units], systolic: params[:systolic], diastolic: params[:diastolic], dob: params[:dob], dov: params[:dov]), class: 'btn btn-default btn-xs' do
+      %span.glyphicon.glyphicon-arrow-left
+      Go Back to Calculator
+
+  %table.table.table-borderless
+    %col{ width: '200px' }
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Date of Birth
+      %td= params[:dob]
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Date of Visit
+      %td= params[:dov]
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Age
+      %td
+        = params[:age_in_months].to_f.round(1)
+        months
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Gender
+      %td= params[:gender] == '1' ? 'Male' : 'Female'
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Height
+      %td
+        = params[:height]
+        = params[:height_units]
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Systolic
+      %td
+        = params[:systolic]
+        mm Hg
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Diastolic
+      %td
+        = params[:diastolic]
+        mm Hg
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } L
+      %td= params[:l]
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } M
+      %td= params[:m]
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } S
+      %td= params[:s]
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Height Z-Score
+      %td= params[:zscore].to_f.round(2)
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Blood Pressure Percentile
+      %td= params[:bpp].to_f.round(2)

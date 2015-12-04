@@ -10,7 +10,7 @@
     %h1
       Z-Score
       %code= params[:zscore].to_f.round(2)
-    = link_to calculators_bmi_zscore_path(gender: params[:gender], weight_in_kg: params[:weight_in_kg], weight_in_lb: params[:weight_in_lb], height_in_cm: params[:height_in_cm], height_in_in: params[:height_in_in], dob: params[:dob], dov: params[:dov]), class: 'btn btn-default btn-xs' do
+    = link_to calculators_bmi_zscore_path(gender: params[:gender], weight: params[:weight], weight_units: params[:weight_units], height: params[:height], height_units: params[:height_units], dob: params[:dob], dov: params[:dov]), class: 'btn btn-default btn-xs' do
       %span.glyphicon.glyphicon-arrow-left
       Go Back to Calculator
 
@@ -19,27 +19,19 @@
     %tr
       %td.text-right{ style: 'font-weight:bold' } Weight
       %td
-        - if params[:weight_in_kg].present?
-          = params[:weight_in_kg]
-          kg
-        - elsif params[:weight_in_lb].present?
-          = params[:weight_in_lb]
-          lb
+        = params[:weight]
+        = params[:weight_units]
     %tr
       %td.text-right{ style: 'font-weight:bold' } Height
       %td
-        - if params[:height_in_cm].present?
-          = params[:height_in_cm]
-          cm
-        - elsif params[:height_in_in].present?
-          = params[:height_in_in]
-          in
+        = params[:height]
+        = params[:height_units]
     %tr
       %td.text-right{ style: 'font-weight:bold' } Body Mass Index
       %td= params[:bmi].to_f.round(2)
     %tr
       %td.text-right{ style: 'font-weight:bold' } Gender
-      %td= params[:gender]
+      %td= params[:gender] == '1' ? 'Male' : 'Female'
     %tr
       %td.text-right{ style: 'font-weight:bold' } Date of Birth
       %td= params[:dob]
@@ -47,8 +39,10 @@
       %td.text-right{ style: 'font-weight:bold' } Date of Visit
       %td= params[:dov]
     %tr
-      %td.text-right{ style: 'font-weight:bold' } Age in Months
-      %td= params[:age_in_months].to_f.round(1)
+      %td.text-right{ style: 'font-weight:bold' } Age
+      %td
+        = params[:age_in_months].to_f.round(1)
+        months
     %tr
       %td.text-right{ style: 'font-weight:bold' } L
       %td= params[:l]
