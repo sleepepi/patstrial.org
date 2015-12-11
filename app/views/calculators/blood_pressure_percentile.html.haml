@@ -4,56 +4,63 @@
 
   = render 'calculators/reference_bpp'
 
-  = form_tag calculators_blood_pressure_percentile_path, method: :post, class: 'form-horizontal' do
-    .form-group
-      = label :dob, 'Date of Birth', class: 'col-md-2 control-label'
-      .col-md-10
-        = text_field_tag :dob, params[:dob], autocomplete: 'off', class: 'datepicker form-control', placeholder: 'mm/dd/yyyy', style: 'width: 120px'
+  - if true
+    .jumbotron
+      %p.lead.center Currently unavailable!
+      .center
+        %span.glyphicon.glyphicon-calendar{ style: 'font-size: 96px;' }
+  - else
 
-    .form-group
-      = label :dov, 'Date of Visit', class: 'col-md-2 control-label'
-      .col-md-10
-        = text_field_tag :dov, params[:dov], autocomplete: 'off', class: 'datepicker form-control', placeholder: 'mm/dd/yyyy', style: 'width: 120px'
+    = form_tag calculators_blood_pressure_percentile_path, method: :post, class: 'form-horizontal' do
+      .form-group
+        = label :dob, 'Date of Birth', class: 'col-md-2 control-label'
+        .col-md-10
+          = text_field_tag :dob, params[:dob], autocomplete: 'off', class: 'datepicker form-control', placeholder: 'mm/dd/yyyy', style: 'width: 120px'
 
-    .form-group
-      = label :gender, 'Gender', class: 'col-md-2 control-label'
-      .col-md-10
-        .btn-group{ data: { toggle: 'buttons' } }
-          = label :gender, '1', class: "btn btn-primary-custom #{'active' if params[:gender] != '2'}" do
-            = radio_button_tag :gender, 1, params[:gender] != '2', autocomplete: 'off'
-            Male
-          = label :gender, '2', class: "btn btn-primary-custom #{'active' if params[:gender] == '2'}" do
-            = radio_button_tag :gender, 2, params[:gender] == '2', autocomplete: 'off'
-            Female
+      .form-group
+        = label :dov, 'Date of Visit', class: 'col-md-2 control-label'
+        .col-md-10
+          = text_field_tag :dov, params[:dov], autocomplete: 'off', class: 'datepicker form-control', placeholder: 'mm/dd/yyyy', style: 'width: 120px'
 
-    .form-group
-      = label :height, 'Height', class: 'col-md-2 control-label'
-      .col-md-10
-        %table
-          %tr
-            %td
-              = text_field_tag :height, params[:height], autocomplete: 'off', class: 'form-control', maxlength: 3, style: 'width: 118px'
-            %td
-              = select_tag :height_units, options_for_select([['cm', 'cm'], ['in', 'in']], params[:height_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
+      .form-group
+        = label :gender, 'Gender', class: 'col-md-2 control-label'
+        .col-md-10
+          .btn-group{ data: { toggle: 'buttons' } }
+            = label :gender, '1', class: "btn btn-primary-custom #{'active' if params[:gender] != '2'}" do
+              = radio_button_tag :gender, 1, params[:gender] != '2', autocomplete: 'off'
+              Male
+            = label :gender, '2', class: "btn btn-primary-custom #{'active' if params[:gender] == '2'}" do
+              = radio_button_tag :gender, 2, params[:gender] == '2', autocomplete: 'off'
+              Female
+
+      .form-group
+        = label :height, 'Height', class: 'col-md-2 control-label'
+        .col-md-10
+          %table
+            %tr
+              %td
+                = text_field_tag :height, params[:height], autocomplete: 'off', class: 'form-control', maxlength: 3, style: 'width: 118px'
+              %td
+                = select_tag :height_units, options_for_select([['cm', 'cm'], ['in', 'in']], params[:height_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
 
 
-    .form-group
-      = label :systolic, 'Systolic', class: 'col-md-2 control-label'
-      .col-md-10
-        .input-group{ style: 'width: 194px' }
-          = text_field_tag :systolic, params[:systolic], autocomplete: 'off', class: 'form-control', maxlength: 3
-          %span.input-group-addon.code mm Hg
+      .form-group
+        = label :systolic, 'Systolic', class: 'col-md-2 control-label'
+        .col-md-10
+          .input-group{ style: 'width: 194px' }
+            = text_field_tag :systolic, params[:systolic], autocomplete: 'off', class: 'form-control', maxlength: 3
+            %span.input-group-addon.code mm Hg
 
-    .form-group
-      = label :diastolic, 'Diastolic', class: 'col-md-2 control-label'
-      .col-md-10
-        .input-group{ style: 'width: 194px' }
-          = text_field_tag :diastolic, params[:diastolic], autocomplete: 'off', class: 'form-control', maxlength: 3
-          %span.input-group-addon.code mm Hg
+      .form-group
+        = label :diastolic, 'Diastolic', class: 'col-md-2 control-label'
+        .col-md-10
+          .input-group{ style: 'width: 194px' }
+            = text_field_tag :diastolic, params[:diastolic], autocomplete: 'off', class: 'form-control', maxlength: 3
+            %span.input-group-addon.code mm Hg
 
-    .form-group
-      .col-md-10.col-md-offset-2
-        = submit_tag 'Calculate Blood Pressure Percentile', class: 'btn btn-primary'
+      .form-group
+        .col-md-10.col-md-offset-2
+          = submit_tag 'Calculate Blood Pressure Percentile', class: 'btn btn-primary'
 
-    - if @error
-      .alert.alert-danger{ role: 'alert' }= @error
+      - if @error
+        .alert.alert-danger{ role: 'alert' }= @error
