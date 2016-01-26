@@ -5,7 +5,9 @@
     = image_tag 'pats-boy.png', alt: '', height: '40px', style: 'text-align:right'
   .row
     .col-xs-5.nowrap
-      &copy; 2015 PATS Trial
+      &copy;
+      = Date.today.year
+      PATS Trial
     .col-xs-2
       .brand.center
         = link_to 'P', root_path, class: 'footer-link'
