@@ -15,6 +15,7 @@
   - Updated to rails 4.2.5.1
   - Updated to pg 0.18.4
   - Updated to simplecov 0.11.1
+  - Updated to web-console 3.0.0
 
 ## 2.0.0 (November 6, 2015)
 
