@@ -12,7 +12,7 @@
     - http://www.cdc.gov/growthcharts/data/zscore/statage.csv
 - **Gem Changes**
   - Updated to Ruby 2.3.0
-  - Updated to rails 4.2.5
+  - Updated to rails 4.2.5.1
   - Updated to pg 0.18.4
   - Updated to simplecov 0.11.1
 
