@@ -26,6 +26,11 @@
       = f.text_field :last_name, class: 'form-control'
 
   .form-group
+    = f.label :staffid, 'Staff ID', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :staffid, class: 'form-control', placeholder: '#-##'
+
+  .form-group
     = f.label :email, nil, class: 'col-md-2 control-label'
     .col-md-10
       = f.email_field :email, class: 'form-control'

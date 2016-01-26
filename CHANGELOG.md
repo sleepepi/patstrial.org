@@ -3,6 +3,8 @@
 ### Enhancements
 - **General Changes**
   - Several UI consistency changes
+- **Member Changes**
+  - Members can now be assigned a Staff ID
 - **Calculators Added**
   - Added a Body Mass Index Z-Score calculator based on:
     - http://www.cdc.gov/growthcharts/percentile_data_files.htm

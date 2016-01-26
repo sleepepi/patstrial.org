@@ -17,9 +17,11 @@
               %th Email
               %th Phone
               %th Role
+              %th Staff ID
           - @committee.members.each do |member|
             %tr
               %td= member.name
               %td= member.email
               %td= member.phone
               %td= member.role
+              %td= member.staffid

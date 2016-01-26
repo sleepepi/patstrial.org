@@ -24,6 +24,7 @@
                   = th_sort_field @order, 'members.email', 'Email'
                   = th_sort_field @order, 'members.phone', 'Phone'
                   = th_sort_field @order, 'members.role', 'Role'
+                  = th_sort_field @order, 'members.staffid', 'Staff ID'
               - committee.committee_members.includes(:member).order(@order).each do |committee_member|
                 %tr
                   %td
@@ -33,3 +34,4 @@
                   %td= committee_member.member.email
                   %td.nowrap= committee_member.member.phone
                   %td= committee_member.member.role
+                  %td= committee_member.member.staffid

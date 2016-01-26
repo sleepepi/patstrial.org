@@ -55,6 +55,6 @@ class Editor::MembersController < Editor::EditorController
   end
 
   def member_params
-    params.require(:member).permit(:first_name, :last_name, :email, :phone, :role, :site_id)
+    params.require(:member).permit(:first_name, :last_name, :staffid, :email, :phone, :role, :site_id)
   end
 end

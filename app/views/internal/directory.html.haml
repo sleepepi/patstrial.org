@@ -18,6 +18,7 @@
                 = th_sort_field @order, 'members.email', 'Email'
                 = th_sort_field @order, 'members.phone', 'Phone'
                 = th_sort_field @order, 'members.role', 'Role'
+                = th_sort_field @order, 'members.staffid', 'Staff ID'
 
             - members.each do |member|
               %tr
@@ -25,3 +26,4 @@
                 %td= member.email
                 %td.nowrap= member.phone
                 %td= member.role
+                %td= member.staffid
