@@ -5,6 +5,7 @@
       = th_sort_field @order, 'members.email', 'Email'
       = th_sort_field @order, 'members.phone', 'Phone'
       = th_sort_field @order, 'members.role', 'Role'
+      = th_sort_field @order, 'members.staffid', 'Staff ID'
       %th Actions
 
   %tr
@@ -19,6 +20,7 @@
       %td= member.email
       %td= member.phone
       %td= member.role
+      %td= member.staffid
       %td
         = link_to 'Edit', edit_editor_member_path(member), class: 'btn btn-default btn-xs'
         = link_to 'Delete', editor_member_path(member), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Member #{member.name}?" }
