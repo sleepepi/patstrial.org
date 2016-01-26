@@ -11,7 +11,7 @@
     - http://www.cdc.gov/growthcharts/percentile_data_files.htm
     - http://www.cdc.gov/growthcharts/data/zscore/statage.csv
 - **Gem Changes**
-  - Started testing Ruby 2.3.0-preview1
+  - Updated to Ruby 2.3.0
   - Updated to rails 4.2.5
   - Updated to pg 0.18.4
   - Updated to simplecov 0.11.1
