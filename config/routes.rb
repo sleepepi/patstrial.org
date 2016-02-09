@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :drugs
   get 'setup/index'
 
   get 'external/sites'

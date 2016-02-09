@@ -30,6 +30,7 @@
 
 /Gemfile.lock
 /db/schema.rb
+/lib/data/drugs/**/*
 
 /.sass-cache/
 /coverage/*

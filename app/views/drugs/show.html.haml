@@ -1,0 +1,100 @@
+- @title = @drug.name_and_code
+
+.dark-purple
+  .container
+    .color-container
+      %h1
+        = link_to 'NDC Drug Search', drugs_path
+        &middot;
+        = @title
+
+      %table.table.table-bordered
+        %tr
+          %td.text-right
+            %strong Product ID
+          %td= @drug.productid
+
+        %tr
+          %td.text-right
+            %strong Product NDC
+          %td= @drug.product_ndc
+
+        %tr
+          %td.text-right
+            %strong Product Type Name
+          %td= @drug.product_type_name
+
+        %tr
+          %td.text-right
+            %strong Proprietary Name
+          %td= @drug.proprietary_name
+
+        %tr
+          %td.text-right
+            %strong Proprietary Name Suffix
+          %td= @drug.proprietary_name_suffix
+
+        %tr
+          %td.text-right
+            %strong Non Proprietary Name
+          %td= @drug.non_proprietary_name
+
+        %tr
+          %td.text-right
+            %strong Dosage Form Name
+          %td= @drug.dosage_form_name
+
+        %tr
+          %td.text-right
+            %strong Route Name
+          %td= @drug.route_name
+
+        %tr
+          %td.text-right
+            %strong Start Marketing Date
+          %td= @drug.start_marketing_date
+
+        %tr
+          %td.text-right
+            %strong End Marketing Date
+          %td= @drug.end_marketing_date
+
+        %tr
+          %td.text-right
+            %strong Marketing Category Name
+          %td= @drug.marketing_category_name
+
+        %tr
+          %td.text-right
+            %strong Application Number
+          %td= @drug.application_number
+
+        %tr
+          %td.text-right
+            %strong Labeler Name
+          %td= @drug.labeler_name
+
+        %tr
+          %td.text-right
+            %strong Substance Name
+          %td= @drug.substance_name
+
+        %tr
+          %td.text-right
+            %strong Active Numerator Strength
+          %td= @drug.active_numerator_strength
+
+        %tr
+          %td.text-right
+            %strong Active Ingredient Unit
+          %td= @drug.active_ingred_unit
+
+        %tr
+          %td.text-right
+            %strong Pharm Classes
+          %td= @drug.pharm_classes
+
+        %tr
+          %td.text-right
+            %strong DEA Schedule
+          %td= @drug.dea_schedule

@@ -13,6 +13,8 @@
     - http://www.cdc.gov/growthcharts/percentile_data_files.htm
     - http://www.cdc.gov/growthcharts/data/zscore/statage.csv
   - BMI Z-Score also provides the BMI Percentile as output
+- **NDC Drug Search Added**
+  - Added a search page for NDC drug codes
 - **Gem Changes**
   - Updated to Ruby 2.3.0
   - Updated to rails 4.2.5.1

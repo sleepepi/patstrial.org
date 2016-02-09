@@ -9,7 +9,7 @@ module ApplicationHelper
       css_class = 'sort-down'
       selected_class = 'sort-selected'
     end
-    content_tag(:th, class: ['nowrap', selected_class]) do
+    content_tag(:th, class: [selected_class]) do
       link_to url_for(params.merge(order: sort_field_order)), style: 'text-decoration:none', class: css_class do
         display_name.to_s.html_safe
       end

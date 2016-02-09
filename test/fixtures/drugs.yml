@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  productid: MyString
+  product_ndc: MyString
+  product_type_name: MyString
+  proprietary_name: MyText
+  proprietary_name_suffix: MyString
+  non_proprietary_name: MyText
+  dosage_form_name: MyString
+  route_name: MyString
+  start_marketing_date: 2016-02-09
+  end_marketing_date: 2016-02-09
+  marketing_category_name: MyString
+  application_number: MyString
+  labeler_name: MyString
+  substance_name: MyText
+  active_numerator_strength: MyText
+  active_ingred_unit: MyText
+  pharm_classes: MyText
+  dea_schedule: MyString
+
+two:
+  productid: MyString
+  product_ndc: MyString
+  product_type_name: MyString
+  proprietary_name: MyText
+  proprietary_name_suffix: MyString
+  non_proprietary_name: MyText
+  dosage_form_name: MyString
+  route_name: MyString
+  start_marketing_date: 2016-02-09
+  end_marketing_date: 2016-02-09
+  marketing_category_name: MyString
+  application_number: MyString
+  labeler_name: MyString
+  substance_name: MyText
+  active_numerator_strength: MyText
+  active_ingred_unit: MyText
+  pharm_classes: MyText
+  dea_schedule: MyString
