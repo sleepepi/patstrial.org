@@ -7,12 +7,25 @@
   %hr
 
   .jumbotron
-    %h1
-      Z-Score
-      %code= params[:zscore].to_f.round(2)
-    = link_to calculators_bmi_zscore_path(gender: params[:gender], weight: params[:weight], weight_units: params[:weight_units], height: params[:height], height_units: params[:height_units], dob: params[:dob], dov: params[:dov]), class: 'btn btn-default btn-xs' do
-      %span.glyphicon.glyphicon-arrow-left
-      Go Back to Calculator
+    %table.table.table-borderless.table-fixed
+      %tr
+        %td.text-right
+          %h1
+            Z-Score
+        %td
+          %h1
+            %code= params[:zscore].to_f.round(2)
+      %tr
+        %td.text-right
+          %h2
+            BMI Percentile
+        %td
+          %h2
+            %code= format('%0.3f%', params[:bmi_percentile].to_f * 100)
+    .center
+      = link_to calculators_bmi_zscore_path(gender: params[:gender], weight: params[:weight], weight_units: params[:weight_units], height: params[:height], height_units: params[:height_units], dob: params[:dob], dov: params[:dov]), class: 'btn btn-default btn-xs' do
+        %span.glyphicon.glyphicon-arrow-left
+        Go Back to Calculator
 
   %table.table.table-borderless
     %col{ width: '200px' }
@@ -55,3 +68,7 @@
     %tr
       %td.text-right{ style: 'font-weight:bold' } Z-Score
       %td= params[:zscore].to_f.round(2)
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } BMI Percentile
+      %td
+        = format('%0.3f%', params[:bmi_percentile].to_f * 100)

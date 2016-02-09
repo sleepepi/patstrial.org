@@ -22,6 +22,7 @@ class CalculatorsController < ApplicationController
       params[:m] = lms[:m]
       params[:s] = lms[:s]
       params[:zscore] = zscore
+      params[:bmi_percentile] = Calculators::BmiZscore.compute_bmi_percentile(zscore)
 
       redirect_to calculators_bmi_zscore_result_path(zscore_params)
     elsif age_in_months && age_in_months < 24
@@ -71,7 +72,7 @@ class CalculatorsController < ApplicationController
   private
 
   def zscore_params
-    params.permit(:weight, :weight_units, :height, :height_units, :gender, :dob, :dov, :age_in_months, :l, :m, :s, :zscore, :bmi)
+    params.permit(:weight, :weight_units, :height, :height_units, :gender, :dob, :dov, :age_in_months, :l, :m, :s, :zscore, :bmi, :bmi_percentile)
   end
 
   def bpp_params

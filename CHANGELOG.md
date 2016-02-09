@@ -12,6 +12,7 @@
   - Added a Blood Pressure Percentile calculator based on:
     - http://www.cdc.gov/growthcharts/percentile_data_files.htm
     - http://www.cdc.gov/growthcharts/data/zscore/statage.csv
+  - BMI Z-Score also provides the BMI Percentile as output
 - **Gem Changes**
   - Updated to Ruby 2.3.0
   - Updated to rails 4.2.5.1

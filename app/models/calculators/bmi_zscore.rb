@@ -30,5 +30,12 @@ module Calculators
         Math.log(bmi / m) / s
       end
     end
+
+    def self.compute_bmi_percentile(zscore)
+      index = (zscore * 100).round
+      Calculators::NormalCurve.get_index_of(index)
+    rescue
+      nil
+    end
   end
 end
