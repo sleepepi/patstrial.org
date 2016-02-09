@@ -1,4 +1,4 @@
-## 3.0.0
+## 3.0.0 (February 9, 2016)
 
 ### Enhancements
 - **General Changes**
