@@ -8,16 +8,6 @@
 
   = form_tag calculators_bmi_zscore_path, method: :post, class: 'form-horizontal' do
     .form-group
-      = label :weight, 'Weight', class: 'col-md-2 control-label'
-      .col-md-10
-        %table
-          %tr
-            %td
-              = text_field_tag :weight, params[:weight], autocomplete: 'off', class: 'form-control', maxlength: 3, style: 'width: 118px'
-            %td
-              = select_tag :weight_units, options_for_select(['kg', 'lb'], params[:weight_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
-
-    .form-group
       = label :height, 'Height', class: 'col-md-2 control-label'
       .col-md-10
         %table
@@ -26,6 +16,16 @@
               = text_field_tag :height, params[:height], autocomplete: 'off', class: 'form-control', maxlength: 3, style: 'width: 118px'
             %td
               = select_tag :height_units, options_for_select(['cm', 'in'], params[:height_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
+
+    .form-group
+      = label :weight, 'Weight', class: 'col-md-2 control-label'
+      .col-md-10
+        %table
+          %tr
+            %td
+              = text_field_tag :weight, params[:weight], autocomplete: 'off', class: 'form-control', maxlength: 3, style: 'width: 118px'
+            %td
+              = select_tag :weight_units, options_for_select(['kg', 'lb'], params[:weight_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
 
     .form-group
       = label :gender, 'Gender', class: 'col-md-2 control-label'

@@ -1,5 +1,9 @@
 ## 3.0.1
 
+### Enhancements
+- **Calculator Changes**
+  - Changed the ordering of height and weight on the Pediatric BMI Z-Score Calculator
+
 ## 3.0.0 (February 9, 2016)
 
 ### Enhancements

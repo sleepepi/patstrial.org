@@ -30,15 +30,15 @@
   %table.table.table-borderless
     %col{ width: '200px' }
     %tr
-      %td.text-right{ style: 'font-weight:bold' } Weight
-      %td
-        = params[:weight]
-        = params[:weight_units]
-    %tr
       %td.text-right{ style: 'font-weight:bold' } Height
       %td
         = params[:height]
         = params[:height_units]
+    %tr
+      %td.text-right{ style: 'font-weight:bold' } Weight
+      %td
+        = params[:weight]
+        = params[:weight_units]
     %tr
       %td.text-right{ style: 'font-weight:bold' } Body Mass Index
       %td= params[:bmi].to_f.round(2)
