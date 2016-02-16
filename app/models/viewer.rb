@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows generic username password logins for read-only access to internal site
 class Viewer < ActiveRecord::Base
   has_secure_password

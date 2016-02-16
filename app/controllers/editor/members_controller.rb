@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows editors to create and update members in the directory
 # Members are purely listings, and are not related to user logins
 class Editor::MembersController < Editor::EditorController

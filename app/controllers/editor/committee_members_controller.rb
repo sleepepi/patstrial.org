@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows editors to associate members with committees
 class Editor::CommitteeMembersController < Editor::EditorController
   before_action :set_committee

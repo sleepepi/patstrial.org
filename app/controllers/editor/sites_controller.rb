@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows editors to create and update sites to group members in directory. Sites
 # are also visible publicly on website
 class Editor::SitesController < Editor::EditorController

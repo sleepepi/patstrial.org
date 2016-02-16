@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PatstrialOrg
   module VERSION #:nodoc:
     MAJOR = 4

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows viewers, editors, and admins to view internal pages and reports, and
 # download documents
 class InternalController < ApplicationController

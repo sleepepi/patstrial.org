@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Used to flag models as deleted
 module Deletable
   extend ActiveSupport::Concern

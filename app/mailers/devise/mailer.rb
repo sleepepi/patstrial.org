@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Devise::Mailer < ApplicationMailer
 
     include Devise::Mailers::Helpers

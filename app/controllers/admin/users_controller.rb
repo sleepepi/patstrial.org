@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows admins to approve new users and specify user roles
 class Admin::UsersController < Admin::AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]

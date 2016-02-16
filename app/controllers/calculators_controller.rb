@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Publicly available calculators
 class CalculatorsController < ApplicationController
   def index

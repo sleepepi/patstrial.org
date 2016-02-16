@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Calculators
   # Area under the Normal Curve from 0 to X
   # References:

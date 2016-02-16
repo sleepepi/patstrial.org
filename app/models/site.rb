@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Members can belong to a single site. Sites are displayed publicly on website
 class Site < ActiveRecord::Base
   # Concerns

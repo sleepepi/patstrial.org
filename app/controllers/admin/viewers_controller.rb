@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows admins to create and update viewers who have read-only access to the
 # site. Viewers are able to login using a username and password.
 class Admin::ViewersController < Admin::AdminController

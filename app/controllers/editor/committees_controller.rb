@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows editors to create and update committees to group members in directory
 class Editor::CommitteesController < Editor::EditorController
   before_action :set_committee, only: [:show, :edit, :update, :destroy]

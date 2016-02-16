@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Associates a committee with a member. Members can be part of multiple
 # committees
 class CommitteeMember < ActiveRecord::Base

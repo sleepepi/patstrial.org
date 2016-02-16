@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationMailer < ActionMailer::Base
   default from: "PATS Trial <#{ActionMailer::Base.smtp_settings[:email]}>"
   add_template_helper(ApplicationHelper)

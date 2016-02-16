@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows editors to upload documents to categories
 class Editor::DocumentsController < Editor::EditorController
   before_action :set_category

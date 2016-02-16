@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows editors to create and update categories that organize document uploads
 class Editor::CategoriesController < Editor::EditorController
   before_action :set_category, only: [:show, :edit, :update, :destroy]

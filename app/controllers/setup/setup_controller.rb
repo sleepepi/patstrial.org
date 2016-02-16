@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Provides a unified setup overview for admins and editors
 class Setup::SetupController < ApplicationController
   before_action :authenticate_user!

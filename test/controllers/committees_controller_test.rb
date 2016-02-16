@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 # Viewers, editors, and admins should be able to see read only committee pages

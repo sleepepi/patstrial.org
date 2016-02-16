@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DrugsController < ApplicationController
   before_action :set_drug, only: [:show]
 

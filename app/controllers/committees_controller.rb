@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows viewers, editors, and admins to view committees and committee members
 class CommitteesController < ApplicationController
   before_action :authenticate_viewer_or_current_user!

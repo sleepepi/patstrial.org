@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Root controller for editor pages
 class Editor::EditorController < ApplicationController
   before_action :authenticate_user!

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Members are directory listings that can be seen from dashboard
 class Member < ActiveRecord::Base
   # Concerns

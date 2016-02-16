@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Defines format and storage of uploaded documents
 class DocumentUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:

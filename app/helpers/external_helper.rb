@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ExternalHelper
   def abbr(abbreviation)
     content_tag :abbr, title: abbreviations[abbreviation][:name] do

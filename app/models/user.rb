@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # User class defines admins, editors, and viewers
 # Users must be approved in order to login
 class User < ActiveRecord::Base

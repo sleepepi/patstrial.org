@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Root controller for admin pages
 class Admin::AdminController < ApplicationController
   before_action :authenticate_user!

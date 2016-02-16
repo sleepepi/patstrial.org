@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Allows sign in using username or email
 class SessionsController < Devise::SessionsController
   prepend_before_action :already_signed_in, only: :new
