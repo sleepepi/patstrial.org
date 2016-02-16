@@ -3,31 +3,47 @@
     .col-md-3
       = render 'internal/menu'
     .col-md-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand= @category.name
-        %h4.brown= @category.description
+        %h4.purple= @category.description
 
       .color-container.dark-purple
-        %table.table.table-striped
-          %col{ width: '1%' }
-          %thead
-            %tr
-              %th
-              = th_sort_field @order, 'documents.document', 'Name'
-              %th Size
-              = th_sort_field @order, 'documents.created_at', 'Uploaded'
+        - if @documents.present?
+          %table.table.table-striped
+            %col{ width: '1%' }
+            %thead
+              %tr
+                %th
+                = th_sort_field @order, 'documents.document', 'Name'
+                %th Size
+                = th_sort_field @order, 'documents.created_at', 'Uploaded'
 
-          - @documents.where(archived: false).each do |document|
-            %tr
-              %td
-                %span.glyphicon.glyphicon-file
-              %td= link_to document.name, internal_category_document_path(@category.slug, document.id), data: { no_turbolink: true }
-              %td
-                %code= number_to_human_size document.document.size
-              %td= document.created_at.strftime('%m-%d-%Y')
+            - @documents.where(archived: false).each do |document|
+              %tr
+                %td
+                  %span.glyphicon.glyphicon-file
+                %td= link_to document.name, internal_category_document_path(@category.top_level, @category.slug, document.id), data: { no_turbolink: true }
+                %td
+                  %code= number_to_human_size document.document.size
+                %td= document.created_at.strftime('%m-%d-%Y')
 
-        .center
-          = paginate @documents, theme: 'bootstrap'
+          .center
+            = paginate @documents, theme: 'bootstrap'
+        - if @category.videos.where(archived: false).present?
+          %table.table.table-striped
+            %col{ width: '1%' }
+            %thead
+              %tr
+                %th
+                %th Name
+                %th Added
+
+            - @category.videos.where(archived: false).each do |video|
+              %tr
+                %td
+                  %span.glyphicon.glyphicon-film
+                %td= link_to video.name, internal_category_video_path(@category.top_level, @category.slug, video.id)
+                %td= video.created_at.strftime('%m-%d-%Y')
 
       .color-container.dark-purple
         %p.lead.center

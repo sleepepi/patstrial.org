@@ -1,0 +1,16 @@
+- @title = "Edit Video: #{@video.name}"
+
+.container
+  .row
+    .col-md-3
+      = render 'setup/menu'
+    .col-md-9
+      .color-container.dark-purple
+        %h1.brand
+          = @video.name
+        %h4.purple
+          Edit Video
+
+      .color-container
+        = render 'form'
+

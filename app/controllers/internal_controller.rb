@@ -4,8 +4,9 @@
 # download documents
 class InternalController < ApplicationController
   before_action :authenticate_viewer_or_current_user!
-  before_action :set_category, only: [:category, :document]
+  before_action :set_category, only: [:category, :document, :video]
   before_action :set_document, only: [:document]
+  before_action :set_video, only: [:video]
 
   def dashboard
   end
@@ -28,6 +29,9 @@ class InternalController < ApplicationController
     end
   end
 
+  def video
+  end
+
   private
 
   def set_category
@@ -38,5 +42,10 @@ class InternalController < ApplicationController
   def set_document
     @document = @category.documents.where(archived: false).find_by_id params[:document_id]
     empty_response_or_root_path(internal_category_path(@category)) unless @document
+  end
+
+  def set_video
+    @video = @category.videos.where(archived: false).find_by_id params[:video_id]
+    empty_response_or_root_path(internal_category_path(@category)) unless @video
   end
 end

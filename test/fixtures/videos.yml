@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: learn
+  name: Video One
+  embed_url: http://www.youtube.com/embed
+  archived: false
+  deleted: false
+
+two:
+  category: learn
+  name: Video Two
+  embed_url: http://www.youtube.com/embed
+  archived: false
+  deleted: false

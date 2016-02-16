@@ -45,7 +45,7 @@ class Editor::CommitteesController < Editor::EditorController
   # DELETE /committees/1
   def destroy
     @committee.destroy
-    redirect_to editor_committees_path, notice: 'Committee was successfully destroyed.'
+    redirect_to editor_committees_path, notice: 'Committee was successfully deleted.'
   end
 
   private

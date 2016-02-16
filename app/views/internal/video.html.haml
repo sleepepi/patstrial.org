@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-3
+      = render 'internal/menu'
+    .col-md-9
+      .color-container.dark-purple
+        %h1.brand= link_to @category.name, internal_category_path(@category.top_level, @category.slug)
+        %h4.purple= @video.name
+
+      .embed-responsive.embed-responsive-16by9{ style: 'margin-bottom: 20px' }
+        %iframe.embed-responsive-item{ src: @video.embed_url, webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true }

@@ -1,0 +1,42 @@
+- if @video.new_record?
+  - url = editor_category_videos_path(@category)
+  - method = :post
+- else
+  - url = editor_category_video_path(@category, @video)
+  - method = :patch
+
+= form_for [@category, @video], url: url, method: method, html: { class: 'form-horizontal' } do |f|
+  - if @video.errors.any?
+    .bs-callout.bs-callout-danger
+      %h4
+        = pluralize @video.errors.count, 'error'
+        prohibited this video from being saved
+
+      %ul
+        - @video.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :embed_url, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :embed_url, class: 'form-control'
+
+      %strong Recommended settings for YouTube videos:
+      %code.nowrap ?rel=0&modestbranding=1&autohide=1&showinfo=0&wmode=opaque
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      .checkbox
+        %label
+          = f.check_box :archived
+          Archived
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit nil, class: 'btn btn-primary'
+      = link_to 'cancel', url, class: ''

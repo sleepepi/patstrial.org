@@ -46,7 +46,7 @@ class Admin::ViewersController < Admin::AdminController
   # DELETE /admin/viewers/1
   def destroy
     @viewer.destroy
-    redirect_to admin_viewers_path, notice: 'Viewer was successfully destroyed.'
+    redirect_to admin_viewers_path, notice: 'Viewer was successfully deleted.'
   end
 
   private

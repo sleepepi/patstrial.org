@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-md-3
+      = render 'setup/menu'
+    .col-md-9
+      .color-container.dark-purple
+        %h1.brand
+          = link_to editor_category_path(@category), style: 'text-decoration:none' do
+            %span.glyphicon.glyphicon-level-up
+          = @category.name
+        %h4.brown Videos
+
+      %a.anchor-top{ name: 'home'}
+      .color-container.dark-brown
+        %p.lead
+          You may
+          %strong archive videos
+          you wish to hide from the menu.
+
+      = render 'videos'

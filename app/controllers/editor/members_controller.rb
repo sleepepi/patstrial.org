@@ -46,7 +46,7 @@ class Editor::MembersController < Editor::EditorController
   # DELETE /members/1
   def destroy
     @member.destroy
-    redirect_to editor_members_path, notice: 'Member was successfully destroyed.'
+    redirect_to editor_members_path, notice: 'Member was successfully deleted.'
   end
 
   private

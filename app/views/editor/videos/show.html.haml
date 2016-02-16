@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-md-3
+      = render 'setup/menu'
+    .col-md-9
+      .color-container.dark-purple
+        %h1.brand
+          = link_to editor_category_videos_path(@category), style: 'text-decoration:none' do
+            %span.glyphicon.glyphicon-level-up
+          = @video.name
+
+      .color-container
+        %p.lead
+          = link_to 'Edit Video', edit_editor_category_video_path(@category, @video), class: 'btn btn-xs btn-default'
+
+      %table.table.table-striped
+        %tr
+          %td Name
+          %td= @video.name
+
+        %tr
+          %td Embed URL
+          %td= @video.embed_url
+
+        %tr
+          %td Archived
+          %td= @video.archived
+
+      .embed-responsive.embed-responsive-16by9{ style: 'margin-bottom: 20px' }
+        %iframe.embed-responsive-item{ src: @video.embed_url, webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true }

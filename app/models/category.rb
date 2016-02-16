@@ -7,12 +7,13 @@ class Category < ActiveRecord::Base
   include Deletable
 
   # Model Validation
-  validates :name, :slug, presence: true
+  validates :name, :slug, :top_level, presence: true
   validates :slug, uniqueness: { scope: :deleted }
-  validates :slug, format: { with: /\A[a-z][a-z0-9\-]*\Z/ }
+  validates :slug, :top_level, format: { with: /\A[a-z][a-z0-9\-]*\Z/ }
 
   # Model Relationships
   has_many :documents
+  has_many :videos, -> { current }
 
   # Model Methods
 end

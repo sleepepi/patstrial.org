@@ -4,9 +4,9 @@
     .col-md-3
       = render 'internal/menu'
     .col-md-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand= @title
-        %h4.brown Pediatric Adenotonsillectomy Trial for Snoring
+        %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
 
       - Committee.order(:position).current.each do |committee|
         .color-container.dark-purple{ style: 'border-color: transparent' }

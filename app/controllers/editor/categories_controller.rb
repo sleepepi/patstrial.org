@@ -45,7 +45,7 @@ class Editor::CategoriesController < Editor::EditorController
   # DELETE /categories/1
   def destroy
     @category.destroy
-    redirect_to editor_categories_path, notice: 'Category was successfully destroyed.'
+    redirect_to editor_categories_path, notice: 'Category was successfully deleted.'
   end
 
   private

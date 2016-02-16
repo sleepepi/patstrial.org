@@ -3,7 +3,7 @@
 one:
   name: Manuals
   description: MyText
-  top_level: TOPLEVEL
+  top_level: documents
   slug: manuals
   position: 1
   archived: false
@@ -12,8 +12,17 @@ one:
 two:
   name: Protocols
   description: MyText
-  top_level: TOPLEVEL
+  top_level: documents
   slug: protocol
   position: 2
+  archived: false
+  deleted: false
+
+learn:
+  name: Learn
+  description: Instruction Videos
+  top_level: videos
+  slug: learn
+  position: 3
   archived: false
   deleted: false

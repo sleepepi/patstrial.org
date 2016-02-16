@@ -3,9 +3,9 @@
     .col-md-3
       = render 'internal/menu'
     .col-md-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand Directory
-        %h4.brown Pediatric Adenotonsillectomy Trial for Snoring
+        %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
 
       - @members.group_by(&:site).sort{|a,b| ((a[0] ? a[0].name : '_') <=> (b[0] ? b[0].name : '_'))}.each do |site, members|
         .color-container.dark-purple

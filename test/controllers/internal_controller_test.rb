@@ -45,27 +45,27 @@ class InternalControllerTest < ActionController::TestCase
 
   test 'should get category as viewer' do
     login(@viewer)
-    get :category, category: categories(:one).slug
+    get :category, top_level: categories(:one).top_level, category: categories(:one).slug
     assert_not_nil assigns(:category)
     assert_response :success
   end
 
   test 'should get category as generic viewer' do
     login_viewer(@generic_viewer)
-    get :category, category: categories(:one).slug
+    get :category, top_level: categories(:one).top_level, category: categories(:one).slug
     assert_not_nil assigns(:category)
     assert_response :success
   end
 
   test 'should not get category as anonymous user' do
-    get :category, category: categories(:one)
+    get :category, top_level: categories(:one).top_level, category: categories(:one).slug
     assert_nil assigns(:category)
     assert_redirected_to new_user_session_path
   end
 
   test 'should download document as viewer' do
     login(@viewer)
-    get :document, category: categories(:one).slug, document_id: documents(:two)
+    get :document, top_level: categories(:one).top_level, category: categories(:one).slug, document_id: documents(:two)
     assert_not_nil assigns(:category)
     assert_not_nil assigns(:document)
     assert_kind_of String, response.body
@@ -75,7 +75,7 @@ class InternalControllerTest < ActionController::TestCase
 
   test 'should download PDF as viewer' do
     login(@viewer)
-    get :document, category: categories(:one).slug, document_id: documents(:pdf)
+    get :document, top_level: categories(:one).top_level, category: categories(:one).slug, document_id: documents(:pdf)
     assert_not_nil assigns(:category)
     assert_not_nil assigns(:document)
     assert_kind_of String, response.body
@@ -85,7 +85,7 @@ class InternalControllerTest < ActionController::TestCase
 
   test 'should download document as generic viewer' do
     login_viewer(@generic_viewer)
-    get :document, category: categories(:one).slug, document_id: documents(:two)
+    get :document, top_level: categories(:one).top_level, category: categories(:one).slug, document_id: documents(:two)
     assert_not_nil assigns(:category)
     assert_not_nil assigns(:document)
     assert_kind_of String, response.body
@@ -94,9 +94,32 @@ class InternalControllerTest < ActionController::TestCase
   end
 
   test 'should not download document as anonymous user' do
-    get :document, category: categories(:one).slug, document_id: documents(:two)
+    get :document, top_level: categories(:one).top_level, category: categories(:one).slug, document_id: documents(:two)
     assert_nil assigns(:category)
     assert_nil assigns(:document)
+    assert_redirected_to new_user_session_path
+  end
+
+  test 'should get video as viewer' do
+    login(@viewer)
+    get :video, top_level: categories(:learn).top_level, category: categories(:learn).slug, video_id: videos(:one)
+    assert_not_nil assigns(:category)
+    assert_not_nil assigns(:video)
+    assert_response :success
+  end
+
+  test 'should get video as generic viewer' do
+    login_viewer(@generic_viewer)
+    get :video, top_level: categories(:learn).top_level, category: categories(:learn).slug, video_id: videos(:one)
+    assert_not_nil assigns(:category)
+    assert_not_nil assigns(:video)
+    assert_response :success
+  end
+
+  test 'should not get video as anonymous viewer' do
+    get :video, top_level: categories(:learn).top_level, category: categories(:learn).slug, video_id: videos(:one)
+    assert_nil assigns(:category)
+    assert_nil assigns(:video)
     assert_redirected_to new_user_session_path
   end
 end

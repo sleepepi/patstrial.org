@@ -54,7 +54,7 @@ class Editor::DocumentsController < Editor::EditorController
   # DELETE /:category_id/documents/1
   def destroy
     @document.destroy
-    redirect_to editor_category_documents_path(@category), notice: 'Document was successfully destroyed.'
+    redirect_to editor_category_documents_path(@category), notice: 'Document was successfully deleted.'
   end
 
   private

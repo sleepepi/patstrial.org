@@ -40,6 +40,7 @@ Rails.application.routes.draw do
           post :upload, action: :create_multiple
         end
       end
+      resources :videos
     end
     resources :committees do
       resources :committee_members, path: 'members'
@@ -60,8 +61,9 @@ Rails.application.routes.draw do
   scope module: 'internal' do
     get :dashboard
     get :directory
-    get 'documents/:category', action: :category, as: :internal_category
-    get 'documents/:category/:document_id', action: :document, as: :internal_category_document
+    get ':top_level/:category', action: :category, as: :internal_category
+    get ':top_level/:category/documents/:document_id', action: :document, as: :internal_category_document
+    get ':top_level/:category/videos/:video_id', action: :video, as: :internal_category_video
   end
 
   scope module: 'external' do

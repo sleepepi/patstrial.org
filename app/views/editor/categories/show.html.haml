@@ -10,10 +10,11 @@
           \/
           = @category.slug
 
-      .color-container.dark-brown
+      .color-container
         %p.lead
-          = link_to 'Edit Category', edit_editor_category_path(@category)
-          = link_to 'View Documents', editor_category_documents_path(@category)
+          = link_to 'Edit Category', edit_editor_category_path(@category), class: 'btn btn-xs btn-default'
+          = link_to 'View Documents', editor_category_documents_path(@category), class: 'btn btn-xs btn-default'
+          = link_to 'View Videos', editor_category_videos_path(@category), class: 'btn btn-xs btn-default'
 
       %table.table.table-striped
         %tr

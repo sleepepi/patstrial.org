@@ -1,5 +1,10 @@
 ## 4.0.0
 
+### Enhancements
+- **Category Changes**
+  - Categories can now set their top level folder name
+  - Videos can now be embedded on categories
+
 ## 3.0.1 (February 16, 2016)
 
 ### Enhancements

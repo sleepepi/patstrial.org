@@ -46,7 +46,7 @@ class Editor::SitesController < Editor::EditorController
   # DELETE /sites/1
   def destroy
     @site.destroy
-    redirect_to editor_sites_path, notice: 'Site was successfully destroyed.'
+    redirect_to editor_sites_path, notice: 'Site was successfully deleted.'
   end
 
   private
