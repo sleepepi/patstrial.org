@@ -1,9 +1,9 @@
 module PatstrialOrg
   module VERSION #:nodoc:
-    MAJOR = 3
+    MAJOR = 4
     MINOR = 0
-    TINY = 1
-    BUILD = nil # 'pre', 'beta1', 'beta2', 'rc', 'rc2', nil
+    TINY = 0
+    BUILD = 'pre' # 'pre', 'beta1', 'beta2', 'rc', 'rc2', nil
 
     STRING = [MAJOR, MINOR, TINY, BUILD].compact.join('.')
   end
