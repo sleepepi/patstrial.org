@@ -13,7 +13,7 @@
         %table
           %tr
             %td
-              = text_field_tag :height, params[:height], autocomplete: 'off', class: 'form-control', maxlength: 3, style: 'width: 118px'
+              = text_field_tag :height, params[:height], autocomplete: 'off', class: 'form-control', maxlength: 5, style: 'width: 118px'
             %td
               = select_tag :height_units, options_for_select(['cm', 'in'], params[:height_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
 
@@ -23,7 +23,7 @@
         %table
           %tr
             %td
-              = text_field_tag :weight, params[:weight], autocomplete: 'off', class: 'form-control', maxlength: 3, style: 'width: 118px'
+              = text_field_tag :weight, params[:weight], autocomplete: 'off', class: 'form-control', maxlength: 5, style: 'width: 118px'
             %td
               = select_tag :weight_units, options_for_select(['kg', 'lb'], params[:weight_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
 

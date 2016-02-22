@@ -1,6 +1,9 @@
 ## 4.0.0
 
 ### Enhancements
+- **Calculator Changes**
+  - Increased the number of characters for height and weight to account for
+    decimals
 - **Category Changes**
   - Categories can now set their top level folder name
   - Videos can now be embedded on categories
