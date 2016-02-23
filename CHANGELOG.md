@@ -1,6 +1,8 @@
 ## 4.0.0
 
 ### Enhancements
+- **General Changes**
+  - Improved layout for smaller screen sizes
 - **Calculator Changes**
   - Increased the number of characters for height and weight to account for
     decimals
