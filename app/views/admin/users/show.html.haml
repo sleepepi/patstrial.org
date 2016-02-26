@@ -3,9 +3,9 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.purple
+      .color-container.dark-purple
         %h1.brand= @user.name
-        %h4= @user.email
+        %h4.purple= @user.email
 
       %a.anchor-top{ name: 'home'}
       .color-container.dark-brown
@@ -32,3 +32,6 @@
           %tr
             %td Editor
             %td= simple_check @user.editor?
+          %tr
+            %td DSMB Member
+            %td= simple_check @user.dsmb_member?

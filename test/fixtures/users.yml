@@ -32,3 +32,11 @@ deleted:
   email: deleted@example.com
   encrypted_password: ""
   deleted: true
+
+dsmb_member:
+  first_name: Safety
+  last_name: Monitor
+  email: dsmb_member@example.com
+  encrypted_password: ""
+  dsmb_member: true
+  approved: true

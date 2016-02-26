@@ -9,6 +9,8 @@
 - **Category Changes**
   - Categories can now set their top level folder name
   - Videos can now be embedded on categories
+- **User Changes**
+  - Users can be set as DSMB members
 
 ### Bug Fix
 - Fixed a bug preventing editors from viewing sites in project setup
