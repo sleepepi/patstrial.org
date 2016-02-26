@@ -5,13 +5,14 @@
     .col-sm-9
       .color-container.dark-purple
         %h1.brand
-          = link_to editor_category_videos_path(@category), style: 'text-decoration:none' do
-            %span.glyphicon.glyphicon-level-up
+          = link_to 'Folders', editor_categories_path(@category)
+          &middot;
+          = link_to @category.name, editor_category_path(@category)
+          &middot;
+          = link_to 'Videos', editor_category_videos_path(@category)
+          &middot;
           = @video.name
-
-      .color-container
-        %p.lead
-          = link_to 'Edit Video', edit_editor_category_video_path(@category, @video), class: 'btn btn-xs btn-default'
+        = link_to 'Edit Video', edit_editor_category_video_path(@category, @video), class: 'btn btn-xs btn-default'
 
       %table.table.table-striped
         %tr

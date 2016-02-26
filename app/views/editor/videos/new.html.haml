@@ -7,8 +7,14 @@
     .col-sm-9
       .color-container.dark-purple
         %h1.brand
+          = link_to 'Folders', editor_categories_path(@category)
+          &middot;
+          = link_to @category.name, editor_category_path(@category)
+          &middot;
+          = link_to 'Videos', editor_category_videos_path(@category)
+          &middot;
           New Video
-        %h4.brown
+        %h4.purple
 
 
       .color-container

@@ -1,22 +1,16 @@
 %table.table.table-striped
   %thead
     %tr
+      = th_sort_field @order, 'videos.archived', 'Archived', extra_class: 'center'
       = th_sort_field @order, 'videos.name', 'Name'
-      = th_sort_field @order, 'videos.embed_url', 'Embed URL'
-      = th_sort_field @order, 'videos.archived', 'Archived'
       %th Actions
-
-  %tr
-    %td.center{ colspan: 4 }
-      = link_to new_editor_category_video_path(@category) do
-        .glyphicon.glyphicon-plus
-        Add New Video
 
   - @videos.each do |video|
     %tr
-      %td= link_to video.name, editor_category_video_path(@category, video)
-      %td= video.embed_url
-      %td= video.archived
+      %td.center
+        - if video.archived?
+          %span.glyphicon.glyphicon-eye-close.text-muted
+      %td= link_to video.name, editor_category_video_path(@category, video), style: "#{'text-decoration: line-through;' if video.archived?}"
       %td
         = link_to 'Edit', edit_editor_category_video_path(@category, video), class: 'btn btn-default btn-xs'
         = link_to 'Delete', editor_category_video_path(@category, video), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Video #{video.name}?" }

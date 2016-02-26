@@ -4,16 +4,12 @@
       = render 'setup/menu'
     .col-sm-9
       .color-container.dark-purple
-        %h1.brand= @user.name
+        %h1.brand
+          = link_to 'Users', admin_users_path
+          &middot;
+          = @user.name
         %h4.purple= @user.email
-
-      %a.anchor-top{ name: 'home'}
-      .color-container.dark-brown
-        %p
-          You may
-          = link_to 'edit this user', edit_admin_user_path(@user)
-          to approve their website access and to change their roles.
-
+        = link_to 'Edit User', edit_admin_user_path(@user), class: 'btn btn-xs btn-default'
 
       %table.table.table-striped
         %tbody

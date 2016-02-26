@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   end
 
   namespace :editor do
-    resources :categories do
+    resources :categories, path: 'folders' do
       resources :documents do
         collection do
           post :upload, action: :create_multiple

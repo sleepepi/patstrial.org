@@ -3,18 +3,14 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.purple
-        %h1.brand= @category.name
-        %h4
-          = @category.top_level
-          \/
-          = @category.slug
-
-      .color-container
-        %p.lead
-          = link_to 'Edit Category', edit_editor_category_path(@category), class: 'btn btn-xs btn-default'
-          = link_to 'View Documents', editor_category_documents_path(@category), class: 'btn btn-xs btn-default'
-          = link_to 'View Videos', editor_category_videos_path(@category), class: 'btn btn-xs btn-default'
+      .color-container.dark-purple
+        %h1.brand
+          = link_to 'Folders', editor_categories_path
+          &middot;
+          = @category.name
+        = link_to 'Edit Folder', edit_editor_category_path(@category), class: 'btn btn-xs btn-default'
+        = link_to 'View Documents', editor_category_documents_path(@category), class: 'btn btn-xs btn-default'
+        = link_to 'View Videos', editor_category_videos_path(@category), class: 'btn btn-xs btn-default'
 
       %table.table.table-striped
         %tr
@@ -42,8 +38,12 @@
           %td= @category.archived
 
         %tr
-          %td Documents
+          %td= link_to 'Documents', editor_category_documents_path(@category)
           %td#documents_count= @category.documents.count
+
+        %tr
+          %td=link_to 'Videos', editor_category_videos_path(@category)
+          %td= @category.videos.count
 
       - fallback_url = new_editor_category_document_path(@category)
       = link_to 'Upload New Document', fallback_url, class: 'btn btn-default'

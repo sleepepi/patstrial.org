@@ -3,13 +3,9 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand Committees
-        %h4.brown Editor Dashboard
-
-      %a.anchor-top{ name: 'home'}
-      .color-container.dark-brown
-        %p.lead
-          You may edit the committees and committee members here.
+        %h4.purple You may edit the committees and committee members here.
+        = link_to 'Add New Committee', new_editor_committee_path, class: 'btn btn-xs btn-default'
 
       = render 'committees'

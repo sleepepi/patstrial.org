@@ -3,14 +3,14 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.purple
-        %h1.brand= @member.name
-        %h4= @member.email
-
-      %a.anchor-top{ name: 'home'}
-      .color-container.dark-brown
-        %p.lead
-          = link_to 'Edit Member', edit_editor_member_path(@member)
+      .color-container.dark-purple
+        %h1.brand
+          = link_to 'Members', editor_members_path
+          &middot;
+          = @member.name
+        %h4.purple
+          = @member.email
+        = link_to 'Edit Member', edit_editor_member_path(@member), class: 'btn btn-xs btn-default'
 
       %table.table.table-striped
         %tr

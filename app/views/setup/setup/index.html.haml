@@ -4,24 +4,55 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand= @title
-        %h4 Pediatric Adenotonsillectomy Trial for Snoring
+        %h4.purple Welcome to the PATS website setup overview!
       %a.anchor-top{ name: 'home'}
-      .color-container.dark-brown
-        %p
-          Welcome to the setup overview!
-        - if current_user.admin?
-          %p
-            As an admin you may:
-            %ul
-              %li
-                = link_to 'approve and set user roles', admin_users_path
-        - if current_user.editor?
-          %p
-            As an editor you may:
-            %ul
-              %li
-                = link_to 'edit the directory', editor_members_path
-              %li
-                = link_to 'edit categories and upload documents', editor_categories_path
+      .color-container.dark-purple
+        .row
+          - if current_user.admin?
+            .col-md-4
+              .panel.panel-primary{ style: 'min-height: 250px' }
+                .panel-heading
+                  %h3.panel-title Users
+                .panel-body
+                  %ul
+                    %li Approve users
+                    %li Set roles
+                    %li Modify names and emails
+                  %br
+                  .center
+                    = link_to admin_users_path, class: 'btn btn-xs btn-default' do
+                      %span.glyphicon.glyphicon-cog
+                      Edit Users
+
+          - if current_user.editor?
+            .col-md-4
+              .panel.panel-primary{ style: 'min-height: 250px' }
+                .panel-heading
+                  %h3.panel-title Directory
+                .panel-body
+                  %ul
+                    %li Add members
+                    %li Change site membership
+                    %li Modify contact information
+                  %br
+                  .center
+                    = link_to editor_members_path, class: 'btn btn-xs btn-default' do
+                      %span.glyphicon.glyphicon-cog
+                      Edit Directory
+
+            .col-md-4
+              .panel.panel-primary{ style: 'min-height: 250px' }
+                .panel-heading
+                  %h3.panel-title Folders
+                .panel-body
+                  %ul
+                    %li Create folders
+                    %li Upload documents
+                    %li Embed videos
+                  %br
+                  .center
+                    = link_to editor_categories_path, class: 'btn btn-xs btn-default' do
+                      %span.glyphicon.glyphicon-cog
+                      Edit Folders

@@ -1,20 +1,16 @@
 %table.table.table-striped
   %thead
     %tr
+      = th_sort_field @order, 'documents.archived', 'Archived', extra_class: 'center'
       %th Name
-      = th_sort_field @order, 'documents.archived', 'Archived'
       %th Actions
-
-  %tr
-    %td.center{ colspan: 3 }
-      = link_to new_editor_category_document_path(@category) do
-        .glyphicon.glyphicon-plus
-        Add New Document
 
   - @documents.each do |document|
     %tr
-      %td= link_to document.name, editor_category_document_path(@category, document)
-      %td= document.archived
+      %td.center
+        - if document.archived?
+          %span.glyphicon.glyphicon-eye-close.text-muted
+      %td= link_to document.name, editor_category_document_path(@category, document), style: "#{'text-decoration: line-through;' if document.archived?}"
       %td
         = link_to 'Edit', edit_editor_category_document_path(@category, document), class: 'btn btn-default btn-xs'
         = link_to 'Delete', editor_category_document_path(@category, document), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Document #{document.name}?" }

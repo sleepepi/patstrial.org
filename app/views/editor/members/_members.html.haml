@@ -8,12 +8,6 @@
       = th_sort_field @order, 'members.staffid', 'Staff ID'
       %th Actions
 
-  %tr
-    %td.center{ colspan: 5 }
-      = link_to new_editor_member_path do
-        .glyphicon.glyphicon-plus
-        Add New Member
-
   - @members.each do |member|
     %tr
       %td= link_to member.name_reverse, editor_member_path(member)
@@ -21,7 +15,7 @@
       %td= member.phone
       %td= member.role
       %td= member.staffid
-      %td
+      %td.nowrap
         = link_to 'Edit', edit_editor_member_path(member), class: 'btn btn-default btn-xs'
         = link_to 'Delete', editor_member_path(member), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Member #{member.name}?" }
 

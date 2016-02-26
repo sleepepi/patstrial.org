@@ -6,7 +6,7 @@ class Editor::CategoriesController < Editor::EditorController
 
   # GET /categories
   def index
-    @order = scrub_order(Category, params[:order], 'categories.name')
+    @order = scrub_order(Category, params[:order], 'categories.position')
     @categories = Category.current.order(@order).page(params[:page]).per(40)
   end
 

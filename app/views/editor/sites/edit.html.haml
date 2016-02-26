@@ -5,11 +5,13 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand
-          = @site.name_was
-        %h4.brown
-          Edit Site
+          = link_to 'Sites', editor_sites_path
+          &middot;
+          = link_to @site.name_was, editor_site_path(@site)
+          &middot;
+          Edit
 
       .color-container
         = render 'form'

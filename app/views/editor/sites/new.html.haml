@@ -5,10 +5,12 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand
+          = link_to 'Sites', editor_sites_path
+          &middot;
           New Site
-        %h4.brown
+        %h4.purple
           Sites are displayed on the public side of website.
 
       .color-container

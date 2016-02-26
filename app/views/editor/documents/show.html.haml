@@ -5,16 +5,17 @@
     .col-sm-9
       .color-container.dark-purple
         %h1.brand
-          = link_to editor_category_documents_path(@category), style: 'text-decoration:none' do
-            %span.glyphicon.glyphicon-level-up
+          = link_to 'Folders', editor_categories_path(@category)
+          &middot;
+          = link_to @category.name, editor_category_documents_path(@category)
+          &middot;
+          = link_to 'Documents', editor_category_documents_path(@category)
+          &middot;
           = @document.name
         %h4.purple
           = @document.extension
           %code= number_to_human_size @document.document.size
-
-      .color-container.dark-brown
-        %p.lead
-          = link_to 'Edit Document', edit_editor_category_document_path(@category, @document)
+        = link_to 'Edit Document', edit_editor_category_document_path(@category, @document), class: 'btn btn-xs btn-default'
 
       %table.table.table-striped
         %tr

@@ -7,9 +7,15 @@
     .col-sm-9
       .color-container.dark-purple
         %h1.brand
-          = @video.name
-        %h4.purple
-          Edit Video
+          = link_to 'Folders', editor_categories_path(@category)
+          &middot;
+          = link_to @category.name, editor_category_path(@category)
+          &middot;
+          = link_to 'Videos', editor_category_videos_path(@category)
+          &middot;
+          = link_to @video.name_was, editor_category_video_path(@category, @video)
+          &middot;
+          Edit
 
       .color-container
         = render 'form'

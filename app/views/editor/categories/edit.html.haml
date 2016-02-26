@@ -1,15 +1,17 @@
-- @title = "Edit Category: #{@category.name_was}"
+- @title = "Edit Folder: #{@category.name_was}"
 
 .container
   .row
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand
-          = @category.name_was
-        %h4.brown
-          Edit Category
+          = link_to 'Folders', editor_categories_path
+          &middot;
+          = link_to @category.name_was, editor_category_path(@category)
+          &middot;
+          Edit
 
       .color-container
         = render 'form'

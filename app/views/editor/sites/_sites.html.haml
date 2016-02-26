@@ -5,12 +5,6 @@
       = th_sort_field @order, 'sites.address', 'Address'
       %th Actions
 
-  %tr
-    %td.center{ colspan: 3 }
-      = link_to new_editor_site_path do
-        .glyphicon.glyphicon-plus
-        Add New Site
-
   - @sites.each do |site|
     %tr
       %td= link_to site.name, editor_site_path(site)

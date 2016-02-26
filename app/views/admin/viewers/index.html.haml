@@ -3,11 +3,9 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand Viewers
-        %h4.brown Editor Dashboard
-      .color-container.dark-brown
-        %p
-          You may edit viewers here.
+        %h4.purple You may edit viewers here.
+        = link_to 'Add New Viewer', new_admin_viewer_path, class: 'btn btn-xs btn-default'
 
       = render 'viewers'

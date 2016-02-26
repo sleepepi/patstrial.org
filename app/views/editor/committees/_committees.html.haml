@@ -6,12 +6,6 @@
       = th_sort_field @order, 'committees.slug', 'Slug'
       %th Actions
 
-  %tr
-    %td.center{ colspan: 4 }
-      = link_to new_editor_committee_path do
-        .glyphicon.glyphicon-plus
-        Add New Committee
-
   - @committees.each do |committee|
     %tr
       %td= committee.position

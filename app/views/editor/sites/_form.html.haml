@@ -29,8 +29,8 @@
     = f.label :address, nil, class: 'col-md-2 control-label'
     .col-md-10
       = f.text_field :address, class: 'form-control'
-      .bs-callout.bs-callout-info
-        %h4 Address Format
+      .bs-callout.bs-callout-warning
+        %strong Address Format
         %p
           "City, State, Country, Zip Code"
 
@@ -38,8 +38,8 @@
     = f.label :contact, nil, class: 'col-md-2 control-label'
     .col-md-10
       = f.text_field :contact, class: 'form-control'
-      .bs-callout.bs-callout-info
-        %h4 Contact Format
+      .bs-callout.bs-callout-warning
+        %strong Contact Format
         %p
           "Contact Name, Phone, Email"
 

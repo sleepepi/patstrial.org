@@ -1,15 +1,17 @@
-- @title = 'New Category'
+- @title = 'New Folder'
 
 .container
   .row
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand
-          New Category
-        %h4.brown
-          Categories organize uploaded documents.
+          = link_to 'Folders', editor_categories_path
+          &middot;
+          New Folder
+        %h4.purple
+          Folders organize uploaded documents and embedded videos.
 
       .color-container
         = render 'form'

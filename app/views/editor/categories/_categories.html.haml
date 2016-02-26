@@ -8,12 +8,6 @@
       = th_sort_field @order, 'categories.archived', 'Archived'
       %th Actions
 
-  %tr
-    %td.center{ colspan: 6 }
-      = link_to new_editor_category_path do
-        .glyphicon.glyphicon-plus
-        Add New Category
-
   - @categories.each do |category|
     %tr
       %td= category.position

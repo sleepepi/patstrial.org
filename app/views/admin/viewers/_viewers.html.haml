@@ -7,12 +7,6 @@
       = th_sort_field @order, 'viewers.sign_in_count', 'Sign in Count'
       %th Actions
 
-  %tr
-    %td.center{ colspan: 5 }
-      = link_to new_admin_viewer_path do
-        .glyphicon.glyphicon-plus
-        Add New Viewer
-
   - @viewers.each do |viewer|
     %tr
       %td= link_to viewer.username, admin_viewer_path(viewer)

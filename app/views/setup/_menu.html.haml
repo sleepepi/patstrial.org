@@ -8,7 +8,7 @@
     %li
       = link_to 'Committees', editor_committees_path, class: (params[:controller] == 'editor/committees' ? 'active' : nil)
     %li
-      = link_to 'Categories', editor_categories_path, class: (%w(editor/categories editor/documents editor/videos).include?(params[:controller]) ? 'active' : nil)
+      = link_to 'Folders', editor_categories_path, class: (%w(editor/categories editor/documents editor/videos).include?(params[:controller]) ? 'active' : nil)
     %li
       = link_to 'Members', editor_members_path, class: (params[:controller] == 'editor/members' ? 'active' : nil)
     %li

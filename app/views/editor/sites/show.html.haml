@@ -4,13 +4,11 @@
       = render 'setup/menu'
     .col-sm-9
       .color-container.purple
-        %h1.brand= @site.name
-        %h4
-          = @site.slug
-
-      .color-container.dark-brown
-        %p.lead
-          = link_to 'Edit Site', edit_editor_site_path(@site)
+        %h1.brand
+          = link_to 'Sites', editor_sites_path
+          &middot;
+          = @site.name
+        = link_to 'Edit Site', edit_editor_site_path(@site), class: 'btn btn-xs btn-default'
 
       %table.table.table-striped
         %tr

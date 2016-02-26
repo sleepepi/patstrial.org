@@ -3,13 +3,9 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
+      .color-container.dark-purple
         %h1.brand Sites
-        %h4.brown Editor Dashboard
-
-      %a.anchor-top{ name: 'home'}
-      .color-container.dark-brown
-        %p.lead
-          You may edit the sites here.
+        %h4.purple You may edit the sites here.
+        = link_to 'Add New Site', new_editor_site_path, class: 'btn btn-xs btn-default'
 
       = render 'sites'

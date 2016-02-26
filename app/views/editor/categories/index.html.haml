@@ -3,13 +3,10 @@
     .col-sm-3
       = render 'setup/menu'
     .col-sm-9
-      .color-container.dark-brown
-        %h1.brand Categories
-        %h4.brown Editor Dashboard
-
-      %a.anchor-top{ name: 'home'}
-      .color-container.dark-brown
-        %p.lead
-          You may edit the categories and upload documents here.
+      .color-container.dark-purple
+        %h1.brand Folders
+        %h4.purple
+          You may edit folders, upload documents, and embed videos here.
+        = link_to 'Add New Folder', new_editor_category_path, class: 'btn btn-xs btn-default'
 
       = render 'categories'

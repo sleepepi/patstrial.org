@@ -4,14 +4,11 @@
       = render 'setup/menu'
     .col-sm-9
       .color-container.dark-purple
-        %h1.brand= @viewer.username
-        %h4.purple
-          You can change the viewer's password by clicking edit.
-
-      %a.anchor-top{ name: 'home'}
-      .color-container.dark-brown
-        %p
-          = link_to 'Edit Viewer', edit_admin_viewer_path(@viewer)
+        %h1.brand
+          = link_to 'Viewers', admin_viewers_path
+          &middot;
+          = @viewer.username
+        = link_to 'Edit Viewer', edit_admin_viewer_path(@viewer), class: 'btn btn-xs btn-default'
 
       %table.table.table-striped.table-fixed
         %tr
