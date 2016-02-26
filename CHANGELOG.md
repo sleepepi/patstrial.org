@@ -19,7 +19,8 @@
 
 ### Enhancements
 - **Calculator Changes**
-  - Changed the ordering of height and weight on the Pediatric BMI Z-Score Calculator
+  - Changed the ordering of height and weight on the Pediatric BMI Z-Score
+    Calculator
 
 ## 3.0.0 (February 9, 2016)
 
@@ -87,5 +88,6 @@
 
 ## 1.0.0 (October 20, 2015)
 
-- Skeleton files to initialize Rails application with testing framework and continuous integration
+- Skeleton files to initialize Rails application with testing framework and
+  continuous integration
 - Started work on initial color scheme, font family, and user interface
