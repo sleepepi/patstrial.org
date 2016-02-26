@@ -10,6 +10,9 @@
   - Categories can now set their top level folder name
   - Videos can now be embedded on categories
 
+### Bug Fix
+- Fixed a bug preventing editors from viewing sites in project setup
+
 ## 3.0.1 (February 16, 2016)
 
 ### Enhancements

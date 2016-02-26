@@ -6,7 +6,7 @@ one:
   email: MyString
   phone: MyString
   role: MyString
-  deleted: false
+  site: one
 
 two:
   first_name: MyString
@@ -14,7 +14,7 @@ two:
   email: MyString
   phone: MyString
   role: MyString
-  deleted: false
+  site: one
 
 three:
   first_name: MyString
@@ -22,4 +22,4 @@ three:
   email: MyString
   phone: MyString
   role: MyString
-  deleted: false
+  site: one

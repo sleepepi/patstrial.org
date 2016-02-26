@@ -43,4 +43,4 @@
             %ul.list-unstyled
               - @site.members.each do |member|
                 %li
-                  = link_to member.name_reverse, member
+                  = link_to member.name_reverse, editor_member_path(member)
