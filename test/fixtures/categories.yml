@@ -7,7 +7,6 @@ one:
   slug: manuals
   position: 1
   archived: false
-  deleted: false
 
 two:
   name: Protocols
@@ -16,7 +15,6 @@ two:
   slug: protocol
   position: 2
   archived: false
-  deleted: false
 
 learn:
   name: Learn
@@ -25,4 +23,12 @@ learn:
   slug: learn
   position: 3
   archived: false
-  deleted: false
+
+dsmb:
+  name: Top Secret
+  description: Viewable by DSMB Members
+  top_level: secret
+  slug: top-secret
+  position: 4
+  archived: false
+  dsmb_only: true

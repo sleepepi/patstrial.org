@@ -56,8 +56,8 @@ class Editor::CategoriesController < Editor::EditorController
   end
 
   def category_params
-    params.require(:category).permit(:name, :description,
-                                     :top_level, :slug,
-                                     :position, :archived)
+    params.require(:category).permit(
+      :name, :description, :top_level, :slug, :position, :archived, :dsmb_only
+    )
   end
 end

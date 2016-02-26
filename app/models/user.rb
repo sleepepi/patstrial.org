@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     admin? || editor?
   end
 
+  def can_view_dsmb_folder?
+    admin? || editor? || dsmb_member?
+  end
+
   private
 
   def notify_admins_in_background

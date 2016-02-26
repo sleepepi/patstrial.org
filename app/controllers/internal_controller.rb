@@ -23,7 +23,8 @@ class InternalController < ApplicationController
 
   def document
     if @document.pdf?
-      send_file File.join(CarrierWave::Uploader::Base.root, @document.document.url), type: 'application/pdf', disposition: 'inline'
+      send_file File.join(CarrierWave::Uploader::Base.root, @document.document.url),
+                type: 'application/pdf', disposition: 'inline'
     else
       send_file File.join(CarrierWave::Uploader::Base.root, @document.document.url)
     end
@@ -35,7 +36,11 @@ class InternalController < ApplicationController
   private
 
   def set_category
-    @category = Category.current.where(archived: false).find_by_slug params[:category]
+    category_scope = Category.current.where(archived: false)
+    unless current_user && current_user.can_view_dsmb_folder?
+      category_scope = category_scope.where(dsmb_only: false)
+    end
+    @category = category_scope.find_by_slug params[:category]
     empty_response_or_root_path(dashboard_path) unless @category
   end
 

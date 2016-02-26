@@ -9,6 +9,7 @@
 - **Category Changes**
   - Categories can now set their top level folder name
   - Videos can now be embedded on categories
+  - Categories can be set to be only viewable by DSMB members
 - **Setup Changes**
   - Admin and editor setup pages are now more consistent and have an updated
     user interface
