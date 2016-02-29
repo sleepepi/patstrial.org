@@ -57,4 +57,9 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
     assert_equal I18n.t('devise.failure.unauthenticated'), flash[:alert]
   end
+
+  test 'anonymous user should get password reset page' do
+    get '/password/new'
+    assert_response :success
+  end
 end

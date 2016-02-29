@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :drugs
-  get 'setup/index'
-
-  get 'external/sites'
-
   namespace :admin do
     resources :users
     resources :viewers
@@ -27,11 +22,15 @@ Rails.application.routes.draw do
     post :bmi_zscore, path: 'bmi-zscore', action: :bmi_zscore_calculate, as: :bmi_zscore_calculate
     get :bmi_zscore_result, path: 'bmi-zscore/result'
     get :blood_pressure_percentile, path: 'blood-pressure-percentile'
-    post :blood_pressure_percentile, path: 'blood-pressure-percentile', action: :blood_pressure_percentile_calculate, as: :blood_pressure_percentile_calculate
+    post :blood_pressure_percentile, path: 'blood-pressure-percentile',
+                                     action: :blood_pressure_percentile_calculate,
+                                     as: :blood_pressure_percentile_calculate
     get :blood_pressure_percentile_result, path: 'blood-pressure-percentile/result'
     get '/', action: :index
     get '/(*path)', to: redirect('calculators')
   end
+
+  resources :drugs
 
   namespace :editor do
     resources :categories, path: 'folders' do
@@ -58,14 +57,6 @@ Rails.application.routes.draw do
     get 'committees/:committee', action: :show, as: :committee
   end
 
-  scope module: 'internal' do
-    get :dashboard
-    get :directory
-    get ':top_level/:category', action: :category, as: :internal_category
-    get ':top_level/:category/documents/:document_id', action: :document, as: :internal_category_document
-    get ':top_level/:category/videos/:video_id', action: :video, as: :internal_category_video
-  end
-
   scope module: 'external' do
     get :contact
     get :home
@@ -82,6 +73,15 @@ Rails.application.routes.draw do
                                     sign_in: 'login',
                                     sign_out: 'logout' },
                      path: ''
+
+  # Needs to stay near bottom in order to handle "top_level" catch all.
+  scope module: 'internal' do
+    get :dashboard
+    get :directory
+    get ':top_level/:category', action: :category, as: :internal_category
+    get ':top_level/:category/documents/:document_id', action: :document, as: :internal_category_document
+    get ':top_level/:category/videos/:video_id', action: :video, as: :internal_category_video
+  end
 
   root to: 'external#home'
 end

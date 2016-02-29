@@ -18,6 +18,7 @@
 
 ### Bug Fix
 - Fixed a bug preventing editors from viewing sites in project setup
+- Fixed a bug preventing users from accessing password reset page
 
 ## 3.0.1 (February 16, 2016)
 
