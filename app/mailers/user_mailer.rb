@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Sends out application emails to users
 class UserMailer < ApplicationMailer
   def notify_system_admin(admin, user)
     setup_email

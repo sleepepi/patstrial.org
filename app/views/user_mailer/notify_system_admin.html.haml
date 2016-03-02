@@ -1,18 +1,17 @@
-Dear
-= succeed ',' do
-  = @admin.first_name
-%br
-%br
-= @user.name
-= surround '[', ']' do
-  = @user.email
-%span{ style: 'padding:5px;background-color:#f0ad4e;color:#fff' } signed up
-for an account.
-%br
-%br
-Click the following link to approve or deny the registration here:
-%br
-%br
-%center
-  = link_to "#{ENV['website_url']}/admin/users/#{@user.id}/edit", "#{ENV['website_url']}/admin/users/#{@user.id}/edit", style: 'color: #428bca'
-%br
+%p{ style: p_style }
+  Dear
+  = succeed ',' do
+    = @admin.first_name
+
+%p{ style: p_style }
+  = @user.name
+  = surround '[', ']' do
+    = mail_to @user.email, @user.email, style: link_style
+  %span{ style: warning_style } signed up
+  for an account.
+
+%p{ style: p_style }
+  Click the following link to approve or deny the registration here:
+
+%p{ style: center_style }
+  = link_to "#{ENV['website_url']}/admin/users/#{@user.id}/edit", "#{ENV['website_url']}/admin/users/#{@user.id}/edit", style: link_style

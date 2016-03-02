@@ -1,5 +1,9 @@
 ## 5.0.0
 
+### Enhancements
+- **Email Changes**
+  - Styling has been added to all emails
+
 ## 4.0.1 (March 1, 2016)
 
 ### Enhancements
