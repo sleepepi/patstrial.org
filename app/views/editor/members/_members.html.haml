@@ -11,12 +11,14 @@
 
   - @members.each do |member|
     %tr
-      %td= link_to member.name_reverse, editor_member_path(member)
+      %td= link_to member.name_reverse, editor_member_path(member), style: "#{'text-decoration: line-through;' if member.archived?}"
       %td= member.email
       %td= member.phone
       %td= member.role
       %td= member.staffid
-      %td= member.archived?
+      %td
+        - if member.archived?
+          %span.glyphicon.glyphicon-eye-close.text-muted
       %td.nowrap
         = link_to 'Edit', edit_editor_member_path(member), class: 'btn btn-default btn-xs'
         = link_to 'Delete', editor_member_path(member), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Member #{member.name}?" }

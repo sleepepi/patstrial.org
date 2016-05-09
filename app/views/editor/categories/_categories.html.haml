@@ -11,10 +11,12 @@
   - @categories.each do |category|
     %tr
       %td= category.position
-      %td= link_to category.name, editor_category_path(category)
+      %td= link_to category.name, editor_category_path(category), style: "#{'text-decoration: line-through;' if category.archived?}"
       %td= category.top_level
       %td= category.slug
-      %td= category.archived
+      %td
+        - if category.archived?
+          %span.glyphicon.glyphicon-eye-close.text-muted
       %td
         = link_to 'Edit', edit_editor_category_path(category), class: 'btn btn-default btn-xs'
         = link_to 'Delete', editor_category_path(category), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Category #{category.name}?" }
