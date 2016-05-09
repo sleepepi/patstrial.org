@@ -1,6 +1,8 @@
 ## 5.0.0
 
 ### Enhancements
+- **General Changes**
+  - Logged in users now see their Staff ID next to their name in the menu
 - **Email Changes**
   - Styling has been added to all emails
 - **Gem Changes**

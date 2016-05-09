@@ -26,6 +26,15 @@ class User < ActiveRecord::Base
     "#{first_name_was} #{last_name_was}"
   end
 
+  def first_name_and_staff_id
+    member = Member.current.find_by email: email
+    if member && member.staffid.present?
+      [first_name, "<code style=\"color:#fff\">#{member.staffid}</code>"].join(' ').html_safe
+    else
+      first_name
+    end
+  end
+
   # Overriding Devise built-in active_for_authentication? method
   def active_for_authentication?
     super && !deleted? && approved?
