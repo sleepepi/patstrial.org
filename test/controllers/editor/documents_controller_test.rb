@@ -138,7 +138,7 @@ class Editor::DocumentsControllerTest < ActionController::TestCase
   test 'should destroy document as editor' do
     login(@editor)
     assert_difference('Document.count', -1) do
-      delete :destroy, category_id: @category, id: @document
+      delete :destroy, category_id: @category, id: documents(:noattachment)
     end
     assert_redirected_to editor_category_documents_path(assigns(:category))
   end
@@ -146,7 +146,7 @@ class Editor::DocumentsControllerTest < ActionController::TestCase
   test 'should not destroy document as viewer' do
     login(@viewer)
     assert_difference('Document.count', 0) do
-      delete :destroy, category_id: @category, id: @document
+      delete :destroy, category_id: @category, id: documents(:noattachment)
     end
     assert_redirected_to dashboard_path
   end

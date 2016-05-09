@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Callbacks
-  after_create :notify_admins_in_background
+  after_commit :notify_admins_in_background, on: :create
 
   # Concerns
   include Deletable, Forkable
