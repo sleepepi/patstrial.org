@@ -24,7 +24,7 @@
   .form-group
     = f.label :embed_url, nil, class: 'col-md-2 control-label'
     .col-md-10
-      = f.text_field :embed_url, class: 'form-control'
+      = f.text_field :embed_url, class: 'form-control', autocomplete: 'off'
 
       %strong.text-muted Example
       .text-muted
