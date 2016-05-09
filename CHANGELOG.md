@@ -4,6 +4,7 @@
 - **Email Changes**
   - Styling has been added to all emails
 - **Gem Changes**
+  - Updated to Ruby 2.3.1
   - Updated to rails 4.2.6
   - Updated to carrierwave 0.11.2
 
