@@ -5,6 +5,9 @@
   - Logged in users now see their Staff ID next to their name in the menu
 - **Email Changes**
   - Styling has been added to all emails
+- **Setup Changes**
+  - Editors can now set members as archived to hide the member from the
+    directory
 - **Gem Changes**
   - Updated to Ruby 2.3.1
   - Updated to rails 4.2.6

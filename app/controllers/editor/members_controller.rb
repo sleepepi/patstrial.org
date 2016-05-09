@@ -3,7 +3,7 @@
 # Allows editors to create and update members in the directory
 # Members are purely listings, and are not related to user logins
 class Editor::MembersController < Editor::EditorController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :find_member_or_redirect, only: [:show, :edit, :update, :destroy]
 
   # GET /members
   def index
@@ -51,12 +51,15 @@ class Editor::MembersController < Editor::EditorController
 
   private
 
-  def set_member
+  def find_member_or_redirect
     @member = Member.current.find_by_id params[:id]
     empty_response_or_root_path(editor_members_path) unless @member
   end
 
   def member_params
-    params.require(:member).permit(:first_name, :last_name, :staffid, :email, :phone, :role, :site_id)
+    params.require(:member).permit(
+      :first_name, :last_name, :staffid, :email, :phone, :role, :site_id,
+      :archived
+    )
   end
 end

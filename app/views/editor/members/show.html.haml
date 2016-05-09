@@ -37,3 +37,6 @@
         %tr
           %td Committees
           %td= @member.committees.collect { |c| link_to c.name, editor_committee_path(c) }.join(', ').html_safe
+        %tr
+          %td Archived
+          %td= simple_check @member.archived?
