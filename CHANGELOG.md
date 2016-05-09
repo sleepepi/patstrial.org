@@ -8,6 +8,7 @@
 - **Setup Changes**
   - Editors can now set members as archived to hide the member from the
     directory
+  - Editor document lists are now sortable by name and upload time
 - **Gem Changes**
   - Updated to Ruby 2.3.1
   - Updated to rails 4.2.6

@@ -7,7 +7,8 @@ class Editor::DocumentsController < Editor::EditorController
 
   # GET /:category_id/documents
   def index
-    @documents = @category.documents.page(params[:page]).per(40)
+    @order = scrub_order(Document, params[:order], 'documents.document')
+    @documents = @category.documents.order(@order).page(params[:page]).per(40)
   end
 
   # GET /:category_id/documents/1
