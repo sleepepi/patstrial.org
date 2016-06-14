@@ -2,6 +2,7 @@
   Turbolinks.enableProgressBar()
   fileDragReady()
   affixReady()
+  chartsReady()
 
 $(document).ready(ready)
 $(document)

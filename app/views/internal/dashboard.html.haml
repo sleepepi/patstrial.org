@@ -6,6 +6,23 @@
       .color-container.dark-purple
         %h1.brand Dashboard
         %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
+
+      - if @screened && @screened[:total] > 0
+        .color-container
+          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
+
+      - if @consented && @consented[:total] > 0
+        .color-container
+          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @consented[:series].to_json, categories: @consented[:categories].to_json, title: @consented[:title], yaxis: @consented[:yaxis], xaxis: @consented[:xaxis] } }
+
+      - if @eligible && @eligible[:total] > 0
+        .color-container
+          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }
+
+      - if @randomized && @randomized[:total] > 0
+        .color-container
+          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
+
       .color-container.dark-purple
         .row
           .col-md-6

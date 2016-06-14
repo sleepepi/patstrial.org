@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require external/highcharts-4.2.3.src.js
 //= require_tree .
