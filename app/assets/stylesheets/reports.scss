@@ -1,0 +1,10 @@
+.report-number {
+  font-weight: 300;
+  font-size: 41px;
+}
+
+@media screen and (min-width: $screen-lg-min) {
+  .report-number {
+    font-size: 72px;
+  }
+}

@@ -1,0 +1,16 @@
+%table.table.table-hover
+  %thead
+    - table[:header].each do |row|
+      %tr
+        - row.each do |element|
+          %th= element
+  %tfoot
+    - table[:footer].each do |row|
+      %tr
+        - row.each do |element|
+          %th= element
+  %tbody
+    - table[:rows].each do |row|
+      %tr
+        - row.each do |element|
+          %td= element

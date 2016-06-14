@@ -7,9 +7,36 @@
         %h1.brand Dashboard
         %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
 
+      .color-container.dark-purple
+        .row
+          .col-md-4
+            .jumbotron.center
+              %h4.text-muted Screened
+              .report-number= @screened[:total] rescue 0
+          .col-md-4
+            .jumbotron.center
+              %h4.text-muted Consented
+              .report-number= @consented[:total] rescue 0
+          .col-md-4
+            .jumbotron.center
+              %h4.text-muted Eligible
+              .report-number= @eligible[:total] rescue 0
+        - if @screened && @screened[:in_pipeline] > 0
+          Note:
+          %strong= @screened[:in_pipeline] || 0
+          of the total
+          %strong= @screened[:total]
+          screened have not yet been assigned a final eligiblity status.
+          - if @randomized[:total] > 0
+            .jumbotron.center
+              %h4.text-muted Randomized
+              .report-number= @randomized[:total]
+
       - if @screened && @screened[:total] > 0
         .color-container
           %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
+      - if @screened && @screened[:table] && @screened[:table][:total] > 0
+        = render 'internal/draw_table', table: @screened[:table]
 
       - if @consented && @consented[:total] > 0
         .color-container
@@ -28,38 +55,39 @@
           Data last updated
           = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
 
-      .color-container.dark-purple
-        .row
-          .col-md-6
-            %h2 Directory
-            %p.lead
-              The directory contains a list of every staff member on the PATS
-              study.
-            %p
-              %span.glyphicon.glyphicon-check
-              Check the
-              = link_to 'directory', directory_path
-              to verify that your contact information is correct.
-          .col-md-6
-            %h2 Committees
-            %p.lead
-              A complete list of committees is available.
-            %p
-              %span.glyphicon.glyphicon-check
-              Please review your
-              = succeed '.' do
-                = link_to 'committee membership', committees_path
-        .row
-          .col-md-6
-            %h2 Documents
-            %p.lead
-              Documents are categorized, and can be downloaded from the menu to
-              the left.
-            %p
-              %span.glyphicon.glyphicon-question-sign
-              Are we missing a document or is a document out of date?
-              = mail_to ENV['support_email'], 'Send us'
-              an updated version and we'll fix it.
+      - if false
+        .color-container.dark-purple
+          .row
+            .col-md-6
+              %h2 Directory
+              %p.lead
+                The directory contains a list of every staff member on the PATS
+                study.
+              %p
+                %span.glyphicon.glyphicon-check
+                Check the
+                = link_to 'directory', directory_path
+                to verify that your contact information is correct.
+            .col-md-6
+              %h2 Committees
+              %p.lead
+                A complete list of committees is available.
+              %p
+                %span.glyphicon.glyphicon-check
+                Please review your
+                = succeed '.' do
+                  = link_to 'committee membership', committees_path
+          .row
+            .col-md-6
+              %h2 Documents
+              %p.lead
+                Documents are categorized, and can be downloaded from the menu to
+                the left.
+              %p
+                %span.glyphicon.glyphicon-question-sign
+                Are we missing a document or is a document out of date?
+                = mail_to ENV['support_email'], 'Send us'
+                an updated version and we'll fix it.
       .color-container.dark-purple
         %p.lead.center
           %span.glyphicon.glyphicon-comment
