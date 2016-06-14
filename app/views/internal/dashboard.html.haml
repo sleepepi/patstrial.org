@@ -23,6 +23,11 @@
         .color-container
           %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
 
+      - if @recruitment
+        %div.text-muted.small.center
+          Data last updated
+          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+
       .color-container.dark-purple
         .row
           .col-md-6
