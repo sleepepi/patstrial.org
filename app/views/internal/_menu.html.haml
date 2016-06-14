@@ -6,9 +6,8 @@
   %li.left-menu-header Dashboard
   %li
     = link_to 'Home', dashboard_path, class: (current_page?(dashboard_path) ? 'active' : nil)
-  - if Committee.current.count > 0
-    %li
-      = link_to 'Committees', committees_path, class: (params[:controller] == 'committees' ? 'active' : nil)
+  %li
+    = link_to 'Committees', committees_path, class: (params[:controller] == 'committees' ? 'active' : nil)
   %li
     = link_to 'Directory', directory_path, class: (current_page?(directory_path) ? 'active' : nil)
   - category_scope.order(:top_level, :position).group_by(&:top_level).each do |top_level, categories|
@@ -17,7 +16,12 @@
       - if category.documents.where(archived: false).present? || category.videos.where(archived: false).present?
         %li
           = link_to category.name, internal_category_path(category.top_level, category.slug), class: (current_page?(internal_category_path(category.top_level, category.slug)) ? 'active' : nil)
-
+  %li.left-menu-header Reports
+  %li
+    = link_to 'Screened', reports_screened_path, class: (current_page?(reports_screened_path) ? 'active' : nil)
+    = link_to 'Consented', reports_consented_path, class: (current_page?(reports_consented_path) ? 'active' : nil)
+    = link_to 'Eligible', reports_eligible_path, class: (current_page?(reports_eligible_path) ? 'active' : nil)
+    = link_to 'Randomized', reports_randomized_path, class: (current_page?(reports_randomized_path) ? 'active' : nil)
   - if current_user && current_user.setup_role?
     %li.left-menu-header Setup
     %li= link_to 'Overview', setup_path

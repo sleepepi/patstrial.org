@@ -10,50 +10,67 @@
       .color-container.dark-purple
         .row
           .col-md-4
-            .jumbotron.center
-              %h4.text-muted Screened
-              .report-number= @screened[:total] rescue 0
+            = link_to reports_screened_path, class: 'title-link' do
+              .jumbotron.center
+                %h4.text-muted Screened
+                .report-number= @screened[:total] rescue 0
           .col-md-4
-            .jumbotron.center
-              %h4.text-muted Consented
-              .report-number= @consented[:total] rescue 0
+            = link_to reports_consented_path, class: 'title-link' do
+              .jumbotron.center
+                %h4.text-muted Consented
+                .report-number= @consented[:total] rescue 0
           .col-md-4
-            .jumbotron.center
-              %h4.text-muted Eligible
-              .report-number= @eligible[:total] rescue 0
+            = link_to reports_eligible_path, class: 'title-link' do
+              .jumbotron.center
+                %h4.text-muted Eligible
+                .report-number= @eligible[:total] rescue 0
         - if @screened && @screened[:in_pipeline] > 0
-          Note:
-          %strong= @screened[:in_pipeline] || 0
-          of the total
-          %strong= @screened[:total]
-          screened have not yet been assigned a final eligiblity status.
-          - if @randomized[:total] > 0
-            .jumbotron.center
-              %h4.text-muted Randomized
-              .report-number= @randomized[:total]
+          %div{ style: 'margin-bottom: 30px;margin-left: 15px;' }
+            %p
+              Note:
+              %strong= @screened[:in_pipeline] || 0
+              of the total
+              %strong= @screened[:total]
+              screened have not yet been assigned a final eligiblity status.
+          .jumbotron
+            .pull-right.center
+              = link_to reports_randomized_path, class: 'title-link' do
+                %h4.text-muted Randomized
+                %h2= number_with_delimiter @randomized[:total]
+            %h4.text-muted Scheme
+            %h2= @randomized[:scheme_name]
+            - if @randomized[:total] > 0 && @randomized[:randomization_goal] > 0
+              - percent = [@randomized[:total] * 100 / @randomized[:randomization_goal], 100].min
+              .progress.progress-striped{ style: 'margin-top: 20px;margin-bottom: 0' }
+                .progress-bar.progress-bar-success{ style: "width: #{percent}%;min-width: 5em;" }= "#{@randomized[:total]} of #{@randomized[:randomization_goal]}"
 
-      - if @screened && @screened[:total] > 0
-        .color-container
+
+        - if @screened && @screened[:total] > 0
           %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
-      - if @screened && @screened[:table] && @screened[:table][:total] > 0
-        = render 'internal/draw_table', table: @screened[:table]
+        - if @screened && @screened[:table] && @screened[:table][:total] > 0
+          = render 'reports/draw_table', table: @screened[:table]
 
-      - if @consented && @consented[:total] > 0
-        .color-container
-          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @consented[:series].to_json, categories: @consented[:categories].to_json, title: @consented[:title], yaxis: @consented[:yaxis], xaxis: @consented[:xaxis] } }
+        - if false
+          - if @consented && @consented[:total] > 0
+            %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @consented[:series].to_json, categories: @consented[:categories].to_json, title: @consented[:title], yaxis: @consented[:yaxis], xaxis: @consented[:xaxis] } }
+          - if @consented && @consented[:table] && @consented[:table][:total] > 0
+            = render 'reports/draw_table', table: @consented[:table]
 
-      - if @eligible && @eligible[:total] > 0
-        .color-container
-          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }
 
-      - if @randomized && @randomized[:total] > 0
-        .color-container
-          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
+          - if @eligible && @eligible[:total] > 0
+            %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }
+          - if @eligible && @eligible[:table] && @eligible[:table][:total] > 0
+            = render 'reports/draw_table', table: @eligible[:table]
 
-      - if @recruitment
-        %div.text-muted.small.center
-          Data last updated
-          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+          - if @randomized && @randomized[:total] > 0
+            %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
+          - if @randomized && @randomized[:table] && @randomized[:table][:total] > 0
+            = render 'reports/draw_table', table: @randomized[:table]
+
+        - if @recruitment
+          %div.text-muted.small.center
+            Data last updated
+            = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
 
       - if false
         .color-container.dark-purple

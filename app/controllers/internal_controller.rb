@@ -60,10 +60,4 @@ class InternalController < ApplicationController
     @video = @category.videos.where(archived: false).find_by_id params[:video_id]
     empty_response_or_root_path(internal_category_path(@category)) unless @video
   end
-
-  def read_json(file_path)
-    JSON.parse(File.read(file_path)).with_indifferent_access
-  rescue
-    nil
-  end
 end

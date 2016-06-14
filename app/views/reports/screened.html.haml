@@ -1,0 +1,30 @@
+- @title = 'Reports - Screened'
+.container
+  .row
+    .col-sm-3
+      = render 'internal/menu'
+    .col-sm-9
+      .color-container.dark-purple
+        %h1.brand Reports - Screened
+        %h4.purple
+          - if @recruitment
+            Data last updated
+            = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+
+        - if @screened && @screened[:total] > 0
+          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
+        - if @screened && @screened[:table] && @screened[:table][:total] > 0
+          = render 'reports/draw_table', table: @screened[:table]
+
+        .row
+          .col-md-4
+          .col-md-4
+            .jumbotron.center
+              %h4.text-muted Screened
+              .report-number= @screened[:total] rescue 0
+          .col-md-4
+            = link_to reports_consented_path, class: 'title-link' do
+              .jumbotron.center
+                %h4.text-muted Consented
+                .report-number
+                  %span.glyphicon.glyphicon-arrow-right

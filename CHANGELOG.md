@@ -4,6 +4,11 @@
 - **General Changes**
   - Logged in users now see their Staff ID next to their name in the menu
   - Recruitment charts and tables are now displayed on the internal landing page
+    - Added individual pages detailing charts and tables for:
+      - Screened
+      - Consented
+      - Eligible
+      - Randomized
 - **Email Changes**
   - Styling has been added to all emails
 - **Setup Changes**

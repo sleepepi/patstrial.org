@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root 'external#home'
+
   namespace :admin do
     resources :users
     resources :viewers
@@ -64,6 +66,14 @@ Rails.application.routes.draw do
     get :sites
   end
 
+  namespace :reports do
+    root to: redirect('dashboard')
+    get :screened
+    get :consented
+    get :eligible
+    get :randomized
+  end
+
   scope module: :setup do
     get 'setup' => 'setup#index'
   end
@@ -82,6 +92,4 @@ Rails.application.routes.draw do
     get ':top_level/:category/documents/:document_id', action: :document, as: :internal_category_document
     get ':top_level/:category/videos/:video_id', action: :video, as: :internal_category_video
   end
-
-  root to: 'external#home'
 end

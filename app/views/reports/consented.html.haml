@@ -1,0 +1,35 @@
+- @title = 'Reports - Consented'
+.container
+  .row
+    .col-sm-3
+      = render 'internal/menu'
+    .col-sm-9
+      .color-container.dark-purple
+        %h1.brand Reports - Consented
+        %h4.purple
+          - if @recruitment
+            Data last updated
+            = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+
+        - if @consented
+          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @consented[:series].to_json, categories: @consented[:categories].to_json, title: @consented[:title], yaxis: @consented[:yaxis], xaxis: @consented[:xaxis] } }
+        - if @consented && @consented[:table]
+          = render 'reports/draw_table', table: @consented[:table]
+
+        .row
+          .col-md-4
+            = link_to reports_screened_path, class: 'title-link' do
+              .jumbotron.center
+                %h4.text-muted Screened
+                .report-number
+                  %span.glyphicon.glyphicon-arrow-left
+          .col-md-4
+            .jumbotron.center
+              %h4.text-muted Consented
+              .report-number= @consented[:total] rescue 0
+          .col-md-4
+            = link_to reports_eligible_path, class: 'title-link' do
+              .jumbotron.center
+                %h4.text-muted Eligible
+                .report-number
+                  %span.glyphicon.glyphicon-arrow-right

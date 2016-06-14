@@ -62,4 +62,10 @@ class NavigationTest < ActionDispatch::IntegrationTest
     get '/password/new'
     assert_response :success
   end
+
+  test 'should get report root and redirect to dashboard' do
+    sign_in_as(users(:viewer), '123456')
+    get '/reports'
+    assert_redirected_to dashboard_path
+  end
 end

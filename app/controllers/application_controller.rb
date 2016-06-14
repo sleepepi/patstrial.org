@@ -48,4 +48,10 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path
     end
   end
+
+  def read_json(file_path)
+    JSON.parse(File.read(file_path)).with_indifferent_access
+  rescue
+    nil
+  end
 end
