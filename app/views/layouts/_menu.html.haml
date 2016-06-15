@@ -32,7 +32,7 @@
             = surround '(', ').' do
               = abbr 'MSDB'
             = abbr 'MSDB'
-            is often treated with surgery to take out the tonsils and 
+            is often treated with surgery to take out the tonsils and
             adenoids, and
             = abbr 'MSDB'
             is also often observed or treated medically
@@ -106,7 +106,7 @@
         - if current_user || current_viewer
           %form.navbar-form.navbar-right
             = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary'
-          %ul.nav.navbar-nav.navbar-right.hidden-xs
+          %ul.nav.navbar-nav.navbar-right.hidden-xs{ style: 'max-height: 50px' }
             - name = current_user ? current_user.first_name_and_staff_id : current_viewer.username
             %li= link_to name, dashboard_path
         - else
