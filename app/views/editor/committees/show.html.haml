@@ -1,8 +1,6 @@
 .container
   .row
-    .col-sm-3
-      = render 'setup/menu'
-    .col-sm-9
+    .col-sm-9.col-sm-push-3
       .color-container.purple
         %h1.brand= @committee.name
         %h4
@@ -33,3 +31,5 @@
         %tr
           %td Members
           %td= render 'editor/committee_members/index'
+    .col-sm-3.col-sm-pull-9
+      = render 'setup/menu'

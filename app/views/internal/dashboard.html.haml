@@ -1,12 +1,9 @@
 .container
   .row
-    .col-sm-3
-      = render 'internal/menu'
-    .col-sm-9
+    .col-sm-9.col-sm-push-3
       .color-container.dark-purple
         %h1.brand Dashboard
         %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
-
       .color-container.dark-purple
         .row
           .col-md-4
@@ -111,3 +108,5 @@
           Please
           = mail_to ENV['support_email'], 'contact us'
           with any questions you may have.
+    .col-sm-3.col-sm-pull-9
+      = render 'internal/menu'

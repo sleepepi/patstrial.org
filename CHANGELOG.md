@@ -9,6 +9,7 @@
       - Consented
       - Eligible
       - Randomized
+  - Adjusted how menu is displayed on mobile devices
 - **Email Changes**
   - Styling has been added to all emails
 - **Setup Changes**

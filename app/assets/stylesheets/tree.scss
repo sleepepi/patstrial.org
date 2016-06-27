@@ -1,16 +1,24 @@
-@import 'variables';
+// Bootstrap and general variable definitions
+@import 'variables/all';
 
+// Core Bootstrap styles
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+// App Mixins
+@import 'mixins/all';
+
+// App specific styles
+@import 'components/all';
+
+
 
 @import 'affix';
 @import 'alignment';
 @import 'body';
-@import 'brand';
 @import 'bs-callout';
 @import 'buttons';
 @import 'code';
-@import 'colors';
 @import 'filedrag';
 @import 'fonts';
 @import 'footer';
@@ -18,7 +26,6 @@
 @import 'forms';
 @import 'images';
 @import 'links';
-@import 'menu';
 @import 'tables';
 @import 'textures';
 @import 'turbolinks';

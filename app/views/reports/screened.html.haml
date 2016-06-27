@@ -1,9 +1,7 @@
 - @title = 'Reports - Screened'
 .container
   .row
-    .col-sm-3
-      = render 'internal/menu'
-    .col-sm-9
+    .col-sm-9.col-sm-push-3
       .color-container.dark-purple
         %h1.brand Reports - Screened
         %h4.purple
@@ -28,3 +26,5 @@
                 %h4.text-muted Consented
                 .report-number
                   %span.glyphicon.glyphicon-arrow-right
+    .col-sm-3.col-sm-pull-9
+      = render 'internal/menu'

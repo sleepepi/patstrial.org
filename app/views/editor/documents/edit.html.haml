@@ -2,9 +2,7 @@
 
 .container
   .row
-    .col-sm-3
-      = render 'setup/menu'
-    .col-sm-9
+    .col-sm-9.col-sm-push-3
       .color-container.dark-purple
         %h1.brand
           = link_to 'Folders', editor_categories_path
@@ -20,3 +18,5 @@
       .color-container
         = render 'form'
 
+    .col-sm-3.col-sm-pull-9
+      = render 'setup/menu'

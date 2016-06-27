@@ -1,8 +1,6 @@
 .container
   .row
-    .col-sm-3
-      = render 'internal/menu'
-    .col-sm-9
+    .col-sm-9.col-sm-push-3
       .color-container.dark-purple
         %h1.brand= @category.name
         %h4.purple= @category.description
@@ -50,3 +48,5 @@
           %span.glyphicon.glyphicon-comment
           = mail_to ENV['support_email'], 'Email us'
           if a document is outdated or you can't find a specific document.
+    .col-sm-3.col-sm-pull-9
+      = render 'internal/menu'
