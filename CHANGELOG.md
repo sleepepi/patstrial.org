@@ -3,6 +3,8 @@
 ### Enhancements
 - **General Changes**
   - Added a demographics report page
+- **Gem Changes**
+  - Updated to turbolinks 5
 
 ## 5.0.0 (June 27, 2016)
 
