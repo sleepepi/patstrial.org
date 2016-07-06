@@ -1,0 +1,16 @@
+- @title = 'Reports - Demographics'
+.container
+  .row
+    .col-sm-9.col-sm-push-3
+      .color-container.dark-purple
+        %h1.brand= @title
+        %h4.purple
+          - if @recruitment
+            Data last updated
+            = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+
+        - if @demographics && @demographics[:table]
+          = render 'reports/draw_table', table: @demographics[:table]
+
+    .col-sm-3.col-sm-pull-9
+      = render 'internal/menu'

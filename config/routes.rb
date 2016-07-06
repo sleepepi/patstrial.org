@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     get :consented
     get :eligible
     get :randomized
+    get :demographics
   end
 
   scope module: :setup do

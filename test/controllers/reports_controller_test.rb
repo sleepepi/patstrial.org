@@ -31,4 +31,10 @@ class ReportsControllerTest < ActionController::TestCase
     get :randomized
     assert_response :success
   end
+
+  test 'should get demographics' do
+    login(@viewer)
+    get :demographics
+    assert_response :success
+  end
 end

@@ -1,5 +1,9 @@
 ## 6.0.0
 
+### Enhancements
+- **General Changes**
+  - Added a demographics report page
+
 ## 5.0.0 (June 27, 2016)
 
 ### Enhancements

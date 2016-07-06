@@ -21,6 +21,10 @@ class ReportsController < ApplicationController
     @randomized = @recruitment[:randomized] if @recruitment
   end
 
+  def demographics
+    @demographics = @recruitment[:demographics] if @recruitment
+  end
+
   private
 
   def load_recruitment
