@@ -34,8 +34,9 @@
             - @chart = { series: [{ name: 'Gender', colorByPoint: true, data: [{ name: 'Female', y: @demographics.dig(:extras, :females, :total), color: female_color, drilldown: 'Female' }, { name: 'Male', y: @demographics.dig(:extras, :males, :total), color: male_color, drilldown: 'Male' }] }], categories: [], title: 'Gender', subtitle: 'Click to view race breakdown', drilldown: { series: [{name: 'Female', id: 'Female', borderColor: female_color, borderWidth: '5px', data: [ { name: 'Female - Black', y: @demographics.dig(:extras, :females, :black), color: black_race_color }, { name: 'Female - Other', y: @demographics.dig(:extras, :females, :other), color: '#efefef' }]}, {name: 'Male', id: 'Male', borderColor: male_color, borderWidth: '5px', data: [{ name: 'Male - Black', y: @demographics.dig(:extras, :males, :black), color: black_race_color }, { name: 'Male - Other', y: @demographics.dig(:extras, :males, :other), color: other_race_color }]}] } }
             .col-sm-6
               %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart-pie', series: @chart[:series].to_json, title: @chart[:title], drilldown: @chart[:drilldown].to_json, subtitle: @chart[:subtitle] } }
-        - if @demographics && @demographics[:table]
-          = render 'reports/draw_table', table: @demographics[:table]
+        - if @demographics && @demographics[:tables]
+          - @demographics[:tables].each do |table|
+            = render 'reports/draw_table', table: table
 
         .row{ style: 'margin-top: 20px' }
           .col-md-4
