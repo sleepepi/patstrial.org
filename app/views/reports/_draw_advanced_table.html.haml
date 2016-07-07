@@ -1,0 +1,21 @@
+%table.table.table-hover
+  %thead
+    - table[:header].each do |row|
+      %tr
+        - row.each do |element|
+          - if element.is_a? Hash
+            %th.center{ colspan: element[:colspan] }= element[:text]
+          - else
+            %th= element
+  %tfoot
+    - table[:footer].each do |row|
+      %tr
+        - row.each do |element|
+          %th{ class: element[:class] }
+            = element[:value]
+  %tbody
+    - table[:rows].each do |row|
+      %tr
+        - row.each do |element|
+          %td{ class: element[:class] }
+            = element[:value]
