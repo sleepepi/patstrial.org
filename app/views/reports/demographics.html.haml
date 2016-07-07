@@ -17,7 +17,7 @@
           %ul.dropdown-menu
             - ['screened', 'consented', 'eligible', 'randomized'].each do |label|
               - value = label
-              %li= link_to label.titleize, reports_demographics_path(subjects: value), style: @subject_status == value ? 'font-weight:bold;' : ''
+              %li= link_to label.titleize, reports_demographics_status_path(subjects: value), style: @subject_status == value ? 'font-weight:bold;' : ''
 
         .clearfix
 

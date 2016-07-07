@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     get :eligible
     get :randomized
     get :demographics
+    get 'demographics/:subjects', action: :demographics, as: :demographics_status
   end
 
   scope module: :setup do
