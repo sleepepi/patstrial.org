@@ -5,6 +5,12 @@ class ReportsController < ApplicationController
   before_action :authenticate_viewer_or_current_user!
   before_action :load_recruitment
 
+  def demographics
+    @subject_status = (['screened', 'consented', 'eligible', 'randomized'].include?(params[:subjects]) ? params[:subjects] : 'screened')
+    @demographics = @recruitment.dig(:demographics, @subject_status.to_sym) if @recruitment
+    @demographics = @recruitment[:demographics] if @recruitment && @demographics.nil?
+  end
+
   def screened
     @screened = @recruitment[:screened] if @recruitment
   end
@@ -19,10 +25,6 @@ class ReportsController < ApplicationController
 
   def randomized
     @randomized = @recruitment[:randomized] if @recruitment
-  end
-
-  def demographics
-    @demographics = @recruitment[:demographics] if @recruitment
   end
 
   private

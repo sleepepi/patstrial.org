@@ -9,8 +9,34 @@
             Data last updated
             = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
 
+        .dropdown.pull-right{ style: 'display: inline-block' }
+          = link_to '#', data: { toggle: 'dropdown' }, role: 'button', aria: { haspopup: 'true', expanded: 'false' }, class: 'btn btn-primary-custom' do
+            %span.glyphicon.glyphicon-filter
+            = @subject_status.titleize
+            %span.caret
+          %ul.dropdown-menu
+            - ['screened', 'consented', 'eligible', 'randomized'].each do |label|
+              - value = label
+              %li= link_to label.titleize, reports_demographics_path(subjects: value), style: @subject_status == value ? 'font-weight:bold;' : ''
+
+        .clearfix
+
         - if @demographics && @demographics[:table]
           = render 'reports/draw_table', table: @demographics[:table]
+
+        .row{ style: 'margin-top: 20px' }
+          .col-md-4
+          .col-md-4
+            .jumbotron.center
+              %h4.text-muted Demographics
+              .report-number
+                %span.glyphicon.glyphicon-stats
+          .col-md-4
+            = link_to reports_screened_path, class: 'title-link' do
+              .jumbotron.center
+                %h4.text-muted Screened
+                .report-number
+                  %span.glyphicon.glyphicon-arrow-right
 
     .col-sm-3.col-sm-pull-9
       = render 'internal/menu'
