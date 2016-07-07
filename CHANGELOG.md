@@ -3,6 +3,8 @@
 ### Enhancements
 - **General Changes**
   - Added a demographics report page
+    - Demographics report pages displays charts for age by gender, and gender
+      by race
 - **Gem Changes**
   - Updated to turbolinks 5
 

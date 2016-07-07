@@ -12,10 +12,11 @@
           enabled: false
         chart:
           zoomType: 'x'
+          type: $(@).data('charttype')
         title:
           text: $(@).data('title')
         subtitle:
-          text: (if document.ontouchstart == undefined then 'Click and drag in the plot area to zoom in' else 'Pinch the chart to zoom in')
+          text: if $(@).data('subtitle') then $(@).data('subtitle') else (if document.ontouchstart == undefined then 'Click and drag in the plot area to zoom in' else 'Pinch the chart to zoom in')
           style:
             color: '#999'
         xAxis:
@@ -37,5 +38,36 @@
             borderWidth: 0
             # stacking: 'normal'
         series: $(@).data('series')
+      )
+    )
+
+  if $('[data-object~="draw-chart-pie"]').length > 0
+    $.each($('[data-object~=draw-chart-pie]'), () ->
+      $(@).highcharts(
+        credits:
+          enabled: false
+        chart:
+          type: 'pie'
+        title:
+          text: $(@).data('title')
+        subtitle:
+          text: $(@).data('subtitle')
+          style:
+            color: '#999'
+        tooltip:
+          headerFormat: '<span style="font-size:11px">{series.name}</span><br>'
+          pointFormat: '{point.name}: <b>{point.y}</b> ({point.percentage:.1f}% of total)<br/>'
+          # pointFormat: '<b>{point.y} ({point.percentage:.1f}%)</b>'
+        plotOptions:
+          pie:
+            # allowPointSelect: true
+            # cursor: 'pointer'
+            dataLabels:
+              enabled: false
+            showInLegend: true
+            # borderWidth: 0
+
+        series: $(@).data('series')
+        drilldown: $(@).data('drilldown')
       )
     )
