@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     get :randomized
     get :demographics
     get 'demographics/:subjects', action: :demographics, as: :demographics_status
+    get :eligibility_status, path: 'eligibility-status'
   end
 
   scope module: :setup do

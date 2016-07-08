@@ -25,10 +25,12 @@
           %div{ style: 'margin-bottom: 30px;margin-left: 15px;' }
             %p
               Note:
-              %strong= @screened[:in_pipeline] || 0
-              of the total
-              %strong= @screened[:total]
-              screened have not yet been assigned a final eligiblity status.
+              = link_to reports_eligibility_status_path do
+                %strong= @screened[:in_pipeline] || 0
+                of the total
+                %strong= @screened[:total]
+                screened
+              have not yet been assigned a final eligiblity status.
           .jumbotron
             .pull-right.center
               = link_to reports_randomized_path, class: 'title-link' do

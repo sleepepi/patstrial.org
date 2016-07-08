@@ -37,4 +37,10 @@ class ReportsControllerTest < ActionController::TestCase
     get :demographics
     assert_response :success
   end
+
+  test 'should get eligibility status' do
+    login(@viewer)
+    get :eligibility_status
+    assert_response :success
+  end
 end

@@ -5,6 +5,7 @@
   - Added a demographics report page
     - Demographics report pages displays charts for age by gender, and gender
       by race
+  - Added a eligibility status report page
 - **Gem Changes**
   - Updated to turbolinks 5
 
