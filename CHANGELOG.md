@@ -3,6 +3,7 @@
 ### Enhancements
 - **General Changes**
   - Improved links on landing page
+  - Updated title slide on landing page
 - **Gem Changes**
   - Updated to rails 5.0.0
   - Updated to coffee-rails 4.2

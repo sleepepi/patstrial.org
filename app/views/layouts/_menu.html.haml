@@ -1,23 +1,25 @@
 - if current_page?(root_path)
   #top.logo-header{ style: 'margin-top: -50px' }
+    = render 'external/welcome'
     - if false
       .center
         = image_tag 'pats-boy.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
         %h1.brand.dark-purple{ style: 'font-size: 96px; display: inline-block' }
           = link_to 'PATS', root_path, class: 'title-link'
         = image_tag 'pats-girl.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
-    .dark-purple
-      .container
-        .color-container
-          .row
-            .col-sm-4.hidden-xs
-              = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
-            .col-sm-8
-              %h1.brand Welcome to PATS Trial!
-              %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
+    - if false
+      .dark-purple
+        .container
+          .color-container
+            .row
+              .col-sm-4.hidden-xs
+                = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
+              .col-sm-8
+                %h1.brand Welcome to PATS Trial!
+                %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
 
     #about.anchor-no-menu
-    .purple-fill
+    .dark-purple
       .container
         .color-container
           %h2.brand About the Trial

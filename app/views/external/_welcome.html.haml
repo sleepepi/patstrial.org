@@ -1,0 +1,35 @@
+- @original_style = false
+%div{ style: 'background-color: #52357b; color: #fff' }
+  .container
+    .jumbotron{ style: 'background-color: transparent;margin: 0' }
+      .row
+        .col-xs-3.col-sm-3.col-md-4
+          .center
+            .shift.shift-right.start
+              = image_tag 'pats-boy.png', class: 'person-size'
+        .col-xs-6.col-sm-6.col-md-4
+          .center
+            %h1.brand
+              - if @original_style
+                .letter.start.delay1 P
+                .letter.start.delay2 A
+                .letter.start.delay3 T
+                .letter.start.delay4 S
+              - else
+                .letter.start.shift-down.delay3 P
+                .letter.start.shift-up.delay1 A
+                .letter.start.shift-down.delay2 T
+                .letter.start.shift-up.delay4 S
+            %h2.brand.hidden-xs
+              - if @original_style
+                .letter.start.delay5 Trial
+              - else
+                .letter.start.delay3 T
+                .letter.start.delay2 r
+                .letter.start.delay1 i
+                .letter.start.delay2 a
+                .letter.start.delay3 l
+        .col-xs-3.col-sm-3.col-md-4
+          .center
+            .shift.shift-left.start
+              = image_tag 'pats-girl.png', class: 'person-size person-wait'
