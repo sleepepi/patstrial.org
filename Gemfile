@@ -8,7 +8,7 @@ gem 'rails',                '4.2.6'
 gem 'pg',                   '0.18.4'
 
 # Gems used by project
-gem 'devise',               '~> 3.5.2'
+gem 'devise',               '~> 4.2.0'
 gem 'carrierwave',          '~> 0.11.2'
 gem 'kaminari',             '~> 0.16.3'
 gem 'figaro',               '~> 1.1.1'
