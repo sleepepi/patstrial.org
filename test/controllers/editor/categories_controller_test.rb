@@ -9,6 +9,17 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
     @category = categories(:one)
   end
 
+  def category_params
+    {
+      name: 'New Category',
+      description: @category.description,
+      top_level: @category.top_level,
+      slug: 'new-category',
+      position: @category.position,
+      archived: @category.archived
+    }
+  end
+
   test 'should get index as editor' do
     login(@editor)
     get :index
@@ -37,7 +48,7 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
   test 'should create category as editor' do
     login(@editor)
     assert_difference('Category.count') do
-      post :create, category: { name: 'New Category', description: @category.description, top_level: @category.top_level, slug: 'new-category', position: @category.position, archived: @category.archived }
+      post :create, params: { category: category_params }
     end
     assert_redirected_to editor_category_path(assigns(:category))
   end
@@ -45,7 +56,7 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
   test 'should not create category with blank name' do
     login(@editor)
     assert_difference('Category.count', 0) do
-      post :create, category: { name: '', description: @category.description, top_level: @category.top_level, slug: 'new-category', position: @category.position, archived: @category.archived }
+      post :create, params: { category: category_params.merge(name: '') }
     end
     assert_not_nil assigns(:category)
     assert assigns(:category).errors.size > 0
@@ -56,44 +67,44 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
   test 'should not create category as viewer' do
     login(@viewer)
     assert_difference('Category.count', 0) do
-      post :create, category: { name: 'New Category', description: @category.description, top_level: @category.top_level, slug: 'new-category', position: @category.position, archived: @category.archived }
+      post :create, params: { category: category_params }
     end
     assert_redirected_to dashboard_path
   end
 
   test 'should show category as editor' do
     login(@editor)
-    get :show, id: @category
+    get :show, params: { id: @category }
     assert_response :success
   end
 
   test 'should not show category as viewer' do
     login(@viewer)
-    get :show, id: @category
+    get :show, params: { id: @category }
     assert_redirected_to dashboard_path
   end
 
   test 'should get edit as editor' do
     login(@editor)
-    get :edit, id: @category
+    get :edit, params: { id: @category }
     assert_response :success
   end
 
   test 'should not get edit as viewer' do
     login(@viewer)
-    get :edit, id: @category
+    get :edit, params: { id: @category }
     assert_redirected_to dashboard_path
   end
 
   test 'should update category as editor' do
     login(@editor)
-    patch :update, id: @category, category: { name: @category.name, description: @category.description, top_level: @category.top_level, slug: @category.slug, position: @category.position, archived: @category.archived }
+    patch :update, params: { id: @category, category: category_params }
     assert_redirected_to editor_category_path(assigns(:category))
   end
 
   test 'should not update category with blank name' do
     login(@editor)
-    patch :update, id: @category, category: { name: '', description: @category.description, top_level: @category.top_level, slug: @category.slug, position: @category.position, archived: @category.archived }
+    patch :update, params: { id: @category, category: category_params.merge(name: '') }
     assert_not_nil assigns(:category)
     assert assigns(:category).errors.size > 0
     assert_equal ["can't be blank"], assigns(:category).errors[:name]
@@ -102,14 +113,14 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
 
   test 'should not update category as viewer' do
     login(@viewer)
-    patch :update, id: @category, category: { name: @category.name, description: @category.description, top_level: @category.top_level, slug: @category.slug, position: @category.position, archived: @category.archived }
+    patch :update, params: { id: @category, category: category_params }
     assert_redirected_to dashboard_path
   end
 
   test 'should destroy category as editor' do
     login(@editor)
     assert_difference('Category.current.count', -1) do
-      delete :destroy, id: @category
+      delete :destroy, params: { id: @category }
     end
     assert_redirected_to editor_categories_path
   end
@@ -117,7 +128,7 @@ class Editor::CategoriesControllerTest < ActionController::TestCase
   test 'should not destroy category as viewer' do
     login(@viewer)
     assert_difference('Category.current.count', 0) do
-      delete :destroy, id: @category
+      delete :destroy, params: { id: @category }
     end
     assert_redirected_to dashboard_path
   end

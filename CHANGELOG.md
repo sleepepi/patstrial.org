@@ -1,5 +1,13 @@
 ## rails5
 
+### Enhancements
+- **Gem Changes**
+  - Updated to rails 5.0.0
+  - Updated to coffee-rails 4.2
+  - Updated to jbuilder 2.5
+  - Updated to jquery-rails 4.1.1
+  - Added rails-controller-testing
+
 ## 7.0.0
 
 ## 6.0.0 (July 12, 2016)

@@ -2,7 +2,7 @@
 
 # User class defines admins, editors, and viewers
 # Users must be approved in order to login
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, and :omniauthable
   devise :database_authenticatable, :registerable, :timeoutable,

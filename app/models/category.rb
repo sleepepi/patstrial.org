@@ -2,7 +2,7 @@
 
 # Allows uploaded documents to be grouped together and organized in dashboard
 # menu
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   # Concerns
   include Deletable
 

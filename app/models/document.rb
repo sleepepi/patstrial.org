@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Class for uploaded documents
-class Document < ActiveRecord::Base
+class Document < ApplicationRecord
   # Uploaders
   mount_uploader :document, DocumentUploader
 

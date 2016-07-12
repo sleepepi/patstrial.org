@@ -12,20 +12,20 @@ class CommitteesControllerTest < ActionController::TestCase
 
   test 'should show committee as viewer' do
     login(@viewer)
-    get :show, committee: @committee.slug
+    get :show, params: { committee: @committee.slug }
     assert_not_nil assigns(:committee)
     assert_response :success
   end
 
   test 'should show committee as generic viewer' do
     login_viewer(@generic_viewer)
-    get :show, committee: @committee.slug
+    get :show, params: { committee: @committee.slug }
     assert_not_nil assigns(:committee)
     assert_response :success
   end
 
   test 'should not show committee as anonymous viewer' do
-    get :show, committee: @committee.slug
+    get :show, params: { committee: @committee.slug }
     assert_nil assigns(:committee)
     assert_redirected_to new_user_session_path
   end

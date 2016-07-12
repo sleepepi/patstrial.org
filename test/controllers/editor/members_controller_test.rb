@@ -10,6 +10,16 @@ class Editor::MembersControllerTest < ActionController::TestCase
     @member = members(:one)
   end
 
+  def member_params
+    {
+      first_name: @member.first_name,
+      last_name: @member.last_name,
+      email: @member.email,
+      phone: @member.phone,
+      role: @member.role
+    }
+  end
+
   test 'should get index as editor' do
     login(@editor)
     get :index
@@ -38,7 +48,7 @@ class Editor::MembersControllerTest < ActionController::TestCase
   test 'should create member as editor' do
     login(@editor)
     assert_difference('Member.count') do
-      post :create, member: { first_name: @member.first_name, last_name: @member.last_name, email: @member.email, phone: @member.phone, role: @member.role }
+      post :create, params: { member: member_params }
     end
     assert_redirected_to editor_member_path(assigns(:member))
   end
@@ -46,7 +56,7 @@ class Editor::MembersControllerTest < ActionController::TestCase
   test 'should not create member with blank name' do
     login(@editor)
     assert_difference('Member.count', 0) do
-      post :create, member: { first_name: '', last_name: '', email: @member.email, phone: @member.phone, role: @member.role }
+      post :create, params: { member: member_params.merge(first_name: '', last_name: '') }
     end
     assert_not_nil assigns(:member)
     assert assigns(:member).errors.size > 0
@@ -58,44 +68,44 @@ class Editor::MembersControllerTest < ActionController::TestCase
   test 'should not create member as viewer' do
     login(@viewer)
     assert_difference('Member.count', 0) do
-      post :create, member: { first_name: @member.first_name, last_name: @member.last_name, email: @member.email, phone: @member.phone, role: @member.role }
+      post :create, params: { member: member_params }
     end
     assert_redirected_to dashboard_path
   end
 
   test 'should show member as editor' do
     login(@editor)
-    get :show, id: @member
+    get :show, params: { id: @member }
     assert_response :success
   end
 
   test 'should not show member as viewer' do
     login(@viewer)
-    get :show, id: @member
+    get :show, params: { id: @member }
     assert_redirected_to dashboard_path
   end
 
   test 'should get edit as editor' do
     login(@editor)
-    get :edit, id: @member
+    get :edit, params: { id: @member }
     assert_response :success
   end
 
   test 'should not get edit as viewer' do
     login(@viewer)
-    get :edit, id: @member
+    get :edit, params: { id: @member }
     assert_redirected_to dashboard_path
   end
 
   test 'should update member as editor' do
     login(@editor)
-    patch :update, id: @member, member: { first_name: @member.first_name, last_name: @member.last_name, email: @member.email, phone: @member.phone, role: @member.role }
+    patch :update, params: { id: @member, member: member_params }
     assert_redirected_to editor_member_path(assigns(:member))
   end
 
   test 'should not update member with blank name' do
     login(@editor)
-    patch :update, id: @member, member: { first_name: '', last_name: '', email: @member.email, phone: @member.phone, role: @member.role }
+    patch :update, params: { id: @member, member: member_params.merge(first_name: '', last_name: '') }
     assert_not_nil assigns(:member)
     assert assigns(:member).errors.size > 0
     assert_equal ["can't be blank"], assigns(:member).errors[:first_name]
@@ -105,14 +115,14 @@ class Editor::MembersControllerTest < ActionController::TestCase
 
   test 'should not update member as viewer' do
     login(@viewer)
-    patch :update, id: @member, member: { first_name: @member.first_name, last_name: @member.last_name, email: @member.email, phone: @member.phone, role: @member.role }
+    patch :update, params: { id: @member, member: member_params }
     assert_redirected_to dashboard_path
   end
 
   test 'should destroy member as editor' do
     login(@editor)
     assert_difference('Member.current.count', -1) do
-      delete :destroy, id: @member
+      delete :destroy, params: { id: @member }
     end
     assert_redirected_to editor_members_path
   end
@@ -120,7 +130,7 @@ class Editor::MembersControllerTest < ActionController::TestCase
   test 'should not destroy member as viewer' do
     login(@viewer)
     assert_difference('Member.current.count', 0) do
-      delete :destroy, id: @member
+      delete :destroy, params: { id: @member }
     end
     assert_redirected_to dashboard_path
   end

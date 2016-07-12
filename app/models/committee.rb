@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Allows members to be placed into a committee for sorting in the directory
-class Committee < ActiveRecord::Base
+class Committee < ApplicationRecord
   # Concerns
   include Deletable
 

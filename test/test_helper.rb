@@ -29,21 +29,34 @@ class ActionController::TestCase
   end
 end
 
+# Set up ActionDispatch tests
 class ActionDispatch::IntegrationTest
+  def login(user)
+    sign_in_as(user, '1234567890')
+  end
+
+  def login_viewer(viewer)
+    sign_in_as_viewer(viewer)
+  end
+
   def sign_in_as(user, password)
     user.update password: password, password_confirmation: password
-    post_via_redirect '/login', user: { email: user.email, password: password }
+    post '/login', params: { user: { email: user.email, password: password } }
+    follow_redirect!
     user
   end
 
   def sign_in_as_viewer(viewer)
     viewer.update password: viewer.password_plain, password_confirmation: viewer.password_plain
-    post_via_redirect '/login', user: { email: viewer.username, password: viewer.password_plain }
+    post '/login', params: { user: { email: viewer.username, password: viewer.password_plain } }
+    follow_redirect!
+    viewer
   end
 end
 
 module Rack
   module Test
+    # Allow files to be uploaded in tests
     class UploadedFile
       attr_reader :tempfile
     end

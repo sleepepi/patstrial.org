@@ -14,7 +14,7 @@ class DrugsControllerTest < ActionController::TestCase
   end
 
   test 'should show drug' do
-    get :show, id: @drug
+    get :show, params: { id: @drug }
     assert_response :success
   end
 end

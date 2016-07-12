@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Drug < ActiveRecord::Base
+class Drug < ApplicationRecord
   # Concerns
   include Searchable
 
