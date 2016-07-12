@@ -1,4 +1,4 @@
-class CreateViewers < ActiveRecord::Migration
+class CreateViewers < ActiveRecord::Migration[4.2]
   def change
     create_table :viewers do |t|
       t.string :username
