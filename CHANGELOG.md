@@ -6,6 +6,7 @@
     - Demographics report pages displays charts for age by gender, and gender
       by race
   - Added a eligibility status report page
+  - Document sizes no longer wrap across multiple lines
 - **Gem Changes**
   - Updated to turbolinks 5
   - Updated to devise 4.2.0
