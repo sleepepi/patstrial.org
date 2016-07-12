@@ -9,6 +9,7 @@
 - **Gem Changes**
   - Updated to turbolinks 5
   - Updated to devise 4.2.0
+  - Updated to kaminari 0.17.0
 
 ## 5.0.0 (June 27, 2016)
 
