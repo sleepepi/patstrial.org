@@ -13,8 +13,7 @@ gem 'carrierwave',          '~> 0.11.2'
 gem 'kaminari',             '~> 0.16.3'
 gem 'figaro',               '~> 1.1.1'
 gem 'bootstrap-sass',       '~> 3.3.5'
-gem 'autoprefixer-rails'
-gem 'haml'
+gem 'haml',                 '~> 4.0.7'
 
 # Rails Defaults
 gem 'coffee-rails',         '~> 4.1.0'
