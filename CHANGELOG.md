@@ -1,4 +1,4 @@
-## 6.0.0
+## 6.0.0 (July 12, 2016)
 
 ### Enhancements
 - **General Changes**
