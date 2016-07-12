@@ -19,4 +19,5 @@
 #= require turbolinks
 #= require external/highcharts/highcharts.src.js
 #= require external/highcharts/modules/drilldown.js
+#= require components/links
 #= require_tree .
