@@ -26,6 +26,8 @@ a.title-link:hover {
 }
 
 a.footer-link {
+  @include ignore-selection;
+
   backface-visibility: hidden;
   text-decoration: none;
   transition: all .2s ease;

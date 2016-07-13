@@ -2,6 +2,7 @@
   fileDragReady()
   chartsReady()
   lettersReady()
+  slidesReady()
 
 $(document).ready(ready)
 $(document)

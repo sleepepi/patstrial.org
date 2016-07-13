@@ -22,7 +22,13 @@
 }
 
 .footer-on-top {
+  @include ignore-selection;
+
   position: absolute;
   right: 0;
   top: -45px;
+
+  img {
+    @include ignore-selection;
+  }
 }

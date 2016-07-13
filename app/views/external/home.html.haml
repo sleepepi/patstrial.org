@@ -3,19 +3,22 @@
 
   #about.anchor-top
   .container
-    .dark-purple
-      = render 'external/about'
-
+    = render 'external/about'
 
   .purple-border-top
   #participate.anchor-top
-  .container
-    .dark-purple
+  .new-purple-light-fill
+    .container
       = render 'external/participate'
 
-.purple-border-top
-  = render 'external/sites'
+  .purple-border-top
+  #sites.anchor-top
+  .container{ style: 'margin-bottom: -60px' }
+    = render 'external/sites'
 
 - content_for :footer do
   .purple-border-top
-    = render 'external/contact'
+  #contact.anchor-top
+  .purple-fill
+    .container
+      = render 'external/contact'

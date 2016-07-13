@@ -1,0 +1,5 @@
+.navbar a,
+.navbar-header,
+.navbar-header img {
+  @include ignore-selection;
+}

@@ -1,7 +1,12 @@
 .site-container {
-  margin-bottom: 40px;
+  margin: 20px 0;
+
+  h4 {
+    font-style: italic;
+  }
 }
 
 .site-contact-information {
+  color: $text-muted;
   margin-left: 20px;
 }

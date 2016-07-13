@@ -15,10 +15,10 @@
           - if current_user || current_viewer
             %li.visible-xs{ class: "#{ 'active' if current_page?(dashboard_path) }" }
               = link_to 'Dashboard', dashboard_path
-          %li= link_to 'About', root_path(anchor: 'about'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
-          %li= link_to 'Participate', root_path(anchor: 'participate'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
-          %li= link_to 'Sites', root_path(anchor: 'sites'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
-          %li= link_to 'Contact', root_path(anchor: 'contact'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+          %li= link_to 'About', current_page?(root_path) ? '#about' : root_path(anchor: 'about'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+          %li= link_to 'Participate', current_page?(root_path) ? '#participate' : root_path(anchor: 'participate'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+          %li= link_to 'Sites', current_page?(root_path) ? '#sites' : root_path(anchor: 'sites'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+          %li= link_to 'Contact', current_page?(root_path) ? '#contact' : root_path(anchor: 'contact'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
         - if current_user || current_viewer
           %form.navbar-form.navbar-right
             = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary-dark'

@@ -1,26 +1,22 @@
-#contact.anchor-top
-.dark-purple
-  .container
-    .color-container
-      %h1.brand Contact Us
-      %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
+.section-heading
+  %h2 Contact Us
+  %h4 Pediatric Adenotonsillectomy Trial for Snoring
 
-.container
-  .color-container.purple-fill
-    .row
-      .col-sm-6
-        %h2
-          via email
-        %p.lead
-          = link_to "mailto:#{ENV['support_email']}" do
-            = ENV['support_email']
+.section-body
+  .row
+    .col-sm-6
+      %h2
+        via email
+      %p.lead
+        = link_to "mailto:#{ENV['support_email']}" do
+          = ENV['support_email']
 
-      .col-sm-6
-        %h2
-          our address
-        %p.lead
-          %strong Sleep and Circadian Disorders
-          %br
-          221 Longwood Avenue, BLI 225
-          %br
-          Boston, MA 02115
+    .col-sm-6
+      %h2
+        our address
+      %p.lead
+        %strong Sleep and Circadian Disorders
+        %br
+        221 Longwood Avenue, BLI 225
+        %br
+        Boston, MA 02115

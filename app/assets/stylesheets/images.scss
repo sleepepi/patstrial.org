@@ -8,6 +8,10 @@
   }
 }
 
+.wiggle {
+  @include ignore-selection;
+}
+
 .wiggle:hover {
   animation: wiggle 2s linear infinite;
 }

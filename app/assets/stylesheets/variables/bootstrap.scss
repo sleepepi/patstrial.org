@@ -28,6 +28,7 @@ $purple-light-color-gray: #a494b9; // $purple-light-color * #777 (Screen)
 $pink-bg: $pink;
 $pink-color: rgb(127, 60, 106);
 
+$new-purple-light-bg: #ece5f6;
 
 // $gray-base:              #000
 // $gray-darker:            lighten($gray-base, 13.5%) // #222
@@ -412,9 +413,9 @@ $navbar-default-link-active-color:         $brand-white;
 // $navbar-default-brand-hover-bg:            transparent
 
 // Navbar toggle
-$navbar-default-toggle-hover-bg:           darken($navbar-default-bg, 6.5%);
-$navbar-default-toggle-icon-bar-bg:        $purple-color;
-$navbar-default-toggle-border-color:       $purple-color;
+$navbar-default-toggle-hover-bg:           darken($purple-color, 6.5%);
+$navbar-default-toggle-icon-bar-bg:        $purple; // $purple-color;
+$navbar-default-toggle-border-color:       darken($purple-color, 6.5%); // $purple-color;
 
 
 // Inverted navbar
