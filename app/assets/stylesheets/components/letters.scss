@@ -1,19 +1,8 @@
-@keyframes wavyshadow {
-  0% {
-    text-shadow: 4px 2px #b295db;
-  }
-  100% {
-    text-shadow: -4px 2px #b295db;
-  }
-}
-
 .letter {
   display: inline-block;
   transition: transform .75s cubic-bezier(.31, 1.22, .61, 1.26), opacity .75s ease-out;
   opacity: 1;
-  text-shadow: 2px 2px #b295db;
-  animation: wavyshadow 2s infinite alternate;
-  animation-timing-function: linear;
+  text-shadow: 2px 1px 5px #b295db;
 }
 
 .letter.start {
