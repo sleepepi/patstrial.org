@@ -4,11 +4,13 @@
 - **General Changes**
   - Improved links on landing page
   - Updated title slide on landing page
+  - Improved underlying user interface layout
 - **Gem Changes**
   - Updated to rails 5.0.0
   - Updated to coffee-rails 4.2
   - Updated to jbuilder 2.5
   - Updated to jquery-rails 4.1.1
+  - Updated to bootstrap-sass 3.3.6
   - Added rails-controller-testing
 
 ## 6.0.0 (July 12, 2016)

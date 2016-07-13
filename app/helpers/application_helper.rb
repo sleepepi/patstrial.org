@@ -24,4 +24,11 @@ module ApplicationHelper
       content_tag :span, nil, class: %w(glyphicon glyphicon-remove text-danger)
     end
   end
+
+  def public_page?
+    current_page?(root_path) ||
+      current_page?(participate_path) ||
+      current_page?(sites_path) ||
+      current_page?(contact_path)
+  end
 end

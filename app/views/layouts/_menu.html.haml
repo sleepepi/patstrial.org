@@ -1,90 +1,33 @@
-- if current_page?(root_path)
-  #top.logo-header{ style: 'margin-top: -50px' }
-    = render 'external/welcome'
-    - if false
-      .center
-        = image_tag 'pats-boy.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
-        %h1.brand.dark-purple{ style: 'font-size: 96px; display: inline-block' }
-          = link_to 'PATS', root_path, class: 'title-link'
-        = image_tag 'pats-girl.png', alt: '', class: 'img-responsive wiggle hidden-xs', style: 'max-height:148px;margin: 0 auto; display: inline-block'
-    - if false
-      .dark-purple
-        .container
-          .color-container
-            .row
-              .col-sm-4.hidden-xs
-                = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
-              .col-sm-8
-                %h1.brand Welcome to PATS Trial!
-                %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
-
-    #about.anchor-no-menu
-    .dark-purple
-      .container
-        .color-container
-          %h2.brand About the Trial
-          %p
-            The Pediatric Adenotonsillectomy Trial for Snoring
-            = surround '(', ')' do
-              = abbr 'PATS'
-            is a research study looking at treatment options for children
-            who have snoring and mild breathing problems during sleep, but
-            do not have sleep apnea (stopped breathing during sleep). This is
-            called mild sleep disordered breathing
-            = surround '(', ').' do
-              = abbr 'MSDB'
-            = abbr 'MSDB'
-            is often treated with surgery to take out the tonsils and
-            adenoids, and
-            = abbr 'MSDB'
-            is also often observed or treated medically
-            without surgery. It is not yet known whether
-            = abbr 'MSDB'
-            is associated with behavior or other health problems in children.
-
-          %p
-            A common treatment for
-            = abbr 'MSDB'
-            is removal of the tonsils and adenoids, but this has not been
-            well studied. This study will help us learn more about the
-            different treatment options for children with
-            = succeed '.' do
-              = abbr 'MSDB'
-
-          %p
-            Read more on
-            = succeed '.' do
-              = link_to 'ClinicalTrials.gov', 'https://clinicaltrials.gov/show/NCT02562040', target: '_blank'
-  .navbar-outer
-    %nav.navbar.navbar-default{ data: { object: 'navbar-affix' } }
-      .container
-        .navbar-header
-          %button.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '.navbar-full-menu' } }
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = image_tag 'pats-boy.png', alt: '', style: 'height:40px;padding-top:10px'
-          = link_to 'PATS', '#top', class: 'navbar-brand brand', data: { object: 'scroll-anchor' }
-          = image_tag 'pats-girl.png', alt: '', style: 'height:40px;padding-top:10px;padding-right:15px'
-        .collapse.navbar-collapse.navbar-full-menu
-          %ul.nav.navbar-nav
-            - if current_user || current_viewer
-              %li.visible-xs{ class: "#{ 'active' if current_page?(dashboard_path) }" }
-                = link_to 'Dashboard', dashboard_path
-            %li= link_to 'About', '#about', data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
-            %li= link_to 'Participate', '#participate', data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
-            %li= link_to 'Sites', '#sites', data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
-            %li= link_to 'Contact', '#contact', data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+- if public_page?
+  %nav.navbar.navbar-default.navbar-fixed-top
+    .container
+      .navbar-header
+        %button.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '.navbar-full-menu' } }
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = image_tag 'pats-boy.png', alt: '', style: 'height:40px;padding-top:10px'
+        = link_to 'PATS', '#top', class: 'navbar-brand brand', data: { object: 'scroll-anchor' }
+        = image_tag 'pats-girl.png', alt: '', style: 'height:40px;padding-top:10px;padding-right:15px'
+      .collapse.navbar-collapse.navbar-full-menu
+        %ul.nav.navbar-nav
           - if current_user || current_viewer
-            %form.navbar-form.navbar-right
-              = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary'
-            %ul.nav.navbar-nav.navbar-right.hidden-xs
-              - name = current_user ? current_user.first_name_and_staff_id : current_viewer.username
-              %li= link_to name, dashboard_path
-          - else
-            %form.navbar-form.navbar-right
-              = link_to 'Staff Login', new_user_session_path, class: 'btn btn-primary'
+            %li.visible-xs{ class: "#{ 'active' if current_page?(dashboard_path) }" }
+              = link_to 'Dashboard', dashboard_path
+          %li= link_to 'About', root_path(anchor: 'about'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+          %li= link_to 'Participate', root_path(anchor: 'participate'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+          %li= link_to 'Sites', root_path(anchor: 'sites'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+          %li= link_to 'Contact', root_path(anchor: 'contact'), data: { object: 'remove-collapse-in scroll-anchor', target: '.navbar-full-menu' }
+        - if current_user || current_viewer
+          %form.navbar-form.navbar-right
+            = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary-dark'
+          %ul.nav.navbar-nav.navbar-right.hidden-xs
+            - name = current_user ? current_user.first_name_and_staff_id : current_viewer.username
+            %li= link_to name, dashboard_path
+        - else
+          %form.navbar-form.navbar-right
+            = link_to 'Staff Login', new_user_session_path, class: 'btn btn-primary-dark'
 - else
   %nav.navbar.navbar-default.navbar-fixed-top
     .container
@@ -105,11 +48,10 @@
             %li{ class: "#{'active' if current_page?(directory_path)}" }= link_to 'Directory', directory_path
         - if current_user || current_viewer
           %form.navbar-form.navbar-right
-            = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary'
+            = link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary-dark'
           %ul.nav.navbar-nav.navbar-right.hidden-xs{ style: 'max-height: 50px' }
             - name = current_user ? current_user.first_name_and_staff_id : current_viewer.username
             %li= link_to name, dashboard_path
         - else
           %form.navbar-form.navbar-right
-            = link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' unless current_page?(new_user_registration_path)
-            = link_to 'Staff Login', new_user_session_path, class: 'btn btn-primary'
+            = link_to 'Staff Login', new_user_session_path, class: 'btn btn-primary-dark'

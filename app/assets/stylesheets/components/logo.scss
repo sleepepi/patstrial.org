@@ -1,0 +1,5 @@
+.logo-container {
+  @include ignore-selection;
+  background-color: $purple-color;
+  color: $brand-white;
+}

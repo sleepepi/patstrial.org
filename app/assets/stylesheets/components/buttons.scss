@@ -1,0 +1,33 @@
+.btn-primary-custom {
+  background-color: $btn-default-bg;
+  border-color: $btn-default-border;
+  color: $btn-default-color;
+
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active {
+    background-color: darken($btn-primary-bg, 10%);
+    border-color: darken($btn-primary-border, 12%);
+    color: $btn-primary-color;
+  }
+}
+
+
+.btn-primary-dark {
+  background-color: $purple-color;
+  border: 1px solid darken($purple-color, 6.5%);
+  color: $purple;
+}
+
+.btn-primary-dark:hover,
+.btn-primary-dark:focus,
+.btn-primary-dark:active,
+.btn-primary-dark.active,
+.btn-primary-dark.disabled,
+.btn-primary-dark[disabled] {
+  background-color: darken($purple-color, 6.5%);
+  border: 1px solid darken($purple-color, 6.5%);
+  color: $brand-white;
+}

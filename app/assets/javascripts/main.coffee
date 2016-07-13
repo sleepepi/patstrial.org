@@ -1,6 +1,5 @@
 @ready = ->
   fileDragReady()
-  affixReady()
   chartsReady()
   lettersReady()
 

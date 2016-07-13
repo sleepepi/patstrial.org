@@ -10,13 +10,13 @@
 }
 
 .flash-alert {
-  background-color: $pink-bg;
-  background-image: none;
-  color: $pink-color;
-}
-
-.flash-notice {
   background-color: $purple-light-bg;
   background-image: none;
   color: $purple-light-color;
+}
+
+.flash-notice {
+  background-color: $purple-bg;
+  background-image: none;
+  color: $purple-color;
 }

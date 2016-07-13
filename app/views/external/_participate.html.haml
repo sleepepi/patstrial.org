@@ -1,111 +1,107 @@
-#participate.anchor-top
-.dark-purple
-  .container
+%h1.brand
+  Participate
+  - if false
+    = link_to '#', data: { object: 'suppress-click' }, class: 'btn btn-primary', style: 'color:white' do
+      %span.glyphicon.glyphicon-file
+      Download Brochure
+
+.row
+  .col-sm-2.hidden-xs
     .color-container
-      %h1
-        %span.brand Participate
-        - if false
-          = link_to '#', data: { object: 'suppress-click' }, class: 'btn btn-primary', style: 'color:white' do
-            %span.glyphicon.glyphicon-file
-            Download Brochure
+      = image_tag 'pats-girl.png', class: 'wiggle img-responsive'
+  .col-sm-10
+    .color-container
+      %h2.heading-underline Why you and your child may choose to participate:
 
-    .row
-      .col-sm-2.hidden-xs
-        .color-container
-          = image_tag 'pats-girl.png', class: 'wiggle img-responsive'
-      .col-sm-10
-        .color-container
-          %h2.heading-underline Why you and your child may choose to participate:
+      %ul
+        %li
+          Find out if your child has
+          = succeed '.' do
+            = abbr 'MSDB'
+        %li
+          Learn about sleep disorders and treatments for
+          = succeed '.' do
+            = abbr 'MSDB'
+        %li
+          Get your child evaluated for behavior and health problems that may
+          be associated with
+          = succeed '.' do
+            = abbr 'MSDB'
+        %li
+          Comprehensive monitoring of your child over the course of 12
+          months.
+        %li
+          Monitoring includes sleep studies, growth measurements, lab work,
+          blood pressure, behavior, and an evaluation by an Ear, Nose, and
+          Throat
+          = surround '(', ')' do
+            = abbr 'ENT'
+          doctor.
+        %li
+          Help doctors learn more about
+          = abbr 'MSDB'
+          and how they can help these children.
 
+    .color-container
+      %h2.heading-underline Who may participate?
+
+      %ul
+        %li Children ages 3-9 years with snoring during sleep.
+        %li
+          Children who have not been diagnosed with obstructive sleep apnea.
+        %li Children who have not had their tonsils and adenoid removed.
+
+.row
+  .col-sm-10
+    .color-container
+      %h2.heading-underline What is involved?
+
+      %p Children in the study will be randomly placed in one of two groups:
+
+      %ul
+        %li
+          Early removal of tonsils and adenoid about 1 month after sleep
+          study
+        %li
+          Watchful Waiting with Supportive Care for 12 months. Re-evaluation
+          by the Ear, Nose, and Throat
+          = surround '(', ')' do
+            = abbr 'ENT'
+          doctor for treatment at 12
+          months for those in the Watchful Waiting with Supportive Care
+          group.
+
+    .color-container
+      %h2.heading-underline All children in the study will receive:
+
+      %ul
+        %li 2 overnight sleep studies
+        %li
+          3 daytime study visits which will include:
           %ul
-            %li
-              Find out if your child has
-              = succeed '.' do
-                = abbr 'MSDB'
-            %li
-              Learn about sleep disorders and treatments for
-              = succeed '.' do
-                = abbr 'MSDB'
-            %li
-              Get your child evaluated for behavior and health problems that may
-              be associated with
-              = succeed '.' do
-                = abbr 'MSDB'
-            %li
-              Comprehensive monitoring of your child over the course of 12
-              months.
-            %li
-              Monitoring includes sleep studies, growth measurements, lab work,
-              blood pressure, behavior, and an evaluation by an Ear, Nose, and
-              Throat
-              = surround '(', ')' do
-                = abbr 'ENT'
-              doctor.
-            %li
-              Help doctors learn more about
-              = abbr 'MSDB'
-              and how they can help these children.
+            %li Behavioral testing
+            %li Blood pressure monitoring
+            %li Body measurements
+            %li Blood and urine tests.
+            %li Parent questionnaires
 
-        .color-container
-          %h2.heading-underline Who may participate?
+        %li Monthly telephone calls
+        %li
+          Actigraphy: A wrist watch-like device to wear at home for 7 days
+          that measures your child's wake and sleep at home
+        %li Teacher questionnaires
 
-          %ul
-            %li Children ages 3-9 years with snoring during sleep.
-            %li
-              Children who have not been diagnosed with obstructive sleep apnea.
-            %li Children who have not had their tonsils and adenoid removed.
+    .color-container
+      %h2.heading-underline Please keep in mind:
 
-    .row
-      .col-sm-10
-        .color-container
-          %h2.heading-underline What is involved?
-
-          %p Children in the study will be randomly placed in one of two groups:
-
-          %ul
-            %li
-              Early removal of tonsils and adenoid about 1 month after sleep
-              study
-            %li
-              Watchful Waiting with Supportive Care for 12 months. Re-evaluation
-              by the Ear, Nose, and Throat
-              = surround '(', ')' do
-                = abbr 'ENT'
-              doctor for treatment at 12
-              months for those in the Watchful Waiting with Supportive Care
-              group.
-
-        .color-container
-          %h2.heading-underline All children in the study will receive:
-
-          %ul
-            %li 2 overnight sleep studies
-            %li
-              3 daytime study visits which will include:
-              %ul
-                %li Behavioral testing
-                %li Blood pressure monitoring
-                %li Body measurements
-                %li Blood and urine tests.
-                %li Parent questionnaires
-
-            %li Monthly telephone calls
-            %li
-              Actigraphy: A wrist watch-like device to wear at home for 7 days
-              that measures your child's wake and sleep at home
-            %li Teacher questionnaires
-
-        .color-container
-          %h2.heading-underline Please keep in mind:
-
-          %ul
-            %li Participation is voluntary.
-            %li You are free to withdraw from this study at any time.
-            %li
-              We encourage you to ask questions, and express all of your
-              concerns.
-            %li Your child's health is important to us.
-            %li We will reimburse you for your time and expenses.
-      .col-sm-2.hidden-xs
-        .color-container
-          = image_tag 'pats-boy.png', class: 'wiggle img-responsive'
+      %ul
+        %li Participation is voluntary.
+        %li You are free to withdraw from this study at any time.
+        %li
+          We encourage you to ask questions, and express all of your
+          concerns.
+        %li Your child's health is important to us.
+        %li We will reimburse you for your time and expenses.
+  .col-sm-2.hidden-xs
+    .color-container
+      = image_tag 'pats-boy.png', class: 'wiggle img-responsive'
