@@ -1,8 +1,30 @@
-.section-heading {
-  h2 {
+.section-heading,
+.section-heading-internal {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: bold;
   }
   margin: 40px 0 20px;
+
+  .section-description {
+    color: $text-muted;
+    font-weight: normal;
+    line-height: 1.4em;
+  }
+}
+
+.brand-background {
+  .section-description {
+    color: $brand-white;
+  }
+}
+
+.section-heading-internal {
+  margin: 0 0 40px;
 }
 
 .section-body {
@@ -25,7 +47,7 @@
 }
 
 .paper-clip {
-  background: linear-gradient(lighten($purple-color, 60.5%), $brand-white);
+  background: linear-gradient($brand-white, lighten($purple-color, 60.5%));
   box-shadow: 0 0 4px;
   margin-bottom: 20px;
   padding: 15px;

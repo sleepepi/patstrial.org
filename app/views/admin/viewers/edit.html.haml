@@ -1,18 +1,17 @@
 - @title = "Edit Viewer: #{@viewer.username_was}"
 
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Viewers', admin_viewers_path
-          &middot;
-          = link_to @viewer.username_was, admin_viewer_path(@viewer)
-          &middot;
-          Edit
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Viewers', admin_viewers_path
+        &middot;
+        = link_to @viewer.username_was, admin_viewer_path(@viewer)
+        &middot;
+        Edit
 
-      .color-container
-        = render 'form'
+    .section-body
+      = render 'form'
 
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

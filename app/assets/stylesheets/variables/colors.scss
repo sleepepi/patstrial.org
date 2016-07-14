@@ -4,23 +4,6 @@
   }
 }
 
-.color-container {
-  margin: 0 -15px;
-  padding: 20px;
-}
-
-.brown-fill {
-  @include white-links;
-  background-color: $brown-bg;
-  color: $brown-color;
-}
-
-.brown-light-fill {
-  @include white-links;
-  background-color: $brown-light-bg;
-  color: $brown-light-color;
-}
-
 .purple-fill {
   @include white-links;
   background-color: $purple-bg;
@@ -37,24 +20,6 @@
   @include white-links;
   background-color: $pink-bg;
   color: $pink-color;
-}
-
-.brown-fill-white {
-  background-color: $brown-bg;
-  color: $white;
-
-  a {
-    color: $brown-color;
-  }
-}
-
-.brown-light-fill-white {
-  background-color: $brown-light-bg;
-  color: $white;
-
-  a {
-    color: $brown-light-color;
-  }
 }
 
 .purple-fill-white {
@@ -84,24 +49,6 @@
   }
 }
 
-.brown {
-  background-color: $white;
-  color: $brown-bg;
-
-  a {
-    color: $brown-color;
-  }
-}
-
-.brown-light {
-  background-color: $white;
-  color: $brown-light-bg;
-
-  a {
-    color: $brown-light-color;
-  }
-}
-
 .purple {
   background-color: $white;
   color: $purple-bg;
@@ -126,24 +73,6 @@
 
   a {
     color: $pink-color;
-  }
-}
-
-.dark-brown {
-  background-color: $white;
-  color: $brown-color;
-
-  a {
-    color: $brown-bg;
-  }
-}
-
-.dark-brown-light {
-  background-color: $white;
-  color: $brown-light-color;
-
-  a {
-    color: $brown-light-bg;
   }
 }
 

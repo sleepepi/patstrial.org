@@ -1,42 +1,34 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Members', editor_members_path
-          &middot;
-          = @member.name
-        %h4.purple
-          = @member.email
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Members', editor_members_path
+        &middot;
+        = @member.name
         = link_to 'Edit Member', edit_editor_member_path(@member), class: 'btn btn-xs btn-default'
 
+    .section-body
       %table.table.table-striped
         %tr
           %td Site
           %td= link_to @member.site.name, editor_site_path(@member.site) if @member.site
         %tr
-          %td First name
-          %td= @member.first_name
-        %tr
-          %td Last name
-          %td= @member.last_name
-        %tr
-          %td Staff ID
-          %td= @member.staffid
+          %td Role
+          %td= @member.role
         %tr
           %td Email
           %td= @member.email
         %tr
+          %td Staff ID
+          %td= @member.staffid
+        %tr
           %td Phone
           %td= @member.phone
-        %tr
-          %td Role
-          %td= @member.role
         %tr
           %td Committees
           %td= @member.committees.collect { |c| link_to c.name, editor_committee_path(c) }.join(', ').html_safe
         %tr
           %td Archived
           %td= simple_check @member.archived?
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

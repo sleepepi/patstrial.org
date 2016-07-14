@@ -13,16 +13,6 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should get theme' do
-    get :theme
-    assert_response :success
-  end
-
-  test 'should get window' do
-    get :window
-    assert_response :success
-  end
-
   test 'should get version' do
     get :version
     assert_response :success

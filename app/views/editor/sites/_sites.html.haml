@@ -9,7 +9,7 @@
     %tr
       %td= link_to site.name, editor_site_path(site)
       %td= site.address
-      %td
+      %td.nowrap
         = link_to 'Edit', edit_editor_site_path(site), class: 'btn btn-default btn-xs'
         = link_to 'Delete', editor_site_path(site), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Site #{site.name}?" }
 

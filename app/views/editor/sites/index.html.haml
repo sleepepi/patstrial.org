@@ -1,11 +1,10 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand Sites
-        %h4.purple You may edit the sites here.
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        Sites
         = link_to 'Add New Site', new_editor_site_path, class: 'btn btn-xs btn-default'
-
-      = render 'sites'
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+      .section-description You may edit the sites here.
+    .section-body= render 'sites'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

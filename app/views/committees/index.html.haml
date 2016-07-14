@@ -1,37 +1,34 @@
 - @title = 'Committees'
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand= @title
-        %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
-
-      - Committee.order(:position).current.each do |committee|
-        .color-container.dark-purple{ style: 'border-color: transparent' }
-          %h2
-            = committee.name
-            = link_to committee_path(committee.slug), class: 'btn btn-xs btn-default' do
-              Learn More
-              %span.glyphicon.glyphicon-new-window
-          %div.table-responsive
-            %table.table.table-striped
-              %thead
-                %tr
-                  %th
-                  = th_sort_field @order, 'members.last_name', 'Name'
-                  = th_sort_field @order, 'members.email', 'Email'
-                  = th_sort_field @order, 'members.phone', 'Phone'
-                  = th_sort_field @order, 'members.role', 'Role'
-                  = th_sort_field @order, 'members.staffid', 'Staff ID'
-              - committee.committee_members.includes(:member).order(@order).each do |committee_member|
-                %tr
-                  %td
-                    - if committee_member.chair?
-                      %span.label.label-primary Chair
-                  %td= committee_member.member.name_reverse
-                  %td= committee_member.member.email
-                  %td.nowrap= committee_member.member.phone
-                  %td= committee_member.member.role
-                  %td= committee_member.member.staffid
-    .col-sm-3.col-sm-pull-9
-      = render 'internal/menu'
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1= @title
+    - Committee.order(:position).current.each do |committee|
+      .section-body
+        %h2
+          = committee.name
+          = link_to committee_path(committee.slug), class: 'btn btn-xs btn-default' do
+            Learn More
+            %span.glyphicon.glyphicon-new-window
+        .table-responsive
+          %table.table.table-striped
+            %thead
+              %tr
+                %th
+                = th_sort_field @order, 'members.last_name', 'Name'
+                = th_sort_field @order, 'members.email', 'Email'
+                = th_sort_field @order, 'members.phone', 'Phone'
+                = th_sort_field @order, 'members.role', 'Role'
+                = th_sort_field @order, 'members.staffid', 'Staff ID'
+            - committee.committee_members.includes(:member).order(@order).each do |committee_member|
+              %tr
+                %td
+                  - if committee_member.chair?
+                    %span.label.label-primary Chair
+                %td= committee_member.member.name_reverse
+                %td= committee_member.member.email
+                %td.nowrap= committee_member.member.phone
+                %td= committee_member.member.role
+                %td= committee_member.member.staffid
+  .col-sm-3.col-sm-pull-9
+    = render 'internal/menu'

@@ -1,13 +1,13 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Viewers', admin_viewers_path
-          &middot;
-          = @viewer.username
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Viewers', admin_viewers_path
+        &middot;
+        = @viewer.username
         = link_to 'Edit Viewer', edit_admin_viewer_path(@viewer), class: 'btn btn-xs btn-default'
 
+    .section-body
       %table.table.table-striped.table-fixed
         %tr
           %td Username
@@ -24,5 +24,5 @@
         %tr
           %td Description
           %td= @viewer.description
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

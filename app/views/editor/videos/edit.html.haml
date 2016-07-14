@@ -1,22 +1,18 @@
 - @title = "Edit Video: #{@video.name}"
 
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Folders', editor_categories_path(@category)
-          &middot;
-          = link_to @category.name, editor_category_path(@category)
-          &middot;
-          = link_to 'Videos', editor_category_videos_path(@category)
-          &middot;
-          = link_to @video.name_was, editor_category_video_path(@category, @video)
-          &middot;
-          Edit
-
-      .color-container
-        = render 'form'
-
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Folders', editor_categories_path(@category)
+        &middot;
+        = link_to @category.name, editor_category_path(@category)
+        &middot;
+        = link_to 'Videos', editor_category_videos_path(@category)
+        &middot;
+        = link_to @video.name_was, editor_category_video_path(@category, @video)
+        &middot;
+        Edit
+    .section-body= render 'form'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

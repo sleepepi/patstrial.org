@@ -1,16 +1,15 @@
 - @title = 'Blood Pressure Percentile Calculator'
-.container
+.section-heading
   %h1= @title
+  .section-description= render 'calculators/reference_bpp'
 
-  = render 'calculators/reference_bpp'
-
+.section-body
   - if true
     .jumbotron
       %p.lead.center Currently unavailable!
       .center
         %span.glyphicon.glyphicon-calendar{ style: 'font-size: 96px;' }
   - else
-
     = form_tag calculators_blood_pressure_percentile_path, method: :post, class: 'form-horizontal' do
       .form-group
         = label :dob, 'Date of Birth', class: 'col-md-2 control-label'

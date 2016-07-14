@@ -5,3 +5,7 @@
 .brand {
   @include brand;
 }
+
+.purple-border-top {
+  border-top: 5px solid $purple;
+}

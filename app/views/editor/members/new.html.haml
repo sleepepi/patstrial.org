@@ -1,16 +1,13 @@
 - @title = 'New Member'
 
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          New Member
-        %h4.purple
-          Enter new member information.
-
-      .color-container
-        = render 'form'
-
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        New Member
+      .section-description
+        Enter new member information.
+    .section-body
+      = render 'form'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

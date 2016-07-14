@@ -1,56 +1,54 @@
 - @title = 'Reports - Demographics'
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand= @title
-        %h4.purple
-          - if @recruitment
-            Data last updated
-            = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      .dropdown.pull-right{ style: 'display: inline-block' }
+        = link_to '#', data: { toggle: 'dropdown' }, role: 'button', aria: { haspopup: 'true', expanded: 'false' }, class: 'btn btn-primary-custom' do
+          %span.glyphicon.glyphicon-filter
+          = @subject_status.titleize
+          %span.caret
+        %ul.dropdown-menu
+          - ['screened', 'consented', 'eligible', 'randomized'].each do |label|
+            - value = label
+            %li= link_to label.titleize, reports_demographics_status_path(subjects: value), style: @subject_status == value ? 'font-weight:bold;' : ''
+      %h1 Demographics
+      .section-description
+        - if @recruitment
+          Data last updated
+          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
 
-        .dropdown.pull-right{ style: 'display: inline-block' }
-          = link_to '#', data: { toggle: 'dropdown' }, role: 'button', aria: { haspopup: 'true', expanded: 'false' }, class: 'btn btn-primary-custom' do
-            %span.glyphicon.glyphicon-filter
-            = @subject_status.titleize
-            %span.caret
-          %ul.dropdown-menu
-            - ['screened', 'consented', 'eligible', 'randomized'].each do |label|
-              - value = label
-              %li= link_to label.titleize, reports_demographics_status_path(subjects: value), style: @subject_status == value ? 'font-weight:bold;' : ''
+    .section-body
 
-        .clearfix
+      .row
+        - female_color = '#ffc0cb'
+        - male_color = '#7cb5ec'
+        - black_race_color = '#333'
+        - other_race_color = '#ededed'
+        - if @demographics && @demographics[:extras]
+          - @chart = { series: [{ name: 'Female', data: [@demographics.dig(:extras, :females, :age3to4), @demographics.dig(:extras, :females, :age5to6), @demographics.dig(:extras, :females, :age7plus)], color: female_color}, { name: 'Male', data: [@demographics.dig(:extras, :males, :age3to4), @demographics.dig(:extras, :males, :age5to6), @demographics.dig(:extras, :males, :age7plus)], color: male_color }], categories: ['3 to 4', '5 to 6', '7+'], title: 'Age', yaxis: 'Subjects', xaxis: 'Years Old', subtitle: ' ' }
+          .col-sm-6
+            %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', charttype: 'column', series: @chart[:series].to_json, categories: @chart[:categories].to_json, title: @chart[:title], yaxis: @chart[:yaxis], xaxis: @chart[:xaxis], subtitle: @chart[:subtitle] } }
+        - if @demographics && @demographics[:extras]
+          - @chart = { series: [{ name: 'Gender', colorByPoint: true, startAngle: -180, data: [{ name: 'Female', y: @demographics.dig(:extras, :females, :total), color: female_color, drilldown: 'Female' }, { name: 'Male', y: @demographics.dig(:extras, :males, :total), color: male_color, drilldown: 'Male' }] }], categories: [], title: 'Gender', subtitle: 'Click pie chart to view race breakdown', drilldown: { series: [{name: 'Female', id: 'Female', borderColor: female_color, borderWidth: '5px', data: [ { name: 'Female - Black', y: @demographics.dig(:extras, :females, :black), color: black_race_color }, { name: 'Female - Other', y: @demographics.dig(:extras, :females, :other), color: '#efefef' }]}, {name: 'Male', id: 'Male', borderColor: male_color, borderWidth: '5px', data: [{ name: 'Male - Black', y: @demographics.dig(:extras, :males, :black), color: black_race_color }, { name: 'Male - Other', y: @demographics.dig(:extras, :males, :other), color: other_race_color }]}] } }
+          .col-sm-6
+            %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart-pie', series: @chart[:series].to_json, title: @chart[:title], drilldown: @chart[:drilldown].to_json, subtitle: @chart[:subtitle] } }
+      - if @demographics && @demographics[:tables]
+        - @demographics[:tables].each do |table|
+          = render 'reports/draw_advanced_table', table: table
 
-        .row
-          - female_color = '#ffc0cb'
-          - male_color = '#7cb5ec'
-          - black_race_color = '#333'
-          - other_race_color = '#ededed'
-          - if @demographics && @demographics[:extras]
-            - @chart = { series: [{ name: 'Female', data: [@demographics.dig(:extras, :females, :age3to4), @demographics.dig(:extras, :females, :age5to6), @demographics.dig(:extras, :females, :age7plus)], color: female_color}, { name: 'Male', data: [@demographics.dig(:extras, :males, :age3to4), @demographics.dig(:extras, :males, :age5to6), @demographics.dig(:extras, :males, :age7plus)], color: male_color }], categories: ['3 to 4', '5 to 6', '7+'], title: 'Age', yaxis: 'Subjects', xaxis: 'Years Old', subtitle: ' ' }
-            .col-sm-6
-              %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', charttype: 'column', series: @chart[:series].to_json, categories: @chart[:categories].to_json, title: @chart[:title], yaxis: @chart[:yaxis], xaxis: @chart[:xaxis], subtitle: @chart[:subtitle] } }
-          - if @demographics && @demographics[:extras]
-            - @chart = { series: [{ name: 'Gender', colorByPoint: true, startAngle: -180, data: [{ name: 'Female', y: @demographics.dig(:extras, :females, :total), color: female_color, drilldown: 'Female' }, { name: 'Male', y: @demographics.dig(:extras, :males, :total), color: male_color, drilldown: 'Male' }] }], categories: [], title: 'Gender', subtitle: 'Click pie chart to view race breakdown', drilldown: { series: [{name: 'Female', id: 'Female', borderColor: female_color, borderWidth: '5px', data: [ { name: 'Female - Black', y: @demographics.dig(:extras, :females, :black), color: black_race_color }, { name: 'Female - Other', y: @demographics.dig(:extras, :females, :other), color: '#efefef' }]}, {name: 'Male', id: 'Male', borderColor: male_color, borderWidth: '5px', data: [{ name: 'Male - Black', y: @demographics.dig(:extras, :males, :black), color: black_race_color }, { name: 'Male - Other', y: @demographics.dig(:extras, :males, :other), color: other_race_color }]}] } }
-            .col-sm-6
-              %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart-pie', series: @chart[:series].to_json, title: @chart[:title], drilldown: @chart[:drilldown].to_json, subtitle: @chart[:subtitle] } }
-        - if @demographics && @demographics[:tables]
-          - @demographics[:tables].each do |table|
-            = render 'reports/draw_advanced_table', table: table
-
-        .row{ style: 'margin-top: 20px' }
-          .col-md-4
-          .col-md-4
+      .row{ style: 'margin-top: 20px' }
+        .col-md-4
+        .col-md-4
+          .jumbotron.center
+            %h4.text-muted Demographics
+            .report-number
+              %span.glyphicon.glyphicon-stats
+        .col-md-4
+          = link_to reports_screened_path, class: 'title-link' do
             .jumbotron.center
-              %h4.text-muted Demographics
+              %h4.text-muted Screened
               .report-number
-                %span.glyphicon.glyphicon-stats
-          .col-md-4
-            = link_to reports_screened_path, class: 'title-link' do
-              .jumbotron.center
-                %h4.text-muted Screened
-                .report-number
-                  %span.glyphicon.glyphicon-arrow-right
+                %span.glyphicon.glyphicon-arrow-right
 
-    .col-sm-3.col-sm-pull-9
-      = render 'internal/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'internal/menu'

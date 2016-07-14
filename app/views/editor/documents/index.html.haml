@@ -1,19 +1,19 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Folders', editor_categories_path(@category)
-          &middot;
-          = link_to @category.name, editor_category_path(@category)
-          &middot;
-          Documents
-        %h4.purple
-          You may
-          %strong archive documents
-          you wish to hide from the menu.
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Folders', editor_categories_path(@category)
+        &middot;
+        = link_to @category.name, editor_category_path(@category)
+        &middot;
+        Documents
         = link_to 'Add New Document', new_editor_category_document_path(@category), class: 'btn btn-xs btn-default'
+      .section-description
+        You may
+        %strong archive documents
+        you wish to hide from the menu.
 
-      = render 'documents'
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+
+    .section-body= render 'documents'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

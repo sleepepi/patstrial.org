@@ -1,16 +1,13 @@
 - @title = "Edit Committee: #{@committee.name_was}"
 
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = @committee.name_was
-        %h4.purple
-          Edit Committee
-
-      .color-container
-        = render 'form'
-
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = @committee.name_was
+      .section-description
+        Edit Committee
+    .section-body
+      = render 'form'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

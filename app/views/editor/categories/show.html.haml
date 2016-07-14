@@ -1,15 +1,15 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Folders', editor_categories_path
-          &middot;
-          = @category.name
-        = link_to 'Edit Folder', edit_editor_category_path(@category), class: 'btn btn-xs btn-default'
-        = link_to 'View Documents', editor_category_documents_path(@category), class: 'btn btn-xs btn-default'
-        = link_to 'View Videos', editor_category_videos_path(@category), class: 'btn btn-xs btn-default'
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Folders', editor_categories_path
+        &middot;
+        = @category.name
+      = link_to 'Edit Folder', edit_editor_category_path(@category), class: 'btn btn-xs btn-default'
+      = link_to 'View Documents', editor_category_documents_path(@category), class: 'btn btn-xs btn-default'
+      = link_to 'View Videos', editor_category_videos_path(@category), class: 'btn btn-xs btn-default'
 
+    .section-body
       %table.table.table-striped
         %tr
           %td Name
@@ -45,7 +45,7 @@
 
       - fallback_url = new_editor_category_document_path(@category)
       = link_to 'Upload New Document', fallback_url, class: 'btn btn-default'
-      %p.lead.filedrag.text-muted.purple-fill{ data: { object: 'dropfile', upload_url: upload_editor_category_documents_path(@category, format: 'js'), fallback_url: fallback_url } }
+      %p.lead.filedrag.purple-fill{ data: { object: 'dropfile', upload_url: upload_editor_category_documents_path(@category, format: 'js'), fallback_url: fallback_url } }
         Drag documents here to attach to category.
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

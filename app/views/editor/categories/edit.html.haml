@@ -1,18 +1,17 @@
 - @title = "Edit Folder: #{@category.name_was}"
 
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Folders', editor_categories_path
-          &middot;
-          = link_to @category.name_was, editor_category_path(@category)
-          &middot;
-          Edit
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Folders', editor_categories_path
+        &middot;
+        = link_to @category.name_was, editor_category_path(@category)
+        &middot;
+        Edit
 
-      .color-container
-        = render 'form'
+    .section-body
+      = render 'form'
 
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

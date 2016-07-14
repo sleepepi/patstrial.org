@@ -1,14 +1,13 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Users', admin_users_path
-          &middot;
-          = @user.name
-        %h4.purple= @user.email
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Users', admin_users_path
+        &middot;
+        = @user.name
         = link_to 'Edit User', edit_admin_user_path(@user), class: 'btn btn-xs btn-default'
 
+    .section-body
       %table.table.table-striped
         %tbody
           %tr
@@ -29,5 +28,5 @@
           %tr
             %td DSMB Member
             %td= simple_check @user.dsmb_member?
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

@@ -1,13 +1,12 @@
 - @title = 'Version'
 
-.container
-  .color-container.dark-purple
-    %h1.brand Version
+- content_for :body_class do
+  brand-background
 
-.purple-fill
-  .container
-    .color-container
-      .center
-        %p.lead
-          Current version
-          %strong.purple-fill-white= PatstrialOrg::VERSION::STRING
+- content_for :header do
+  = render 'external/welcome'
+
+.section-body
+  %p.lead.center
+    Version
+    %strong= PatstrialOrg::VERSION::STRING

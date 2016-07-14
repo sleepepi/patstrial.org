@@ -1,11 +1,9 @@
 - @title = 'Pediatric BMI Z-Score Calculator'
-.container
+.section-heading
   %h1= @title
+  .section-description= render 'calculators/reference'
 
-  = render 'calculators/reference'
-
-  %hr
-
+.section-body
   .jumbotron
     %table.table.table-borderless.table-fixed
       %tr

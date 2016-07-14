@@ -1,22 +1,16 @@
-.dark-purple
-  .container
-    .color-container
-      %h1.brand Credits
-      %h4.purple Special thanks to the following:
+- content_for :body_class do
+  brand-background
 
+.section-heading
+  %h1 Credits
+  .section-description Special thanks to the following:
 
-.purple-fill
-  .container
-    .color-container
-      %ul.lead
-        %li
-          %strong Joel S. Rube
-          %br
-          %small Artist of PATS Boy, PATS Girl, and PATS Logo
+.section-body
+  %ul.lead
+    %li
+      %strong Joel S. Rube
+      %br
+      %small Artist of PATS Boy, PATS Girl, and PATS Logo
 
-.purple
-  .container
-    .color-container
-      = image_tag 'pats-logo-transparent.png', alt: '', class: 'img-responsive'
-
-
+= content_for :footer do
+  = render 'external/welcome'

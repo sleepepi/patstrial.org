@@ -1,27 +1,27 @@
 - @title = @committee.name
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand= @title
-        %h4.purple= @committee.description
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1= @title
+      .section-description
+        = @committee.description
 
-      .color-container.purple-light{ style: 'border-color: transparent' }
-        %h2.brand.dark-purple-light Members
-        %table.table.table-striped.purple
-          %thead
-            %tr
-              %th Name
-              %th Email
-              %th Phone
-              %th Role
-              %th Staff ID
-          - @committee.members.each do |member|
-            %tr
-              %td= member.name
-              %td= member.email
-              %td= member.phone
-              %td= member.role
-              %td= member.staffid
-    .col-sm-3.col-sm-pull-9
-      = render 'internal/menu'
+    .section-body
+      %h2 Members
+      %table.table.table-striped.purple
+        %thead
+          %tr
+            %th Name
+            %th Email
+            %th Phone
+            %th Role
+            %th Staff ID
+        - @committee.members.each do |member|
+          %tr
+            %td= member.name
+            %td= member.email
+            %td= member.phone
+            %td= member.role
+            %td= member.staffid
+  .col-sm-3.col-sm-pull-9
+    = render 'internal/menu'

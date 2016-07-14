@@ -14,9 +14,7 @@ Rails.application.routes.draw do
 
   scope module: 'application' do
     get :credits
-    get :theme
     get :version
-    get :window
   end
 
   namespace :calculators do

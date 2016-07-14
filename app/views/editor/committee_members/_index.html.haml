@@ -1,9 +1,12 @@
-%ul.list-unstyled
+%table.table.table-striped.table-bordered
   - @committee.committee_members.includes(:member).order('chair desc', 'members.last_name', 'members.first_name').each do |committee_member|
-    %li
-      = link_to committee_member.member.name_reverse, editor_member_path(committee_member.member)
-      - if committee_member.chair?
-        %span.label.label-primary Committee Chair
-      = link_to 'Remove', editor_committee_committee_member_path(@committee, committee_member), method: :delete, data: { confirm: "Are you sure you want to remove Committee Member #{committee_member.member.name}?" }, class: 'btn btn-xs btn-danger'
-  %li= link_to 'Add Committee Member', new_editor_committee_committee_member_path(@committee), class: 'btn btn-xs btn-primary'
+    %tr
+      %td
+        = link_to committee_member.member.name_reverse, editor_member_path(committee_member.member)
+        - if committee_member.chair?
+          %span.label.label-primary Committee Chair
+      %td
+        = link_to 'Remove', editor_committee_committee_member_path(@committee, committee_member), method: :delete, data: { confirm: "Are you sure you want to remove Committee Member #{committee_member.member.name}?" }, class: 'btn btn-xs btn-danger'
+  %tr
+    %td{ colspan: 2 }= link_to 'Add Committee Member', new_editor_committee_committee_member_path(@committee), class: 'btn btn-xs btn-primary'
 

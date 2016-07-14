@@ -1,12 +1,11 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand Folders
-        %h4.purple
-          You may edit folders, upload documents, and embed videos here.
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        Folders
         = link_to 'Add New Folder', new_editor_category_path, class: 'btn btn-xs btn-default'
-
-      = render 'categories'
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+      .section-description
+        You may edit folders, upload documents, and embed videos here.
+    .section-body= render 'categories'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

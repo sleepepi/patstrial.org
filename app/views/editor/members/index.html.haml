@@ -1,11 +1,10 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand Members
-        %h4.purple You may edit the members in the directory here.
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        Members
         = link_to 'Add New Member', new_editor_member_path, class: 'btn btn-xs btn-default'
-
-      = render 'members'
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+      .section-description You may edit the members in the directory here.
+    .section-body= render 'members'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

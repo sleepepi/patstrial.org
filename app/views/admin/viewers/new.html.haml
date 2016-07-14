@@ -1,18 +1,17 @@
 - @title = 'New Viewer'
 
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand
-          = link_to 'Viewers', admin_viewers_path
-          &middot;
-          New Viewer
-        %h4.purple
-          Enter new viewer information.
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        = link_to 'Viewers', admin_viewers_path
+        &middot;
+        New Viewer
+      .section-description
+        Enter new viewer information.
 
-      .color-container
-        = render 'form'
+    .section-body
+      = render 'form'
 
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

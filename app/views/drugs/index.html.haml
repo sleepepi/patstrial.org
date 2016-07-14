@@ -1,9 +1,7 @@
-.dark-purple
-  .container
-    .color-container
-      %h1 NDC Drug Search
+.section-heading
+  %h1 NDC Drug Search
 
-.container
+.section-body
   .pull-right.hidden-xs
     .btn.btn-primary{ style: 'border: 0;cursor:default;margin-left:20px' }
       = pluralize number_with_delimiter(@drugs.total_count), 'drug'
@@ -17,6 +15,7 @@
         = submit_tag 'Search', class: 'btn btn-primary', name: nil
         = link_to 'Reset', drugs_path, class: 'btn btn-default'
 
+.section-body
   %table.table.table-fixed
     %thead
       %tr
@@ -37,7 +36,6 @@
 
   .center
     = paginate @drugs, theme: 'bootstrap'
-
 
 - if false
   %th Product ID

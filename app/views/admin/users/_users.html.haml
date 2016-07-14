@@ -24,7 +24,7 @@
           = time_ago_in_words user.current_sign_in_at
           ago
       %td= number_with_delimiter user.sign_in_count
-      %td
+      %td.nowrap
         = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-default btn-xs'
         - unless current_user == user
           = link_to 'Delete', admin_user_path(user), method: :delete, class: 'btn btn-xs btn-danger-inverse', data: { confirm: "Are you sure you want to delete User #{user.name}?" }

@@ -15,16 +15,3 @@
 .wiggle:hover {
   animation: wiggle 2s linear infinite;
 }
-
-.windowed {
-  border: 5px solid $brown;
-  box-shadow: 0 3px 8px $shadow-light;
-}
-
-.windowed-inner {
-  border-bottom: 12px solid $brown-light-bg;
-  border-left: 12px solid $brown-light-color;
-  border-right: 12px solid $brown-light-bg;
-  border-top: 12px solid $brown-color;
-  padding: 20px;
-}

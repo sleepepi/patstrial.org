@@ -1,11 +1,12 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand Viewers
-        %h4.purple You may edit viewers here.
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1
+        Viewers
         = link_to 'Add New Viewer', new_admin_viewer_path, class: 'btn btn-xs btn-default'
-
-      = render 'viewers'
-    .col-sm-3.col-sm-pull-9
-      = render 'setup/menu'
+      .section-description
+        You may edit viewers here.
+    .section-body
+      = render 'admin/viewers/viewers'
+  .col-sm-3.col-sm-pull-9
+    = render 'setup/menu'

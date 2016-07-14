@@ -1,14 +1,16 @@
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand Directory
-        %h4.purple Pediatric Adenotonsillectomy Trial for Snoring
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1 Directory
+      .section-description
+        %span.glyphicon.glyphicon-envelope
+        = mail_to ENV['support_email'], 'Send us an email', subject: 'PATS Directory Information'
+        if you are not listed or if your information is incorrect.
 
-      - @members.group_by(&:site).sort{|a,b| ((a[0] ? a[0].name : '_') <=> (b[0] ? b[0].name : '_'))}.each do |site, members|
-        .color-container.dark-purple
-          %h2= site ? site.name : 'No Site'
-
+    - @members.group_by(&:site).sort{|a,b| ((a[0] ? a[0].name : '_') <=> (b[0] ? b[0].name : '_'))}.each do |site, members|
+      .section-body
+        %h2= site ? site.name : 'No Site'
+        .table-responsive
           %table.table.table-striped
             %thead
               %tr
@@ -25,5 +27,5 @@
                 %td.nowrap= member.phone
                 %td= member.role
                 %td= member.staffid
-    .col-sm-3.col-sm-pull-9
-      = render 'internal/menu'
+  .col-sm-3.col-sm-pull-9
+    = render 'internal/menu'

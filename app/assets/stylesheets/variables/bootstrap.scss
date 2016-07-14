@@ -38,9 +38,9 @@ $new-purple-light-bg: #ece5f6;
 // $gray-lighter:           lighten($gray-base, 93.5%) // #eee
 
 $brand-primary: $purple;
-$brand-success: $pink;
-$brand-warning: $brown-light;
-$brand-danger: $brown;
+$brand-success: $purple;
+$brand-warning: $purple-light;
+$brand-danger: $pink;
 $brand-info: $brown-light;
 $brand-black: #2d1e42;
 $brand-white: $white;
@@ -183,9 +183,9 @@ $font-size-base:          16px; // 14px !default;
 
 // $btn-font-weight:                normal
 
-// $btn-default-color:              #333
+$btn-default-color:              $purple-color;
 // $btn-default-bg:                 #fff
-// $btn-default-border:             #ccc
+$btn-default-border:             darken($btn-default-color, 5%);
 
 // $btn-primary-color:              #fff
 // $btn-primary-bg:                 $brand-primary

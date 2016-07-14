@@ -1,30 +1,30 @@
 - @title = 'Reports - Randomized'
-.container
-  .row
-    .col-sm-9.col-sm-push-3
-      .color-container.dark-purple
-        %h1.brand Reports - Randomized
-        %h4.purple
-          - if @recruitment
-            Data last updated
-            = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1 Randomized
+      .section-description
+        - if @recruitment
+          Data last updated
+          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
 
-        - if @randomized
-          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
-        - if @randomized && @randomized[:table]
-          = render 'reports/draw_table', table: @randomized[:table]
+    .section-body
+      - if @randomized
+        %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
+      - if @randomized && @randomized[:table]
+        = render 'reports/draw_table', table: @randomized[:table]
 
-        .row
-          .col-md-4
-            = link_to reports_eligible_path, class: 'title-link' do
-              .jumbotron.center
-                %h4.text-muted Eligible
-                .report-number
-                  %span.glyphicon.glyphicon-arrow-left
-          .col-md-4
+      .row
+        .col-md-4
+          = link_to reports_eligible_path, class: 'title-link' do
             .jumbotron.center
-              %h4.text-muted Randomized
-              .report-number= @randomized[:total] rescue 0
-          .col-md-4
-    .col-sm-3.col-sm-pull-9
-      = render 'internal/menu'
+              %h4.text-muted Eligible
+              .report-number
+                %span.glyphicon.glyphicon-arrow-left
+        .col-md-4
+          .jumbotron.center
+            %h4.text-muted Randomized
+            .report-number= @randomized[:total] rescue 0
+        .col-md-4
+  .col-sm-3.col-sm-pull-9
+    = render 'internal/menu'
