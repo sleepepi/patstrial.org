@@ -13,5 +13,20 @@
         - @eligibility_status[:tables].each do |table|
           = render 'reports/draw_advanced_table', table: table
 
+      .row{ style: 'margin-top: 20px' }
+        .col-md-4
+        .col-md-4
+          .jumbotron.center
+            %h4.text-muted Eligibility
+            .report-number
+              %span.glyphicon.glyphicon-list-alt
+        .col-md-4
+          = link_to reports_demographics_status_path(subjects: 'screened'), class: 'title-link' do
+            .jumbotron.center
+              %h4.text-muted Demographics
+              .report-number
+                %span.glyphicon.glyphicon-arrow-right
+
+
   .col-sm-3.col-sm-pull-9
     = render 'internal/menu'

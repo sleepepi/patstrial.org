@@ -18,6 +18,7 @@
           = link_to category.name, internal_category_path(category.top_level, category.slug), class: (current_page?(internal_category_path(category.top_level, category.slug)) ? 'active' : nil)
   %li.left-menu-header Reports
   %li
+    = link_to 'Eligibility', reports_eligibility_status_path, class: (current_page?(reports_eligibility_status_path) ? 'active' : nil)
     = link_to 'Demographics', reports_demographics_status_path(subjects: 'screened'), class: (params[:controller] == 'reports' && params[:action] == 'demographics' ? 'active' : nil)
     = link_to 'Screened', reports_screened_path, class: (current_page?(reports_screened_path) ? 'active' : nil)
     = link_to 'Consented', reports_consented_path, class: (current_page?(reports_consented_path) ? 'active' : nil)

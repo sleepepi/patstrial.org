@@ -38,6 +38,11 @@
 
       .row{ style: 'margin-top: 20px' }
         .col-md-4
+          = link_to reports_eligibility_status_path, class: 'title-link' do
+            .jumbotron.center
+              %h4.text-muted.nowrap Eligibility
+              .report-number
+                %span.glyphicon.glyphicon-arrow-left
         .col-md-4
           .jumbotron.center
             %h4.text-muted Demographics
