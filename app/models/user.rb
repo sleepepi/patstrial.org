@@ -62,7 +62,7 @@ class User < ApplicationRecord
   def notify_admins
     return unless EMAILS_ENABLED
     User.current.where(admin: true).find_each do |admin|
-      UserMailer.notify_system_admin(admin, self).deliver_later
+      UserMailer.notify_system_admin(admin, self).deliver_now
     end
   end
 end

@@ -18,7 +18,7 @@ class Admin::UsersController < Admin::AdminController
   def update
     original_approval = @user.approved
     if @user.update(user_params)
-      UserMailer.status_approved(@user).deliver_later if EMAILS_ENABLED && original_approval.nil? && @user.approved?
+      UserMailer.status_approved(@user).deliver_now if EMAILS_ENABLED && original_approval.nil? && @user.approved?
       redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
     else
       render :edit

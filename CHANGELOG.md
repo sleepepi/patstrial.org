@@ -15,6 +15,9 @@
   - Updated to bootstrap-sass 3.3.6
   - Added rails-controller-testing
 
+### Bug Fix
+- Fixed emails in forked processes from not being sent
+
 ## 6.0.0 (July 12, 2016)
 
 ### Enhancements
