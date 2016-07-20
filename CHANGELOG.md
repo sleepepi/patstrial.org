@@ -17,6 +17,7 @@
 
 ### Bug Fix
 - Fixed emails in forked processes from not being sent
+- Fixed back navigation not working after viewing a PDF
 
 ## 6.0.0 (July 12, 2016)
 
