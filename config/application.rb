@@ -26,7 +26,7 @@ module PatstrialOrg
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rails time:zones" for a list of tasks for finding time zone names. Default is UTC.
-    Rails.application.config.time_zone = 'Eastern Time (US & Canada)'
+    config.time_zone = 'Eastern Time (US & Canada)'
 
     # Add Calculators to autoload path
     config.autoload_paths << Rails.root.join('app', 'models', 'calculators')
