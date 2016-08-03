@@ -15,6 +15,9 @@
   - Updated to bootstrap-sass 3.3.6
   - Added rails-controller-testing
 
+### Refactoring
+- Updated kaminari pagination views to use haml
+
 ### Bug Fix
 - Fixed emails in forked processes from not being sent
 - Fixed back navigation not working after viewing a PDF
