@@ -1,8 +1,8 @@
-- @title = 'Reports - Eligibility Status'
+- @title = 'Reports - Eligibility Status - Consented'
 .row
   .col-sm-9.col-sm-push-3
     .section-heading-internal
-      %h1 Eligiblity Status
+      %h1 Eligiblity Status - Consented
       .section-description
         - if @recruitment
           Data last updated
@@ -15,15 +15,20 @@
 
       .row{ style: 'margin-top: 20px' }
         .col-md-4
+          = link_to reports_eligibility_status_path, class: 'title-link' do
+            .jumbotron.center
+              %h4.text-muted.nowrap Eligibility
+              .report-number
+                %span.glyphicon.glyphicon-arrow-left
         .col-md-4
           .jumbotron.center
-            %h4.text-muted Eligibility
+            %h4.text-muted Eligibility - Consented
             .report-number
               %span.glyphicon.glyphicon-list-alt
         .col-md-4
-          = link_to reports_eligibility_status_consented_path, class: 'title-link' do
+          = link_to reports_demographics_status_path(subjects: 'screened'), class: 'title-link' do
             .jumbotron.center
-              %h4.text-muted Eligibility Consented
+              %h4.text-muted Demographics
               .report-number
                 %span.glyphicon.glyphicon-arrow-right
 

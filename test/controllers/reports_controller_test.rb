@@ -43,4 +43,10 @@ class ReportsControllerTest < ActionController::TestCase
     get :eligibility_status
     assert_response :success
   end
+
+  test 'should get eligibility status consented' do
+    login(@viewer)
+    get :eligibility_status_consented
+    assert_response :success
+  end
 end

@@ -1,5 +1,9 @@
 ## 8.0.0
 
+### Enhancements
+- **General Changes**
+  - Added a page that shows eligibility status for consented
+
 ## 7.0.0 (August 3, 2016)
 
 ### Enhancements

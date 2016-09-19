@@ -31,6 +31,10 @@ class ReportsController < ApplicationController
     @eligibility_status = @recruitment[:eligibility_status] if @recruitment
   end
 
+  def eligibility_status_consented
+    @eligibility_status = @recruitment[:eligibility_status_consented] if @recruitment
+  end
+
   private
 
   def load_recruitment
