@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     get :demographics
     get 'demographics/:subjects', action: :demographics, as: :demographics_status
     get :eligibility_status, path: 'eligibility-status'
+    get :eligibility_status_screened, path: 'eligibility-status/screened'
     get :eligibility_status_consented, path: 'eligibility-status/consented'
   end
 

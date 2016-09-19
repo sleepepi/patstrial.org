@@ -1,4 +1,8 @@
+@extensionsReady = ->
+  tooltipsReady()
+
 @ready = ->
+  extensionsReady()
   fileDragReady()
   chartsReady()
   lettersReady()

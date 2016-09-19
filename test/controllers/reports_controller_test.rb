@@ -41,6 +41,12 @@ class ReportsControllerTest < ActionController::TestCase
   test 'should get eligibility status' do
     login(@viewer)
     get :eligibility_status
+    assert_redirected_to reports_eligibility_status_screened_path
+  end
+
+  test 'should get eligibility status screened' do
+    login(@viewer)
+    get :eligibility_status_screened
     assert_response :success
   end
 

@@ -1,8 +1,8 @@
-- @title = 'Reports - Eligibility Status'
+- @title = 'Reports - Eligibility Status - Screened'
 .row
   .col-sm-9.col-sm-push-3
     .section-heading-internal
-      %h1 Eligiblity Status
+      %h1 Eligiblity Status - Screened
       .section-description
         - if @recruitment
           Data last updated
@@ -17,13 +17,13 @@
         .col-md-4
         .col-md-4
           .jumbotron.center
-            %h4.text-muted Eligibility
+            %h4.text-muted Eligibility - Screened
             .report-number
               %span.glyphicon.glyphicon-list-alt
         .col-md-4
           = link_to reports_eligibility_status_consented_path, class: 'title-link' do
             .jumbotron.center
-              %h4.text-muted Eligibility Consented
+              %h4.text-muted Eligibility - Consented
               .report-number
                 %span.glyphicon.glyphicon-arrow-right
 
