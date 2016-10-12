@@ -8,6 +8,7 @@
   - Document and video tables now display better on smaller devices
 - **Setup Changes**
   - Improved display of users index and added number of total users
+  - DSMB member flag changed to Unblinded flag
 - **Gem Changes**
   - Updated to rails 5.0.0.1
   - Updated to pg 0.19.0

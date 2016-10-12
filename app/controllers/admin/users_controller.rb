@@ -40,7 +40,7 @@ class Admin::UsersController < Admin::AdminController
 
   def user_params
     params.require(:user).permit(
-      :first_name, :last_name, :email, :approved, :admin, :editor, :dsmb_member
+      :first_name, :last_name, :email, :approved, :admin, :editor, :unblinded
     )
   end
 end

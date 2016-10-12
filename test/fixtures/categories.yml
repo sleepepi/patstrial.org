@@ -24,11 +24,11 @@ learn:
   position: 3
   archived: false
 
-dsmb:
+unblinded:
   name: Top Secret
-  description: Viewable by DSMB Members
+  description: Viewable by Unblinded Users
   top_level: secret
   slug: top-secret
   position: 4
   archived: false
-  dsmb_only: true
+  unblinded_only: true

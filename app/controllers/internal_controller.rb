@@ -44,8 +44,8 @@ class InternalController < ApplicationController
 
   def set_category
     category_scope = Category.current.where(archived: false)
-    unless current_user && current_user.can_view_dsmb_folder?
-      category_scope = category_scope.where(dsmb_only: false)
+    unless current_user && current_user.can_view_unblinded_folder?
+      category_scope = category_scope.where(unblinded_only: false)
     end
     @category = category_scope.find_by_slug params[:category]
     empty_response_or_root_path(dashboard_path) unless @category

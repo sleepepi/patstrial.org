@@ -45,8 +45,8 @@ class User < ApplicationRecord
     admin? || editor?
   end
 
-  def can_view_dsmb_folder?
-    admin? || editor? || dsmb_member?
+  def can_view_unblinded_folder?
+    admin? || editor? || unblinded?
   end
 
   private

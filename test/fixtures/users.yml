@@ -33,10 +33,10 @@ deleted:
   encrypted_password: ""
   deleted: true
 
-dsmb_member:
+unblinded:
   first_name: Safety
   last_name: Monitor
-  email: dsmb_member@example.com
+  email: unblinded@example.com
   encrypted_password: ""
-  dsmb_member: true
+  unblinded: true
   approved: true

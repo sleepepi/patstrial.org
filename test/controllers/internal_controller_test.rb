@@ -7,7 +7,7 @@ class InternalControllerTest < ActionController::TestCase
   setup do
     @viewer = users(:viewer)
     @generic_viewer = viewers(:one)
-    @dsmb_member = users(:dsmb_member)
+    @unblinded = users(:unblinded)
     @editor = users(:editor)
   end
 
@@ -65,36 +65,36 @@ class InternalControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
 
-  test 'should get dsmb only category as dsmb member' do
-    login(@dsmb_member)
-    get :category, params: { top_level: categories(:dsmb).top_level, category: categories(:dsmb).slug }
+  test 'should get unblinded only category as unblinded user' do
+    login(@unblinded)
+    get :category, params: { top_level: categories(:unblinded).top_level, category: categories(:unblinded).slug }
     assert_not_nil assigns(:category)
     assert_response :success
   end
 
-  test 'should get dsmb only category as editor' do
+  test 'should get unblinded only category as editor' do
     login(@editor)
-    get :category, params: { top_level: categories(:dsmb).top_level, category: categories(:dsmb).slug }
+    get :category, params: { top_level: categories(:unblinded).top_level, category: categories(:unblinded).slug }
     assert_not_nil assigns(:category)
     assert_response :success
   end
 
-  test 'should not get dsmb only category as viewer' do
+  test 'should not get unblinded only category as blinded viewer' do
     login(@viewer)
-    get :category, params: { top_level: categories(:dsmb).top_level, category: categories(:dsmb).slug }
+    get :category, params: { top_level: categories(:unblinded).top_level, category: categories(:unblinded).slug }
     assert_nil assigns(:category)
     assert_redirected_to dashboard_path
   end
 
-  test 'should not get dsmb only category as generic viewer' do
+  test 'should not get unblinded only category as generic viewer' do
     login_viewer(@generic_viewer)
-    get :category, params: { top_level: categories(:dsmb).top_level, category: categories(:dsmb).slug }
+    get :category, params: { top_level: categories(:unblinded).top_level, category: categories(:unblinded).slug }
     assert_nil assigns(:category)
     assert_redirected_to dashboard_path
   end
 
-  test 'should not get dsmb only category as anonymous viewer' do
-    get :category, params: { top_level: categories(:dsmb).top_level, category: categories(:dsmb).slug }
+  test 'should not get unblinded only category as anonymous viewer' do
+    get :category, params: { top_level: categories(:unblinded).top_level, category: categories(:unblinded).slug }
     assert_nil assigns(:category)
     assert_redirected_to new_user_session_path
   end
