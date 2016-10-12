@@ -41,19 +41,18 @@
             .progress.progress-striped{ style: 'margin-top: 20px;margin-bottom: 0' }
               .progress-bar.progress-bar-success{ style: "width: #{percent}%;min-width: 5em;" }= "#{@randomized[:total]} of #{@randomized[:randomization_goal]}"
 
+      - if false
+        - if @screened && @screened[:total] > 0
+          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
+        - if @screened && @screened[:table] && @screened[:table][:total] > 0
+          = render 'reports/draw_table', table: @screened[:table]
 
-      - if @screened && @screened[:total] > 0
-        %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
-      - if @screened && @screened[:table] && @screened[:table][:total] > 0
-        = render 'reports/draw_table', table: @screened[:table]
+      - if @consented && @consented[:total] > 0
+        %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @consented[:series].to_json, categories: @consented[:categories].to_json, title: @consented[:title], yaxis: @consented[:yaxis], xaxis: @consented[:xaxis] } }
+      - if @consented && @consented[:table] && @consented[:table][:total] > 0
+        = render 'reports/draw_table', table: @consented[:table]
 
       - if false
-        - if @consented && @consented[:total] > 0
-          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @consented[:series].to_json, categories: @consented[:categories].to_json, title: @consented[:title], yaxis: @consented[:yaxis], xaxis: @consented[:xaxis] } }
-        - if @consented && @consented[:table] && @consented[:table][:total] > 0
-          = render 'reports/draw_table', table: @consented[:table]
-
-
         - if @eligible && @eligible[:total] > 0
           %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }
         - if @eligible && @eligible[:table] && @eligible[:table][:total] > 0

@@ -4,6 +4,7 @@
 - **General Changes**
   - Added a page that shows eligibility status for consented
   - Cleaned up navigation menu
+  - Cumulative consented replaces cumulative screened on dashboard
 
 ## 7.0.0 (August 3, 2016)
 
