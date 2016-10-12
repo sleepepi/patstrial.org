@@ -25,6 +25,3 @@
     = link_to 'Consented', reports_consented_path, class: (current_page?(reports_consented_path) ? 'active' : nil)
     = link_to 'Eligible', reports_eligible_path, class: (current_page?(reports_eligible_path) ? 'active' : nil)
     = link_to 'Randomized', reports_randomized_path, class: (current_page?(reports_randomized_path) ? 'active' : nil)
-  - if current_user && current_user.setup_role?
-    %li.left-menu-header Setup
-    %li= link_to 'Overview', setup_path

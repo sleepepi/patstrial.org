@@ -3,6 +3,7 @@
 ### Enhancements
 - **General Changes**
   - Added a page that shows eligibility status for consented
+  - Cleaned up navigation menu
 
 ## 7.0.0 (August 3, 2016)
 

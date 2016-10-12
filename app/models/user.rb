@@ -26,13 +26,9 @@ class User < ApplicationRecord
     "#{first_name_was} #{last_name_was}"
   end
 
-  def first_name_and_staff_id
+  def staff_id
     member = Member.current.find_by email: email
-    if member && member.staffid.present?
-      [first_name, "<code style=\"color:#fff\">#{member.staffid}</code>"].join(' ').html_safe
-    else
-      first_name
-    end
+    member.staffid if member
   end
 
   # Overriding Devise built-in active_for_authentication? method
