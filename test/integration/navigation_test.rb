@@ -4,21 +4,18 @@ require 'test_helper'
 
 SimpleCov.command_name 'test:integration'
 
-# Tests sign in navigation for various users
+# Tests sign in navigation for various users.
 class NavigationTest < ActionDispatch::IntegrationTest
   test 'regular users should be able to login' do
     get '/dashboard'
     assert_redirected_to new_user_session_path
-
     sign_in_as(users(:viewer), '123456')
     assert_equal '/dashboard', path
-    assert_equal I18n.t('devise.sessions.signed_in'), flash[:notice]
   end
 
   test 'generic viewers should be able to login' do
     get '/dashboard'
     assert_redirected_to new_user_session_path
-
     sign_in_as_viewer(viewers(:one))
     assert_equal '/dashboard', path
   end
@@ -26,10 +23,8 @@ class NavigationTest < ActionDispatch::IntegrationTest
   test 'generic viewers should be able to logout' do
     sign_in_as_viewer(viewers(:one))
     assert_equal '/dashboard', path
-
     get '/logout'
     assert_redirected_to '/'
-
     get '/dashboard'
     assert_redirected_to new_user_session_path
   end
@@ -37,7 +32,6 @@ class NavigationTest < ActionDispatch::IntegrationTest
   test 'deleted users should be not be allowed to login' do
     get '/dashboard'
     assert_redirected_to new_user_session_path
-
     sign_in_as(users(:deleted), '123456')
     assert_equal new_user_session_path, path
     assert_equal I18n.t('devise.failure.inactive'), flash[:alert]
@@ -46,7 +40,6 @@ class NavigationTest < ActionDispatch::IntegrationTest
   test 'users who are pending approval should be not be allowed to login' do
     get '/dashboard'
     assert_redirected_to new_user_session_path
-
     sign_in_as(users(:pending), '123456')
     assert_equal new_user_session_path, path
     assert_equal I18n.t('devise.failure.inactive'), flash[:alert]

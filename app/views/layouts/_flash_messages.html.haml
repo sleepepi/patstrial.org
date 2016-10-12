@@ -1,9 +1,9 @@
-- if flash[:notice]
+- if flash[:notice].present?
   .flash-notice
     %p.lead.center
       %span.brand Awesome!
       = flash[:notice].html_safe
-- if flash[:alert]
+- if flash[:alert].present?
   .flash-alert
     %p.lead.center
       %span.brand Oh no!
