@@ -5,6 +5,8 @@
   - Added a page that shows eligibility status for consented
   - Cleaned up navigation menu
   - Cumulative consented replaces cumulative screened on dashboard
+- **Gem Changes**
+  - Updated to rails 5.0.0.1
 
 ## 7.0.0 (August 3, 2016)
 
