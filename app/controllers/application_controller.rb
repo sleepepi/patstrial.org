@@ -7,15 +7,44 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   skip_before_action :verify_authenticity_token, if: :devise_login?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_location
+
+  def store_location
+    if !request.post? && !request.xhr?
+      if internal_controllers.include?(params[:controller])
+        store_internal_location_in_session
+      end
+    end
+  end
 
   protected
+
+  def internal_controllers
+    %w(
+      admin/admin
+      admin/users
+      admin/viewers
+      committees
+      internal
+      reports
+      editor/categories
+      editor/committee_members
+      editor/committees
+      editor/documents
+      editor/editor
+      editor/members
+      editor/sites
+      editor/videos
+      setup/setup
+    )
+  end
 
   def devise_login?
     params[:controller] == 'sessions' && params[:action] == 'create'
   end
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || dashboard_path
+    session[:internal_url] || dashboard_path
   end
 
   def configure_permitted_parameters
@@ -23,6 +52,10 @@ class ApplicationController < ActionController::Base
       :sign_up,
       keys: [:first_name, :last_name, :email, :password, :password_confirmation]
     )
+  end
+
+  def store_internal_location_in_session
+    session[:internal_url] = request.fullpath
   end
 
   def scrub_order(model, params_order, default_order)

@@ -6,6 +6,7 @@
   - Cleaned up navigation menu
   - Cumulative consented replaces cumulative screened on dashboard
   - Document and video tables now display better on smaller devices
+  - Improved friendly forwarding to internal pages
 - **Setup Changes**
   - Improved display of users index and added number of total users
   - DSMB member flag changed to Unblinded flag
