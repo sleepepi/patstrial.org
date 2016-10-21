@@ -25,7 +25,8 @@ class InternalController < ApplicationController
 
   def category
     @order = scrub_order(Document, params[:order], 'documents.document')
-    @documents = @category.documents.order(@order).page(params[:page]).per(40)
+    @documents = @category.documents.where(archived: false).order(@order).page(params[:page]).per(40)
+    @videos = @category.videos.where(archived: false).page(params[:page]).per(40)
   end
 
   def document

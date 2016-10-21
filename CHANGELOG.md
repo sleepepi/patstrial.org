@@ -15,6 +15,9 @@
   - Updated to pg 0.19.0
   - Updated to jquery-rails 4.2.1
 
+### Bug Fix
+- Fixed a bug with pagination when documents and videos were archived
+
 ## 7.0.0 (August 3, 2016)
 
 ### Enhancements

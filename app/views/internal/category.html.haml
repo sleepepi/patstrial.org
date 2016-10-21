@@ -16,7 +16,7 @@
               %th.hidden-xs.hidden-sm Size
               = th_sort_field @order, 'documents.created_at', 'Uploaded', extra_class: 'hidden-xs'
 
-          - @documents.where(archived: false).each do |document|
+          - @documents.each do |document|
             %tr
               %td.hidden-xs.hidden-sm
                 %span.glyphicon.glyphicon-file
@@ -27,7 +27,7 @@
 
         .center
           = paginate @documents, theme: 'bootstrap'
-      - if @category.videos.where(archived: false).present?
+      - if @videos.present?
         %table.table.table-striped
           %col.hidden-xs.hidden-sm{ width: '1%' }
           %thead
@@ -36,12 +36,14 @@
               %th Name
               %th.hidden-xs Added
 
-          - @category.videos.where(archived: false).each do |video|
+          - @videos.each do |video|
             %tr
               %td.hidden-xs.hidden-sm
                 %span.glyphicon.glyphicon-film
               %td= link_to video.name, internal_category_video_path(@category.top_level, @category.slug, video.id)
               %td.hidden-xs.nowrap= video.created_at.strftime('%m-%d-%Y')
+        .center
+          = paginate @videos, theme: 'bootstrap'
 
     .section-body
       %p.lead.center
