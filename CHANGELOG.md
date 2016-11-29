@@ -7,6 +7,9 @@
   - Dropped support for Ruby 2.2
   - Updated to Ruby 2.3.3
 
+### Bug Fixes
+- Rails model errors are now again correctly styled using Bootstrap CSS classes
+
 ## 8.0.0 (October 24, 2016)
 
 ### Enhancements
