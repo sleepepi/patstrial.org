@@ -3,6 +3,8 @@
 ### Enhancements
 - **General Changes**
   - Expanded the race breakdown on the demographics page
+- **Gem Changes**
+  - Dropped support for Ruby 2.2
 
 ## 8.0.0 (October 24, 2016)
 
