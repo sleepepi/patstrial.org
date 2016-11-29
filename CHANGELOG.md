@@ -5,6 +5,7 @@
   - Expanded the race breakdown on the demographics page
 - **Gem Changes**
   - Dropped support for Ruby 2.2
+  - Updated to Ruby 2.3.3
 
 ## 8.0.0 (October 24, 2016)
 
