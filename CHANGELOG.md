@@ -1,5 +1,9 @@
 ## 9.0.0
 
+### Enhancements
+- **General Changes**
+  - Expanded the race breakdown on the demographics page
+
 ## 8.0.0 (October 24, 2016)
 
 ### Enhancements
