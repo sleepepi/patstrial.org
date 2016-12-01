@@ -5,6 +5,10 @@ class ReportsController < ApplicationController
   before_action :authenticate_viewer_or_current_user!
   before_action :load_recruitment
 
+  def data_quality
+    @data_quality = @recruitment.dig(:data_quality) if @recruitment
+  end
+
   def demographics
     @subject_status = if %w(screened consented eligible randomized).include?(params[:subjects])
                         params[:subjects]

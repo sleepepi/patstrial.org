@@ -8,6 +8,12 @@ class ReportsControllerTest < ActionController::TestCase
     @viewer = users(:viewer)
   end
 
+  test 'should get data quality' do
+    login(@viewer)
+    get :data_quality
+    assert_response :success
+  end
+
   test 'should get screened' do
     login(@viewer)
     get :screened

@@ -1,0 +1,31 @@
+- @title = 'Reports - Data Quality'
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1 Data Quality
+      .section-description
+        - if @recruitment
+          Data last updated
+          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+
+    .section-body
+      - if @data_quality && @data_quality[:tables]
+        - @data_quality[:tables].each do |table|
+          = render 'reports/draw_advanced_table', table: table
+
+      .row
+        .col-md-4
+          = link_to reports_randomized_path, class: 'title-link' do
+            .jumbotron.center
+              %h4.text-muted Randomized
+              .report-number
+                %span.glyphicon.glyphicon-arrow-left
+        .col-md-4
+          .jumbotron.center
+            %h4.text-muted Data Quality
+            .report-number
+              %span.glyphicon.glyphicon-tint
+        .col-md-4
+
+  .col-sm-3.col-sm-pull-9
+    = render 'internal/menu'

@@ -66,6 +66,7 @@ Rails.application.routes.draw do
 
   namespace :reports do
     root to: redirect('dashboard')
+    get :data_quality, path: 'data-quality'
     get :screened
     get :consented
     get :eligible

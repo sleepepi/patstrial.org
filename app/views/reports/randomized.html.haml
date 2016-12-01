@@ -26,5 +26,11 @@
             %h4.text-muted Randomized
             .report-number= @randomized[:total] rescue 0
         .col-md-4
+          = link_to reports_data_quality_path, class: 'title-link' do
+            .jumbotron.center
+              %h4.text-muted Data Quality
+              .report-number
+                %span.glyphicon.glyphicon-arrow-right
+
   .col-sm-3.col-sm-pull-9
     = render 'internal/menu'
