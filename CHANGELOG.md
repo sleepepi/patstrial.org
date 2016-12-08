@@ -4,6 +4,7 @@
 - **General Changes**
   - Expanded the race breakdown on the demographics page
   - Added a data quality report page
+  - Tooltips on charts now display all values even when series overlap
 - **Gem Changes**
   - Dropped support for Ruby 2.2
   - Updated to Ruby 2.3.3
