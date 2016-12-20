@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
     @subject_status = if %w(screened consented eligible randomized).include?(params[:subjects])
                         params[:subjects]
                       else
-                        'screened'
+                        'randomized'
                       end
     @demographics = @recruitment.dig(:demographics, @subject_status.to_sym) if @recruitment
     @demographics = @recruitment[:demographics] if @recruitment && @demographics.nil?

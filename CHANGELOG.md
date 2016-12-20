@@ -7,6 +7,7 @@
   - Tooltips on charts now display all values even when series overlap
   - Improved display of percentages in tables
   - Dashboard now highlights randomizations
+  - Demographics now defaults to display randomized subjects
 - **Gem Changes**
   - Dropped support for Ruby 2.2
   - Updated to Ruby 2.3.3

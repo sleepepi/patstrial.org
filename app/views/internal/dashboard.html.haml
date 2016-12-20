@@ -22,17 +22,17 @@
       .row
         .col-md-4
           = link_to reports_screened_path, class: 'title-link' do
-            .jumbotron.center{ style: 'padding-left: 0; padding-right: 0' }
+            .jumbotron.center
               %h4.text-muted Screened
               .report-number= number_with_delimiter @screened[:total] rescue 0
         .col-md-4
           = link_to reports_consented_path, class: 'title-link' do
-            .jumbotron.center{ style: 'padding-left: 0; padding-right: 0' }
+            .jumbotron.center
               %h4.text-muted Consented
               .report-number= number_with_delimiter @consented[:total] rescue 0
         .col-md-4
           = link_to reports_eligible_path, class: 'title-link' do
-            .jumbotron.center{ style: 'padding-left: 0; padding-right: 0' }
+            .jumbotron.center
               %h4.text-muted Eligible
               .report-number= number_with_delimiter @eligible[:total] rescue 0
       - if @screened && @screened[:in_pipeline] > 0
