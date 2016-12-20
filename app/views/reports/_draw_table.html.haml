@@ -4,14 +4,14 @@
     - table[:header].each do |row|
       %tr
         - row.each_with_index do |element, column_index|
-          %th.col-hover{ class: "col-hover-#{column_index}", data: { target: ".col-hover-#{column_index}" } }= element
+          %th.col-hover{ class: "col-hover-#{column_index} #{'center' if column_index != 0}", data: { target: ".col-hover-#{column_index}" } }= element
   %tfoot
     - table[:footer].each do |row|
       %tr
         - row.each_with_index do |element, column_index|
-          %th.col-hover{ class: "col-hover-#{column_index}", data: { target: ".col-hover-#{column_index}" } }= element
+          %th.col-hover{ class: "col-hover-#{column_index} #{'center' if column_index != 0}", data: { target: ".col-hover-#{column_index}" } }= element
   %tbody
     - table[:rows].each do |row|
       %tr
         - row.each_with_index do |element, column_index|
-          %td.col-hover{ class: "col-hover-#{column_index}", data: { target: ".col-hover-#{column_index}" } }= element
+          %td.col-hover{ class: "col-hover-#{column_index} #{'center' if column_index != 0}", data: { target: ".col-hover-#{column_index}" } }= element

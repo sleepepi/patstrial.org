@@ -1,12 +1,14 @@
 .table .percent {
-  font-size: .8em;
-  text-align: right;
+  border-right: 1px solid $gray-lighter;
+  font-size: 10px;
+  text-align: center;
   vertical-align: middle;
   white-space: nowrap;
 }
 
 .table .count {
-  text-align: right;
+  border-left: 1px solid $gray-lighter;
+  text-align: center;
   vertical-align: middle;
 }
 
