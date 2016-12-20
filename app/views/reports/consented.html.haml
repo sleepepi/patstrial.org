@@ -24,7 +24,7 @@
         .col-md-4
           .jumbotron.center
             %h4.text-muted Consented
-            .report-number= @consented[:total] rescue 0
+            .report-number= number_with_delimiter @consented[:total] rescue 0
         .col-md-4
           = link_to reports_eligible_path, class: 'title-link' do
             .jumbotron.center

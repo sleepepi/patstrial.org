@@ -24,7 +24,7 @@
         .col-md-4
           .jumbotron.center
             %h4.text-muted Randomized
-            .report-number= @randomized[:total] rescue 0
+            .report-number= number_with_delimiter @randomized[:total] rescue 0
         .col-md-4
           = link_to reports_data_quality_path, class: 'title-link' do
             .jumbotron.center
