@@ -8,7 +8,7 @@ gem 'rails',                '5.0.1'
 gem 'pg',                   '0.19.0'
 
 # Gems used by project
-gem 'bootstrap-sass',       '~> 3.3.6'
+gem 'bootstrap-sass',       '~> 3.3.7'
 gem 'carrierwave',          '~> 0.11.2'
 gem 'devise',               '~> 4.2.0'
 gem 'figaro',               '~> 1.1.1'
