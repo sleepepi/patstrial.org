@@ -8,12 +8,12 @@ gem 'rails',                '5.0.1'
 gem 'pg',                   '0.19.0'
 
 # Gems used by project
-gem 'devise',               '~> 4.2.0'
-gem 'carrierwave',          '~> 0.11.2'
-gem 'kaminari',             '~> 0.17.0'
-gem 'figaro',               '~> 1.1.1'
 gem 'bootstrap-sass',       '~> 3.3.6'
+gem 'carrierwave',          '~> 0.11.2'
+gem 'devise',               '~> 4.2.0'
+gem 'figaro',               '~> 1.1.1'
 gem 'haml',                 '~> 4.0.7'
+gem 'kaminari',             '~> 0.17.0'
 
 # Rails Defaults
 gem 'coffee-rails',         '~> 4.2'
@@ -26,10 +26,9 @@ gem 'turbolinks',           '~> 5'
 
 # Testing
 group :test do
-  # Pretty printed test output
   gem 'minitest'
-  gem 'simplecov',          '~> 0.12.0', require: false
   gem 'rails-controller-testing'
+  gem 'simplecov',          '~> 0.12.0', require: false
 end
 
 group :development do
