@@ -1,4 +1,4 @@
-## 10.0.0
+## 10.0.0 (January 9, 2017)
 
 ### Enhancments
 - **General Changes**
