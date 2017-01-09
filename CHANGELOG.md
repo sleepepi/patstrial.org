@@ -8,6 +8,7 @@
   - Updated to rails 5.0.1
   - Updated to jquery-rails 4.2.2
   - Updated bootstrap-sass to 3.3.7
+  - Updated to carrierwave 1.0.0
 
 ## 9.0.0 (December 20, 2016)
 

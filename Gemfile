@@ -9,7 +9,7 @@ gem 'pg',                   '0.19.0'
 
 # Gems used by project
 gem 'bootstrap-sass',       '~> 3.3.7'
-gem 'carrierwave',          '~> 0.11.2'
+gem 'carrierwave',          '~> 1.0.0'
 gem 'devise',               '~> 4.2.0'
 gem 'figaro',               '~> 1.1.1'
 gem 'haml',                 '~> 4.0.7'
