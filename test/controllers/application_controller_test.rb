@@ -25,7 +25,11 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_equal PatstrialOrg::VERSION::MAJOR, version['version']['major']
     assert_equal PatstrialOrg::VERSION::MINOR, version['version']['minor']
     assert_equal PatstrialOrg::VERSION::TINY, version['version']['tiny']
-    assert_equal PatstrialOrg::VERSION::BUILD, version['version']['build']
+    if PatstrialOrg::VERSION::BUILD.nil?
+      assert_nil version['version']['build']
+    else
+      assert_equal PatstrialOrg::VERSION::BUILD, version['version']['build']
+    end
     assert_response :success
   end
 end
