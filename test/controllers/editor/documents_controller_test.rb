@@ -134,7 +134,7 @@ class Editor::DocumentsControllerTest < ActionController::TestCase
     patch :update, params: { category_id: @category, id: @document, document: document_params.merge(document: fixture_file_upload('../../test/support/documents/test_01.txt')) }
     assert_not_nil assigns(:document)
     assert assigns(:document).errors.size > 0
-    assert_equal ["is not allowed to include \"txt\" files, allowed types: #{DocumentUploader.new.extension_whitelist.join(', ')}"], assigns(:document).errors[:document]
+    assert_equal "is not allowed to include \"txt\" files, allowed types: #{DocumentUploader.new.extension_whitelist.join(', ')}", assigns(:document).errors[:document].first
     assert_template 'edit'
     assert_response :success
   end
