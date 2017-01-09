@@ -1,4 +1,4 @@
-## 10.0.1
+## 10.0.1 (January 9, 2017)
 
 ### Bug Fix
 - Fixed an issue with a document uploader test that would fail intermittently
