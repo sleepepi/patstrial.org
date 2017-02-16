@@ -9,6 +9,10 @@
           = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
 
     .section-body
+      - if @data_quality && @data_quality[:graphs]
+        - @data_quality[:graphs].each do |graph|
+          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', chart_type: graph[:chart_type], series: graph[:series].to_json, categories: graph[:categories].to_json, title: graph[:title], yaxis: graph[:yaxis], xaxis: graph[:xaxis], yaxis_min: graph[:yaxis_min], yaxis_max: graph[:yaxis_max] } }
+
       - if @data_quality && @data_quality[:tables]
         - @data_quality[:tables].each do |table|
           = render 'reports/draw_advanced_table', table: table

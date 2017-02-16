@@ -1,5 +1,9 @@
 ## 11.0.0
 
+### Enhancements
+- **General Changes**
+  - Added a Signal Quality Grades graph to the Data Quality page
+
 ## 10.0.1 (January 9, 2017)
 
 ### Bug Fix
@@ -7,7 +11,7 @@
 
 ## 10.0.0 (January 9, 2017)
 
-### Enhancments
+### Enhancements
 - **General Changes**
   - Reduced number of alerts and messages from devise during login and logout
 - **Gem Changes**

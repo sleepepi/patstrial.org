@@ -12,7 +12,7 @@
           enabled: false
         chart:
           zoomType: 'x'
-          type: $(@).data('charttype')
+          type: $(@).data('chart-type')
         title:
           text: $(@).data('title')
         subtitle:
@@ -24,7 +24,8 @@
           title:
             text: $(@).data('xaxis')
         yAxis:
-          min: 0
+          min: $(@).data('yaxis-min') || 0
+          max: $(@).data('yaxis-max')
           minTickInterval: 1
           title:
             text: $(@).data('yaxis')
