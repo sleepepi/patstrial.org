@@ -13,7 +13,7 @@ gem 'carrierwave',          '~> 1.0.0'
 gem 'devise',               '~> 4.2.0'
 gem 'figaro',               '~> 1.1.1'
 gem 'haml',                 '~> 4.0.7'
-gem 'kaminari',             '~> 0.17.0'
+gem 'kaminari',             '~> 1.0.1'
 
 # Rails Defaults
 gem 'coffee-rails',         '~> 4.2'

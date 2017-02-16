@@ -4,6 +4,7 @@
 - **General Changes**
   - Added a Signal Quality Grades graph to the Data Quality page
 - **Gem Changes**
+  - Updated to kaminari 1.0.1
   - Updated to simplecov 0.13.0
 
 ## 10.0.1 (January 9, 2017)
