@@ -3,16 +3,18 @@
 # Allows members to be placed into a committee for sorting in the directory
 class Committee < ApplicationRecord
   # Concerns
-  include Deletable
+  include Deletable, Sluggable
 
-  # Model Validation
+  # Validations
   validates :name, :slug, presence: true
-  validates :slug, uniqueness: { scope: :deleted }
-  validates :slug, format: { with: /\A[a-z][a-z0-9\-]*\Z/ }
 
-  # Model Relationships
+  # Relationships
   has_many :committee_members
   has_many :members, through: :committee_members
 
-  # Model Methods
+  # Methods
+  def destroy
+    update_column :slug, nil
+    super
+  end
 end

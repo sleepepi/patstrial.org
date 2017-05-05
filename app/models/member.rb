@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-# Members are directory listings that can be seen from dashboard
+# Members are directory listings that can be seen from dashboard.
 class Member < ApplicationRecord
   # Concerns
   include Deletable
 
-  # Model Validation
+  # Validations
   validates :first_name, :last_name, presence: true
 
-  # Model Relationships
-  belongs_to :site
+  # Relationships
+  belongs_to :site, optional: true
   has_many :committee_members
   has_many :committees, -> { order(:position) }, through: :committee_members
 
-  # Model Methods
+  # Methods
 
   def name
     "#{first_name} #{last_name}"

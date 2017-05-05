@@ -3,15 +3,17 @@
 # Members can belong to a single site. Sites are displayed publicly on website
 class Site < ApplicationRecord
   # Concerns
-  include Deletable
+  include Deletable, Sluggable
 
-  # Model Validation
+  # Validations
   validates :name, :slug, :address, presence: true
-  validates :slug, uniqueness: { scope: :deleted }
-  validates :slug, format: { with: /\A[a-z][a-z0-9\-]*\Z/ }
 
-  # Model Relationships
+  # Relationships
   has_many :members, -> { order(:last_name, :first_name) }
 
-  # Model Methods
+  # Methods
+  def destroy
+    update_column :slug, nil
+    super
+  end
 end

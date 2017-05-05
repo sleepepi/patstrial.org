@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # Concerns
   include Deletable, Forkable
 
-  # Model Validation
+  # Validations
   validates :first_name, :last_name, presence: true
 
   # User Methods

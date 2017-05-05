@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Allows viewers, editors, and admins to view internal pages and reports, and
-# download documents
+# download documents.
 class InternalController < ApplicationController
   before_action :authenticate_viewer_or_current_user!
   before_action :set_category, only: [:category, :document, :video]
@@ -38,8 +38,8 @@ class InternalController < ApplicationController
     end
   end
 
-  def video
-  end
+  # def video
+  # end
 
   private
 
@@ -48,17 +48,17 @@ class InternalController < ApplicationController
     unless current_user && current_user.can_view_unblinded_folder?
       category_scope = category_scope.where(unblinded_only: false)
     end
-    @category = category_scope.find_by_slug params[:category]
+    @category = category_scope.find_by_param(params[:category])
     empty_response_or_root_path(dashboard_path) unless @category
   end
 
   def set_document
-    @document = @category.documents.where(archived: false).find_by_id params[:document_id]
+    @document = @category.documents.where(archived: false).find_by(id: params[:document_id])
     empty_response_or_root_path(internal_category_path(@category)) unless @document
   end
 
   def set_video
-    @video = @category.videos.where(archived: false).find_by_id params[:video_id]
+    @video = @category.videos.where(archived: false).find_by(id: params[:video_id])
     empty_response_or_root_path(internal_category_path(@category)) unless @video
   end
 end

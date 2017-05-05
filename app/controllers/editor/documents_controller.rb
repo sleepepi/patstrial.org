@@ -61,12 +61,12 @@ class Editor::DocumentsController < Editor::EditorController
   private
 
   def set_category
-    @category = Category.current.find_by_id params[:category_id]
+    @category = Category.current.find_by_param(params[:category_id])
     empty_response_or_root_path(editor_categories_path) unless @category
   end
 
   def set_document
-    @document = @category.documents.find_by_id params[:id]
+    @document = @category.documents.find_by(id: params[:id])
     empty_response_or_root_path(editor_category_path(@category)) unless @document
   end
 

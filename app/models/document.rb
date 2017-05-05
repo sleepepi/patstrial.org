@@ -7,13 +7,13 @@ class Document < ApplicationRecord
 
   # Concerns
 
-  # Model Validation
+  # Validations
   validates :category_id, :document, presence: true
 
-  # Model Relationships
+  # Relationships
   belongs_to :category
 
-  # Model Methods
+  # Methods
   def name
     document_identifier
   end

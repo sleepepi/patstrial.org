@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Allows editors to create and update categories that organize document uploads
+# Allows editors to create and update categories that organize document uploads.
 class Editor::CategoriesController < Editor::EditorController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
@@ -10,18 +10,18 @@ class Editor::CategoriesController < Editor::EditorController
     @categories = Category.current.order(@order).page(params[:page]).per(40)
   end
 
-  # GET /categories/1
-  def show
-  end
+  # # GET /categories/1
+  # def show
+  # end
 
   # GET /categories/new
   def new
     @category = Category.new(position: Category.current.count + 1)
   end
 
-  # GET /categories/1/edit
-  def edit
-  end
+  # # GET /categories/1/edit
+  # def edit
+  # end
 
   # POST /categories
   def create
@@ -51,7 +51,7 @@ class Editor::CategoriesController < Editor::EditorController
   private
 
   def set_category
-    @category = Category.current.find_by_id params[:id]
+    @category = Category.current.find_by_param(params[:id])
     empty_response_or_root_path(editor_categories_path) unless @category
   end
 

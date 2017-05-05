@@ -10,18 +10,18 @@ class Editor::VideosController < Editor::EditorController
     @videos = @category.videos.page(params[:page]).per(40)
   end
 
-  # GET /:category_id/videos/1
-  def show
-  end
+  # # GET /:category_id/videos/1
+  # def show
+  # end
 
   # GET /:category_id/videos/new
   def new
     @video = @category.videos.new
   end
 
-  # GET /:category_id/videos/1/edit
-  def edit
-  end
+  # # GET /:category_id/videos/1/edit
+  # def edit
+  # end
 
   # POST /:category_id/videos
   def create
@@ -51,12 +51,12 @@ class Editor::VideosController < Editor::EditorController
   private
 
   def set_category
-    @category = Category.current.find_by_id params[:category_id]
+    @category = Category.current.find_by_param(params[:category_id])
     empty_response_or_root_path(editor_categories_path) unless @category
   end
 
   def set_video
-    @video = @category.videos.find_by_id params[:id]
+    @video = @category.videos.find_by(id: params[:id])
     empty_response_or_root_path(editor_category_path(@category)) unless @video
   end
 

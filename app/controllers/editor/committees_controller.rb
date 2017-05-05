@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Allows editors to create and update committees to group members in directory
+# Allows editors to create and update committees to group members in directory.
 class Editor::CommitteesController < Editor::EditorController
   before_action :set_committee, only: [:show, :edit, :update, :destroy]
 
@@ -10,18 +10,18 @@ class Editor::CommitteesController < Editor::EditorController
     @committees = Committee.current.order(@order).page(params[:page]).per(40)
   end
 
-  # GET /committees/1
-  def show
-  end
+  # # GET /committees/1
+  # def show
+  # end
 
   # GET /committees/new
   def new
     @committee = Committee.new(position: Committee.current.count + 1)
   end
 
-  # GET /committees/1/edit
-  def edit
-  end
+  # # GET /committees/1/edit
+  # def edit
+  # end
 
   # POST /committees
   def create
@@ -51,7 +51,7 @@ class Editor::CommitteesController < Editor::EditorController
   private
 
   def set_committee
-    @committee = Committee.current.find_by_id params[:id]
+    @committee = Committee.current.find_by_param(params[:id])
     empty_response_or_root_path(editor_committees_path) unless @committee
   end
 

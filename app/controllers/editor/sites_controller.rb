@@ -52,7 +52,7 @@ class Editor::SitesController < Editor::EditorController
   private
 
   def set_site
-    @site = Site.current.find_by_id params[:id]
+    @site = Site.current.find_by_param(params[:id])
     empty_response_or_root_path(editor_sites_path) unless @site
   end
 

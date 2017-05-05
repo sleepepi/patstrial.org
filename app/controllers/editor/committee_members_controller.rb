@@ -52,12 +52,12 @@ class Editor::CommitteeMembersController < Editor::EditorController
   private
 
   def set_committee
-    @committee = Committee.current.find_by_id params[:committee_id]
+    @committee = Committee.current.find_by_param(params[:committee_id])
     empty_response_or_root_path(committees_path) unless @committee
   end
 
   def set_committee_member
-    @committee_member = @committee.committee_members.find_by_id params[:id]
+    @committee_member = @committee.committee_members.find_by(id: params[:id])
     empty_response_or_root_path(editor_committee_path(@committee)) unless @committee_member
   end
 
