@@ -9,6 +9,7 @@
   - Updated to pg 0.20.0
   - Updated to carrierwave 1.1.0
   - Updated to devise 4.2.1
+  - Updated to haml 5.0.1
   - Updated to kaminari 1.0.1
   - Updated to simplecov 0.13.0
   - Added autoprefixer-rails
