@@ -5,6 +5,7 @@
   - Added a Signal Quality Grades graph to the Data Quality page
   - Login cookies are now cross subdomain and work between www and non-www URLs
 - **Gem Changes**
+  - Updated to rails 5.0.2
   - Updated to kaminari 1.0.1
   - Updated to simplecov 0.13.0
 
