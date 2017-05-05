@@ -6,10 +6,10 @@
   - Login cookies are now cross subdomain and work between www and non-www URLs
 - **Gem Changes**
   - Updated to Ruby 2.4.1
-  - Updated to rails 5.0.2
+  - Updated to rails 5.1.0
   - Updated to pg 0.20.0
   - Updated to carrierwave 1.1.0
-  - Updated to devise 4.2.1
+  - Updated to devise ref `cc6a582`
   - Updated to haml 5.0.1
   - Updated to kaminari 1.0.1
   - Updated to jquery-rails 4.3.1

@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails',                '5.0.2'
+gem 'rails',                '5.1.0'
 
 # Database Adapter
 gem 'pg',                   '0.20.0'
@@ -11,7 +11,8 @@ gem 'pg',                   '0.20.0'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass',       '~> 3.3.7'
 gem 'carrierwave',          '~> 1.1.0'
-gem 'devise',               '~> 4.2.1'
+# gem 'devise',               '~> 4.2.1'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', ref: 'cc6a582'
 gem 'figaro',               '~> 1.1.1'
 gem 'haml',                 '~> 5.0.1'
 gem 'kaminari',             '~> 1.0.1'
