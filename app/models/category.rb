@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Allows uploaded documents to be grouped together and organized in dashboard
-# menu
+# menu.
 class Category < ApplicationRecord
   # Concerns
   include Deletable, Sluggable

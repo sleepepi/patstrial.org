@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Members can belong to a single site. Sites are displayed publicly on website
+# Members can belong to a single site. Sites are displayed publicly on website.
 class Site < ApplicationRecord
   # Concerns
   include Deletable, Sluggable
