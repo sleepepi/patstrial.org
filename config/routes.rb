@@ -76,6 +76,7 @@ Rails.application.routes.draw do
     get :eligibility_status, path: 'eligibility-status'
     get :eligibility_status_screened, path: 'eligibility-status/screened'
     get :eligibility_status_consented, path: 'eligibility-status/consented'
+    get :grades
   end
 
   scope module: :setup do

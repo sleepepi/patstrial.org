@@ -61,4 +61,10 @@ class ReportsControllerTest < ActionController::TestCase
     get :eligibility_status_consented
     assert_response :success
   end
+
+  test 'should get grades' do
+    login(@viewer)
+    get :grades
+    assert_response :success
+  end
 end

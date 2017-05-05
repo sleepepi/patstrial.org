@@ -4,6 +4,8 @@
 - **General Changes**
   - Added a Signal Quality Grades graph to the Data Quality page
   - Login cookies are now cross subdomain and work between www and non-www URLs
+- **Report Changes**
+  - Added a new report that grades sites by data completion percentage
 - **Gem Changes**
   - Updated to Ruby 2.4.1
   - Updated to rails 5.1.0
