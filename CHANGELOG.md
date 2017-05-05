@@ -9,6 +9,7 @@
   - Updated to pg 0.20.0
   - Updated to kaminari 1.0.1
   - Updated to simplecov 0.13.0
+  - Added autoprefixer-rails
 
 ## 10.0.1 (January 9, 2017)
 
