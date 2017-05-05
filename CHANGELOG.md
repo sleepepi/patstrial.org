@@ -11,6 +11,7 @@
   - Updated to devise 4.2.1
   - Updated to haml 5.0.1
   - Updated to kaminari 1.0.1
+  - Updated to jquery-rails 4.3.1
   - Updated to simplecov 0.13.0
   - Added autoprefixer-rails
 
