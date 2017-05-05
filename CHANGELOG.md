@@ -16,6 +16,10 @@
   - Updated to simplecov 0.14.1
   - Added autoprefixer-rails
 
+### Bug Fix
+- Fixed a bug that caused JavaScript functions to run twice in browsers that
+  supported Turbolinks
+
 ## 10.0.1 (January 9, 2017)
 
 ### Bug Fix
