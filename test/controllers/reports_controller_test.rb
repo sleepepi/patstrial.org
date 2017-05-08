@@ -73,4 +73,10 @@ class ReportsControllerTest < ActionController::TestCase
     get :unscheduled_events
     assert_response :success
   end
+
+  test 'should get failing checks' do
+    login(@viewer)
+    get :failing_checks
+    assert_response :success
+  end
 end

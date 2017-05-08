@@ -78,6 +78,7 @@ Rails.application.routes.draw do
     get :eligibility_status_consented, path: 'eligibility-status/consented'
     get :grades
     get :unscheduled_events, path: 'unscheduled-events'
+    get :failing_checks, path: 'failing-checks'
   end
 
   scope module: :setup do

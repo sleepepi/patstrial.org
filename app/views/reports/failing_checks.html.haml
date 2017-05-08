@@ -1,0 +1,43 @@
+- @title = 'Failing Checks - Reports'
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1 Failing Checks
+
+      .section-description
+        Count of failing checks by site.
+    - if @failing_checks
+      - if @failing_checks[:checks].reject { |hash| hash[:total][:count].zero? }.present?
+        %table.table.table-striped.table-borderless.table-hover
+          %thead
+            %tr
+              %th Check
+              - @failing_checks[:totals].each do |total|
+                %th.nowrap.center= total[:short_name]
+              %th.center Total
+          %tfoot
+            %tr
+              %th Total
+              - @failing_checks[:totals].each do |total|
+                %th.nowrap.center= link_to total[:count], leaving_path(slice: total[:link])
+              %th.center 0
+          %tbody
+            - @failing_checks[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
+              %tr
+                %td= row[:check]
+                - row[:cells].each do |cell|
+                  %td.center
+                    - if cell[:count].to_i.zero?
+                      \-
+                    - else
+                      = link_to cell[:count], leaving_path(slice: cell[:link])
+                %td.center
+                  %strong= link_to row[:total][:count], leaving_path(slice: row[:total][:link])
+
+      - else
+        .jumbotron
+          %p.center No failing checks!
+
+
+  .col-sm-3.col-sm-pull-9
+    = render 'internal/menu'
