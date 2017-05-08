@@ -15,6 +15,7 @@ class InternalController < ApplicationController
       @consented = @recruitment[:consented]
       @eligible = @recruitment[:eligible]
       @randomized = @recruitment[:randomized]
+      @grades = @recruitment[:grades]
     end
   end
 

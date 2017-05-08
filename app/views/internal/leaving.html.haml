@@ -1,0 +1,13 @@
+.row
+  .col-sm-9.col-sm-push-3
+    .section-heading-internal
+      %h1 Leaving Site
+      .section-description
+        %span.glyphicon.glyphicon-comment
+        The following link requires a Slice login and will leave the PATS Trial
+        website.
+    .section-body
+      %p.center
+        = link_to params[:slice], params[:slice]
+  .col-sm-3.col-sm-pull-9
+    = render 'internal/menu'

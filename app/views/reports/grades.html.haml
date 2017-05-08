@@ -1,36 +1,35 @@
-- @title = 'Reports - Grades'
+- @title = 'Report Card'
 .row
   .col-sm-9.col-sm-push-3
     .section-heading-internal
-      %h1 Grades
+      %h1 Report Card
 
-    %div{ style: 'background-color: #43A047;padding: 5px;color: white; width:40px; height: 40px;text-align: center;border-radius: 4px;display: inline-block;' }>
-      %div{ style: 'font-size: 28px;line-height:30px;' }
-        A+
+      .section-description
+        Overall Data Completion by Site for Randomized Subjects
+    - if @grades
+      .grades
+        - @grades[:overall].each do |hash|
+          = render 'reports/big_grade', hash: hash
 
-    %div{ style: 'background-color: #43A047;padding: 5px;color: white; width:40px; height: 40px;text-align: center;border-radius: 4px;display: inline-block;margin-left: 5px;' }>
-      %div{ style: 'font-size: 28px;line-height:30px;' }
-        A
-
-    %div{ style: 'background-color: #43A047;padding: 5px;color: white; width:40px; height: 40px;text-align: center;border-radius: 4px;display: inline-block;margin-left: 5px;' }>
-      %div{ style: 'font-size: 28px;line-height:30px;' }
-        A-
-
-    %div{ style: 'background-color: #FBC02D;padding: 5px;color: white; width:40px; height: 40px;text-align: center;border-radius: 4px;display: inline-block;margin-left: 5px;' }>
-      %div{ style: 'font-size: 28px;line-height:30px;' }
-        B
-
-    %div{ style: 'background-color: #FBC02D;padding: 5px;color: white; width:40px; height: 40px;text-align: center;border-radius: 4px;display: inline-block;margin-left: 5px;' }>
-      %div{ style: 'font-size: 28px;line-height:30px;' }
-        C
-
-    %div{ style: 'background-color: #E53935;padding: 5px;color: white; width:40px; height: 40px;text-align: center;border-radius: 4px;display: inline-block;margin-left: 5px;' }>
-      %div{ style: 'font-size: 28px;line-height:30px;' }
-        D
-
-    %div{ style: 'background-color: #E53935;padding: 5px;color: white; width:40px; height: 40px;text-align: center;border-radius: 4px;display: inline-block;margin-left: 5px;' }>
-      %div{ style: 'font-size: 28px;line-height:30px;' }
-        F
+      .section-heading
+        %h3 Event Breakdown
+        .section-description
+          Event Data Completion by Site for Randomized Subjects
+      %table.table.table-striped.table-borderless.table-hover
+        %thead
+          %tr
+            %th Event
+            - @grades[:sites].each do |site|
+              %th= site
+        %tbody
+          - @grades[:events].each do |row|
+            %tr
+              %td= row[:event]
+              - row[:cells].each do |cell|
+                %td
+                  = render 'reports/grade', percent: cell[:percent]
+                  - if cell[:percent].present?
+                    %span.percent= link_to "#{cell[:percent]}%", leaving_path(slice: cell[:link])
 
   .col-sm-3.col-sm-pull-9
     = render 'internal/menu'

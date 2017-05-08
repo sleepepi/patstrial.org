@@ -1,0 +1,22 @@
+.grades {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grade {
+  flex: 1;
+  text-align: center;
+
+  .grade-title {
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: $screen-md-min) {
+  .grade {
+    .grade-title {
+      font-size: 18px;
+    }
+  }
+}

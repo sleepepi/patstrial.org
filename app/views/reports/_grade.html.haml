@@ -1,0 +1,19 @@
+- if percent.nil?
+  %span.label.label-default
+    \-
+- else
+  - percent = percent.to_i
+  - if percent >= 97
+    %span.label.label-a A+
+  - elsif percent >= 93
+    %span.label.label-a A
+  - elsif percent >= 90
+    %span.label.label-a A-
+  - elsif percent >= 80
+    %span.label.label-b B
+  - elsif percent >= 70
+    %span.label.label-c C
+  - elsif percent >= 60
+    %span.label.label-d D
+  - else
+    %span.label.label-f F

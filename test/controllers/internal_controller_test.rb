@@ -158,4 +158,10 @@ class InternalControllerTest < ActionController::TestCase
     assert_nil assigns(:video)
     assert_redirected_to new_user_session_path
   end
+
+  test 'should get leaving as viewer' do
+    login(@viewer)
+    get :leaving, params: { slice: 'https://tryslice.io' }
+    assert_response :success
+  end
 end

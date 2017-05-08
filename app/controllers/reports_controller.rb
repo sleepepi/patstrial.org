@@ -47,9 +47,10 @@ class ReportsController < ApplicationController
     @eligibility_status = @recruitment[:eligibility_status_consented] if @recruitment
   end
 
-  # # GET /reports/grades
-  # def grades
-  # end
+  # GET /reports/grades
+  def grades
+    @grades = @recruitment.dig(:grades) if @recruitment
+  end
 
   private
 

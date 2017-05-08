@@ -1,7 +1,27 @@
 .row
   .col-sm-9.col-sm-push-3
     .section-heading-internal
-      %h1 Dashboard
+      %h1
+        - if @grades
+          .pull-right
+            - grade = @grades[:overall].first
+            %div.text-right{ style: 'font-size: 14px;' }
+              %div{ style: 'margin-bottom: 10px;' }
+                = link_to reports_grades_path do
+                  Report Card
+                  %span.hidden-xs Available
+                  &raquo;
+              %div
+                %span.hidden-xs Top Site
+                = render 'reports/grade', percent: grade[:percent]
+                = grade[:short_name]
+            .hidden-xs.hidden-sm.hidden-md.hidden-lg
+              %span{ style: 'font-size: 14px;'}
+                = render 'reports/grade', percent: grade[:percent]
+                = link_to grade[:short_name], reports_grades_path
+        Dashboard
+
+
     .section-body
       - if @randomized
         .jumbotron
