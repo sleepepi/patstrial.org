@@ -67,4 +67,10 @@ class ReportsControllerTest < ActionController::TestCase
     get :grades
     assert_response :success
   end
+
+  test 'should get unscheduled events' do
+    login(@viewer)
+    get :unscheduled_events
+    assert_response :success
+  end
 end

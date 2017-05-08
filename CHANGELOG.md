@@ -6,6 +6,8 @@
   - Login cookies are now cross subdomain and work between www and non-www URLs
 - **Report Changes**
   - Added a new report card that grades sites by data completion percentage
+  - Added a new unscheduled events report that shows adverse events, protocol
+    deviations, and unblinding events by site by month
 - **Gem Changes**
   - Updated to Ruby 2.4.1
   - Updated to rails 5.1.0

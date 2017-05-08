@@ -52,6 +52,11 @@ class ReportsController < ApplicationController
     @grades = @recruitment.dig(:grades) if @recruitment
   end
 
+  # GET /reports/unscheduled-events
+  def unscheduled_events
+    @unscheduled_events = @recruitment.dig(:unscheduled_events) if @recruitment
+  end
+
   private
 
   def load_recruitment
