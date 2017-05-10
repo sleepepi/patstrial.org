@@ -24,6 +24,7 @@
           title:
             text: $(@).data('xaxis')
         yAxis:
+          allowDecimals: false
           min: $(@).data('yaxis-min') || 0
           max: $(@).data('yaxis-max')
           minTickInterval: 1
