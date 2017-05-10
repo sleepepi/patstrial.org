@@ -57,9 +57,9 @@ class ReportsController < ApplicationController
     @unscheduled_events = @recruitment.dig(:unscheduled_events) if @recruitment
   end
 
-  # GET /reports/failing-checks
-  def failing_checks
-    @failing_checks = @recruitment.dig(:failing_checks) if @recruitment
+  # GET /reports/data-inconsistencies
+  def data_inconsistencies
+    @data_inconsistencies = @recruitment.dig(:failing_checks) if @recruitment
   end
 
   private

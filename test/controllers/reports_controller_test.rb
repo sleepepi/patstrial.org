@@ -76,7 +76,7 @@ class ReportsControllerTest < ActionController::TestCase
 
   test 'should get failing checks' do
     login(@viewer)
-    get :failing_checks
+    get :data_inconsistencies
     assert_response :success
   end
 end

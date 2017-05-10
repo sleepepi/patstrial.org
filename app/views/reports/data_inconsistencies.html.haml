@@ -1,28 +1,31 @@
-- @title = 'Failing Checks - Reports'
+- @title = 'Data Inconsistencies - Reports'
 .row
   .col-sm-9.col-sm-push-3
     .section-heading-internal
-      %h1 Failing Checks
+      %h1 Data Inconsistencies
 
       .section-description
-        Count of failing checks by site.
-    - if @failing_checks
-      - if @failing_checks[:checks].reject { |hash| hash[:total][:count].zero? }.present?
+        Use the following table to jump to data inconsistencies reported by
+        Slice.
+    - if @data_inconsistencies
+      - if @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.present?
         %table.table.table-striped.table-borderless.table-hover
           %thead
             %tr
               %th Check
-              - @failing_checks[:totals].each do |total|
+              - @data_inconsistencies[:totals].each do |total|
                 %th.nowrap.center= total[:short_name]
               %th.center Total
           %tfoot
             %tr
               %th Total
-              - @failing_checks[:totals].each do |total|
+              - total_count = 0
+              - @data_inconsistencies[:totals].each do |total|
+                - total_count += total[:count]
                 %th.nowrap.center= link_to total[:count], leaving_path(slice: total[:link])
-              %th.center 0
+              %th.center= link_to total_count, leaving_path(slice: 'https://tryslice.io/projects/pats/sheets?search=checks:any')
           %tbody
-            - @failing_checks[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
+            - @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
               %tr
                 %td= row[:check]
                 - row[:cells].each do |cell|
@@ -36,7 +39,7 @@
 
       - else
         .jumbotron
-          %p.center No failing checks!
+          %p.center No data inconsistencies!
 
 
   .col-sm-3.col-sm-pull-9
