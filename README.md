@@ -4,7 +4,7 @@
 [![Dependency Status](https://gemnasium.com/sleepepi/patstrial.org.svg)](https://gemnasium.com/sleepepi/patstrial.org)
 [![Code Climate](https://codeclimate.com/github/sleepepi/patstrial.org/badges/gpa.svg)](https://codeclimate.com/github/sleepepi/patstrial.org)
 
-PATS Trial Website. Using Rails 5.0+ and Ruby 2.4+.
+PATS Trial Website. Using Rails 5.1+ and Ruby 2.4+.
 
 ## Installation
 
