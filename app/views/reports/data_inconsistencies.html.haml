@@ -1,6 +1,6 @@
 - @title = 'Data Inconsistencies - Reports'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1 Data Inconsistencies
 
@@ -14,33 +14,33 @@
             %tr
               %th Check
               - @data_inconsistencies[:totals].each do |total|
-                %th.nowrap.center= total[:short_name]
-              %th.center Total
+                %th.nowrap.text-center= total[:short_name]
+              %th.text-center Total
           %tfoot
             %tr
               %th Total
               - total_count = 0
               - @data_inconsistencies[:totals].each do |total|
                 - total_count += total[:count]
-                %th.nowrap.center= link_to total[:count], leaving_path(slice: total[:link])
-              %th.center= link_to total_count, leaving_path(slice: 'https://tryslice.io/projects/pats/sheets?search=checks:any')
+                %th.nowrap.text-center= link_to total[:count], leaving_path(slice: total[:link])
+              %th.text-center= link_to total_count, leaving_path(slice: 'https://tryslice.io/projects/pats/sheets?search=checks:any')
           %tbody
             - @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
               %tr
                 %td= row[:check]
                 - row[:cells].each do |cell|
-                  %td.center
+                  %td.text-center
                     - if cell[:count].to_i.zero?
                       \-
                     - else
                       = link_to cell[:count], leaving_path(slice: cell[:link])
-                %td.center
+                %td.text-center
                   %strong= link_to row[:total][:count], leaving_path(slice: row[:total][:link])
 
       - else
         .jumbotron
-          %p.center No data inconsistencies!
+          %p.text-center No data inconsistencies!
 
 
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

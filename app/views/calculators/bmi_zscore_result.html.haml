@@ -20,9 +20,9 @@
         %td
           %h2
             %code= format('%0.3f%%', params[:bmi_percentile].to_f * 100)
-    .center
+    .text-center
       = link_to calculators_bmi_zscore_path(gender: params[:gender], weight: params[:weight], weight_units: params[:weight_units], height: params[:height], height_units: params[:height_units], dob: params[:dob], dov: params[:dov]), class: 'btn btn-default btn-xs' do
-        %span.glyphicon.glyphicon-arrow-left
+        %i.fa.fa-chevron-left
         Go Back to Calculator
 
   %table.table.table-borderless

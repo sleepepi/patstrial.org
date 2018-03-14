@@ -15,9 +15,13 @@
 #
 #= require jquery3
 #= require jquery_ujs
-#= require bootstrap-sprockets
 #= require turbolinks
+#= require popper
+#= require bootstrap
+
+# External
 #= require external/highcharts/highcharts.src.js
 #= require external/highcharts/modules/drilldown.js
-#= require components/links
+
+# Other
 #= require_tree .

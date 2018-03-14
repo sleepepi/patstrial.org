@@ -1,14 +1,14 @@
 - @original_style = false
 .logo-container
   .container
-    .jumbotron{ style: 'background-color: transparent;margin: 0' }
+    .jumbotron{ style: "background-color: transparent;margin: 0" }
       .row
-        .col-xs-3.col-sm-3.col-md-4
-          .center
+        .col-3.col-sm-3.col-md-4
+          .text-center
             .shift.shift-right.start.delay6
-              = image_tag 'pats-boy.png', class: 'person-size'
-        .col-xs-6.col-sm-6.col-md-4
-          .center
+              = image_tag "pats-boy.png", class: "person-size"
+        .col-6.col-sm-6.col-md-4
+          .text-center
             %h1.brand
               .letters
                 - if @original_style
@@ -21,7 +21,7 @@
                   .letter.start.shift-up.delay1 A
                   .letter.start.shift-down.delay2 T
                   .letter.start.shift-up.delay4 S
-            %h2.brand.hidden-xs
+            %h2.brand.d-none.d-sm-block
               .letters
                 - if @original_style
                   .letter.start.delay5 Trial
@@ -31,8 +31,8 @@
                   .letter.start.delay1 i
                   .letter.start.delay2 a
                   .letter.start.delay3 l
-        .col-xs-3.col-sm-3.col-md-4
-          .center
+        .col-3.col-sm-3.col-md-4
+          .text-center
             .shift.shift-left.start.delay5
-              = image_tag 'pats-girl.png', class: 'person-size person-wait'
+              = image_tag "pats-girl.png", class: "person-size person-wait"
 .purple-border-top

@@ -1,7 +1,7 @@
 %table.table.table-striped
   %thead
     %tr
-      = th_sort_field @order, 'documents.archived', 'Archived', extra_class: 'center hidden-xs'
+      = th_sort_field @order, 'documents.archived', 'Archived', extra_class: 'text-center hidden-xs'
       = th_sort_field @order, 'documents.document', 'Name'
       %th.hidden-xs Size
       = th_sort_field @order, 'documents.created_at', 'Uploaded', extra_class: 'hidden-xs'
@@ -9,7 +9,7 @@
 
   - @documents.each do |document|
     %tr
-      %td.center.hidden-xs
+      %td.text-center.hidden-xs
         - if document.archived?
           %span.glyphicon.glyphicon-eye-close.text-muted
       %td= link_to document.name, editor_category_document_path(@category, document), class: "#{'text-muted' if document.archived?}"
@@ -20,5 +20,5 @@
         = link_to 'Edit', edit_editor_category_document_path(@category, document), class: 'btn btn-default btn-xs'
         = link_to 'Delete', editor_category_document_path(@category, document), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Document #{document.name}?" }
 
-.center
+.center-horizontally
   = paginate @documents, theme: 'bootstrap'

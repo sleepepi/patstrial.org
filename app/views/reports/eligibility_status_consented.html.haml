@@ -1,6 +1,6 @@
 - @title = 'Eligibility Status - Consented - Reports'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1 Eligiblity Status - Consented
       .section-description
@@ -10,29 +10,29 @@
 
     .section-body
       - if @eligibility_status
-        .progress.progress-striped{ style: 'margin-top: 20px;margin-bottom: 0' }
+        .progress{ style: 'margin-top: 20px;margin-bottom: 0' }
           - tooltip = "#{@eligibility_status[:consented]} consented"
-          .progress-bar.progress-bar-success{ style: "width: 100%;min-width: 5em;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
+          .progress-bar.progress-bar-striped.bg-primary.nowrap{ style: "width: 100%;min-width: 5em;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
 
         - if @eligibility_status[:consented] > 0
           - fully_eligible_percent = @eligibility_status[:consented_fully_eligible] * 100.to_f / @eligibility_status[:consented]
           - ineligible_percent = @eligibility_status[:consented_ineligible] * 100.to_f / @eligibility_status[:consented]
           - pending_eligibility_percent = @eligibility_status[:consented_pending_eligibility] * 100.to_f / @eligibility_status[:consented]
-          .progress.progress-striped{ style: 'margin-top: 20px;margin-bottom: 0' }
+          .progress{ style: 'margin-top: 20px;margin-bottom: 0' }
             - tooltip = "#{@eligibility_status[:consented_fully_eligible]} fully eligible"
-            .progress-bar.progress-bar-success{ style: "width: #{fully_eligible_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
+            .progress-bar.progress-bar-striped.bg-primary.nowrap{ style: "width: #{fully_eligible_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
             - tooltip = "#{@eligibility_status[:consented_pending_eligibility]} pending eligibility"
-            .progress-bar.progress-bar-pending{ style: "width: #{pending_eligibility_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
+            .progress-bar.progress-bar-striped.bg-secondary.nowrap{ style: "width: #{pending_eligibility_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
             - tooltip = "#{@eligibility_status[:consented_ineligible]} ineligible"
-            .progress-bar.progress-bar-danger{ style: "width: #{ineligible_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
+            .progress-bar.progress-bar-striped.bg-dark.nowrap{ style: "width: #{ineligible_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
 
           - randomized_percent = @eligibility_status[:consented_randomized] * 100.to_f / @eligibility_status[:consented]
           - pending_randomization_percent = @eligibility_status[:consented_pending_randomization] * 100.to_f / @eligibility_status[:consented]
-          .progress.progress-striped{ style: 'margin-top: 20px;margin-bottom: 0' }
+          .progress{ style: 'margin-top: 20px;margin-bottom: 0' }
             - tooltip = "#{@eligibility_status[:consented_randomized]} randomized"
-            .progress-bar.progress-bar-success{ style: "width: #{randomized_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
+            .progress-bar.progress-bar-striped.bg-primary.nowrap{ style: "width: #{randomized_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
             - tooltip = "#{@eligibility_status[:consented_pending_randomization]} pending randomization"
-            .progress-bar.progress-bar-pending{ style: "width: #{pending_randomization_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
+            .progress-bar.progress-bar-striped.bg-secondary.nowrap{ style: "width: #{pending_randomization_percent}%;", data: { toggle: 'tooltip', title: tooltip } }= tooltip
 
       - if @eligibility_status && @eligibility_status[:tables]
         - @eligibility_status[:tables].each do |table|
@@ -41,22 +41,22 @@
       .row{ style: 'margin-top: 20px' }
         .col-md-4
           = link_to reports_eligibility_status_screened_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted.nowrap Eligibility - Screened
               .report-number
-                %span.glyphicon.glyphicon-arrow-left
+                %i.fa.fa-chevron-left
         .col-md-4
-          .jumbotron.center
+          .jumbotron.text-center
             %h4.text-muted Eligibility - Consented
             .report-number
-              %span.glyphicon.glyphicon-list-alt
+              %i.fa.fa-list-alt
         .col-md-4
           = link_to reports_demographics_status_path(subjects: 'randomized'), class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Demographics
               .report-number
-                %span.glyphicon.glyphicon-arrow-right
+                %i.fa.fa-chevron-right
 
 
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

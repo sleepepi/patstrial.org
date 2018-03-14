@@ -1,6 +1,6 @@
 - @title = 'Report Card'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1 Report Card
 
@@ -32,5 +32,5 @@
                   - if cell[:percent].present?
                     %span.percent= link_to "#{cell[:percent]}%", leaving_path(slice: cell[:link])
 
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

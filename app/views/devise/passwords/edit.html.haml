@@ -1,36 +1,21 @@
-- @title = 'Change your password'
+- @title = "Change your password"
 
-- content_for :body_class do
-  brand-background
+- @theme = "royal"
 
-%p.lead.center
-  Change your password
+.page-box.last-box.d-flex.align-items-center.theme-bg{ class: "theme-#{@theme}-focus-bg" }
+  .container
+    %p.lead.text-center{ class: @body != "default" ? "text-white" : nil }
+      = @title
 
-.sign-up-form
-  .sign-up-form-title
-    Change Password
+    .sign-up-form
+      .sign-up-form-title
+        Change password
 
-  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-vertical' }) do |f|
-    - if resource.errors.any?
-      #error_explanation.bs-callout.bs-callout-danger
-        %h4
-          The following
-          = 'error'.pluralize(resource.errors.count)
-          prevented your password from being changed
+      = form_with model: resource, as: resource_name, url: password_path(resource_name), method: :put, local: true do |form|
+        = form.hidden_field :reset_password_token
 
-        %ul
-          - resource.errors.full_messages.each do |msg|
-            %li= msg
+        = render "forms/vertical/password_field", form: form, object: resource, key: :password, key_name: "New password"
+        = render "forms/vertical/password_field", form: form, object: resource, key: :password_confirmation, key_name: "Confirm new password"
 
-    = f.hidden_field :reset_password_token
-
-    .form-group
-      = f.label :password, "New password", class: 'control-label'
-      = f.password_field :password, class: 'form-control'
-
-    .form-group
-      = f.label :password_confirmation, "Confirm new password", class: 'control-label'
-      = f.password_field :password_confirmation, class: 'form-control'
-
-    .form-group.sign-up-form-button-container
-      = f.submit 'Change my password', class: 'btn btn-primary btn-block'
+        .form-group.submit-btn-container
+          = form.submit "Change my password", class: "btn btn-primary btn-block btn-shadow"

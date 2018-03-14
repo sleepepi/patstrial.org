@@ -1,49 +1,158 @@
-.btn-primary-custom {
-  background-color: $btn-default-bg;
-  border-color: $btn-default-border;
-  color: $btn-default-color;
+.btn {
+  transition: all .25s ease-out;
+}
 
-  &:hover,
-  &:focus,
-  &.focus,
-  &:active,
-  &.active {
-    background-color: darken($btn-primary-bg, 10%);
-    border-color: darken($btn-primary-border, 12%);
-    color: $btn-primary-color;
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    // Primary
+    .btn-primary,
+    .show > .btn-primary.dropdown-toggle {
+      color: map-get($theme, brand-white) !important;
+    }
+
+    .btn-outline-primary {
+      color: map-get($theme, primary) !important;
+
+      &:active,
+      &.active,
+      &:hover {
+        color: map-get($theme, brand-white) !important;
+      }
+    }
+
+    // Accent
+    .btn-accent,
+    .show > .btn-accent.dropdown-toggle {
+      @include button-variant(map-get($theme, accent), map-get($theme, accent));
+      color: map-get($theme, brand-white) !important;
+    }
+
+    .btn-outline-accent {
+      border-color: map-get($theme, accent) !important;
+      color: map-get($theme, accent) !important;
+
+      &:active,
+      &.active,
+      &:hover {
+        background-color: map-get($theme, accent) !important;
+        color: map-get($theme, brand-white) !important;
+      }
+    }
+
+    // Secondary
+    .btn-secondary,
+    .show > .btn-secondary.dropdown-toggle {
+      @include button-variant(theme-color($theme, secondary, map-get($theme-colors, secondary)), theme-color($theme, secondary, map-get($theme-colors, secondary)));
+      color: map-get($theme, brand-white) !important;
+    }
+
+    .btn-outline-secondary {
+      color: theme-color($theme, secondary, map-get($theme-colors, secondary)) !important;
+
+      &:active,
+      &.active,
+      &:hover {
+        color: map-get($theme, brand-white) !important;
+      }
+    }
+
+    // Success
+    .btn-success,
+    .show > .btn-success.dropdown-toggle {
+      @include button-variant(theme-color($theme, success, map-get($theme-colors, success)), theme-color($theme, success, map-get($theme-colors, success)));
+      color: map-get($theme, brand-white) !important;
+    }
+
+    .btn-outline-success {
+      color: theme-color($theme, success, map-get($theme-colors, success)) !important;
+
+      &:active,
+      &.active,
+      &:hover {
+        color: map-get($theme, brand-white) !important;
+      }
+    }
+
+    // Warning
+    .btn-warning,
+    .show > .btn-warning.dropdown-toggle {
+      @include button-variant(theme-color($theme, warning, map-get($theme-colors, warning)), theme-color($theme, warning, map-get($theme-colors, warning)));
+      color: map-get($theme, body-color) !important;
+    }
+
+    .btn-outline-warning {
+      color: theme-color($theme, warning, map-get($theme-colors, warning)) !important;
+
+      &:active,
+      &.active,
+      &:hover {
+        color: map-get($theme, brand-white) !important;
+      }
+    }
+
+    // Danger
+    .btn-danger,
+    .show > .btn-danger.dropdown-toggle {
+      @include button-variant(theme-color($theme, danger, map-get($theme-colors, danger)), theme-color($theme, danger, map-get($theme-colors, danger)));
+      color: map-get($theme, brand-white) !important;
+    }
+
+    .btn-outline-danger {
+      color: theme-color($theme, danger, map-get($theme-colors, danger)) !important;
+
+      &:active,
+      &.active,
+      &:hover {
+        color: map-get($theme, brand-white) !important;
+      }
+    }
+
+    // Light
+    .btn-light,
+    .show > .btn-light.dropdown-toggle {
+      @include button-variant(theme-color($theme, light, map-get($theme-colors, light)), theme-color($theme, light, map-get($theme-colors, light)));
+      color: map-get($theme, body-color) !important;
+    }
+
+    .btn-outline-light {
+      color: theme-color($theme, light, map-get($theme-colors, light)) !important;
+
+      &:active,
+      &.active,
+      &:hover {
+        color: map-get($theme, brand-white) !important;
+      }
+    }
+
+    // Dark
+    .btn-dark,
+    .show > .btn-dark.dropdown-toggle {
+      @include button-variant(theme-color($theme, dark, map-get($theme-colors, dark)), theme-color($theme, dark, map-get($theme-colors, dark)));
+      color: map-get($theme, brand-white) !important;
+    }
+
+    .btn-outline-dark {
+      color: theme-color($theme, dark, map-get($theme-colors, dark)) !important;
+
+      &:active,
+      &.active,
+      &:hover {
+        color: map-get($theme, brand-white) !important;
+      }
+    }
+
+    // Shadow
+    .btn-shadow {
+      box-shadow: 0 0 5px map-get($theme, shadow-color);
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.active,
+      &.disabled,
+      &[disabled] {
+        box-shadow: 0 0 10px map-get($theme, shadow-color);
+      }
+    }
   }
-}
-
-.btn-primary-dark {
-  background-color: $purple-color;
-  border: 1px solid darken($purple-color, 6.5%);
-  color: $purple;
-}
-
-.btn-primary-dark:hover,
-.btn-primary-dark:focus,
-.btn-primary-dark:active,
-.btn-primary-dark.active,
-.btn-primary-dark.disabled,
-.btn-primary-dark[disabled] {
-  background-color: darken($purple-color, 6.5%);
-  border: 1px solid darken($purple-color, 6.5%);
-  color: $brand-white;
-}
-
-.btn-danger-inverse {
-  background-color: $body-bg;
-  border: 1px solid $btn-danger-border;
-  color: $btn-danger-bg;
-}
-
-.btn-danger-inverse:hover,
-.btn-danger-inverse:focus,
-.btn-danger-inverse:active,
-.btn-danger-inverse.active,
-.btn-danger-inverse.disabled,
-.btn-danger-inverse[disabled] {
-  background-color: $btn-danger-bg;
-  border: 1px solid $btn-danger-border;
-  color: $body-bg;
 }

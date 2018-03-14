@@ -8,7 +8,8 @@
   h6 {
     font-weight: bold;
   }
-  margin: 40px 0 20px;
+  margin: 0 0 20px;
+  padding-top: 40px;
 
   .section-description {
     color: $text-muted;
@@ -17,18 +18,12 @@
   }
 }
 
-.brand-background {
-  .section-description {
-    color: $brand-white;
-  }
-}
-
 .section-heading-internal {
   margin: 0 0 40px;
 }
 
 .section-body {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 
   p,
   ul {
@@ -47,7 +42,6 @@
 }
 
 .paper-clip {
-  background: linear-gradient($brand-white, lighten($purple-color, 60.5%));
   box-shadow: 0 0 4px;
   margin-bottom: 20px;
   padding: 15px;
@@ -56,5 +50,27 @@
     padding: 5px;
     border-bottom-width: 0;
     margin-top: 0;
+  }
+}
+
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .section-heading,
+    .section-heading-internal {
+      .section-description {
+        color: theme-color($theme, text-muted, $text-muted);
+      }
+    }
+
+    .brand-background {
+      .section-description {
+        color: map-get($theme, brand-white);
+      }
+    }
+
+    .paper-clip {
+      background: linear-gradient(map-get($theme, brand-white), map-get($theme, p50));
+    }
   }
 }

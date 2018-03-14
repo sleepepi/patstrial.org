@@ -1,0 +1,23 @@
+= render "external/welcome"
+
+#about.anchor-top
+.container
+  = render "external/about"
+
+.purple-border-top
+#participate.anchor-top
+.bg-p50
+  .container
+    = render "external/participate"
+
+.purple-border-top
+#sites.anchor-top
+.container{ style: "margin-bottom: -60px" }
+  = render "external/sites"
+
+- content_for :footer do
+  .purple-border-top
+  #contact.anchor-top
+  .bg-p200
+    .container
+      = render "external/contact"

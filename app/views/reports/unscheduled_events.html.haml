@@ -1,6 +1,6 @@
 - @title = 'Unscheduled Events - Reports'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1 Unscheduled Events
 
@@ -25,5 +25,5 @@
       - if @unblinding_events && @unblinding_events[:table] && false
         = render 'reports/draw_table', table: @unblinding_events[:table]
 
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

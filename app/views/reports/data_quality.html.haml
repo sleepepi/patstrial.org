@@ -1,6 +1,6 @@
 - @title = 'Data Quality - Reports'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1 Data Quality
       .section-description
@@ -20,16 +20,16 @@
       .row
         .col-md-4
           = link_to reports_randomized_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Randomized
               .report-number
-                %span.glyphicon.glyphicon-arrow-left
+                %i.fa.fa-chevron-left
         .col-md-4
-          .jumbotron.center
+          .jumbotron.text-center
             %h4.text-muted Data Quality
             .report-number
               %span.glyphicon.glyphicon-tint
         .col-md-4
 
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

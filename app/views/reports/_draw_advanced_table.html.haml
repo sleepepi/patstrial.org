@@ -4,7 +4,7 @@
       %tr
         - row.each do |element|
           - if element.is_a? Hash
-            %th.center{ colspan: element[:colspan] }= element[:text]
+            %th.text-center{ colspan: element[:colspan] }= element[:text]
           - else
             %th= element
   %tfoot

@@ -6,28 +6,28 @@
   %col.hidden-xs
   %col.hidden-xs.hidden-sm
   %col.hidden-xs.hidden-sm
-  %col{ width: '1px' }
+  %col{ width: "1px" }
   %thead
     %tr
-      = th_sort_field @order, 'users.last_name', 'Name'
-      = th_sort_field @order, 'users.approved', 'Approved', extra_class: 'center'
-      = th_sort_field @order, 'users.admin', 'Admin', extra_class: 'center hidden-xs'
-      = th_sort_field @order, 'users.editor', 'Editor', extra_class: 'center hidden-xs'
-      = th_sort_field @order, 'users.unblinded', 'Unblinded', extra_class: 'center hidden-xs'
-      = th_sort_field @order, 'users.current_sign_in_at', 'Recent Activity', extra_class: 'center hidden-xs hidden-sm'
-      = th_sort_field @order, 'users.sign_in_count', 'Sign in Count', extra_class: 'center hidden-xs hidden-sm'
-      %th.center Actions
+      = th_sort_field @order, "users.last_name", "Name"
+      = th_sort_field @order, "users.approved", "Approved", extra_class: "text-center"
+      = th_sort_field @order, "users.admin", "Admin", extra_class: "text-center hidden-xs"
+      = th_sort_field @order, "users.editor", "Editor", extra_class: "text-center hidden-xs"
+      = th_sort_field @order, "users.unblinded", "Unblinded", extra_class: "text-center hidden-xs"
+      = th_sort_field @order, "users.current_sign_in_at", "Recent Activity", extra_class: "text-center hidden-xs hidden-sm"
+      = th_sort_field @order, "users.sign_in_count", "Sign in Count", extra_class: "text-center hidden-xs hidden-sm"
+      %th.text-center Actions
 
   - @users.each do |user|
     %tr
       %td
-        =# image_tag user.avatar_url(18), style: 'vertical-align:text-bottom'
+        =# image_tag user.avatar_url(18), style: "vertical-align:text-bottom"
         = link_to user.name, admin_user_path(user)
-      %td.center= simple_check user.approved?
-      %td.hidden-xs.center= simple_check user.admin?
-      %td.hidden-xs.center= simple_check user.editor?
-      %td.hidden-xs.center= simple_check user.unblinded?
-      %td.hidden-xs.hidden-sm.center
+      %td.text-center= simple_check user.approved?
+      %td.hidden-xs.text-center= simple_check user.admin?
+      %td.hidden-xs.text-center= simple_check user.editor?
+      %td.hidden-xs.text-center= simple_check user.unblinded?
+      %td.hidden-xs.hidden-sm.text-center
         - if user.current_sign_in_at
           %small.nowrap
             = time_ago_in_words user.current_sign_in_at
@@ -36,7 +36,7 @@
         %small= number_with_delimiter user.sign_in_count
       %td.nowrap
         .dropdown
-          = link_to '#', class: 'btn btn-default btn-xs dropdown-toggle', data: { toggle: 'dropdown' } do
+          = link_to "#", class: "btn btn-default btn-xs dropdown-toggle", data: { toggle: "dropdown" } do
             Actions
             %strong.caret
 
@@ -46,12 +46,12 @@
                 %span.glyphicon.glyphicon-edit
                 Edit
             - unless current_user == user
-              %li.divider{ role: 'separator' }
+              %li.divider{ role: "separator" }
               %li
                 = link_to admin_user_path(user), method: :delete, data: { confirm: "Delete #{user.name}?" } do
                   .text-danger
                     %span.glyphicon.glyphicon-trash
                     Delete
 
-.center
-  = paginate @users, theme: 'bootstrap'
+.center-horizontally
+  = paginate @users, theme: "bootstrap"

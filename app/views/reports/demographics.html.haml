@@ -1,6 +1,6 @@
 - @title = 'Demographics - Reports'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       .dropdown.pull-right{ style: 'display: inline-block' }
         = link_to '#', data: { toggle: 'dropdown' }, role: 'button', aria: { haspopup: 'true', expanded: 'false' }, class: 'btn btn-primary-custom' do
@@ -43,21 +43,21 @@
       .row{ style: 'margin-top: 20px' }
         .col-md-4
           = link_to reports_eligibility_status_consented_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted.nowrap Eligibility - Consented
               .report-number
-                %span.glyphicon.glyphicon-arrow-left
+                %i.fa.fa-chevron-left
         .col-md-4
-          .jumbotron.center
+          .jumbotron.text-center
             %h4.text-muted Demographics
             .report-number
-              %span.glyphicon.glyphicon-stats
+              %i.fa.fa-bar-chart
         .col-md-4
           = link_to reports_screened_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Screened
               .report-number
-                %span.glyphicon.glyphicon-arrow-right
+                %i.fa.fa-chevron-right
 
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

@@ -4,41 +4,81 @@
   font-weight: normal;
   position: absolute;
   right: 0;
-  top: 0;
-}
+  top: -20px;
 
-@media screen and (min-width: $screen-sm-min) {
-  .per-page {
+  @include media-breakpoint-up(sm) {
     display: block;
   }
 }
 
 .page-heading {
   .per-page {
-    top: 0;
-    margin: 0;
-    height: 28px;
-    position: relative;
     display: inline-block;
-    text-shadow: none;
+    height: 28px;
+    margin: 0;
+    position: relative;
+    top: 0;
 
     ul {
       margin: 0;
     }
   }
 
-  .pull-right {
+  .float-right {
     height: 28px;
   }
 }
 
-@media screen and (min-width: $screen-md-min) {
+@include media-breakpoint-up(md) {
   .page-heading {
     .per-page {
       height: 29px;
     }
-    .pull-right {
+
+    .float-right {
       height: 29px;
+    }
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    @if map-get($theme, link-color) {
+      .page-item.active {
+        .page-link {
+          background-color: map-get($theme, link-color);
+          border-color: map-get($theme, link-color);
+          color: map-get($theme, brand-white);
+        }
+      }
+      .page-link {
+        color: map-get($theme, link-color);
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: map-get($theme, link-color);
+          text-decoration: none;
+        }
+      }
+    } @else {
+      .page-item.active {
+        .page-link {
+          background-color: map-get($theme, primary);
+          border-color: map-get($theme, primary);
+          color: map-get($theme, brand-white);
+        }
+      }
+      .page-link {
+        color: map-get($theme, primary);
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: map-get($theme, primary);
+          text-decoration: none;
+        }
+      }
     }
   }
 }

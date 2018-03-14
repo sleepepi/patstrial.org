@@ -1,6 +1,6 @@
 - @title = 'Committees'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1= @title
     - Committee.order(:position).current.each do |committee|
@@ -30,5 +30,5 @@
                 %td.nowrap= committee_member.member.phone
                 %td= committee_member.member.role
                 %td= committee_member.member.staffid
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

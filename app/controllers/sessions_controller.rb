@@ -5,6 +5,8 @@ class SessionsController < Devise::SessionsController
   prepend_before_action :already_signed_in, only: :new
   prepend_before_action :sign_out_viewer, only: :destroy
 
+  layout "layouts/full_page"
+
   # Overwrite devise to provide JSON responses as well
   def create
     viewer = Viewer.find_by_username params[:user][:email]

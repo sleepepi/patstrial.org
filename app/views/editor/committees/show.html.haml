@@ -1,5 +1,5 @@
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1
         = @committee.name
@@ -27,5 +27,5 @@
         %tr
           %td Members
           %td= render 'editor/committee_members/index'
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'setup/menu'

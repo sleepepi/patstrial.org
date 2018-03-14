@@ -1,19 +1,22 @@
-.footer
-  .footer-on-top
-    = image_tag 'pats-girl.png', alt: '', height: '40px', style: 'text-align:right'
-    = image_tag 'pats-boy.png', alt: '', height: '40px', style: 'text-align:right'
-  .row
-    .col-xs-5.nowrap
-      &copy;
-      = Date.today.year
-      PATS Trial
-    .col-xs-2
-      .brand.center
-        = link_to 'P', root_path, class: 'footer-link'
-    .col-xs-5.nowrap.text-right
-      Funded By
-      = link_to 'https://clinicaltrials.gov/show/NCT02562040', target: '_blank' do
-        %span.visible-xs-inline.visible-sm-inline
-          NHLBI
-        %span.hidden-xs.hidden-sm
-          National Heart, Lung, and Blood Institute
+- footer = "footer-default" unless defined?(footer) && footer.present?
+.footer-container{ class: footer }
+  .container
+    .footer
+      .footer-on-top
+        = image_tag "pats-girl.png", alt: "", height: "40px", style: "text-align: right;"
+        = image_tag "pats-boy.png", alt: "", height: "40px", style: "text-align: right;"
+      .row
+        .col-5.nowrap
+          &copy;
+          = Time.zone.today.year
+          PATS Trial
+        .col-2
+          .brand.text-center
+            = link_to "P", root_path, class: "footer-link"
+        .col-5.nowrap.text-right
+          Funded By
+          = link_to "https://clinicaltrials.gov/show/NCT02562040", target: "_blank" do
+            %span.visible-xs-inline.visible-sm-inline
+              NHLBI
+            %span.hidden-xs.hidden-sm
+              National Heart, Lung, and Blood Institute

@@ -1,6 +1,6 @@
 - @title = 'Consented - Reports'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1 Consented
       .section-description
@@ -17,19 +17,19 @@
       .row
         .col-md-4
           = link_to reports_screened_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Screened
               .report-number
-                %span.glyphicon.glyphicon-arrow-left
+                %i.fa.fa-chevron-left
         .col-md-4
-          .jumbotron.center
+          .jumbotron.text-center
             %h4.text-muted Consented
             .report-number= number_with_delimiter @consented[:total] rescue 0
         .col-md-4
           = link_to reports_eligible_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Eligible
               .report-number
-                %span.glyphicon.glyphicon-arrow-right
-  .col-sm-3.col-sm-pull-9
+                %i.fa.fa-chevron-right
+  .col-md-3.order-1
     = render 'internal/menu'

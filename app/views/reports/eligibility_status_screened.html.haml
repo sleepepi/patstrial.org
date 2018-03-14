@@ -1,6 +1,6 @@
 - @title = 'Eligibility Status - Screened - Reports'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1 Eligiblity Status - Screened
       .section-description
@@ -16,17 +16,17 @@
       .row{ style: 'margin-top: 20px' }
         .col-md-4
         .col-md-4
-          .jumbotron.center
+          .jumbotron.text-center
             %h4.text-muted Eligibility - Screened
             .report-number
-              %span.glyphicon.glyphicon-list-alt
+              %i.fa.fa-list-alt
         .col-md-4
           = link_to reports_eligibility_status_consented_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Eligibility - Consented
               .report-number
-                %span.glyphicon.glyphicon-arrow-right
+                %i.fa.fa-chevron-right
 
 
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

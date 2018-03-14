@@ -8,8 +8,7 @@
       %h2
         via email
       %p.lead
-        = link_to "mailto:#{ENV['support_email']}" do
-          = ENV['support_email']
+        = mail_to ENV["support_email"], ENV["support_email"], class: "text-white"
 
     .col-sm-6
       %h2

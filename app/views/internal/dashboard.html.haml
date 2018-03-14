@@ -1,5 +1,5 @@
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1
         - if @grades
@@ -25,7 +25,7 @@
     .section-body
       - if @randomized
         .jumbotron
-          .pull-right.center
+          .pull-right.text-center
             = link_to reports_randomized_path, class: 'title-link' do
               %h4.text-muted Randomized
               %h2= number_with_delimiter @randomized[:total]
@@ -33,8 +33,8 @@
           %h2= @randomized[:scheme_name]
           - if @randomized[:total] > 0 && @randomized[:randomization_goal] > 0
             - percent = [@randomized[:total] * 100 / @randomized[:randomization_goal], 100].min
-            .progress.progress-striped{ style: 'margin-top: 20px;margin-bottom: 0' }
-              .progress-bar.progress-bar-success{ style: "width: #{percent}%;min-width: 5em;" }= "#{@randomized[:total]} of #{@randomized[:randomization_goal]}"
+            .progress{ style: 'margin-top: 20px;margin-bottom: 0' }
+              .progress-bar.progress-bar-striped.bg-primary{ style: "width: #{percent}%;min-width: 5em;" }= "#{@randomized[:total]} of #{@randomized[:randomization_goal]}"
 
       - if @randomized && @randomized[:total] > 0
         %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
@@ -42,17 +42,17 @@
       .row
         .col-md-4
           = link_to reports_screened_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Screened
               .report-number= number_with_delimiter @screened[:total] rescue 0
         .col-md-4
           = link_to reports_consented_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Consented
               .report-number= number_with_delimiter @consented[:total] rescue 0
         .col-md-4
           = link_to reports_eligible_path, class: 'title-link' do
-            .jumbotron.center
+            .jumbotron.text-center
               %h4.text-muted Eligible
               .report-number= number_with_delimiter @eligible[:total] rescue 0
       - if @screened && @screened[:in_pipeline] > 0
@@ -70,15 +70,15 @@
         = render 'reports/draw_table', table: @randomized[:table]
 
       - if @recruitment
-        %div.text-muted.small.center
+        %div.text-muted.small.text-center
           Data last updated
           = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
 
     .section-body
-      %p.lead.center
+      %p.lead.text-center
         %span.glyphicon.glyphicon-comment
         Please
         = mail_to ENV['support_email'], 'contact us'
         with any questions you may have.
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

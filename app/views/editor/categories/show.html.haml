@@ -1,5 +1,5 @@
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1
         = link_to 'Folders', editor_categories_path
@@ -47,5 +47,5 @@
       = link_to 'Upload New Document', fallback_url, class: 'btn btn-default'
       %p.lead.filedrag.purple-fill{ data: { object: 'dropfile', upload_url: upload_editor_category_documents_path(@category, format: 'js'), fallback_url: fallback_url } }
         Drag documents here to attach to category.
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'setup/menu'

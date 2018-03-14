@@ -18,15 +18,11 @@
     .active,
     a:hover,
     a:focus {
-      background-color: $purple-bg;
-      border-color: $purple-color;
-      color: $white;
       text-decoration: none;
     }
 
     &.left-menu-header {
       @include brand;
-      color: $purple-color;
       font-size: 85%;
       font-weight: normal;
       letter-spacing: 1px;
@@ -47,4 +43,23 @@
 .menu-logo {
   margin-bottom: 30px;
   margin-top: 15px;
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .left-menu {
+      li {
+        .active,
+        a:hover,
+        a:focus {
+          background-color: map-get($theme, p200);
+          border-color: map-get($theme, p500);
+          color: map-get($theme, brand-white);
+        }
+        &.left-menu-header {
+          color: map-get($theme, p500);
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1= @category.name
       .section-description
@@ -25,7 +25,7 @@
                 %code.nowrap= number_to_human_size document.document.size
               %td.hidden-xs.nowrap= document.created_at.strftime('%m-%d-%Y')
 
-        .center
+        .text-center
           = paginate @documents, theme: 'bootstrap'
       - if @videos.present?
         %table.table.table-striped
@@ -42,13 +42,13 @@
                 %span.glyphicon.glyphicon-film
               %td= link_to video.name, internal_category_video_path(@category.top_level, @category.slug, video.id)
               %td.hidden-xs.nowrap= video.created_at.strftime('%m-%d-%Y')
-        .center
+        .text-center
           = paginate @videos, theme: 'bootstrap'
 
     .section-body
-      %p.lead.center
+      %p.lead.text-center
         %span.glyphicon.glyphicon-comment
         = mail_to ENV['support_email'], 'Email us'
         if a document is outdated or you can't find a specific document.
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'internal/menu'

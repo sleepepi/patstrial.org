@@ -6,6 +6,7 @@
   - Updated `Gemfile` to `gems.rb`
   - Updated to rails 5.2.0.rc1
   - Updated to pg 1.0.0
+  - Updated to bootstrap 4.0.0
   - Updated to carrierwave 1.2.2
   - Updated to devise 4.4.1
   - Updated to haml 5.0.4

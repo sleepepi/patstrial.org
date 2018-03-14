@@ -1,5 +1,5 @@
 .table .percent {
-  border-right: 1px solid $gray-lighter;
+  border-right: 1px solid $p200-grey;
   font-size: 10px;
   text-align: center;
   vertical-align: middle;
@@ -7,11 +7,52 @@
 }
 
 .table .count {
-  border-left: 1px solid $gray-lighter;
+  border-left: 1px solid $p200-grey;
   text-align: center;
   vertical-align: middle;
 }
 
-.table .lighter {
-  color: $purple-light-color-gray;
+.table-fixed {
+  table-layout: fixed;
+}
+
+.sort-up:after,
+.sort-down:after {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  content: '';
+  display: inline-block;
+  height: 0;
+  margin-bottom: 2px;
+  margin-left: 5px;
+  margin-right: -10px;
+  width: 0;
+}
+
+.sort-up:after {
+  border-bottom: 4px solid;
+}
+
+.sort-down:after {
+  border-top: 4px solid;
+}
+
+.table .sort-selected {
+  border-bottom-color: $link-color;
+}
+
+.table {
+  &.table-borderless {
+    td {
+      border-width: 0;
+    }
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .table .lighter {
+      color: map-get($theme, p200);
+    }
+  }
 }

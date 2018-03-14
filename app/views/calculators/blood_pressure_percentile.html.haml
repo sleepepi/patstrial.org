@@ -6,8 +6,8 @@
 .section-body
   - if true
     .jumbotron
-      %p.lead.center Currently unavailable!
-      .center
+      %p.lead.text-center Currently unavailable!
+      .text-center
         %span.glyphicon.glyphicon-calendar{ style: 'font-size: 96px;' }
   - else
     = form_tag calculators_blood_pressure_percentile_path, method: :post, class: 'form-horizontal' do

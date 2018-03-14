@@ -1,0 +1,21 @@
+// Extensions to bootstrap text classes.
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .text-primary {
+      color: map-get($theme, primary) !important;
+    }
+
+    .text-white {
+      color: map-get($theme, brand-white) !important;
+    }
+
+    .text-disabled {
+      color: theme-color($theme, input-disabled-bg, $p200-grey);
+    }
+
+    .text-muted {
+      color: theme-color($theme, text-muted, $text-muted);
+    }
+  }
+}

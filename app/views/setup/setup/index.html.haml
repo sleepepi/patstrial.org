@@ -1,6 +1,6 @@
 - @title = 'Setup'
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1= @title
       .section-description Welcome to the PATS website setup overview!
@@ -16,7 +16,7 @@
                 %li Set roles
                 %li Modify names and emails
               %br
-              .center
+              .text-center
                 = link_to admin_users_path, class: 'btn btn-xs btn-default' do
                   %span.glyphicon.glyphicon-cog
                   Edit Users
@@ -32,7 +32,7 @@
                 %li Change site membership
                 %li Modify contact information
               %br
-              .center
+              .text-center
                 = link_to editor_members_path, class: 'btn btn-xs btn-default' do
                   %span.glyphicon.glyphicon-cog
                   Edit Directory
@@ -47,9 +47,9 @@
                 %li Upload documents
                 %li Embed videos
               %br
-              .center
+              .text-center
                 = link_to editor_categories_path, class: 'btn btn-xs btn-default' do
                   %span.glyphicon.glyphicon-cog
                   Edit Folders
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'setup/menu'

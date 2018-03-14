@@ -1,5 +1,12 @@
 .logo-container {
   @include ignore-selection;
-  background-color: $purple-color;
-  color: $brand-white;
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .logo-container {
+      background-color: map-get($theme, p700); // $purple-color;
+      color: map-get($theme, brand-white);
+    }
+  }
 }

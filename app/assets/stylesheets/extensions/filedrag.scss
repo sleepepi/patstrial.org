@@ -1,0 +1,23 @@
+.filedrag {
+  border: 2px dashed transparent;
+  border-radius: $border-radius;
+  cursor: default;
+  display: none;
+  height: 200px;
+  margin: $spacer 0;
+  text-align: center;
+
+  &.hover,
+  &:hover {
+    border-style: solid;
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .filedrag {
+      background-color: theme-color($theme, jumbotron-bg, $jumbotron-bg);
+      border-color: map-get($theme, primary);
+    }
+  }
+}

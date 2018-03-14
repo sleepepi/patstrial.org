@@ -1,12 +1,12 @@
-- @title = 'Version'
+- @title = "Version"
 
 - content_for :body_class do
   brand-background
 
 - content_for :header do
-  = render 'external/welcome'
+  = render "external/welcome"
 
 .section-body
-  %p.lead.center
+  %p.lead.text-center
     Version
     %strong= PatstrialOrg::VERSION::STRING

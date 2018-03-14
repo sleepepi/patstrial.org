@@ -1,0 +1,39 @@
+$royal: (
+  brand-white: #fff,
+  brand-black: $p900-grey,
+
+  p50: $p50-deep-purple,
+  p100: $p100-deep-purple,
+  p200: $p200-deep-purple,
+  p300: $p300-deep-purple,
+  p400: $p400-deep-purple,
+  p500: $p500-deep-purple,
+  p600: $p600-deep-purple,
+  p700: $p700-deep-purple,
+  p800: $p800-deep-purple,
+  p900: $p900-deep-purple,
+
+  primary: $p500-deep-purple,
+  accent: $a400-deep-purple,
+
+  menu-bg: $p900-deep-purple,
+  menu-color: null, // brand-white
+
+  body-bg: $p50-grey,
+  body-color: $p900-deep-purple,
+  body-focus: $p800-deep-purple,
+
+  footer-bg: $p900-deep-purple,
+  footer-color: #fff,
+
+  dashboard-bg: #fff,
+  form-title-bg: null, // $p500-COLOR
+  form-bg: $p50-grey,
+
+  input-bg: null, // $white
+  input-color: null, // $p800-grey
+
+  box-shadow-color: rgba(0, 0, 0, .15),
+  shadow-color: rgba(0, 0, 0, .3),
+  text-muted: $p200-deep-purple,
+);

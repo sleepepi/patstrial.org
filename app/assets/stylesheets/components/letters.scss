@@ -7,7 +7,7 @@
 
   display: inline-block;
   opacity: 1;
-  text-shadow: 2px 1px 5px $purple-bg;
+  text-shadow: 2px 1px 5px $p200-deep-purple;
   transition: transform .75s cubic-bezier(.31, 1.22, .61, 1.26), opacity .75s ease-out;
 
   &.start {
@@ -82,14 +82,12 @@
   // animation: spinnyperson 1s infinite alternate;
   // animation-timing-function: linear;
   height: 90px;
+
+  @include media-breakpoint-up(sm) {
+    height: 180px;
+  }
 }
 
 .person-wait {
   // animation-delay: 0.5s;
-}
-
-@media screen and (min-width: $screen-sm-min) {
-  .person-size {
-    height: 180px;
-  }
 }

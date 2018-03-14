@@ -1,5 +1,5 @@
 .row
-  .col-sm-9.col-sm-push-3
+  .col-md-9.order-2
     .section-heading-internal
       %h1
         = link_to 'Users', admin_users_path
@@ -28,5 +28,5 @@
           %tr
             %td Unblinded
             %td= simple_check @user.unblinded?
-  .col-sm-3.col-sm-pull-9
+  .col-md-3.order-1
     = render 'setup/menu'

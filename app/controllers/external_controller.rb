@@ -1,16 +1,21 @@
 # frozen_string_literal: true
 
-# Displays publicly available pages
+# Displays publicly available pages.
 class ExternalController < ApplicationController
-  def contact
+  # # GET /contact
+  # def contact
+  # end
+
+  # GET /landing
+  def landing
+    render layout: "layouts/full_page"
   end
 
-  def home
-  end
+  # # GET /participate
+  # def participate
+  # end
 
-  def participate
-  end
-
-  def sites
-  end
+  # # GET /sites
+  # def sites
+  # end
 end

@@ -42,7 +42,7 @@ $(document)
     ).done( () ->
       console.log('Success: Documents uploaded!')
     ).fail( () ->
-      url = $this.data('fallback-url') # "#{root_url}projects/#{project}/adverse-events/#{adverse_event}/files/new"
+      url = $this.data('fallback-url')
       $this.html("An error occurred, the documents could not be uploaded!<br /><br />Please try again or <a href=\"#{$this.data('fallback-url')}\">upload the documents</a> manually.")
     )
   )

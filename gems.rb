@@ -9,10 +9,11 @@ gem "pg",                   "1.0.0"
 
 # Gems used by project
 gem "autoprefixer-rails"
-gem "bootstrap-sass",       "~> 3.3.7"
+gem "bootstrap",            "~> 4.0.0"
 gem "carrierwave",          "~> 1.2.2"
 gem "devise",               "~> 4.4.1"
 gem "figaro",               "~> 1.1.1"
+gem "font-awesome-rails",   "~> 4.7.0"
 gem "haml",                 "~> 5.0.4"
 gem "kaminari",             "~> 1.1.1"
 

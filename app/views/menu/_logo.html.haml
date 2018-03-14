@@ -1,0 +1,6 @@
+- if public_page?
+  = link_to "PATS", "#top", data: { object: "scroll-anchor" }, class: "navbar-brand brand navbar-hide-scrolled"
+- else
+  = link_to "PATS", (current_user || current_viewer) ? dashboard_path : root_path, class: "navbar-brand brand navbar-hide-scrolled"
+= image_tag "pats-boy.png", alt: "", style: "height: 30px;"
+= image_tag "pats-girl.png", alt: "", style: "height: 30px;"

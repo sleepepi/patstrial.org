@@ -6,24 +6,15 @@ html {
 }
 
 body {
-  margin-bottom: $footer-height;
-  padding-top: $header-height;
-}
+  &.full-page {
+    margin-bottom: $footer-height;
+  }
 
-.brand-background {
-  background-color: $purple;
-}
+  &.full-page-no-header {
+    margin-bottom: $footer-height;
+  }
 
-::selection {
-  background-color: $purple-bg;
-  color: $purple-color;
-}
-
-.body-content {
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-
-:focus {
-  outline-color: $pink !important;
+  &.full-page-no-header-no-footer {
+    margin-bottom: 0;
+  }
 }

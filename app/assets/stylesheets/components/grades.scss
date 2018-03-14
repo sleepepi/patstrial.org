@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (min-width: $screen-md-min) {
+@include media-breakpoint-up(md) {
   .grade {
     .grade-title {
       font-size: 18px;
