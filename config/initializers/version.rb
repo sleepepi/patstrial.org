@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PatstrialOrg
+module PatsTrial
   module VERSION #:nodoc:
     MAJOR = 12
     MINOR = 0

@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-# Static external pages should be publicly viewable
+# Static external pages should be publicly viewable.
 class ExternalControllerTest < ActionDispatch::IntegrationTest
   setup do
     @viewer = users(:viewer)
@@ -74,6 +74,31 @@ class ExternalControllerTest < ActionDispatch::IntegrationTest
   test "should get sites as viewer" do
     login(@viewer)
     get sites_url
+    assert_response :success
+  end
+
+  test "should get credits" do
+    get credits_url
+    assert_response :success
+  end
+
+  test "should get version" do
+    get version_url
+    assert_response :success
+  end
+
+  test "should get version as json" do
+    get version_url(format: "json")
+    version = JSON.parse(response.body)
+    assert_equal PatsTrial::VERSION::STRING, version["version"]["string"]
+    assert_equal PatsTrial::VERSION::MAJOR, version["version"]["major"]
+    assert_equal PatsTrial::VERSION::MINOR, version["version"]["minor"]
+    assert_equal PatsTrial::VERSION::TINY, version["version"]["tiny"]
+    if PatsTrial::VERSION::BUILD.nil?
+      assert_nil version["version"]["build"]
+    else
+      assert_equal PatsTrial::VERSION::BUILD, version["version"]["build"]
+    end
     assert_response :success
   end
 end

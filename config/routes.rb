@@ -12,11 +12,6 @@ Rails.application.routes.draw do
     get "admin" => "admin#index"
   end
 
-  scope module: "application" do
-    get :credits
-    get :version
-  end
-
   namespace :calculators do
     get :bmi_zscore, path: "bmi-zscore"
     post :bmi_zscore, path: "bmi-zscore", action: :bmi_zscore_calculate, as: :bmi_zscore_calculate
@@ -48,20 +43,22 @@ Rails.application.routes.draw do
     resources :sites
   end
 
-  scope module: "editor" do
+  scope module: :editor do
     get "editor" => "editor#index"
   end
 
-  scope module: "committees" do
+  scope module: :committees do
     get "committees", action: :index, as: :committees
     get "committees/:committee", action: :show, as: :committee
   end
 
-  scope module: "external" do
+  scope module: :external do
     get :contact
     get :landing
     get :participate
     get :sites
+    get :credits
+    get :version
   end
 
   namespace :reports do
@@ -99,7 +96,7 @@ Rails.application.routes.draw do
              path: ""
 
   # Needs to stay near bottom in order to handle "top_level" catch all.
-  scope module: "internal" do
+  scope module: :internal do
     get :dashboard
     get :directory
     get :leaving

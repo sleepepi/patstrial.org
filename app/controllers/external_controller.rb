@@ -18,4 +18,14 @@ class ExternalController < ApplicationController
   # # GET /sites
   # def sites
   # end
+
+  # # GET /credits
+  # def credits
+  # end
+
+  # GET /version
+  # GET /version.json
+  def version
+    render layout: "layouts/full_page"
+  end
 end
