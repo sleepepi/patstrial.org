@@ -7,6 +7,7 @@
   - Updated to pg 1.0.0
   - Updated to carrierwave 1.2.2
   - Updated to devise 4.4.1
+  - Updated to haml 5.0.4
 
 ## 11.0.0 (May 16, 2017)
 
