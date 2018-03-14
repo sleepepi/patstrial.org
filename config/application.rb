@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -21,13 +21,16 @@ Bundler.require(*Rails.groups)
 module PatstrialOrg
   # Provides framework for the PATS Trial reporting website.
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.1
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rails time:zones" for a list of tasks for finding time zone names. Default is UTC.
-    config.time_zone = 'Eastern Time (US & Canada)'
+    config.time_zone = "Eastern Time (US & Canada)"
 
     # Overwrite Rails errors to use Bootstrap CSS classes
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
@@ -35,6 +38,6 @@ module PatstrialOrg
     end
 
     # Add Calculators to autoload path
-    config.autoload_paths << Rails.root.join('app', 'models', 'calculators')
+    config.autoload_paths << Rails.root.join("app", "models", "calculators")
   end
 end

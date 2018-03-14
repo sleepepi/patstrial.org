@@ -2,6 +2,7 @@
 
 ### Enhancements
 - **Gem Changes**
+  - Updated to ruby 2.5.0
   - Updated `Gemfile` to `gems.rb`
   - Updated to rails 5.2.0.rc1
   - Updated to pg 1.0.0
@@ -9,6 +10,7 @@
   - Updated to devise 4.4.1
   - Updated to haml 5.0.4
   - Updated to kaminari 1.1.1
+  - Updated to simplecov 0.15.1
 
 ## 11.0.0 (May 16, 2017)
 

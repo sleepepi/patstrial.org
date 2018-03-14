@@ -19,7 +19,7 @@
             BMI Percentile
         %td
           %h2
-            %code= format('%0.3f%', params[:bmi_percentile].to_f * 100)
+            %code= format('%0.3f%%', params[:bmi_percentile].to_f * 100)
     .center
       = link_to calculators_bmi_zscore_path(gender: params[:gender], weight: params[:weight], weight_units: params[:weight_units], height: params[:height], height_units: params[:height_units], dob: params[:dob], dov: params[:dov]), class: 'btn btn-default btn-xs' do
         %span.glyphicon.glyphicon-arrow-left
@@ -69,4 +69,4 @@
     %tr
       %td.text-right{ style: 'font-weight:bold' } BMI Percentile
       %td
-        = format('%0.3f%', params[:bmi_percentile].to_f * 100)
+        = format('%0.3f%%', params[:bmi_percentile].to_f * 100)
