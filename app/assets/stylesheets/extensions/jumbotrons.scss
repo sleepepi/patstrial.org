@@ -1,5 +1,9 @@
 .jumbotron {
   @include remove-last-child-bottom-margin;
+
+  h4 {
+    font-weight: 200;
+  }
 }
 
 .jumbotron-white {

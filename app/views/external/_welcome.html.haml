@@ -1,38 +1,28 @@
-- @original_style = false
 .logo-container
   .container
     .jumbotron{ style: "background-color: transparent;margin: 0" }
       .row
-        .col-3.col-sm-3.col-md-4
+        .col-3.col-md-3.col-lg-4
           .text-center
-            .shift.shift-right.start.delay6
-              = image_tag "pats-boy.png", class: "person-size"
-        .col-6.col-sm-6.col-md-4
+            .animated-child.animated-child-shift-right.animation-delay-6
+              = image_tag "pats-boy.png", class: "child-size"
+        .col-6.col-md-6.col-lg-4
           .text-center
             %h1.brand
               .letters
-                - if @original_style
-                  .letter.start.delay1 P
-                  .letter.start.delay2 A
-                  .letter.start.delay3 T
-                  .letter.start.delay4 S
-                - else
-                  .letter.start.shift-down.delay3 P
-                  .letter.start.shift-up.delay1 A
-                  .letter.start.shift-down.delay2 T
-                  .letter.start.shift-up.delay4 S
+                .animated-letter.animation-delay-3.animated-letter-shift-down P
+                .animated-letter.animation-delay-1.animated-letter-shift-up A
+                .animated-letter.animation-delay-2.animated-letter-shift-down T
+                .animated-letter.animation-delay-4.animated-letter-shift-up S
             %h2.brand.d-none.d-sm-block
               .letters
-                - if @original_style
-                  .letter.start.delay5 Trial
-                - else
-                  .letter.start.delay3 T
-                  .letter.start.delay2 r
-                  .letter.start.delay1 i
-                  .letter.start.delay2 a
-                  .letter.start.delay3 l
-        .col-3.col-sm-3.col-md-4
+                .animated-letter.animation-delay-3 T
+                .animated-letter.animation-delay-2 r
+                .animated-letter.animation-delay-1 i
+                .animated-letter.animation-delay-2 a
+                .animated-letter.animation-delay-3 l
+        .col-3.col-md-3.col-lg-4
           .text-center
-            .shift.shift-left.start.delay5
-              = image_tag "pats-girl.png", class: "person-size person-wait"
+            .animated-child.animated-child-shift-left.animation-delay-5
+              = image_tag "pats-girl.png", class: "child-size"
 .purple-border-top

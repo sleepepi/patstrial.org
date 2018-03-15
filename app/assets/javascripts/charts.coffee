@@ -11,6 +11,7 @@
         credits:
           enabled: false
         chart:
+          backgroundColor: "transparent"
           zoomType: 'x'
           type: $(@).data('chart-type')
         title:
@@ -48,6 +49,7 @@
         credits:
           enabled: false
         chart:
+          backgroundColor: "transparent"
           type: 'pie'
         title:
           text: $(@).data('title')

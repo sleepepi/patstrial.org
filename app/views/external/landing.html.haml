@@ -12,12 +12,11 @@
 
 .purple-border-top
 #sites.anchor-top
-.container{ style: "margin-bottom: -60px" }
+.container
   = render "external/sites"
 
-- content_for :footer do
-  .purple-border-top
-  #contact.anchor-top
-  .bg-p200
-    .container
-      = render "external/contact"
+.purple-border-top
+#contact.anchor-top
+.bg-p50
+  .container
+    = render "external/contact"

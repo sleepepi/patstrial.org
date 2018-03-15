@@ -16,14 +16,14 @@ $royal: (
   primary: $p500-deep-purple,
   accent: $a400-deep-purple,
 
-  menu-bg: $p900-deep-purple,
+  menu-bg: $p700-deep-purple,
   menu-color: null, // brand-white
 
   body-bg: $p50-grey,
   body-color: $p900-deep-purple,
   body-focus: $p800-deep-purple,
 
-  footer-bg: $p900-deep-purple,
+  footer-bg: $p700-deep-purple,
   footer-color: #fff,
 
   dashboard-bg: #fff,
@@ -35,5 +35,7 @@ $royal: (
 
   box-shadow-color: rgba(0, 0, 0, .15),
   shadow-color: rgba(0, 0, 0, .3),
-  text-muted: $p200-deep-purple,
+  text-muted: $p100-deep-purple,
+  link-color: $p300-deep-purple,
+  jumbotron-bg: $p100-grey,
 );

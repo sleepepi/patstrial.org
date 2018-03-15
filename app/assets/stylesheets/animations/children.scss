@@ -1,0 +1,19 @@
+@keyframes child-shift-left {
+  0% {
+    transform: translateX(200px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes child-shift-right {
+  0% {
+    transform: translateX(-200px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

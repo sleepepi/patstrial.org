@@ -5,7 +5,6 @@
   extensionsReady()
   fileDragReady()
   chartsReady()
-  lettersReady()
   slidesReady()
 
 # These functions only get called on the initial page visit (no turbolinks).

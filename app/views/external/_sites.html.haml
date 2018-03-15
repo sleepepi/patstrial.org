@@ -9,8 +9,10 @@
         .site-container
           %h4= site.name
           .site-contact-information
-            %p=site.address
-            %p=site.contact
+            %p
+              = site.address
+              %br
+              = site.contact
 
     .col-md-6
       %h3.heading-underline Coordinating Centers
@@ -18,4 +20,4 @@
         .site-container
           %h4= site.name
           .site-contact-information
-            %p=site.address
+            %p= site.address

@@ -5,18 +5,14 @@
       .footer-on-top
         = image_tag "pats-girl.png", alt: "", height: "40px", style: "text-align: right;"
         = image_tag "pats-boy.png", alt: "", height: "40px", style: "text-align: right;"
-      .row
-        .col-5.nowrap
-          &copy;
-          = Time.zone.today.year
-          PATS Trial
-        .col-2
-          .brand.text-center
-            = link_to "P", root_path, class: "footer-link"
-        .col-5.nowrap.text-right
+      .nowrap
+        .float-right
           Funded By
           = link_to "https://clinicaltrials.gov/show/NCT02562040", target: "_blank" do
-            %span.visible-xs-inline.visible-sm-inline
+            %span.d-inline.d-lg-none
               NHLBI
-            %span.hidden-xs.hidden-sm
+            %span.d-none.d-lg-inline
               National Heart, Lung, and Blood Institute
+        &copy;
+        = Time.zone.today.year
+        = link_to "PATS Trial", root_path

@@ -5,58 +5,53 @@
         - if @grades
           .pull-right
             - grade = @grades[:overall].first
-            %div.text-right{ style: 'font-size: 14px;' }
-              %div{ style: 'margin-bottom: 10px;' }
+            %div.text-right{ style: "font-size: 14px;" }
+              %div{ style: "margin-bottom: 10px;" }
                 = link_to reports_grades_path do
                   Report Card
-                  %span.hidden-xs Available
+                  %span.d-none.d-sm-inline-block Available
                   &raquo;
               %div
-                %span.hidden-xs Top Site
-                = render 'reports/grade', percent: grade[:percent]
+                %span.d-none.d-sm-inline-block Top Site
+                = render "reports/grade", percent: grade[:percent]
                 = grade[:short_name]
-            .hidden-xs.hidden-sm.hidden-md.hidden-lg
-              %span{ style: 'font-size: 14px;'}
-                = render 'reports/grade', percent: grade[:percent]
-                = link_to grade[:short_name], reports_grades_path
         Dashboard
-
 
     .section-body
       - if @randomized
         .jumbotron
           .pull-right.text-center
-            = link_to reports_randomized_path, class: 'title-link' do
+            = link_to reports_randomized_path, class: "title-link" do
               %h4.text-muted Randomized
               %h2= number_with_delimiter @randomized[:total]
           %h4.text-muted Scheme
           %h2= @randomized[:scheme_name]
           - if @randomized[:total] > 0 && @randomized[:randomization_goal] > 0
             - percent = [@randomized[:total] * 100 / @randomized[:randomization_goal], 100].min
-            .progress{ style: 'margin-top: 20px;margin-bottom: 0' }
+            .progress{ style: "margin-top: 20px;margin-bottom: 0" }
               .progress-bar.progress-bar-striped.bg-primary{ style: "width: #{percent}%;min-width: 5em;" }= "#{@randomized[:total]} of #{@randomized[:randomization_goal]}"
 
       - if @randomized && @randomized[:total] > 0
-        %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
+        %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
 
       .row
         .col-md-4
-          = link_to reports_screened_path, class: 'title-link' do
+          = link_to reports_screened_path, class: "title-link" do
             .jumbotron.text-center
               %h4.text-muted Screened
               .report-number= number_with_delimiter @screened[:total] rescue 0
         .col-md-4
-          = link_to reports_consented_path, class: 'title-link' do
+          = link_to reports_consented_path, class: "title-link" do
             .jumbotron.text-center
               %h4.text-muted Consented
               .report-number= number_with_delimiter @consented[:total] rescue 0
         .col-md-4
-          = link_to reports_eligible_path, class: 'title-link' do
+          = link_to reports_eligible_path, class: "title-link" do
             .jumbotron.text-center
               %h4.text-muted Eligible
               .report-number= number_with_delimiter @eligible[:total] rescue 0
       - if @screened && @screened[:in_pipeline] > 0
-        %div{ style: 'margin-bottom: 30px;margin-left: 15px;' }
+        %div{ style: "margin-bottom: 30px;margin-left: 15px;" }
           %p
             Note:
             = link_to reports_eligibility_status_path do
@@ -67,18 +62,18 @@
             have not yet been assigned a final eligiblity status.
 
       - if @randomized && @randomized[:table] && @randomized[:table][:total] > 0
-        = render 'reports/draw_table', table: @randomized[:table]
+        = render "reports/draw_table", table: @randomized[:table]
 
       - if @recruitment
         %div.text-muted.small.text-center
           Data last updated
-          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+          = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %d at %I:%M %p.")
 
     .section-body
       %p.lead.text-center
         %span.glyphicon.glyphicon-comment
         Please
-        = mail_to ENV['support_email'], 'contact us'
+        = mail_to ENV["support_email"], "contact us"
         with any questions you may have.
   .col-md-3.order-1
-    = render 'internal/menu'
+    = render "internal/menu"

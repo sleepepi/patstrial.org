@@ -1,0 +1,26 @@
+.animated-child {
+  display: inline-block;
+  opacity: 0;
+
+  &.animated-child-shift-left {
+    animation: fade-in 750ms ease-out, child-shift-left 750ms cubic-bezier(.31, 1.22, .61, 1.26);
+    animation-fill-mode: forwards;
+  }
+
+  &.animated-child-shift-right {
+    animation: fade-in 750ms ease-out, child-shift-right 750ms cubic-bezier(.31, 1.22, .61, 1.26);
+    animation-fill-mode: forwards;
+  }
+}
+
+.child-size {
+  @include ignore-selection;
+
+  // animation: spinnyperson 1s infinite alternate;
+  // animation-timing-function: linear;
+  height: 90px;
+
+  @include media-breakpoint-up(sm) {
+    height: 180px;
+  }
+}

@@ -1,0 +1,29 @@
+@keyframes letters-scale {
+  0% {
+    transform: scale(.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes letters-shift-up {
+  0% {
+    transform: translateY(40px) scale(.2);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes letters-shift-down {
+  0% {
+    transform: translateY(-40px) scale(.2);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}

@@ -15,7 +15,7 @@
     }
 
     .text-muted {
-      color: theme-color($theme, text-muted, $text-muted);
+      color: theme-color($theme, text-muted, $text-muted) !important;
     }
   }
 }

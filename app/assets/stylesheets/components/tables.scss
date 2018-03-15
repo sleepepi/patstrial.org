@@ -1,3 +1,56 @@
+.table-fixed {
+  table-layout: fixed;
+}
+
+.table {
+  &.table-borderless {
+    td,
+    th {
+      border-width: 0;
+    }
+
+    > tbody + tbody {
+      border-width: 0;
+    }
+  }
+}
+
+.table-sticky {
+  position: relative;
+  z-index: 1;
+
+  th {
+    position: sticky;
+    top: $header-height - 1px;
+    z-index: $zindex-sticky;
+  }
+}
+
+.tr-align-middle {
+  td,
+  th {
+    vertical-align: middle;
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .table-sticky {
+      th {
+        background-color: map-get($theme, dashboard-bg);
+      }
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: theme-color($theme, table-accent-bg, $table-accent-bg);
+    }
+    .table-hover tbody tr:hover {
+      background-color: theme-color($theme, table-hover-bg, $table-hover-bg);
+    }
+  }
+}
+
+
+
 .table .percent {
   border-right: 1px solid $p200-grey;
   font-size: 10px;
@@ -16,43 +69,18 @@
   table-layout: fixed;
 }
 
-.sort-up:after,
-.sort-down:after {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  content: '';
-  display: inline-block;
-  height: 0;
-  margin-bottom: 2px;
-  margin-left: 5px;
-  margin-right: -10px;
-  width: 0;
-}
-
-.sort-up:after {
-  border-bottom: 4px solid;
-}
-
-.sort-down:after {
-  border-top: 4px solid;
-}
-
-.table .sort-selected {
-  border-bottom-color: $link-color;
-}
-
-.table {
-  &.table-borderless {
-    td {
-      border-width: 0;
-    }
-  }
-}
-
 @each $name, $theme in $themes {
   .theme-#{$name}-bg {
     .table .lighter {
       color: map-get($theme, p200);
+    }
+
+    .table .sort-selected {
+      @if map-get($theme, link-color) {
+        border-bottom-color: map-get($theme, link-color);
+      } @else {
+        border-bottom-color: map-get($theme, primary);
+      }
     }
   }
 }

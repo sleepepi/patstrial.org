@@ -1,11 +1,19 @@
 .logo-container {
   @include ignore-selection;
+
+  h1 {
+    font-size: 41px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 72px;
+    }
+  }
 }
 
 @each $name, $theme in $themes {
   .theme-#{$name}-bg {
     .logo-container {
-      background-color: map-get($theme, p700); // $purple-color;
+      background-color: map-get($theme, p600); // $purple-color;
       color: map-get($theme, brand-white);
     }
   }
