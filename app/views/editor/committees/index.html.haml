@@ -1,11 +1,11 @@
-- @title = 'Setup - Committees'
+- @title = "Setup - Committees"
 .row
   .col-md-9.order-2
     .section-heading-internal
       %h1
         Committees
-        = link_to 'Add New Committee', new_editor_committee_path, class: 'btn btn-xs btn-default'
+        = link_to "Add New Committee", new_editor_committee_path, class: "btn btn-sm btn-light"
       .section-description You may edit the committees and committee members here.
-    .section-body= render 'committees'
+    .section-body= render "committees"
   .col-md-3.order-1
-    = render 'setup/menu'
+    = render "setup/menu"

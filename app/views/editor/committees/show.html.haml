@@ -3,8 +3,8 @@
     .section-heading-internal
       %h1
         = @committee.name
-      = link_to 'Edit Committee', edit_editor_committee_path(@committee), class: 'btn btn-xs btn-default'
-      = link_to 'Add Committee Member', new_editor_committee_committee_member_path(@committee), class: 'btn btn-xs btn-default'
+      = link_to 'Edit Committee', edit_editor_committee_path(@committee), class: 'btn btn-sm btn-light'
+      = link_to 'Add Committee Member', new_editor_committee_committee_member_path(@committee), class: 'btn btn-sm btn-light'
 
     .section-body
       %table.table.table-striped

@@ -9,7 +9,7 @@
         = link_to 'Documents', editor_category_documents_path(@category)
         &middot;
         = @document.name
-        = link_to 'Edit Document', edit_editor_category_document_path(@category, @document), class: 'btn btn-xs btn-default'
+        = link_to 'Edit Document', edit_editor_category_document_path(@category, @document), class: 'btn btn-sm btn-light'
       .section-description
         = @document.extension
         %code= number_to_human_size @document.document.size

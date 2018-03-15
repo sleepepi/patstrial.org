@@ -13,7 +13,7 @@
       = text_field_tag 'search', params[:search], class: 'form-control', placeholder: 'Search Drugs', autocomplete: 'off'
       .input-group-btn
         = submit_tag 'Search', class: 'btn btn-primary', name: nil
-        = link_to 'Reset', drugs_path, class: 'btn btn-default'
+        = link_to 'Reset', drugs_path, class: 'btn btn-light'
 
 .section-body
   %table.table.table-fixed

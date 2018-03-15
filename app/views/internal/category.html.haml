@@ -7,48 +7,53 @@
 
     .section-body
       - if @documents.present?
-        %table.table.table-striped
-          %col.hidden-xs.hidden-sm{ width: '1%' }
+        %table.table.table-striped.table-borderless.table-hover.table-sticky
+          %col.d-none.d-md-table-column{ width: "1%" }
+          %col
+          %col.d-none.d-md-table-column
+          %col.d-none.d-sm-table-column
           %thead
             %tr
-              %th.hidden-xs.hidden-sm
-              = th_sort_field @order, 'documents.document', 'Name'
-              %th.hidden-xs.hidden-sm Size
-              = th_sort_field @order, 'documents.created_at', 'Uploaded', extra_class: 'hidden-xs'
+              %th.d-none.d-md-table-cell
+              = th_sort_field @order, "documents.document", "Name"
+              %th.d-none.d-md-table-cell Size
+              = th_sort_field @order, "documents.created_at", "Uploaded", extra_class: "d-none d-sm-table-cell"
 
           - @documents.each do |document|
             %tr
-              %td.hidden-xs.hidden-sm
-                %span.glyphicon.glyphicon-file
+              %td.d-none.d-md-table-cell
+                %i.fa.fa-file
               %td= link_to document.name, internal_category_document_path(@category.top_level, @category.slug, document.id), data: { turbolinks: false }
-              %td.hidden-xs.hidden-sm
+              %td.d-none.d-md-table-cell
                 %code.nowrap= number_to_human_size document.document.size
-              %td.hidden-xs.nowrap= document.created_at.strftime('%m-%d-%Y')
+              %td.d-none.d-sm-table-cell.nowrap= document.created_at.strftime("%m-%d-%Y")
 
         .text-center
-          = paginate @documents, theme: 'bootstrap'
+          = paginate @documents, theme: "bootstrap"
       - if @videos.present?
-        %table.table.table-striped
-          %col.hidden-xs.hidden-sm{ width: '1%' }
+        %table.table.table-striped.table-borderless.table-hover.table-sticky
+          %col.d-none.d-md-table-column{ width: "1%" }
+          %col
+          %col.d-none.d-sm-table-column
           %thead
             %tr
-              %th.hidden-xs.hidden-sm
+              %th.d-none.d-md-table-cell
               %th Name
-              %th.hidden-xs Added
+              %th.d-none.d-sm-table-cell Added
 
           - @videos.each do |video|
             %tr
-              %td.hidden-xs.hidden-sm
-                %span.glyphicon.glyphicon-film
+              %td.d-none.d-md-table-cell
+                %i.fa.fa-film
               %td= link_to video.name, internal_category_video_path(@category.top_level, @category.slug, video.id)
-              %td.hidden-xs.nowrap= video.created_at.strftime('%m-%d-%Y')
+              %td.d-none.d-sm-table-cell.nowrap= video.created_at.strftime("%m-%d-%Y")
         .text-center
-          = paginate @videos, theme: 'bootstrap'
+          = paginate @videos, theme: "bootstrap"
 
     .section-body
       %p.lead.text-center
-        %span.glyphicon.glyphicon-comment
-        = mail_to ENV['support_email'], 'Email us'
-        if a document is outdated or you can't find a specific document.
+        %i.fa.fa-comment
+        = mail_to ENV["support_email"], "Email us"
+        if a document is outdated or you can"t find a specific document.
   .col-md-3.order-1
-    = render 'internal/menu'
+    = render "internal/menu"

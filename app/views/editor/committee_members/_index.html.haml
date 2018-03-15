@@ -6,7 +6,7 @@
         - if committee_member.chair?
           %span.badge.badge-primary Committee Chair
       %td
-        = link_to "Remove", editor_committee_committee_member_path(@committee, committee_member), method: :delete, data: { confirm: "Are you sure you want to remove Committee Member #{committee_member.member.name}?" }, class: "btn btn-xs btn-danger"
+        = link_to "Remove", editor_committee_committee_member_path(@committee, committee_member), method: :delete, data: { confirm: "Are you sure you want to remove Committee Member #{committee_member.member.name}?" }, class: "btn btn-sm btn-danger"
   %tr
-    %td{ colspan: 2 }= link_to "Add Committee Member", new_editor_committee_committee_member_path(@committee), class: "btn btn-xs btn-primary"
+    %td{ colspan: 2 }= link_to "Add Committee Member", new_editor_committee_committee_member_path(@committee), class: "btn btn-sm btn-primary"
 

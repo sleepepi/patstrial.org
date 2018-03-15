@@ -1,21 +1,21 @@
-%table.table.table-striped
+%table.table.table-striped.table-borderless.table-hover.table-sticky
   %col
   %col
-  %col.hidden-xs
-  %col.hidden-xs
-  %col.hidden-xs
-  %col.hidden-xs.hidden-sm
-  %col.hidden-xs.hidden-sm
+  %col.d-none.d-sm-table-column
+  %col.d-none.d-sm-table-column
+  %col.d-none.d-sm-table-column
+  %col.d-none.d-md-table-column
+  %col.d-none.d-md-table-column
   %col{ width: "1px" }
   %thead
     %tr
       = th_sort_field @order, "users.last_name", "Name"
       = th_sort_field @order, "users.approved", "Approved", extra_class: "text-center"
-      = th_sort_field @order, "users.admin", "Admin", extra_class: "text-center hidden-xs"
-      = th_sort_field @order, "users.editor", "Editor", extra_class: "text-center hidden-xs"
-      = th_sort_field @order, "users.unblinded", "Unblinded", extra_class: "text-center hidden-xs"
-      = th_sort_field @order, "users.current_sign_in_at", "Recent Activity", extra_class: "text-center hidden-xs hidden-sm"
-      = th_sort_field @order, "users.sign_in_count", "Sign in Count", extra_class: "text-center hidden-xs hidden-sm"
+      = th_sort_field @order, "users.admin", "Admin", extra_class: "text-center d-none d-sm-table-cell"
+      = th_sort_field @order, "users.editor", "Editor", extra_class: "text-center d-none d-sm-table-cell"
+      = th_sort_field @order, "users.unblinded", "Unblinded", extra_class: "text-center d-none d-sm-table-cell"
+      = th_sort_field @order, "users.current_sign_in_at", "Recent Activity", extra_class: "text-center d-none d-md-table-cell"
+      = th_sort_field @order, "users.sign_in_count", "Sign in Count", extra_class: "text-center d-none d-md-table-cell"
       %th.text-center Actions
 
   - @users.each do |user|
@@ -24,19 +24,19 @@
         =# image_tag user.avatar_url(18), style: "vertical-align:text-bottom"
         = link_to user.name, admin_user_path(user)
       %td.text-center= simple_check user.approved?
-      %td.hidden-xs.text-center= simple_check user.admin?
-      %td.hidden-xs.text-center= simple_check user.editor?
-      %td.hidden-xs.text-center= simple_check user.unblinded?
-      %td.hidden-xs.hidden-sm.text-center
+      %td.text-center.d-none.d-sm-table-cell= simple_check user.admin?
+      %td.text-center.d-none.d-sm-table-cell= simple_check user.editor?
+      %td.text-center.d-none.d-sm-table-cell= simple_check user.unblinded?
+      %td.text-center.d-none.d-md-table-cell
         - if user.current_sign_in_at
           %small.nowrap
             = time_ago_in_words user.current_sign_in_at
             ago
-      %td.hidden-xs.hidden-sm.text-right
+      %td.text-right.d-none.d-md-table-cell
         %small= number_with_delimiter user.sign_in_count
       %td.nowrap
         .dropdown
-          = link_to "#", class: "btn btn-default btn-xs dropdown-toggle", data: { toggle: "dropdown" } do
+          = link_to "#", class: "btn btn-light btn-sm dropdown-toggle", data: { toggle: "dropdown" } do
             Actions
             %strong.caret
 

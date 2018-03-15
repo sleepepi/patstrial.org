@@ -1,4 +1,4 @@
-%table.table.table-striped
+%table.table.table-striped.table-borderless.table-hover.table-sticky
   %thead
     %tr
       = th_sort_field @order, 'documents.archived', 'Archived', extra_class: 'text-center hidden-xs'
@@ -11,14 +11,14 @@
     %tr
       %td.text-center.hidden-xs
         - if document.archived?
-          %span.glyphicon.glyphicon-eye-close.text-muted
+          %i.fa.fa-eye-slash.text-muted
       %td= link_to document.name, editor_category_document_path(@category, document), class: "#{'text-muted' if document.archived?}"
       %td.hidden-xs
         %code.nowrap= number_to_human_size document.document.size
       %td.hidden-xs= document.created_at.strftime('%m-%d-%Y')
       %td.nowrap
-        = link_to 'Edit', edit_editor_category_document_path(@category, document), class: 'btn btn-default btn-xs'
-        = link_to 'Delete', editor_category_document_path(@category, document), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Document #{document.name}?" }
+        = link_to 'Edit', edit_editor_category_document_path(@category, document), class: 'btn btn-light btn-sm'
+        = link_to 'Delete', editor_category_document_path(@category, document), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure you want to delete Document #{document.name}?" }
 
 .center-horizontally
   = paginate @documents, theme: 'bootstrap'

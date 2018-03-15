@@ -19,8 +19,8 @@
           ago
       %td= number_with_delimiter viewer.sign_in_count
       %td
-        = link_to 'Edit', edit_admin_viewer_path(viewer), class: 'btn btn-default btn-xs'
-        = link_to 'Delete', admin_viewer_path(viewer), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Viewer #{viewer.username}?" }
+        = link_to 'Edit', edit_admin_viewer_path(viewer), class: 'btn btn-light btn-sm'
+        = link_to 'Delete', admin_viewer_path(viewer), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure you want to delete Viewer #{viewer.username}?" }
 
 .center-horizontally
   = paginate @viewers, theme: 'bootstrap'
