@@ -1,26 +1,31 @@
-%table.table.table-striped.table-fixed
+%table.table.table-striped.table-borderless.table-hover.table-sticky
+  %col
+  %col
+  %col
+  %col
+  %col{ width: "1px" }
   %thead
     %tr
-      = th_sort_field @order, 'viewers.username', 'Username'
+      = th_sort_field @order, "viewers.username", "Username"
       %th Password
-      = th_sort_field @order, 'viewers.current_sign_in_at', 'Recent Activity'
-      = th_sort_field @order, 'viewers.sign_in_count', 'Sign in Count'
-      %th Actions
+      = th_sort_field @order, "viewers.current_sign_in_at", "Recent Activity"
+      = th_sort_field @order, "viewers.sign_in_count", "Sign in Count"
+      %th.text-center Actions
 
   - @viewers.each do |viewer|
     %tr
       %td= link_to viewer.username, admin_viewer_path(viewer)
       %td
-        %span.masked{ data: { object: 'click-to-view', content: viewer.password_plain } }
-          = '*' * viewer.password_plain.to_s.size
+        %span.masked{ data: { object: "click-to-view", content: viewer.password_plain } }
+          = "*" * viewer.password_plain.to_s.size
       %td
         - if viewer.current_sign_in_at
           = time_ago_in_words viewer.current_sign_in_at
           ago
       %td= number_with_delimiter viewer.sign_in_count
-      %td
-        = link_to 'Edit', edit_admin_viewer_path(viewer), class: 'btn btn-light btn-sm'
-        = link_to 'Delete', admin_viewer_path(viewer), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure you want to delete Viewer #{viewer.username}?" }
+      %td.text-center.nowrap
+        = link_to "Edit", edit_admin_viewer_path(viewer), class: "btn btn-light btn-sm"
+        = link_to "Delete", admin_viewer_path(viewer), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Are you sure you want to delete Viewer #{viewer.username}?" }
 
 .center-horizontally
-  = paginate @viewers, theme: 'bootstrap'
+  = paginate @viewers, theme: "bootstrap"
