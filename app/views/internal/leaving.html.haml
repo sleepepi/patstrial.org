@@ -1,13 +1,15 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1 Leaving Site
-      .section-description
-        %i.fa.fa-comment
-        The following link requires a Slice login and will leave the PATS Trial
-        website.
-    .section-body
-      %p.text-center
-        = link_to params[:slice], params[:slice]
-  .col-md-3.order-1
-    = render 'internal/menu'
+- @title = "Leaving Site"
+
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
+
+- content_for :header, @title
+
+.jumbotron.jumbotron-custom-text
+  %i.fa.fa-exclamation-triangle
+  The following link requires a Slice login and will leave the PATS Trial
+  website.
+
+.section-body
+  %p.text-center
+    = link_to params[:slice], params[:slice]

@@ -1,35 +1,34 @@
-- @title = 'Data Quality - Reports'
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1 Data Quality
-      .section-description
-        - if @recruitment
-          Data last updated
-          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+- @title = "Data Quality - Reports"
 
-    .section-body
-      - if @data_quality && @data_quality[:graphs]
-        - @data_quality[:graphs].each do |graph|
-          %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', chart_type: graph[:chart_type], series: graph[:series].to_json, categories: graph[:categories].to_json, title: graph[:title], yaxis: graph[:yaxis], xaxis: graph[:xaxis], yaxis_min: graph[:yaxis_min], yaxis_max: graph[:yaxis_max] } }
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
 
-      - if @data_quality && @data_quality[:tables]
-        - @data_quality[:tables].each do |table|
-          = render 'reports/draw_advanced_table', table: table
+- content_for :header, "Data Quality"
 
-      .row
-        .col-md-4
-          = link_to reports_randomized_path, class: 'title-link' do
-            .jumbotron.text-center
-              %h4.text-muted Randomized
-              .report-number
-                %i.fa.fa-chevron-left
-        .col-md-4
-          .jumbotron.text-center
-            %h4.text-muted Data Quality
-            .report-number
-              %span.glyphicon.glyphicon-tint
-        .col-md-4
+.section-body
+  - if @data_quality && @data_quality[:graphs]
+    - @data_quality[:graphs].each do |graph|
+      %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", chart_type: graph[:chart_type], series: graph[:series].to_json, categories: graph[:categories].to_json, title: graph[:title], yaxis: graph[:yaxis], xaxis: graph[:xaxis], yaxis_min: graph[:yaxis_min], yaxis_max: graph[:yaxis_max] } }
 
-  .col-md-3.order-1
-    = render 'internal/menu'
+  - if @data_quality && @data_quality[:tables]
+    - @data_quality[:tables].each do |table|
+      = render "reports/draw_advanced_table", table: table
+
+  .row
+    .col-md-4
+      = link_to reports_randomized_path, class: "title-link" do
+        .jumbotron.text-center
+          %h4.text-muted Randomized
+          .report-number
+            %i.fa.fa-chevron-left
+    .col-md-4
+      .jumbotron.text-center
+        %h4.text-muted Data Quality
+        .report-number
+          %i.fa.fa-tint
+    .col-md-4
+
+.jumbotron.jumbotron-custom-text
+  - if @recruitment
+    Data last updated
+    = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %d at %I:%M %p.")

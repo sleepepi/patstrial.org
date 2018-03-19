@@ -1,6 +1,8 @@
 ## 12.0.0
 
 ### Enhancements
+- **General Changes**
+  - Updated layout of internal sidebar
 - **Gem Changes**
   - Updated to ruby 2.5.0
   - Updated `Gemfile` to `gems.rb`

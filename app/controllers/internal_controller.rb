@@ -8,8 +8,10 @@ class InternalController < ApplicationController
   before_action :set_document, only: [:document]
   before_action :set_video, only: [:video]
 
+  layout "layouts/full_page_sidebar"
+
   def dashboard
-    @recruitment = read_json(Rails.root.join('carrierwave', 'recruitment.json'))
+    @recruitment = read_json(Rails.root.join("carrierwave", "recruitment.json"))
     if @recruitment
       @screened = @recruitment[:screened]
       @consented = @recruitment[:consented]
@@ -20,12 +22,12 @@ class InternalController < ApplicationController
   end
 
   def directory
-    @order = scrub_order(Member, params[:order], 'members.last_name')
+    @order = scrub_order(Member, params[:order], "members.last_name")
     @members = Member.current.where(archived: false).order(@order).includes(:site)
   end
 
   def category
-    @order = scrub_order(Document, params[:order], 'documents.document')
+    @order = scrub_order(Document, params[:order], "documents.document")
     @documents = @category.documents.where(archived: false).order(@order).page(params[:page]).per(40)
     @videos = @category.videos.where(archived: false).page(params[:page]).per(40)
   end
@@ -33,7 +35,7 @@ class InternalController < ApplicationController
   def document
     if @document.pdf?
       send_file File.join(CarrierWave::Uploader::Base.root, @document.document.url),
-                type: 'application/pdf', disposition: 'inline'
+                type: "application/pdf", disposition: "inline"
     else
       send_file File.join(CarrierWave::Uploader::Base.root, @document.document.url)
     end

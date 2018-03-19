@@ -1,3 +1,63 @@
+.header-container {
+  padding: 20px 0;
+  transition: $transition-bg;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 30px;
+
+    @include media-breakpoint-up(sm) {
+      font-size: 38px;
+    }
+
+    @include media-breakpoint-up(md) {
+      font-size: 41px;
+    }
+  }
+}
+
+
+@each $name, $theme in $themes {
+  $header-bg: map-get($theme, p800);
+  @if map-get($theme, header-bg) {
+    $header-bg: map-get($theme, header-bg);
+  }
+
+  .theme-#{$name}-bg {
+    .header-container {
+      background-color: $header-bg;
+      color: map-get($theme, brand-white);
+    }
+  }
+}
+
+.page-heading {
+  word-break: break-word;
+}
+
+// TODO: Look at page-heading link styling.
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .page-heading {
+      // > a {
+      //   color: $breadcrumb-link-color;
+      // }
+
+      // > a:hover {
+      //   color: darken($breadcrumb-link-color, 10%);
+      // }
+    }
+  }
+}
+
 .heading-underline {
   border-bottom: 1px solid $p200-deep-purple;
   padding-bottom: 9px;

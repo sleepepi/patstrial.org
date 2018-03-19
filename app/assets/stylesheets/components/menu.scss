@@ -41,9 +41,20 @@
 }
 
 .menu-logo {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   margin-top: 15px;
+  padding-right: 15px;
+
+  @include media-breakpoint-up(md) {
+    @supports (position: sticky) {
+      position: sticky;
+      top: 0;
+      z-index: $zindex-sticky;
+    }
+  }
 }
+
+
 
 @each $name, $theme in $themes {
   .theme-#{$name}-bg {
@@ -60,6 +71,10 @@
           color: map-get($theme, p500);
         }
       }
+    }
+
+    .menu-logo {
+      background-color: map-get($theme, brand-black);
     }
   }
 }

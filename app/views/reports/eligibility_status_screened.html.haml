@@ -1,32 +1,30 @@
-- @title = 'Eligibility Status - Screened - Reports'
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1 Eligiblity Status - Screened
-      .section-description
-        - if @recruitment
-          Data last updated
-          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+- @title = "Eligibility Status - Screened - Reports"
 
-    .section-body
-      - if @eligibility_status && @eligibility_status[:tables]
-        - @eligibility_status[:tables].each do |table|
-          = render 'reports/draw_advanced_table', table: table
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
 
-      .row{ style: 'margin-top: 20px' }
-        .col-md-4
-        .col-md-4
-          .jumbotron.text-center
-            %h4.text-muted Eligibility - Screened
-            .report-number
-              %i.fa.fa-list-alt
-        .col-md-4
-          = link_to reports_eligibility_status_consented_path, class: 'title-link' do
-            .jumbotron.text-center
-              %h4.text-muted Eligibility - Consented
-              .report-number
-                %i.fa.fa-chevron-right
+- content_for :header, "Eligiblity Status - Screened"
 
+.section-body
+  - if @eligibility_status && @eligibility_status[:tables]
+    - @eligibility_status[:tables].each do |table|
+      = render "reports/draw_advanced_table", table: table
 
-  .col-md-3.order-1
-    = render 'internal/menu'
+  .row{ style: "margin-top: 20px" }
+    .col-md-4
+    .col-md-4
+      .jumbotron.text-center
+        %h4.text-muted Eligibility - Screened
+        .report-number
+          %i.fa.fa-list-alt
+    .col-md-4
+      = link_to reports_eligibility_status_consented_path, class: "title-link" do
+        .jumbotron.text-center
+          %h4.text-muted Eligibility - Consented
+          .report-number
+            %i.fa.fa-chevron-right
+
+.jumbotron.jumbotron-custom-text
+  - if @recruitment
+    Data last updated
+    = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %d at %I:%M %p.")

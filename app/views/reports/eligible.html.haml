@@ -1,35 +1,35 @@
-- @title = 'Eligible - Reports'
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1 Eligible
-      .section-description
-        - if @recruitment
-          Data last updated
-          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+- @title = "Eligible - Reports"
 
-    .section-body
-      - if @eligible
-        %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }
-      - if @eligible && @eligible[:table]
-        = render 'reports/draw_table', table: @eligible[:table]
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
 
-      .row
-        .col-md-4
-          = link_to reports_consented_path, class: 'title-link' do
-            .jumbotron.text-center
-              %h4.text-muted Consented
-              .report-number
-                %i.fa.fa-chevron-left
-        .col-md-4
-          .jumbotron.text-center
-            %h4.text-muted Eligible
-            .report-number= number_with_delimiter @eligible[:total] rescue 0
-        .col-md-4
-          = link_to reports_randomized_path, class: 'title-link' do
-            .jumbotron.text-center
-              %h4.text-muted Randomized
-              .report-number
-                %i.fa.fa-chevron-right
-  .col-md-3.order-1
-    = render 'internal/menu'
+- content_for :header, "Eligible"
+
+.section-body
+  - if @eligible
+    %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }
+  - if @eligible && @eligible[:table]
+    = render "reports/draw_table", table: @eligible[:table]
+
+  .row
+    .col-md-4
+      = link_to reports_consented_path, class: "title-link" do
+        .jumbotron.text-center
+          %h4.text-muted Consented
+          .report-number
+            %i.fa.fa-chevron-left
+    .col-md-4
+      .jumbotron.text-center
+        %h4.text-muted Eligible
+        .report-number= number_with_delimiter @eligible[:total] rescue 0
+    .col-md-4
+      = link_to reports_randomized_path, class: "title-link" do
+        .jumbotron.text-center
+          %h4.text-muted Randomized
+          .report-number
+            %i.fa.fa-chevron-right
+
+.jumbotron.jumbotron-custom-text
+  - if @recruitment
+    Data last updated
+    = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %d at %I:%M %p.")

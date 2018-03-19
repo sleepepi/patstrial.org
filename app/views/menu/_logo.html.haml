@@ -1,6 +1,21 @@
-- if public_page?
-  = link_to "PATS", "#top", data: { object: "scroll-anchor" }, class: "navbar-brand brand navbar-hide-scrolled"
+- if hide_logo
+  .navbar-hide-scrolled
+    - if public_page?
+      = link_to "PATS", "#top", data: { object: "scroll-anchor" }, class: "navbar-brand brand d-inline-block d-md-none"
+    - else
+      = link_to "PATS", (current_user || current_viewer) ? dashboard_path : root_path, class: "navbar-brand brand d-inline-block d-md-none"
+    = image_tag "pats-boy.png", alt: "", style: "height: 30px;", class: "d-inline-block d-md-none"
+    = image_tag "pats-girl.png", alt: "", style: "height: 30px;", class: "d-inline-block d-md-none"
 - else
-  = link_to "PATS", (current_user || current_viewer) ? dashboard_path : root_path, class: "navbar-brand brand navbar-hide-scrolled"
-= image_tag "pats-boy.png", alt: "", style: "height: 30px;"
-= image_tag "pats-girl.png", alt: "", style: "height: 30px;"
+  .navbar-hide-scrolled
+    - if public_page?
+      = link_to "PATS", "#top", data: { object: "scroll-anchor" }, class: "navbar-brand brand"
+    - else
+      = link_to "PATS", (current_user || current_viewer) ? dashboard_path : root_path, class: "navbar-brand brand"
+    = image_tag "pats-boy.png", alt: "", style: "height: 30px;"
+    = image_tag "pats-girl.png", alt: "", style: "height: 30px;"
+
+- if @menu_title || @title
+  = link_to "#top", data: { object: "remove-collapse-in scroll-anchor", target: ".navbar-full-menu" }, class: "navbar-brand navbar-show-scrolled navbar-brand-small-caps", style: "font-weight: 300;" do
+    %i.fa.fa-level-up.fa-flip-horizontal{ aria: { hidden: "true" } }
+    = sanitize(@menu_title) || @title

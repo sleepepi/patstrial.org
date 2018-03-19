@@ -1,46 +1,44 @@
-- @title = 'Data Inconsistencies - Reports'
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1 Data Inconsistencies
+- @title = "Data Inconsistencies - Reports"
 
-      .section-description
-        Use the following table to jump to data inconsistencies reported by
-        Slice.
-    - if @data_inconsistencies
-      - if @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.present?
-        %table.table.table-striped.table-borderless.table-hover
-          %thead
-            %tr
-              %th Check
-              - @data_inconsistencies[:totals].each do |total|
-                %th.nowrap.text-center= total[:short_name]
-              %th.text-center Total
-          %tfoot
-            %tr
-              %th Total
-              - total_count = 0
-              - @data_inconsistencies[:totals].each do |total|
-                - total_count += total[:count]
-                %th.nowrap.text-center= link_to total[:count], leaving_path(slice: total[:link])
-              %th.text-center= link_to total_count, leaving_path(slice: 'https://tryslice.io/projects/pats/sheets?search=checks:any')
-          %tbody
-            - @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
-              %tr
-                %td= row[:check]
-                - row[:cells].each do |cell|
-                  %td.text-center
-                    - if cell[:count].to_i.zero?
-                      \-
-                    - else
-                      = link_to cell[:count], leaving_path(slice: cell[:link])
-                %td.text-center
-                  %strong= link_to row[:total][:count], leaving_path(slice: row[:total][:link])
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
 
-      - else
-        .jumbotron
-          %p.text-center No data inconsistencies!
+- content_for :header, "Data Inconsistencies"
 
+.jumbotron.jumbotron-custom-text
+  Use the following table to jump to data inconsistencies reported by
+  Slice.
 
-  .col-md-3.order-1
-    = render 'internal/menu'
+- if @data_inconsistencies
+  - if @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.present?
+    %table.table.table-striped.table-borderless.table-hover
+      %thead
+        %tr
+          %th Check
+          - @data_inconsistencies[:totals].each do |total|
+            %th.nowrap.text-center= total[:short_name]
+          %th.text-center Total
+      %tfoot
+        %tr
+          %th Total
+          - total_count = 0
+          - @data_inconsistencies[:totals].each do |total|
+            - total_count += total[:count]
+            %th.nowrap.text-center= link_to total[:count], leaving_path(slice: total[:link])
+          %th.text-center= link_to total_count, leaving_path(slice: "https://tryslice.io/projects/pats/sheets?search=checks:any")
+      %tbody
+        - @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
+          %tr
+            %td= row[:check]
+            - row[:cells].each do |cell|
+              %td.text-center
+                - if cell[:count].to_i.zero?
+                  \-
+                - else
+                  = link_to cell[:count], leaving_path(slice: cell[:link])
+            %td.text-center
+              %strong= link_to row[:total][:count], leaving_path(slice: row[:total][:link])
+
+  - else
+    .jumbotron.jumbotron-custom-text
+      No data inconsistencies!

@@ -1,30 +1,31 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1 Directory
-      .section-description
-        %span.glyphicon.glyphicon-envelope
-        = mail_to ENV["support_email"], "Send us an email", subject: "PATS Directory Information"
-        if you are not listed or if your information is incorrect.
+- @title = "Directory"
 
-    - @members.group_by(&:site).sort{|a,b| ((a[0] ? a[0].name : "_") <=> (b[0] ? b[0].name : "_"))}.each do |site, members|
-      .section-body
-        %h2= site ? site.name : "No Site"
-        %table.table.table-striped.table-borderless.table-hover.table-sticky
-          %thead
-            %tr
-              = th_sort_field @order, "members.last_name", "Name"
-              = th_sort_field @order, "members.email", "Email"
-              = th_sort_field @order, "members.phone", "Phone"
-              = th_sort_field @order, "members.role", "Role"
-              = th_sort_field @order, "members.staffid", "Staff ID"
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
 
-          - members.each do |member|
-            %tr
-              %td= member.name_reverse
-              %td= member.email
-              %td.nowrap= member.phone
-              %td= member.role
-              %td= member.staffid
-  .col-md-3.order-1
-    = render "internal/menu"
+- content_for :header, @title
+
+.jumbotron.jumbotron-custom-text
+  %span.glyphicon.glyphicon-envelope
+  = mail_to ENV["support_email"], "Send us an email", subject: "PATS Directory Information"
+  if you are not listed or if your information is incorrect.
+
+- @members.group_by(&:site).sort{|a,b| ((a[0] ? a[0].name : "_") <=> (b[0] ? b[0].name : "_"))}.each do |site, members|
+  .section-body
+    %h2= site ? site.name : "No Site"
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %thead
+        %tr
+          = th_sort_field @order, "members.last_name", "Name"
+          = th_sort_field @order, "members.email", "Email"
+          = th_sort_field @order, "members.phone", "Phone"
+          = th_sort_field @order, "members.role", "Role"
+          = th_sort_field @order, "members.staffid", "Staff ID"
+
+      - members.each do |member|
+        %tr
+          %td= member.name_reverse
+          %td= member.email
+          %td.nowrap= member.phone
+          %td= member.role
+          %td= member.staffid

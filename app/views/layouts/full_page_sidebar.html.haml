@@ -14,10 +14,18 @@
     = stylesheet_link_tag "application", media: "all", data: { turbolinks_track: "reload" }
     = javascript_include_tag "application", data: { turbolinks_track: "reload" }
   - @theme = "royal"
-  %body#top.full-page.theme-bg{ class: @theme ? "theme-#{@theme}-bg" : nil, data: { spy: "scroll", target: ".navbar", offset: "60" } }
-    = render "layouts/features/flash_bar"
-    #top-menu.top-menu= render "layouts/menu", container: yield(:container_class), menu: @theme ? "menu-#{@theme}" : nil, hide_logo: false
-    = yield :header
-    = yield
+  %body#top.full-page-no-header.theme-bg{ class: @theme ? "theme-#{@theme}-bg" : nil, data: { spy: "scroll", target: ".navbar", offset: "60" } }
+    .row.no-gutters.flex-nowrap
+      = yield :sidebar
+      .col
+        .page-box.last-box.p-0
+          = render "layouts/features/flash_bar"
+          #top-menu.top-menu= render "layouts/menu", container: "#{yield(:container_class)} px-lg-0", menu: @theme ? "menu-#{@theme}" : nil, hide_logo: true
+          - if content_for?(:header)
+            .header-container
+              .container-fluid
+                %h1.page-heading
+                  = yield :header
+          %main.p-3{ role: "main" }= yield
     = yield :footer
     = render "layouts/footer", container: yield(:container_class), footer: @theme ? "footer-#{@theme}" : nil

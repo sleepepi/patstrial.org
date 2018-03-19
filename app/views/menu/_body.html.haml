@@ -9,7 +9,6 @@
     %li.nav-item{ class: "#{"active" if current_page?(committees_path)}" }= link_to "Committees", committees_path, class: "nav-link"
     %li.nav-item{ class: "#{"active" if current_page?(directory_path)}" }= link_to "Directory", directory_path, class: "nav-link"
 
-
 %ul.navbar-nav
   - if (current_user || current_viewer) && false # TODO: implement search
     %li.nav-item{ class: current_page?(search_path) ? "active" : nil }

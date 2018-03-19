@@ -1,27 +1,27 @@
 - @title = @committee.name
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1= @title
-      .section-description
-        = @committee.description
 
-    .section-body
-      %h2 Members
-      %table.table.table-striped.purple
-        %thead
-          %tr
-            %th Name
-            %th Email
-            %th Phone
-            %th Role
-            %th Staff ID
-        - @committee.members.each do |member|
-          %tr
-            %td= member.name
-            %td= member.email
-            %td= member.phone
-            %td= member.role
-            %td= member.staffid
-  .col-md-3.order-1
-    = render 'internal/menu'
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
+- content_for :header, @title
+
+- if @committee.description.present?
+  .jumbotron.jumbotron-custom-text
+    = @committee.description
+
+.section-body
+  %h2 Members
+  %table.table.table-striped.purple
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th Phone
+        %th Role
+        %th Staff ID
+    - @committee.members.each do |member|
+      %tr
+        %td= member.name
+        %td= member.email
+        %td= member.phone
+        %td= member.role
+        %td= member.staffid

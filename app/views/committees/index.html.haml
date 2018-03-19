@@ -1,33 +1,35 @@
 - @title = "Committees"
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1= @title
-    - Committee.order(:position).current.each do |committee|
-      .section-body
-        %h2
-          = committee.name
-          = link_to committee_path(committee.slug), class: "btn btn-sm btn-light" do
-            Learn More
-            %span.glyphicon.glyphicon-new-window
-        %table.table.table-striped.table-borderless.table-hover.table-sticky
-          %thead
-            %tr
-              %th
-              = th_sort_field @order, "members.last_name", "Name"
-              = th_sort_field @order, "members.email", "Email"
-              = th_sort_field @order, "members.phone", "Phone"
-              = th_sort_field @order, "members.role", "Role"
-              = th_sort_field @order, "members.staffid", "Staff ID"
-          - committee.committee_members.includes(:member).order(@order).each do |committee_member|
-            %tr
-              %td
-                - if committee_member.chair?
-                  %span.badge.badge-primary Chair
-              %td= committee_member.member.name_reverse
-              %td= committee_member.member.email
-              %td.nowrap= committee_member.member.phone
-              %td= committee_member.member.role
-              %td= committee_member.member.staffid
-  .col-md-3.order-1
-    = render "internal/menu"
+
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
+
+- content_for :header, @title
+
+.section-heading-internal
+  %h1= @title
+- Committee.order(:position).current.each do |committee|
+  .section-body
+    %h2
+      = committee.name
+      = link_to committee_path(committee.slug), class: "btn btn-sm btn-light" do
+        Learn More
+        %span.glyphicon.glyphicon-new-window
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %thead
+        %tr
+          %th
+          = th_sort_field @order, "members.last_name", "Name"
+          = th_sort_field @order, "members.email", "Email"
+          = th_sort_field @order, "members.phone", "Phone"
+          = th_sort_field @order, "members.role", "Role"
+          = th_sort_field @order, "members.staffid", "Staff ID"
+      - committee.committee_members.includes(:member).order(@order).each do |committee_member|
+        %tr
+          %td
+            - if committee_member.chair?
+              %span.badge.badge-primary Chair
+          %td= committee_member.member.name_reverse
+          %td= committee_member.member.email
+          %td.nowrap= committee_member.member.phone
+          %td= committee_member.member.role
+          %td= committee_member.member.staffid

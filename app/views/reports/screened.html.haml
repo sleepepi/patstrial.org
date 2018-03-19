@@ -1,35 +1,35 @@
 - @title = 'Screened - Reports'
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1 Screened
-      .section-description
-        - if @recruitment
-          Data last updated
-          = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
 
-    .section-body
-      - if @screened && @screened[:total] > 0
-        %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
-      - if @screened && @screened[:table] && @screened[:table][:total] > 0
-        = render 'reports/draw_table', table: @screened[:table]
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
 
-      .row
-        .col-md-4
-          = link_to reports_demographics_status_path(subjects: 'randomized'), class: 'title-link' do
-            .jumbotron.text-center
-              %h4.text-muted Demographics
-              .report-number
-                %i.fa.fa-chevron-left
-        .col-md-4
-          .jumbotron.text-center
-            %h4.text-muted Screened
-            .report-number= number_with_delimiter @screened[:total] rescue 0
-        .col-md-4
-          = link_to reports_consented_path, class: 'title-link' do
-            .jumbotron.text-center
-              %h4.text-muted Consented
-              .report-number
-                %i.fa.fa-chevron-right
-  .col-md-3.order-1
-    = render 'internal/menu'
+- content_for :header, "Screened"
+
+.section-body
+  - if @screened && @screened[:total] > 0
+    %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
+  - if @screened && @screened[:table] && @screened[:table][:total] > 0
+    = render 'reports/draw_table', table: @screened[:table]
+
+  .row
+    .col-md-4
+      = link_to reports_demographics_status_path(subjects: 'randomized'), class: 'title-link' do
+        .jumbotron.text-center
+          %h4.text-muted Demographics
+          .report-number
+            %i.fa.fa-chevron-left
+    .col-md-4
+      .jumbotron.text-center
+        %h4.text-muted Screened
+        .report-number= number_with_delimiter @screened[:total] rescue 0
+    .col-md-4
+      = link_to reports_consented_path, class: 'title-link' do
+        .jumbotron.text-center
+          %h4.text-muted Consented
+          .report-number
+            %i.fa.fa-chevron-right
+
+.jumbotron.jumbotron-custom-text
+  - if @recruitment
+    Data last updated
+    = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')

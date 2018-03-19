@@ -1,59 +1,60 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1= @category.name
-      .section-description
-        = @category.description
+- @title = @category.name
 
-    .section-body
-      - if @documents.present?
-        %table.table.table-striped.table-borderless.table-hover.table-sticky
-          %col.d-none.d-md-table-column{ width: "1%" }
-          %col
-          %col.d-none.d-md-table-column
-          %col.d-none.d-sm-table-column
-          %thead
-            %tr
-              %th.d-none.d-md-table-cell
-              = th_sort_field @order, "documents.document", "Name"
-              %th.d-none.d-md-table-cell Size
-              = th_sort_field @order, "documents.created_at", "Uploaded", extra_class: "d-none d-sm-table-cell"
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("internal/sidebar")
 
-          - @documents.each do |document|
-            %tr
-              %td.d-none.d-md-table-cell
-                %i.fa.fa-file
-              %td= link_to document.name, internal_category_document_path(@category.top_level, @category.slug, document.id), data: { turbolinks: false }
-              %td.d-none.d-md-table-cell
-                %code.nowrap= number_to_human_size document.document.size
-              %td.d-none.d-sm-table-cell.nowrap= document.created_at.strftime("%m-%d-%Y")
+- content_for :header, @title
 
-        .text-center
-          = paginate @documents, theme: "bootstrap"
-      - if @videos.present?
-        %table.table.table-striped.table-borderless.table-hover.table-sticky
-          %col.d-none.d-md-table-column{ width: "1%" }
-          %col
-          %col.d-none.d-sm-table-column
-          %thead
-            %tr
-              %th.d-none.d-md-table-cell
-              %th Name
-              %th.d-none.d-sm-table-cell Added
 
-          - @videos.each do |video|
-            %tr
-              %td.d-none.d-md-table-cell
-                %i.fa.fa-film
-              %td= link_to video.name, internal_category_video_path(@category.top_level, @category.slug, video.id)
-              %td.d-none.d-sm-table-cell.nowrap= video.created_at.strftime("%m-%d-%Y")
-        .text-center
-          = paginate @videos, theme: "bootstrap"
+.jumbotron.jumbotron-custom-text
+  = @category.description
 
-    .section-body
-      %p.lead.text-center
-        %i.fa.fa-comment
-        = mail_to ENV["support_email"], "Email us"
-        if a document is outdated or you can"t find a specific document.
-  .col-md-3.order-1
-    = render "internal/menu"
+.section-body
+  - if @documents.present?
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col.d-none.d-md-table-column{ width: "1%" }
+      %col
+      %col.d-none.d-md-table-column
+      %col.d-none.d-sm-table-column
+      %thead
+        %tr
+          %th.d-none.d-md-table-cell
+          = th_sort_field @order, "documents.document", "Name"
+          %th.d-none.d-md-table-cell Size
+          = th_sort_field @order, "documents.created_at", "Uploaded", extra_class: "d-none d-sm-table-cell"
+
+      - @documents.each do |document|
+        %tr
+          %td.d-none.d-md-table-cell
+            %i.fa.fa-file
+          %td= link_to document.name, internal_category_document_path(@category.top_level, @category.slug, document.id), data: { turbolinks: false }
+          %td.d-none.d-md-table-cell
+            %code.nowrap= number_to_human_size document.document.size
+          %td.d-none.d-sm-table-cell.nowrap= document.created_at.strftime("%m-%d-%Y")
+
+    .text-center
+      = paginate @documents, theme: "bootstrap"
+  - if @videos.present?
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col.d-none.d-md-table-column{ width: "1%" }
+      %col
+      %col.d-none.d-sm-table-column
+      %thead
+        %tr
+          %th.d-none.d-md-table-cell
+          %th Name
+          %th.d-none.d-sm-table-cell Added
+
+      - @videos.each do |video|
+        %tr
+          %td.d-none.d-md-table-cell
+            %i.fa.fa-film
+          %td= link_to video.name, internal_category_video_path(@category.top_level, @category.slug, video.id)
+          %td.d-none.d-sm-table-cell.nowrap= video.created_at.strftime("%m-%d-%Y")
+    .text-center
+      = paginate @videos, theme: "bootstrap"
+
+.jumbotron.jumbotron-custom-text
+  %i.fa.fa-comment
+  = mail_to ENV["support_email"], "Email us"
+  if a document is outdated or you can"t find a specific document.
