@@ -8,7 +8,7 @@
   - Updated to pg 1.0.0
   - Updated to bootstrap 4.0.0
   - Updated to carrierwave 1.2.2
-  - Updated to devise 4.4.1
+  - Updated to devise 4.4.3
   - Updated to haml 5.0.4
   - Updated to kaminari 1.1.1
   - Updated to simplecov 0.15.1
