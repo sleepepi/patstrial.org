@@ -1,19 +1,42 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Folders', editor_categories_path(@category)
-        &middot;
-        = link_to @category.name, editor_category_path(@category)
-        &middot;
-        Documents
-        = link_to 'Add New Document', new_editor_category_document_path(@category), class: 'btn btn-sm btn-light'
-      .section-description
-        You may
-        %strong archive documents
-        you wish to hide from the menu.
+- @title = "Documents"
 
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = link_to plus_or("New Document"), new_editor_category_document_path(@category), class: "btn btn-primary btn-shadow"
+    .per-page= render "layouts/per_page", per_page: 40, object_count: @documents.total_count
+  = @title
 
-    .section-body= render 'documents'
-  .col-md-3.order-1
-    = render 'setup/menu'
+- @breadcrumbs = []
+- @breadcrumbs << [@category.name, editor_category_path(@category)]
+
+.dashboard-container.dashboard-table
+  %table.table.table-striped.table-borderless.table-hover.table-sticky
+    %thead
+      %tr
+        = th_sort_field @order, "documents.archived", "Archived", extra_class: "text-center d-none d-lg-table-cell"
+        = th_sort_field @order, "documents.document", "Name"
+        %th.d-none.d-lg-table-cell Size
+        = th_sort_field @order, "documents.created_at", "Uploaded", extra_class: "d-none d-lg-table-cell"
+        %th.text-center Actions
+
+    - @documents.each do |document|
+      %tr
+        %td.d-none.d-lg-table-cell.text-center
+          - if document.archived?
+            %i.fa.fa-eye-slash.text-muted
+        %td= link_to document.name, editor_category_document_path(@category, document), class: "#{"text-muted" if document.archived?}"
+        %td.d-none.d-lg-table-cell
+          %code.nowrap= number_to_human_size document.document.size
+        %td.d-none.d-lg-table-cell= document.created_at.strftime("%m-%d-%Y")
+        %td.text-center
+          = render "layouts/edit_delete_dropdown", edit_url: edit_editor_category_document_path(@category, document), delete_url: editor_category_document_path(@category, document), delete_confirmation: "Delete #{document.name}?"
+
+.center-horizontally
+  = paginate @documents, theme: "bootstrap"
+
+.jumbotron.jumbotron-custom-text
+  You may
+  %strong archive documents
+  you wish to hide from the menu.

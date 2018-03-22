@@ -69,6 +69,14 @@
   &.sidebar-menu-root {
     padding-top: 0;
 
+    @include media-breakpoint-up(md) {
+      @supports (position: sticky) {
+        position: sticky;
+        top: 0;
+        z-index: $zindex-sticky;
+      }
+    }
+
     li {
       a {
         border-radius: 0 0 0 $border-radius;

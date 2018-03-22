@@ -1,17 +1,9 @@
-- @title = "Edit Viewer: #{@viewer.username_was}"
+- @title = "#{@viewer.username_was} Edit"
 
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Viewers', admin_viewers_path
-        &middot;
-        = link_to @viewer.username_was, admin_viewer_path(@viewer)
-        &middot;
-        Edit
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  = link_to @viewer.username_was, admin_viewer_path(@viewer)
+  Edit
 
-    .section-body
-      = render 'form'
-
-  .col-md-3.order-1
-    = render 'setup/menu'
+.dashboard-container= render "form", viewer: @viewer

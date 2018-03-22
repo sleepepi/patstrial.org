@@ -4,9 +4,11 @@
 class Editor::CommitteesController < Editor::EditorController
   before_action :set_committee, only: [:show, :edit, :update, :destroy]
 
+  layout "layouts/full_page_sidebar"
+
   # GET /committees
   def index
-    @order = scrub_order(Committee, params[:order], 'committees.position')
+    @order = scrub_order(Committee, params[:order], "committees.position")
     @committees = Committee.current.order(@order).page(params[:page]).per(40)
   end
 
@@ -27,7 +29,7 @@ class Editor::CommitteesController < Editor::EditorController
   def create
     @committee = Committee.new(committee_params)
     if @committee.save
-      redirect_to editor_committee_path(@committee), notice: 'Committee was successfully created.'
+      redirect_to editor_committee_path(@committee), notice: "Committee was successfully created."
     else
       render :new
     end
@@ -36,7 +38,7 @@ class Editor::CommitteesController < Editor::EditorController
   # PATCH /committees/1
   def update
     if @committee.update(committee_params)
-      redirect_to editor_committee_path(@committee), notice: 'Committee was successfully updated.'
+      redirect_to editor_committee_path(@committee), notice: "Committee was successfully updated."
     else
       render :edit
     end
@@ -45,7 +47,7 @@ class Editor::CommitteesController < Editor::EditorController
   # DELETE /committees/1
   def destroy
     @committee.destroy
-    redirect_to editor_committees_path, notice: 'Committee was successfully deleted.'
+    redirect_to editor_committees_path, notice: "Committee was successfully deleted."
   end
 
   private

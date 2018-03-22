@@ -1,13 +1,9 @@
-- @title = "Edit Committee: #{@committee.name_was}"
+- @title = "#{@committee.name_was} Edit"
 
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = @committee.name_was
-      .section-description
-        Edit Committee
-    .section-body
-      = render 'form'
-  .col-md-3.order-1
-    = render 'setup/menu'
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  = link_to @committee.name_was, editor_committee_path(@committee)
+  Edit
+
+.dashboard-container= render "form", committee: @committee

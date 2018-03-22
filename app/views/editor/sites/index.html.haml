@@ -1,10 +1,30 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        Sites
-        = link_to 'Add New Site', new_editor_site_path, class: 'btn btn-sm btn-light'
-      .section-description You may edit the sites here.
-    .section-body= render 'sites'
-  .col-md-3.order-1
-    = render 'setup/menu'
+- @title = "Sites"
+
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = link_to plus_or("New Site"), new_editor_site_path, class: "btn btn-primary btn-shadow"
+    .per-page= render "layouts/per_page", per_page: 40, object_count: @sites.total_count
+  = @title
+
+.dashboard-container.dashboard-table
+  %table.table.table-striped.table-borderless.table-hover.table-sticky
+    %col
+    %col
+    %col{ width: "1px" }
+    %thead
+      %tr
+        = th_sort_field @order, "sites.name", "Name"
+        = th_sort_field @order, "sites.address", "Address"
+        %th.text-center Actions
+
+    - @sites.each do |site|
+      %tr
+        %td= link_to site.name, editor_site_path(site)
+        %td= site.address
+        %td.text-center
+          = render "layouts/edit_delete_dropdown", edit_url: edit_editor_site_path(site), delete_url: editor_site_path(site), delete_confirmation: "Delete #{site.name}?"
+
+.center-horizontally
+  = paginate @sites, theme: "bootstrap"

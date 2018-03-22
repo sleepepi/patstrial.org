@@ -6,7 +6,7 @@ class Committee < ApplicationRecord
   include Deletable, Sluggable
 
   # Validations
-  validates :name, :slug, presence: true
+  validates :name, :slug, :position, presence: true
 
   # Relationships
   has_many :committee_members

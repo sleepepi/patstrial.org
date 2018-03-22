@@ -4,9 +4,11 @@
 class Editor::CategoriesController < Editor::EditorController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+  layout "layouts/full_page_sidebar"
+
   # GET /categories
   def index
-    @order = scrub_order(Category, params[:order], 'categories.position')
+    @order = scrub_order(Category, params[:order], "categories.position")
     @categories = Category.current.order(@order).page(params[:page]).per(40)
   end
 
@@ -27,7 +29,7 @@ class Editor::CategoriesController < Editor::EditorController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to editor_category_path(@category), notice: 'Category was successfully created.'
+      redirect_to editor_category_path(@category), notice: "Category was successfully created."
     else
       render :new
     end
@@ -36,7 +38,7 @@ class Editor::CategoriesController < Editor::EditorController
   # PATCH /categories/1
   def update
     if @category.update(category_params)
-      redirect_to editor_category_path(@category), notice: 'Category was successfully updated.'
+      redirect_to editor_category_path(@category), notice: "Category was successfully updated."
     else
       render :edit
     end
@@ -45,7 +47,7 @@ class Editor::CategoriesController < Editor::EditorController
   # DELETE /categories/1
   def destroy
     @category.destroy
-    redirect_to editor_categories_path, notice: 'Category was successfully deleted.'
+    redirect_to editor_categories_path, notice: "Category was successfully deleted."
   end
 
   private

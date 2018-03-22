@@ -1,34 +1,11 @@
-- if @document.new_record?
-  - url = editor_category_documents_path(@category)
+- if document.new_record?
+  - url = editor_category_documents_path(document.category)
   - method = :post
 - else
-  - url = editor_category_document_path(@category, @document)
+  - url = editor_category_document_path(document.category, document)
   - method = :patch
 
-= form_for [@category, @document], url: url, method: method, html: { class: 'form-horizontal' } do |f|
-  - if @document.errors.any?
-    .bs-callout.bs-callout-danger
-      %h4
-        = pluralize @document.errors.count, 'error'
-        prohibited this document from being saved
-
-      %ul
-        - @document.errors.full_messages.each do |msg|
-          %li= msg
-
-  .form-group
-    = f.label :document, 'Document', class: 'col-md-2 control-label'
-    .col-md-10
-      = f.file_field :document, class: 'form-control'
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      .checkbox
-        %label
-          = f.check_box :archived
-          Archived
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', url, class: 'btn btn-light'
+= form_with model: [document.category, document], url: url, method: method, local: true do |form|
+  = render "forms/horizontal/file_field", form: form, object: document, key: :document, help_text: "Allowed file types: doc, docx, pdf, rtf, xls, xlsx, csv"
+  = render "forms/horizontal/check_box", form: form, object: document, key: :archived
+  = render "forms/horizontal/submit", form: form, object: [document.category, document], cancel: url

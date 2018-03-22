@@ -5,30 +5,32 @@ class Editor::DocumentsController < Editor::EditorController
   before_action :set_category
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
+  layout "layouts/full_page_sidebar"
+
   # GET /:category_id/documents
   def index
-    @order = scrub_order(Document, params[:order], 'documents.archived, documents.document')
+    @order = scrub_order(Document, params[:order], "documents.archived, documents.document")
     @documents = @category.documents.order(@order).page(params[:page]).per(40)
   end
 
-  # GET /:category_id/documents/1
-  def show
-  end
+  # # GET /:category_id/documents/1
+  # def show
+  # end
 
   # GET /:category_id/documents/new
   def new
     @document = @category.documents.new
   end
 
-  # GET /:category_id/documents/1/edit
-  def edit
-  end
+  # # GET /:category_id/documents/1/edit
+  # def edit
+  # end
 
   # POST /:category_id/documents
   def create
     @document = @category.documents.new(document_params)
     if @document.save
-      redirect_to editor_category_document_path(@category, @document), notice: 'Document was successfully created.'
+      redirect_to editor_category_document_path(@category, @document), notice: "Document was successfully created."
     else
       render :new
     end
@@ -46,7 +48,7 @@ class Editor::DocumentsController < Editor::EditorController
   # PATCH /:category_id/documents/1
   def update
     if @document.update(document_params)
-      redirect_to editor_category_document_path(@category, @document), notice: 'Document was successfully updated.'
+      redirect_to editor_category_document_path(@category, @document), notice: "Document was successfully updated."
     else
       render :edit
     end
@@ -55,7 +57,7 @@ class Editor::DocumentsController < Editor::EditorController
   # DELETE /:category_id/documents/1
   def destroy
     @document.destroy
-    redirect_to editor_category_documents_path(@category), notice: 'Document was successfully deleted.'
+    redirect_to editor_category_documents_path(@category), notice: "Document was successfully deleted."
   end
 
   private

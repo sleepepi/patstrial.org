@@ -7,7 +7,7 @@
     = render "layouts/meta/general"
     -# Don't cache any pages
     %meta{ name: "turbolinks-cache-control", content: "no-cache" }
-    %title= [@title, "PATS Trial"].compact.join(" - ").html_safe
+    %title= [@title, (@breadcrumbs || []).reverse.collect(&:first), "PATS Trial"].flatten.compact.join(" - ").html_safe
     = favicon_link_tag
     = csrf_meta_tags
 
@@ -26,6 +26,7 @@
               .container-fluid
                 %h1.page-heading
                   = yield :header
+          = render "layouts/breadcrumbs" # PATS extra
           %main.p-3{ role: "main" }= yield
     = yield :footer
     = render "layouts/footer", container: yield(:container_class), footer: @theme ? "footer-#{@theme}" : nil

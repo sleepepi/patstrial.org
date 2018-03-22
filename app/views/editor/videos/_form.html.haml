@@ -1,44 +1,12 @@
-- if @video.new_record?
+- if video.new_record?
   - url = editor_category_videos_path(@category)
   - method = :post
 - else
-  - url = editor_category_video_path(@category, @video)
+  - url = editor_category_video_path(@category, video)
   - method = :patch
 
-= form_for [@category, @video], url: url, method: method, html: { class: 'form-horizontal' } do |f|
-  - if @video.errors.any?
-    .bs-callout.bs-callout-danger
-      %h4
-        = pluralize @video.errors.count, 'error'
-        prohibited this video from being saved
-
-      %ul
-        - @video.errors.full_messages.each do |msg|
-          %li= msg
-
-  .form-group
-    = f.label :name, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :name, class: 'form-control'
-
-  .form-group
-    = f.label :embed_url, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :embed_url, class: 'form-control', autocomplete: 'off'
-
-      %strong.text-muted Example
-      .text-muted
-        = surround 'https://www.youtube.com/embed/', '?rel=0&modestbranding=1&autohide=1&showinfo=0&wmode=opaque' do
-          %strong VIDEOID
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      .checkbox
-        %label
-          = f.check_box :archived
-          Archived
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', url, class: 'btn btn-light'
+= form_with model: [@category, video], url: url, method: method, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: video, key: :name
+  = render "forms/horizontal/text_field", form: form, object: video, key: :embed_url, key_name: "Embed URL", help_text: sanitize("Example: https://www.youtube.com/embed/<strong>VIDEOID</strong>?rel=0&modestbranding=1&autohide=1&showinfo=0&wmode=opaque")
+  = render "forms/horizontal/check_box", form: form, object: video, key: :archived
+  = render "forms/horizontal/submit", form: form, object: video, cancel: url

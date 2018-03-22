@@ -1,17 +1,40 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Folders', editor_categories_path(@category)
-        &middot;
-        = link_to @category.name, editor_category_path(@category)
-        &middot;
-        Videos
-        = link_to 'Add New Video', new_editor_category_video_path(@category), class: 'btn btn-sm btn-light'
-      .section-description
-        You may
-        %strong archive videos
-        you wish to hide from the menu.
-    .section-body= render 'videos'
-  .col-md-3.order-1
-    = render 'setup/menu'
+- @title = "Videos"
+
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = link_to plus_or("New Video"), new_editor_category_video_path(@category), class: "btn btn-primary btn-shadow"
+    .per-page= render "layouts/per_page", per_page: 40, object_count: @videos.total_count
+  = @title
+
+- @breadcrumbs = []
+- @breadcrumbs << [@category.name, editor_category_path(@category)]
+
+.dashboard-container.dashboard-table
+  %table.table.table-striped.table-borderless.table-hover.table-sticky
+    %col{ width: "1px" }
+    %col
+    %col{ width: "1px" }
+    %thead
+      %tr
+        = th_sort_field @order, "videos.archived", "Archived", extra_class: "text-center"
+        = th_sort_field @order, "videos.name", "Name"
+        %th.text-center Actions
+
+    - @videos.each do |video|
+      %tr
+        %td.text-center
+          - if video.archived?
+            %i.fa.fa-eye-slash.text-muted
+        %td= link_to video.name, editor_category_video_path(@category, video), style: "#{"text-decoration: line-through;" if video.archived?}"
+        %td.text-center
+          = render "layouts/edit_delete_dropdown", edit_url: edit_editor_category_video_path(@category, video), delete_url: editor_category_video_path(@category, video), delete_confirmation: "Delete #{video.name}?"
+
+.center-horizontally
+  = paginate @videos, theme: "bootstrap"
+
+.jumbotron.jumbotron-custom-text
+  You may
+  %strong archive videos
+  you wish to hide from the menu.

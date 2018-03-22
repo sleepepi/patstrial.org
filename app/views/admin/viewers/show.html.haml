@@ -1,28 +1,14 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Viewers', admin_viewers_path
-        &middot;
-        = @viewer.username
-        = link_to 'Edit Viewer', edit_admin_viewer_path(@viewer), class: 'btn btn-sm btn-light'
+- @title = @viewer.username
 
-    .section-body
-      %table.table.table-striped.table-fixed
-        %tr
-          %td Username
-          %td= @viewer.username
-        %tr
-          %td Password
-          %td
-            %span.masked{ data: { object: 'click-to-view', content: @viewer.password_plain } }
-              = '*' * @viewer.password_plain.to_s.size
-        %tr
-          %td Sign in Count
-          %td= number_with_delimiter @viewer.sign_in_count
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = render "layouts/edit_delete_dropdown_lg", edit_url: edit_admin_viewer_path(@viewer), delete_url: admin_viewer_path(@viewer), delete_confirmation: "Delete \"#{@viewer.username}\"?"
+  = @title
 
-        %tr
-          %td Description
-          %td= @viewer.description
-  .col-md-3.order-1
-    = render 'setup/menu'
+.dashboard-container
+  = render "forms/horizontal/show/text", object: @viewer, key: :username
+  = render "forms/horizontal/show/generic", title: "Password", content: render("admin/viewers/password", viewer: @viewer)
+  = render "forms/horizontal/show/generic", title: "Sign in count", content: number_with_delimiter(@viewer.sign_in_count)
+  = render "forms/horizontal/show/text", object: @viewer, key: :description

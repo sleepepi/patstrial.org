@@ -1,42 +1,17 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Sites', editor_sites_path
-        &middot;
-        = @site.name
-        = link_to 'Edit Site', edit_editor_site_path(@site), class: 'btn btn-sm btn-light'
+- @title = @site.name
 
-    .section-body
-      %table.table.table-striped
-        %tr
-          %td Name
-          %td= @site.name
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = render "layouts/edit_delete_dropdown_lg", edit_url: edit_editor_site_path(@site), delete_url: editor_site_path(@site), delete_confirmation: "Delete \"#{@site.name}\"?"
+  = @title
 
-        %tr
-          %td Slug
-          %td= @site.slug
-
-        %tr
-          %td Address
-          %td= @site.address
-
-        %tr
-          %td Contact
-          %td= @site.contact
-
-        %tr
-          %td Recruiting Center
-          %td= @site.recruiting_center?
-        %tr
-          %td Coordinating Center
-          %td= @site.coordinating_center?
-        %tr
-          %td Members
-          %td
-            %ul.list-unstyled
-              - @site.members.each do |member|
-                %li
-                  = link_to member.name_reverse, editor_member_path(member)
-  .col-md-3.order-1
-    = render 'setup/menu'
+.dashboard-container
+  = render "forms/horizontal/show/text", object: @site, key: :name
+  = render "forms/horizontal/show/text", object: @site, key: :slug, key_name: "URL Slug"
+  = render "forms/horizontal/show/text", object: @site, key: :address
+  = render "forms/horizontal/show/text", object: @site, key: :contact
+  = render "forms/horizontal/show/check_box", object: @site, key: :recruiting_center
+  = render "forms/horizontal/show/check_box", object: @site, key: :coordinating_center
+  = render "forms/horizontal/show/generic", title: "Members", content: render("editor/sites/members", site: @site)

@@ -5,6 +5,8 @@ class Editor::VideosController < Editor::EditorController
   before_action :set_category
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
+  layout "layouts/full_page_sidebar"
+
   # GET /:category_id/videos
   def index
     @videos = @category.videos.page(params[:page]).per(40)
@@ -27,7 +29,7 @@ class Editor::VideosController < Editor::EditorController
   def create
     @video = @category.videos.new(video_params)
     if @video.save
-      redirect_to editor_category_video_path(@category, @video), notice: 'Video was successfully created.'
+      redirect_to editor_category_video_path(@category, @video), notice: "Video was successfully created."
     else
       render :new
     end
@@ -36,7 +38,7 @@ class Editor::VideosController < Editor::EditorController
   # PATCH /:category_id/videos/1
   def update
     if @video.update(video_params)
-      redirect_to editor_category_video_path(@category, @video), notice: 'Video was successfully updated.'
+      redirect_to editor_category_video_path(@category, @video), notice: "Video was successfully updated."
     else
       render :edit
     end
@@ -45,7 +47,7 @@ class Editor::VideosController < Editor::EditorController
   # DELETE /:category_id/videos/1
   def destroy
     @video.destroy
-    redirect_to editor_category_videos_path(@category), notice: 'Video was successfully deleted.'
+    redirect_to editor_category_videos_path(@category), notice: "Video was successfully deleted."
   end
 
   private

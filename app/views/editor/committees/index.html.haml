@@ -1,11 +1,29 @@
-- @title = "Setup - Committees"
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        Committees
-        = link_to "Add New Committee", new_editor_committee_path, class: "btn btn-sm btn-light"
-      .section-description You may edit the committees and committee members here.
-    .section-body= render "committees"
-  .col-md-3.order-1
-    = render "setup/menu"
+- @title = "Committees"
+
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = link_to plus_or("New Committee"), new_editor_committee_path, class: "btn btn-primary btn-shadow"
+    .per-page= render "layouts/per_page", per_page: 40, object_count: @committees.total_count
+  = @title
+
+.dashboard-container.dashboard-table
+  %table.table.table-striped.table-borderless.table-hover.table-sticky
+    %thead
+      %tr
+        = th_sort_field @order, "committees.position", "Position", extra_class: "d-none d-lg-table-cell"
+        = th_sort_field @order, "committees.name", "Name"
+        = th_sort_field @order, "committees.slug", "Slug", extra_class: "d-none d-lg-table-cell"
+        %th.text-center Actions
+
+    - @committees.each do |committee|
+      %tr
+        %td.d-none.d-lg-table-cell= committee.position
+        %td= link_to committee.name, editor_committee_path(committee)
+        %td.d-none.d-lg-table-cell= committee.slug
+        %td.text-center
+          = render "layouts/edit_delete_dropdown", edit_url: edit_editor_committee_path(committee), delete_url: editor_committee_path(committee), delete_confirmation: "Delete #{committee.name}?"
+
+.center-horizontally
+  = paginate @committees, theme: "bootstrap"

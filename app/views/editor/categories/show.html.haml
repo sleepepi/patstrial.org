@@ -1,51 +1,26 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Folders', editor_categories_path
-        &middot;
-        = @category.name
-      = link_to 'Edit Folder', edit_editor_category_path(@category), class: 'btn btn-sm btn-light'
-      = link_to 'View Documents', editor_category_documents_path(@category), class: 'btn btn-sm btn-light'
-      = link_to 'View Videos', editor_category_videos_path(@category), class: 'btn btn-sm btn-light'
+- @title = @category.name
 
-    .section-body
-      %table.table.table-striped
-        %tr
-          %td Name
-          %td= @category.name
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = render "layouts/edit_delete_dropdown_lg", edit_url: edit_editor_category_path(@category), delete_url: editor_category_path(@category), delete_confirmation: "Delete \"#{@category.name}\"?"
+  = @title
+  = link_to "View Documents", editor_category_documents_path(@category), class: "btn btn-sm btn-light"
+  = link_to "View Videos", editor_category_videos_path(@category), class: "btn btn-sm btn-light"
 
-        %tr
-          %td Description
-          %td= @category.description
+.dashboard-container
+  = render "forms/horizontal/show/text", object: @category, key: :name
+  = render "forms/horizontal/show/text", object: @category, key: :description
+  = render "forms/horizontal/show/text", object: @category, key: :top_level
+  = render "forms/horizontal/show/text", object: @category, key: :slug
+  = render "forms/horizontal/show/text", object: @category, key: :position
+  = render "forms/horizontal/show/check_box", object: @category, key: :archived
 
-        %tr
-          %td Top level
-          %td= @category.top_level
+  = render "forms/horizontal/show/generic", title: link_to("Documents", editor_category_documents_path(@category)), content: "<div id=\"documents_count\">#{@category.documents.count}</div>".html_safe
+  = render "forms/horizontal/show/generic", title: link_to("Videos", editor_category_videos_path(@category)), content: @category.videos.count
 
-        %tr
-          %td Slug
-          %td= @category.slug
-
-        %tr
-          %td Position
-          %td= @category.position
-
-        %tr
-          %td Archived
-          %td= @category.archived
-
-        %tr
-          %td= link_to 'Documents', editor_category_documents_path(@category)
-          %td#documents_count= @category.documents.count
-
-        %tr
-          %td=link_to 'Videos', editor_category_videos_path(@category)
-          %td= @category.videos.count
-
-      - fallback_url = new_editor_category_document_path(@category)
-      = link_to 'Upload New Document', fallback_url, class: 'btn btn-light'
-      %p.lead.filedrag.purple-fill{ data: { object: 'dropfile', upload_url: upload_editor_category_documents_path(@category, format: 'js'), fallback_url: fallback_url } }
-        Drag documents here to attach to category.
-  .col-md-3.order-1
-    = render 'setup/menu'
+  - fallback_url = new_editor_category_document_path(@category)
+  = link_to "Upload New Document", fallback_url, class: "btn btn-light"
+  .filedrag.d-flex.align-items-center.justify-content-center{ data: { object: "dropfile", upload_url: upload_editor_category_documents_path(@category, format: "js"), fallback_url: fallback_url } }
+    Drag documents here to attach to category.

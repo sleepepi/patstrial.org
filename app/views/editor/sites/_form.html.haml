@@ -1,64 +1,15 @@
-- if @site.new_record?
+- if site.new_record?
   - url = editor_sites_path
   - method = :post
 - else
-  - url = editor_site_path(@site)
+  - url = editor_site_path(site)
   - method = :patch
-= form_for @site, url: url, method: method, html: { class: 'form-horizontal' } do |f|
-  - if @site.errors.any?
-    .bs-callout.bs-callout-danger
-      %h4
-        = pluralize @site.errors.count, 'error'
-        prohibited this site from being saved
 
-      %ul
-        - @site.errors.full_messages.each do |msg|
-          %li= msg
-
-  .form-group
-    = f.label :name, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :name, class: 'form-control', data: { object: 'create-slug', target: '#site_slug' }
-
-  .form-group
-    = f.label :slug, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :slug, class: 'form-control'
-
-  .form-group
-    = f.label :address, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :address, class: 'form-control'
-      .bs-callout.bs-callout-warning
-        %strong Address Format
-        %p
-          "City, State, Country, Zip Code"
-
-  .form-group
-    = f.label :contact, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :contact, class: 'form-control'
-      .bs-callout.bs-callout-warning
-        %strong Contact Format
-        %p
-          "Contact Name, Phone, Email"
-
-  .form-group
-    = label_tag 'Center Type', nil, class: 'col-md-2 control-label'
-    .col-md-10
-      .checkbox
-        %label
-          = f.check_box :recruiting_center
-          Recruiting Center
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      .checkbox
-        %label
-          = f.check_box :coordinating_center
-          Coordinating Center
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', url, class: 'btn btn-light'
+= form_with model: site, url: url, method: method, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: site, key: :name, slug: "slug"
+  = render "forms/horizontal/slug_field", form: form, object: site, key: :slug, key_name: "URL Slug"
+  = render "forms/horizontal/text_field", form: form, object: site, key: :address, help_text: "Address Format: City, State, Country, Zip Code"
+  = render "forms/horizontal/text_field", form: form, object: site, key: :contact, help_text: "Address Format: Contact Name, Phone, Email"
+  = render "forms/horizontal/check_box", form: form, object: site, key: :recruiting_center
+  = render "forms/horizontal/check_box", form: form, object: site, key: :coordinating_center
+  = render "forms/horizontal/submit", form: form, object: site, cancel: url

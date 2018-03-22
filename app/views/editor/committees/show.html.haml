@@ -1,31 +1,16 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = @committee.name
-      = link_to 'Edit Committee', edit_editor_committee_path(@committee), class: 'btn btn-sm btn-light'
-      = link_to 'Add Committee Member', new_editor_committee_committee_member_path(@committee), class: 'btn btn-sm btn-light'
+- @title = @committee.name
 
-    .section-body
-      %table.table.table-striped
-        %tr
-          %td Name
-          %td= @committee.name
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = render "layouts/edit_delete_dropdown_lg", edit_url: edit_editor_committee_path(@committee), delete_url: editor_committee_path(@committee), delete_confirmation: "Delete \"#{@committee.name}\"?"
+  = @title
+  = link_to "Add Committee Member", new_editor_committee_committee_member_path(@committee), class: "btn btn-sm btn-light"
 
-        %tr
-          %td Description
-          %td= @committee.description
-
-        %tr
-          %td Slug
-          %td= @committee.slug
-
-        %tr
-          %td Position
-          %td= @committee.position
-
-        %tr
-          %td Members
-          %td= render 'editor/committee_members/index'
-  .col-md-3.order-1
-    = render 'setup/menu'
+.dashboard-container
+  = render "forms/horizontal/show/text", object: @committee, key: :name
+  = render "forms/horizontal/show/text", object: @committee, key: :slug, key_name: "URL Slug"
+  = render "forms/horizontal/show/text", object: @committee, key: :description
+  = render "forms/horizontal/show/text", object: @committee, key: :position
+  = render "forms/horizontal/show/generic", title: "Members", content: render("editor/committee_members/index")

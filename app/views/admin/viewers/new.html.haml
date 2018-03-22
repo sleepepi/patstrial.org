@@ -1,17 +1,7 @@
-- @title = 'New Viewer'
+- @title = "New Viewer"
 
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Viewers', admin_viewers_path
-        &middot;
-        New Viewer
-      .section-description
-        Enter new viewer information.
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header, @title
 
-    .section-body
-      = render 'form'
-
-  .col-md-3.order-1
-    = render 'setup/menu'
+.dashboard-container= render "form", viewer: @viewer

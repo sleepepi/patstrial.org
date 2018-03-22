@@ -1,21 +1,14 @@
-- @title = "Edit Document: #{@document.name}"
+- @title = "#{@document.name} Edit"
 
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Folders', editor_categories_path
-        &middot;
-        = link_to @category.name, editor_category_path(@category)
-        &middot;
-        = link_to 'Documents', editor_category_documents_path(@category)
-        &middot;
-        = link_to @document.name, editor_category_document_path(@category, @document)
-        &middot;
-        Edit
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  = link_to @document.name, editor_category_document_path(@category, @document)
+  Edit
 
-    .section-body
-      = render 'form'
+- @breadcrumbs = []
+- @breadcrumbs << [@category.name, editor_category_path(@category)]
+- @breadcrumbs << ["Documents", editor_category_documents_path(@category)]
 
-  .col-md-3.order-1
-    = render 'setup/menu'
+
+.dashboard-container= render "form", document: @document

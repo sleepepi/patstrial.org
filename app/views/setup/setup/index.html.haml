@@ -1,52 +1,53 @@
 - @title = "Setup"
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1= @title
-      .section-description Welcome to the PATS website setup overview!
-    .card-group
-      - if current_user.admin?
-        .card{ style: "min-height: 250px;" }
-          .card-header.bg-primary.text-white
-            Users
-          .card-body
-            %ul.list-unstyled
-              %li Approve users
-              %li Set roles
-              %li Modify names and emails
-          .card-footer
-            .text-center
-              = link_to admin_users_path, class: "btn btn-sm btn-primary" do
-                %span.glyphicon.glyphicon-cog
-                Edit Users
 
-      - if current_user.editor?
-        .card{ style: "min-height: 250px;" }
-          .card-header.bg-primary.text-white
-            Directory
-          .card-body
-            %ul.list-unstyled
-              %li Add members
-              %li Change site membership
-              %li Modify contact information
-          .card-footer
-            .text-center
-              = link_to editor_members_path, class: "btn btn-sm btn-primary" do
-                %span.glyphicon.glyphicon-cog
-                Edit Directory
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header, @title
 
-        .card{ style: "min-height: 250px;" }
-          .card-header.bg-primary.text-white
-            Folders
-          .card-body
-            %ul.list-unstyled
-              %li Create folders
-              %li Upload documents
-              %li Embed videos
-          .card-footer
-            .text-center
-              = link_to editor_categories_path, class: "btn btn-sm btn-primary" do
-                %span.glyphicon.glyphicon-cog
-                Edit Folders
-  .col-md-3.order-1
-    = render "setup/menu"
+.card-group.mb-3
+  - if current_user.admin?
+    .card{ style: "min-height: 250px;" }
+      .card-header.bg-primary.text-white
+        Users
+      .card-body
+        %ul.list-unstyled
+          %li Approve users
+          %li Set roles
+          %li Modify names and emails
+      .card-footer
+        .text-center
+          = link_to admin_users_path, class: "btn btn-sm btn-primary" do
+            %span.glyphicon.glyphicon-cog
+            Edit Users
+
+  - if current_user.editor?
+    .card{ style: "min-height: 250px;" }
+      .card-header.bg-primary.text-white
+        Directory
+      .card-body
+        %ul.list-unstyled
+          %li Add members
+          %li Change site membership
+          %li Modify contact information
+      .card-footer
+        .text-center
+          = link_to editor_members_path, class: "btn btn-sm btn-primary" do
+            %span.glyphicon.glyphicon-cog
+            Edit Directory
+
+    .card{ style: "min-height: 250px;" }
+      .card-header.bg-primary.text-white
+        Folders
+      .card-body
+        %ul.list-unstyled
+          %li Create folders
+          %li Upload documents
+          %li Embed videos
+      .card-footer
+        .text-center
+          = link_to editor_categories_path, class: "btn btn-sm btn-primary" do
+            %span.glyphicon.glyphicon-cog
+            Edit Folders
+
+.jumbotron.jumbotron-custom-text
+  Welcome to the PATS website setup overview!

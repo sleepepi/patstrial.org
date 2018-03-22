@@ -1,63 +1,16 @@
-- if @member.new_record?
+- if member.new_record?
   - url = editor_members_path
   - method = :post
 - else
-  - url = editor_member_path(@member)
+  - url = editor_member_path(member)
   - method = :patch
-= form_for @member, url: url, method: method, html: { class: 'form-horizontal' } do |f|
-  - if @member.errors.any?
-    .bs-callout.bs-callout-danger
-      %h4
-        = pluralize @member.errors.count, 'error'
-        prohibited this member from being saved
-
-      %ul
-        - @member.errors.full_messages.each do |msg|
-          %li= msg
-
-  .form-group
-    = f.label :first_name, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :first_name, class: 'form-control'
-
-  .form-group
-    = f.label :last_name, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :last_name, class: 'form-control'
-
-  .form-group
-    = f.label :staffid, 'Staff ID', class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :staffid, class: 'form-control', placeholder: '#-##', maxlength: 4, style: 'width: 62px'
-
-  .form-group
-    = f.label :email, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.email_field :email, class: 'form-control'
-
-  .form-group
-    = f.label :phone, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :phone, class: 'form-control'
-
-  .form-group
-    = f.label :role, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :role, class: 'form-control'
-
-  .form-group
-    = f.label :site_id, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.select :site_id, Site.current.order(:name).collect { |s| [s.name, s.id] }, { include_blank: true }, class: 'form-control'
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      .checkbox
-        %label
-          = f.check_box :archived
-          Archived
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', url, class: 'btn btn-light'
+= form_with model: member, url: url, method: method, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: member, key: :first_name
+  = render "forms/horizontal/text_field", form: form, object: member, key: :last_name
+  = render "forms/horizontal/text_field", form: form, object: member, key: :staffid, key_name: "Staff ID", placeholder: "#-##", maxlength: 4
+  = render "forms/horizontal/email_field", form: form, object: member, key: :email
+  = render "forms/horizontal/text_field", form: form, object: member, key: :phone
+  = render "forms/horizontal/text_field", form: form, object: member, key: :role
+  = render "forms/horizontal/select", form: form, object: member, key: :site_id, options: Site.current.order(:name).collect { |s| [s.name, s.id] }, include_blank: true
+  = render "forms/horizontal/check_box", form: form, object: member, key: :archived
+  = render "forms/horizontal/submit", form: form, object: member, cancel: url

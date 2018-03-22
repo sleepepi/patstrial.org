@@ -1,34 +1,17 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Members', editor_members_path
-        &middot;
-        = @member.name
-        = link_to 'Edit Member', edit_editor_member_path(@member), class: 'btn btn-sm btn-light'
+- @title = "Members"
 
-    .section-body
-      %table.table.table-striped
-        %tr
-          %td Site
-          %td= link_to @member.site.name, editor_site_path(@member.site) if @member.site
-        %tr
-          %td Role
-          %td= @member.role
-        %tr
-          %td Email
-          %td= @member.email
-        %tr
-          %td Staff ID
-          %td= @member.staffid
-        %tr
-          %td Phone
-          %td= @member.phone
-        %tr
-          %td Committees
-          %td= @member.committees.collect { |c| link_to c.name, editor_committee_path(c) }.join(', ').html_safe
-        %tr
-          %td Archived
-          %td= simple_check @member.archived?
-  .col-md-3.order-1
-    = render 'setup/menu'
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    = render "layouts/edit_delete_dropdown_lg", edit_url: edit_editor_member_path(@member), delete_url: editor_member_path(@member), delete_confirmation: "Delete \"#{@member.name}\"?"
+  = @member.name
+
+.dashboard-container
+  = render "forms/horizontal/show/generic", title: "Site", content: link_to(@member.site.name, editor_site_path(@member.site)) if @member.site
+  = render "forms/horizontal/show/text", object: @member, key: :role
+  = render "forms/horizontal/show/text", object: @member, key: :email
+  = render "forms/horizontal/show/text", object: @member, key: :staffid, key_name: "Staff ID"
+  = render "forms/horizontal/show/text", object: @member, key: :phone
+  = render "forms/horizontal/show/generic", title: "Committees", content: sanitize(@member.committees.collect { |c| link_to c.name, editor_committee_path(c) }.join(', '))
+  = render "forms/horizontal/show/check_box", object: @member, key: :archived

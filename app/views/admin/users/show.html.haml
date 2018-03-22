@@ -1,32 +1,31 @@
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Users', admin_users_path
-        &middot;
-        = @user.name
-        = link_to 'Edit User', edit_admin_user_path(@user), class: 'btn btn-sm btn-light'
+- @title = "Users"
 
-    .section-body
-      %table.table.table-striped
-        %tbody
-          %tr
-            %td Name
-            %td= @user.name
-          %tr
-            %td Email
-            %td= @user.email
-          %tr
-            %td Website Access
-            %td= @user.approved? ? 'Approved' : 'Pending'
-          %tr
-            %td Admin
-            %td= simple_check @user.admin?
-          %tr
-            %td Editor
-            %td= simple_check @user.editor?
-          %tr
-            %td Unblinded
-            %td= simple_check @user.unblinded?
-  .col-md-3.order-1
-    = render 'setup/menu'
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    %span.dropdown
+      = link_to "#", class: "btn btn-light btn-sm dropdown-toggle", data: { toggle: "dropdown" } do
+        .d-inline-block.d-sm-none
+          %i.fa.fa-cog
+        .d-none.d-sm-inline-block Actions
+        %strong.caret
+      .dropdown-menu.dropdown-menu-right
+        = link_to edit_admin_user_path(@user), class: "dropdown-item" do
+          %i.fa.fa-pencil
+          Edit
+        - unless current_user == @user
+          .dropdown-divider
+          = link_to admin_user_path(@user), method: :delete, data: { confirm: "Delete #{@user.name}?" }, class: "dropdown-item text-danger" do
+            %i.fa.fa-trash
+            Delete
+  = @user.name
+
+.dashboard-container
+  = render "forms/horizontal/show/text", object: @user, key: :name
+  = render "forms/horizontal/show/text", object: @user, key: :email
+  = render "forms/horizontal/show/generic", title: "Joined", content: @user.created_at&.strftime("%a, %B %-d, %Y at %-l:%M:%S %p")
+  = render "forms/horizontal/show/generic", title: "Website Access", content: @user.approved? ? "Approved" : "Pending"
+  = render "forms/horizontal/show/check_box", object: @user, key: :admin
+  = render "forms/horizontal/show/check_box", object: @user, key: :editor
+  = render "forms/horizontal/show/check_box", object: @user, key: :unblinded

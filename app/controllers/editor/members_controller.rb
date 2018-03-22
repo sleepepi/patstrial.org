@@ -5,30 +5,32 @@
 class Editor::MembersController < Editor::EditorController
   before_action :find_member_or_redirect, only: [:show, :edit, :update, :destroy]
 
+  layout "layouts/full_page_sidebar"
+
   # GET /members
   def index
-    @order = scrub_order(Member, params[:order], 'members.last_name')
+    @order = scrub_order(Member, params[:order], "members.last_name")
     @members = Member.current.order(@order).page(params[:page]).per(40)
   end
 
-  # GET /members/1
-  def show
-  end
+  # # GET /members/1
+  # def show
+  # end
 
   # GET /members/new
   def new
     @member = Member.new
   end
 
-  # GET /members/1/edit
-  def edit
-  end
+  # # GET /members/1/edit
+  # def edit
+  # end
 
   # POST /members
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to editor_member_path(@member), notice: 'Member was successfully created.'
+      redirect_to editor_member_path(@member), notice: "Member was successfully created."
     else
       render :new
     end
@@ -37,7 +39,7 @@ class Editor::MembersController < Editor::EditorController
   # PATCH /members/1
   def update
     if @member.update(member_params)
-      redirect_to editor_member_path(@member), notice: 'Member was successfully updated.'
+      redirect_to editor_member_path(@member), notice: "Member was successfully updated."
     else
       render :edit
     end
@@ -46,13 +48,13 @@ class Editor::MembersController < Editor::EditorController
   # DELETE /members/1
   def destroy
     @member.destroy
-    redirect_to editor_members_path, notice: 'Member was successfully deleted.'
+    redirect_to editor_members_path, notice: "Member was successfully deleted."
   end
 
   private
 
   def find_member_or_redirect
-    @member = Member.current.find_by_id params[:id]
+    @member = Member.current.find_by(id: params[:id])
     empty_response_or_root_path(editor_members_path) unless @member
   end
 

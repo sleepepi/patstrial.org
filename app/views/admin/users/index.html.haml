@@ -1,18 +1,72 @@
-- @title = 'Users'
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1.page-heading
-        .float-right
-          .per-page= render 'layouts/per_page', per_page: 40, object_count: @users.total_count
-        = @title
-      .section-description
-        This page allows you to
-        %strong approve users
-        and
-        = succeed '.' do
-          %strong set user roles
-    .section-body
-      = render 'admin/users/users'
-  .col-md-3.order-1
-    = render 'setup/menu'
+- @title = "Users"
+
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  .float-right
+    .per-page= render "layouts/per_page", per_page: 40, object_count: @users.total_count
+  = @title
+
+.dashboard-container.dashboard-table
+  %table.table.table-striped.table-borderless.table-hover.table-sticky
+    %col
+    %col
+    %col.d-none.d-sm-table-column
+    %col.d-none.d-sm-table-column
+    %col.d-none.d-sm-table-column
+    %col.d-none.d-md-table-column
+    %col.d-none.d-md-table-column
+    %col{ width: "1px" }
+    %thead
+      %tr
+        = th_sort_field @order, "users.last_name", "Name"
+        = th_sort_field @order, "users.approved", "Approved", extra_class: "text-center"
+        = th_sort_field @order, "users.admin", "Admin", extra_class: "text-center d-none d-sm-table-cell"
+        = th_sort_field @order, "users.editor", "Editor", extra_class: "text-center d-none d-sm-table-cell"
+        = th_sort_field @order, "users.unblinded", "Unblinded", extra_class: "text-center d-none d-sm-table-cell"
+        = th_sort_field @order, "users.current_sign_in_at", "Recent Activity", extra_class: "text-center d-none d-md-table-cell"
+        = th_sort_field @order, "users.sign_in_count", "Sign in Count", extra_class: "text-center d-none d-md-table-cell"
+        %th.text-center Actions
+
+    - @users.each do |user|
+      %tr
+        %td
+          =# image_tag user.avatar_url(18), style: "vertical-align:text-bottom"
+          = link_to user.name, admin_user_path(user)
+        %td.text-center= simple_check user.approved?
+        %td.text-center.d-none.d-sm-table-cell= simple_check user.admin?
+        %td.text-center.d-none.d-sm-table-cell= simple_check user.editor?
+        %td.text-center.d-none.d-sm-table-cell= simple_check user.unblinded?
+        %td.text-center.d-none.d-md-table-cell
+          - if user.current_sign_in_at
+            %small.nowrap
+              = time_ago_in_words user.current_sign_in_at
+              ago
+        %td.text-right.d-none.d-md-table-cell
+          %small= number_with_delimiter user.sign_in_count
+        %td.text-center
+          .dropdown
+            = link_to "#", class: "btn btn-light btn-sm dropdown-toggle", data: { toggle: "dropdown" } do
+              .d-inline-block.d-sm-none
+                %i.fa.fa-cog
+              .d-none.d-sm-inline-block Actions
+
+            .dropdown-menu.dropdown-menu-right
+              = link_to edit_admin_user_path(user), class: "dropdown-item" do
+                %i.fa.fa-pencil
+                Edit
+              - unless current_user == user
+                .dropdown-divider
+                = link_to admin_user_path(user), method: :delete, data: { confirm: "Delete #{user.name}?" }, class: "dropdown-item text-danger" do
+                  %i.fa.fa-trash
+                  Delete
+
+.center-horizontally.mb-3
+  = paginate @users, theme: "bootstrap"
+
+.jumbotron.jumbotron-custom-text
+  This page allows you to
+  %strong approve users
+  and
+  = succeed "." do
+    %strong set user roles

@@ -1,14 +1,9 @@
-- @title = "Edit Member: #{@member.name_was}"
+- @title = "Edit Member"
 
-.row
-  .col-md-9.order-2
-    .section-heading-internal
-      %h1
-        = link_to 'Members', editor_members_path
-        &middot;
-        = link_to @member.name_was, editor_member_path(@member)
-        &middot;
-        Edit
-    .section-body= render 'form'
-  .col-md-3.order-1
-    = render 'setup/menu'
+- content_for :container_class, "container-fluid"
+- content_for :sidebar, render("setup/sidebar")
+- content_for :header do
+  = link_to @member.name_was, editor_member_path(@member)
+  Edit
+
+.dashboard-container= render "form", member: @member

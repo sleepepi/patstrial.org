@@ -1,60 +1,16 @@
-- if @category.new_record?
+- if category.new_record?
   - url = editor_categories_path
   - method = :post
 - else
-  - url = editor_category_path(@category)
+  - url = editor_category_path(category)
   - method = :patch
-= form_for @category, url: url, method: method, html: { class: 'form-horizontal' } do |f|
-  - if @category.errors.any?
-    .bs-callout.bs-callout-danger
-      %h4
-        = pluralize @category.errors.count, 'error'
-        prohibited this folder from being saved
 
-      %ul
-        - @category.errors.full_messages.each do |msg|
-          %li= msg
-
-  .form-group
-    = f.label :name, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :name, class: 'form-control', data: { object: 'create-slug', target: '#category_slug' }
-
-  .form-group
-    = f.label :description, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_area :description, class: 'form-control'
-
-  .form-group
-    = f.label :top_level, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :top_level, class: 'form-control'
-
-  .form-group
-    = f.label :slug, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :slug, class: 'form-control'
-
-  .form-group
-    = f.label :position, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :position, class: 'form-control'
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      .checkbox
-        %label
-          = f.check_box :archived
-          Archived
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      .checkbox
-        %label
-          = f.check_box :unblinded_only
-          Only Viewable by Unblinded Members
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', url, class: 'btn btn-light'
+= form_with model: category, url: url, method: method, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: category, key: :name
+  = render "forms/horizontal/text_area", form: form, object: category, key: :description
+  = render "forms/horizontal/text_field", form: form, object: category, key: :top_level
+  = render "forms/horizontal/text_field", form: form, object: category, key: :slug
+  = render "forms/horizontal/text_field", form: form, object: category, key: :position
+  = render "forms/horizontal/check_box", form: form, object: category, key: :archived
+  = render "forms/horizontal/check_box", form: form, object: category, key: :unblinded_only, help_text: "Check to limit access to unblinded members only."
+  = render "forms/horizontal/submit", form: form, object: category, cancel: url

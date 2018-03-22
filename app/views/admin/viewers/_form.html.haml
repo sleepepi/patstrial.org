@@ -1,54 +1,16 @@
-- if @viewer.new_record?
+- if viewer.new_record?
   - url = admin_viewers_path
   - method = :post
 - else
-  - url = admin_viewer_path(@viewer)
+  - url = admin_viewer_path(viewer)
   - method = :patch
-= form_for @viewer, url: url, method: method, html: { class: 'form-horizontal' } do |f|
-  - if @viewer.errors.any?
-    .bs-callout.bs-callout-danger
-      %h4
-        = pluralize @viewer.errors.count, 'error'
-        prohibited this viewer from being saved
 
-      %ul
-        - @viewer.errors.full_messages.each do |msg|
-          %li= msg
-
-  .form-group
-    = f.label :username, nil, class: 'col-md-2 control-label'
+= form_with model: viewer, url: url, method: method, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: viewer, key: :username, help_text: sanitize("Must start with a letter <code>a-z</code> <code>A-Z</code> followed by letters <code>a-z</code> <code>A-Z</code>, or numbers <code>0-9</code>.")
+  .form-group.row
+    = form.label :password, nil, class: "col-md-2 col-form-label"
     .col-md-10
-      = f.text_field :username, class: 'form-control'
-      .bs-callout.bs-callout-warning
-        %h4 Naming convention
-        %ul
-          %li
-            Must start with a letter
-            %code a-z
-            %code A-Z
-            followed by letters
-            = succeed ',' do
-              %code a-z
-              %code A-Z
-            or numbers
-            = succeed '.' do
-              %code 0-9
-        %p
-          Ex:
-          %code AwesomeUser1
-
-
-  .form-group
-    = f.label :password, nil, class: 'col-md-2 control-label '
-    .col-md-10
-      = f.text_field :password, value: @viewer.password_plain, class: 'form-control'
-
-  .form-group
-    = f.label :description, nil, class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_area :description, class: 'form-control'
-
-  .form-group
-    .col-md-10.col-md-offset-2
-      = f.submit nil, class: 'btn btn-primary'
-      = link_to 'cancel', url, class: 'btn btn-light'
+      = form.text_field :password, class: "form-control#{" is-invalid" if viewer.errors[:password].present?}", value: viewer.password_plain
+      = render "forms/invalid_feedback", object: viewer, key: :password
+  = render "forms/horizontal/text_area", form: form, object: viewer, key: :description
+  = render "forms/horizontal/submit", form: form, object: viewer, cancel: url
