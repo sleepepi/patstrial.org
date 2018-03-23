@@ -16,12 +16,8 @@ Rails.application.routes.draw do
     get :bmi_zscore, path: "bmi-zscore"
     post :bmi_zscore, path: "bmi-zscore", action: :bmi_zscore_calculate, as: :bmi_zscore_calculate
     get :bmi_zscore_result, path: "bmi-zscore/result"
-    get :blood_pressure_percentile, path: "blood-pressure-percentile"
-    post :blood_pressure_percentile, path: "blood-pressure-percentile",
-                                     action: :blood_pressure_percentile_calculate,
-                                     as: :blood_pressure_percentile_calculate
-    get :blood_pressure_percentile_result, path: "blood-pressure-percentile/result"
-    get "/", action: :index
+    get "/", to: redirect("calculators/bmi-zscore")
+    # get "/", action: :index
     get "/(*path)", to: redirect("calculators")
   end
 

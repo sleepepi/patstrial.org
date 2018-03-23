@@ -1,72 +1,41 @@
-- @title = 'Pediatric BMI Z-Score Calculator'
-.section-heading
-  %h1= @title
-  .section-description= render 'calculators/reference'
+- @title = "Pediatric BMI Z-Score Calculator"
 
-.section-body
-  .jumbotron
-    %table.table.table-borderless.table-fixed
-      %tr
-        %td.text-right
-          %h1
-            Z-Score
-        %td
-          %h1
-            %code= params[:zscore].to_f.round(2)
-      %tr
-        %td.text-right
-          %h2
-            BMI Percentile
-        %td
-          %h2
-            %code= format('%0.3f%%', params[:bmi_percentile].to_f * 100)
-    .text-center
-      = link_to calculators_bmi_zscore_path(gender: params[:gender], weight: params[:weight], weight_units: params[:weight_units], height: params[:height], height_units: params[:height_units], dob: params[:dob], dov: params[:dov]), class: 'btn btn-light btn-sm' do
-        %i.fa.fa-chevron-left
-        Go Back to Calculator
+- content_for :header, @title
 
-  %table.table.table-borderless
-    %col{ width: '200px' }
+
+.jumbotron
+  %table.table.table-borderless.table-fixed
     %tr
-      %td.text-right{ style: 'font-weight:bold' } Height
+      %td.text-right
+        %h1
+          Z-Score
       %td
-        = params[:height]
-        = params[:height_units]
+        %h1
+          %code= params[:zscore].to_f.round(2)
     %tr
-      %td.text-right{ style: 'font-weight:bold' } Weight
+      %td.text-right
+        %h2
+          BMI Percentile
       %td
-        = params[:weight]
-        = params[:weight_units]
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } Body Mass Index
-      %td= params[:bmi].to_f.round(2)
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } Gender
-      %td= params[:gender] == '1' ? 'Male' : 'Female'
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } Date of Birth
-      %td= params[:dob]
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } Date of Visit
-      %td= params[:dov]
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } Age
-      %td
-        = params[:age_in_months].to_f.round(1)
-        months
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } L
-      %td= params[:l]
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } M
-      %td= params[:m]
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } S
-      %td= params[:s]
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } Z-Score
-      %td= params[:zscore].to_f.round(2)
-    %tr
-      %td.text-right{ style: 'font-weight:bold' } BMI Percentile
-      %td
-        = format('%0.3f%%', params[:bmi_percentile].to_f * 100)
+        %h2
+          %code= format("%0.3f%%", params[:bmi_percentile].to_f * 100)
+  .text-center
+    = link_to calculators_bmi_zscore_path(gender: params[:gender], weight: params[:weight], weight_units: params[:weight_units], height: params[:height], height_units: params[:height_units], dob: params[:dob], dov: params[:dov]), class: "btn btn-outline-primary btn-sm" do
+      %i.fa.fa-chevron-left
+      Go Back to Calculator
+
+.dashboard-container
+  = render "forms/horizontal/show/generic", title: "Height", content: "#{params[:height]} #{params[:height_units]}"
+  = render "forms/horizontal/show/generic", title: "Weight", content: "#{params[:weight]} #{params[:weight_units]}"
+  = render "forms/horizontal/show/generic", title: "Body Mass Index", content: params[:bmi].to_f.round(2)
+  = render "forms/horizontal/show/generic", title: "Gender", content: (params[:gender] == "1" ? "Male" : "Female")
+  = render "forms/horizontal/show/generic", title: "Date of Birth", content: params[:dob]
+  = render "forms/horizontal/show/generic", title: "Date of Visit", content: params[:dov]
+  = render "forms/horizontal/show/generic", title: "Age", content: "#{params[:age_in_months].to_f.round(1)} months"
+  = render "forms/horizontal/show/generic", title: "L", content: params[:l]
+  = render "forms/horizontal/show/generic", title: "M", content: params[:m]
+  = render "forms/horizontal/show/generic", title: "S", content: params[:s]
+  = render "forms/horizontal/show/generic", title: "Z-Score", content: params[:zscore].to_f.round(2)
+  = render "forms/horizontal/show/generic", title: "BMI Percentile", content: format("%0.3f%%", params[:bmi_percentile].to_f * 100)
+
+.jumbotron.jumbotron-custom-text.text-left= render "calculators/reference"

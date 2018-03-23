@@ -1,55 +1,60 @@
-- @title = 'Pediatric BMI Z-Score Calculator'
-.section-heading
-  %h1= @title
-  .section-description= render 'calculators/reference'
+- @title = "Pediatric BMI Z-Score Calculator"
 
-.section-body
+- content_for :header, @title
 
-  = form_tag calculators_bmi_zscore_path, method: :post, class: 'form-horizontal' do
-    .form-group
-      = label :height, 'Height', class: 'col-md-2 control-label'
+.dashboard-container
+  = form_with url: calculators_bmi_zscore_path, method: :post, local: true do
+    .form-group.row
+      = label :height, "Height", class: "col-md-2 col-form-label"
       .col-md-10
         %table
           %tr
             %td
-              = text_field_tag :height, params[:height], autocomplete: 'off', class: 'form-control', maxlength: 5, style: 'width: 118px'
-            %td
-              = select_tag :height_units, options_for_select(['cm', 'in'], params[:height_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
+              = text_field_tag :height, params[:height], autocomplete: "off", class: "form-control#{" is-invalid" if params[:height].blank? && @error}", maxlength: 5, style: "width: 118px"
 
-    .form-group
-      = label :weight, 'Weight', class: 'col-md-2 control-label'
+            %td
+              = select_tag :height_units, options_for_select(["cm", "in"], params[:height_units]), class: "form-control", style: "width: 72px; margin-left: 4px;"
+        - if @error && params[:height].blank?
+          %small.form-text.text-danger Please enter a valid height.
+    .form-group.row
+      = label :weight, "Weight", class: "col-md-2 col-form-label"
       .col-md-10
         %table
           %tr
             %td
-              = text_field_tag :weight, params[:weight], autocomplete: 'off', class: 'form-control', maxlength: 5, style: 'width: 118px'
+              = text_field_tag :weight, params[:weight], autocomplete: "off", class: "form-control#{" is-invalid" if params[:weight].blank? && @error}", maxlength: 5, style: "width: 118px"
             %td
-              = select_tag :weight_units, options_for_select(['kg', 'lb'], params[:weight_units]), class: 'form-control', style: 'width: 72px; margin-left: 4px;'
-
-    .form-group
-      = label :gender, 'Gender', class: 'col-md-2 control-label'
+              = select_tag :weight_units, options_for_select(["kg", "lb"], params[:weight_units]), class: "form-control", style: "width: 72px; margin-left: 4px;"
+        - if @error && params[:weight].blank?
+          %small.form-text.text-danger Please enter a valid weight.
+    .form-group.row
+      = label :gender, "Gender", class: "col-md-2 col-form-label"
       .col-md-10
-        .btn-group{ data: { toggle: 'buttons' } }
-          = label :gender, '1', class: "btn btn-primary-custom #{'active' if params[:gender] != '2'}" do
-            = radio_button_tag :gender, 1, params[:gender] != '2', autocomplete: 'off'
+        .btn-group.btn-group-toggle{ data: { toggle: "buttons" } }
+          = label :gender, "1", class: "btn btn-primary-custom #{"active" if params[:gender] != "2"}" do
+            = radio_button_tag :gender, 1, params[:gender] != "2", autocomplete: "off"
             Male
-          = label :gender, '2', class: "btn btn-primary-custom #{'active' if params[:gender] == '2'}" do
-            = radio_button_tag :gender, 2, params[:gender] == '2', autocomplete: 'off'
+          = label :gender, "2", class: "btn btn-primary-custom #{"active" if params[:gender] == "2"}" do
+            = radio_button_tag :gender, 2, params[:gender] == "2", autocomplete: "off"
             Female
 
-    .form-group
-      = label :dob, 'Date of Birth', class: 'col-md-2 control-label'
+    .form-group.row
+      = label :dob, "Date of Birth", class: "col-md-2 col-form-label"
       .col-md-10
-        = text_field_tag :dob, params[:dob], autocomplete: 'off', class: 'datepicker form-control', placeholder: 'mm/dd/yyyy', style: 'width: 120px'
+        = text_field_tag :dob, params[:dob], autocomplete: "off", class: "datepicker form-control#{" is-invalid" if params[:dob].blank? && @error}", placeholder: "mm/dd/yyyy", style: "width: 120px"
+        .invalid-feedback Please enter valid date of birth.
 
-    .form-group
-      = label :dov, 'Date of Visit', class: 'col-md-2 control-label'
+    .form-group.row
+      = label :dov, "Date of Visit", class: "col-md-2 col-form-label"
       .col-md-10
-        = text_field_tag :dov, params[:dov], autocomplete: 'off', class: 'datepicker form-control', placeholder: 'mm/dd/yyyy', style: 'width: 120px'
+        = text_field_tag :dov, params[:dov], autocomplete: "off", class: "datepicker form-control#{" is-invalid" if params[:dov].blank? && @error}", placeholder: "mm/dd/yyyy", style: "width: 120px"
+        .invalid-feedback Please enter valid date of visit.
+        - if @error_message
+          %small.form-text.text-danger= @error_message
 
-    .form-group
-      .col-md-10.col-md-offset-2
-        = submit_tag 'Calculate Z-Score', class: 'btn btn-primary'
+    .form-group.row.mt-5
+      .col-md-2
+      .col-md-10
+        = submit_tag "Calculate Z-Score", class: "btn btn-primary"
 
-    - if @error
-      .alert.alert-danger{ role: 'alert' }= @error
+.jumbotron.jumbotron-custom-text.text-left= render "calculators/reference"

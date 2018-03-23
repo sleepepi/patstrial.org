@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
-# Tests for public calculators
-class CalculatorsControllerTest < ActionController::TestCase
-  test 'should get bmi zscore' do
-    get :bmi_zscore
+# Tests for public calculators.
+class CalculatorsControllerTest < ActionDispatch::IntegrationTest
+  test "should redirect to bmi zscore" do
+    get calculators_url
+    assert_redirected_to calculators_bmi_zscore_url
+  end
+
+  test "should get bmi zscore" do
+    get calculators_bmi_zscore_url
     assert_response :success
   end
 
-  test 'should get bmi zscore result' do
-    get :bmi_zscore_result
-    assert_response :success
-  end
-
-  test 'should get blood pressure percentile' do
-    get :blood_pressure_percentile
+  test "should get bmi zscore result" do
+    get calculators_bmi_zscore_result_url
     assert_response :success
   end
 end
