@@ -9,27 +9,28 @@
   Overall data completion by site for randomized subjects.
 
 - if @grades
-  .grades
+  .grades.mb-5
     - @grades[:overall].each do |hash|
       = render "reports/big_grade", hash: hash
 
-  .section-heading
-    %h3 Event Breakdown
-    .section-description
-      Event data completion by site for randomized subjects. Data set as
-      MISSING are NOT included.
-  %table.table.table-striped.table-borderless.table-hover
-    %thead
-      %tr
-        %th Event
-        - @grades[:sites].each do |site|
-          %th= site
-    %tbody
-      - @grades[:events].each do |row|
+  .dashboard-container.dashboard-table
+    .dashboard-lead
+      %h3 Event Breakdown
+      %p
+        Event data completion by site for randomized subjects. Data set as
+        MISSING are NOT included.
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %thead
         %tr
-          %td= row[:event]
-          - row[:cells].each do |cell|
-            %td
-              = render "reports/grade", percent: cell[:percent]
-              - if cell[:percent].present?
-                %span.percent= link_to "#{cell[:percent]}%", leaving_path(slice: cell[:link])
+          %th Event
+          - @grades[:sites].each do |site|
+            %th= site
+      %tbody
+        - @grades[:events].each do |row|
+          %tr
+            %td= row[:event]
+            - row[:cells].each do |cell|
+              %td
+                = render "reports/grade", percent: cell[:percent]
+                - if cell[:percent].present?
+                  %span.percent= link_to "#{cell[:percent]}%", leaving_path(slice: cell[:link])

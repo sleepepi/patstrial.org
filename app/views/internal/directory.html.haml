@@ -6,13 +6,13 @@
 - content_for :header, @title
 
 .jumbotron.jumbotron-custom-text
-  %span.glyphicon.glyphicon-envelope
+  %i.fa.fa-envelope-o
   = mail_to ENV["support_email"], "Send us an email", subject: "PATS Directory Information"
   if you are not listed or if your information is incorrect.
 
 - @members.group_by(&:site).sort{|a,b| ((a[0] ? a[0].name : "_") <=> (b[0] ? b[0].name : "_"))}.each do |site, members|
-  .section-body
-    %h2= site ? site.name : "No Site"
+  .dashboard-container.dashboard-table
+    %h2.dashboard-lead= site ? site.name : "No Site"
     %table.table.table-striped.table-borderless.table-hover.table-sticky
       %thead
         %tr

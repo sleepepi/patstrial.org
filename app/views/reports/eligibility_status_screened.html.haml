@@ -5,24 +5,24 @@
 
 - content_for :header, "Eligiblity Status - Screened"
 
-.section-body
-  - if @eligibility_status && @eligibility_status[:tables]
-    - @eligibility_status[:tables].each do |table|
+- if @eligibility_status && @eligibility_status[:tables]
+  - @eligibility_status[:tables].each do |table|
+    .dashboard-container.dashboard-table
       = render "reports/draw_advanced_table", table: table
 
-  .row{ style: "margin-top: 20px" }
-    .col-md-4
-    .col-md-4
+.row{ style: "margin-top: 20px" }
+  .col-md-4
+  .col-md-4
+    .jumbotron.text-center
+      %h4.text-muted Eligibility - Screened
+      .report-number
+        %i.fa.fa-list-alt
+  .col-md-4
+    = link_to reports_eligibility_status_consented_path, class: "title-link" do
       .jumbotron.text-center
-        %h4.text-muted Eligibility - Screened
+        %h4.text-muted Eligibility - Consented
         .report-number
-          %i.fa.fa-list-alt
-    .col-md-4
-      = link_to reports_eligibility_status_consented_path, class: "title-link" do
-        .jumbotron.text-center
-          %h4.text-muted Eligibility - Consented
-          .report-number
-            %i.fa.fa-chevron-right
+          %i.fa.fa-chevron-right
 
 .jumbotron.jumbotron-custom-text
   - if @recruitment

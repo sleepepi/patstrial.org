@@ -1,63 +1,63 @@
-- @title = 'Demographics - Reports'
+- @title = "Demographics - Reports"
 
 - content_for :container_class, "container-fluid"
 - content_for :sidebar, render("internal/sidebar")
 
 - content_for :header do
-  .dropdown.float-right{ style: 'display: inline-block' }
-    = link_to '#', data: { toggle: 'dropdown' }, role: 'button', aria: { haspopup: 'true', expanded: 'false' }, class: 'btn btn-primary' do
-      %span.glyphicon.glyphicon-filter
-      = @subject_status.titleize
-      %span.caret
-    %ul.dropdown-menu
-      - ['screened', 'consented', 'eligible', 'randomized'].each do |label|
-        - value = label
-        %li= link_to label.titleize, reports_demographics_status_path(subjects: value), style: @subject_status == value ? 'font-weight:bold;' : ''
+  .float-right
+    .dropdown
+      = link_to "#", class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } do
+        %i.fa.fa-filter
+        = @subject_status.titleize
+      .dropdown-menu.dropdown-menu-right
+        - ["screened", "consented", "eligible", "randomized"].each do |label|
+          - value = label
+          = link_to label.titleize, reports_demographics_status_path(subjects: value), style: @subject_status == value ? "font-weight:bold;" : "", class: "dropdown-item"
   %h1 Demographics
 
-.section-body
-
+.dashboard-container
   .row
-    - female_color = '#ffc0cb'
-    - male_color = '#7cb5ec'
-    - black_race_color = '#90ed7d'
-    - white_race_color = '#f7a35c'
-    - american_indian_race_color = '#8085e9'
-    - asian_race_color = '#f15c80'
-    - hawaiian_race_color = '#e4d354'
-    - multiple_race_color = '#2b908f'
+    - female_color = "#ffc0cb"
+    - male_color = "#7cb5ec"
+    - black_race_color = "#90ed7d"
+    - white_race_color = "#f7a35c"
+    - american_indian_race_color = "#8085e9"
+    - asian_race_color = "#f15c80"
+    - hawaiian_race_color = "#e4d354"
+    - multiple_race_color = "#2b908f"
     - if @demographics && @demographics[:extras]
-      - @chart = { series: [{ name: 'Female', data: [@demographics.dig(:extras, :females, :age3to4), @demographics.dig(:extras, :females, :age5to6), @demographics.dig(:extras, :females, :age7plus)], color: female_color}, { name: 'Male', data: [@demographics.dig(:extras, :males, :age3to4), @demographics.dig(:extras, :males, :age5to6), @demographics.dig(:extras, :males, :age7plus)], color: male_color }], categories: ['3 to 4', '5 to 6', '7+'], title: 'Age', yaxis: 'Subjects', xaxis: 'Years Old', subtitle: ' ' }
+      - @chart = { series: [{ name: "Female", data: [@demographics.dig(:extras, :females, :age3to4), @demographics.dig(:extras, :females, :age5to6), @demographics.dig(:extras, :females, :age7plus)], color: female_color}, { name: "Male", data: [@demographics.dig(:extras, :males, :age3to4), @demographics.dig(:extras, :males, :age5to6), @demographics.dig(:extras, :males, :age7plus)], color: male_color }], categories: ["3 to 4", "5 to 6", "7+"], title: "Age", yaxis: "Subjects", xaxis: "Years Old", subtitle: " " }
       .col-sm-6
-        %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart', chart_type: 'column', series: @chart[:series].to_json, categories: @chart[:categories].to_json, title: @chart[:title], yaxis: @chart[:yaxis], xaxis: @chart[:xaxis], subtitle: @chart[:subtitle] } }
+        %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", chart_type: "column", series: @chart[:series].to_json, categories: @chart[:categories].to_json, title: @chart[:title], yaxis: @chart[:yaxis], xaxis: @chart[:xaxis], subtitle: @chart[:subtitle] } }
     - if @demographics && @demographics[:extras]
-      - @chart = { series: [{ name: 'Gender', colorByPoint: true, startAngle: -180, data: [{ name: 'Female', y: @demographics.dig(:extras, :females, :total), color: female_color, drilldown: 'Female' }, { name: 'Male', y: @demographics.dig(:extras, :males, :total), color: male_color, drilldown: 'Male' }] }], categories: [], title: 'Gender', subtitle: 'Click pie chart to view race breakdown', drilldown: { series: [{ name: 'Female', id: 'Female', borderColor: female_color, borderWidth: '5px', data: [{ name: 'Female - Black', y: @demographics.dig(:extras, :females, :black), color: black_race_color },{ name: 'Female - White', y: @demographics.dig(:extras, :females, :white), color: white_race_color },{ name: 'Female - American Indian', y: @demographics.dig(:extras, :females, :american_indian), color: american_indian_race_color },{ name: 'Female - Asian', y: @demographics.dig(:extras, :females, :asian), color: asian_race_color },{ name: 'Female - Native Hawaiian', y: @demographics.dig(:extras, :females, :hawaiian), color: hawaiian_race_color },{ name: 'Female - Multiple', y: @demographics.dig(:extras, :females, :multiple), color: multiple_race_color }]},{ name: 'Male', id: 'Male', borderColor: male_color, borderWidth: '5px', data: [{ name: 'Male - Black', y: @demographics.dig(:extras, :males, :black), color: black_race_color },{ name: 'Male - White', y: @demographics.dig(:extras, :males, :white), color: white_race_color },{ name: 'Male - American Indian', y: @demographics.dig(:extras, :males, :american_indian), color: american_indian_race_color },{ name: 'Male - Asian', y: @demographics.dig(:extras, :males, :asian), color: asian_race_color },{ name: 'Male - Native Hawaiian', y: @demographics.dig(:extras, :males, :hawaiian), color: hawaiian_race_color },{ name: 'Male - Multiple', y: @demographics.dig(:extras, :males, :multiple), color: multiple_race_color }]}] } }
+      - @chart = { series: [{ name: "Gender", colorByPoint: true, startAngle: -180, data: [{ name: "Female", y: @demographics.dig(:extras, :females, :total), color: female_color, drilldown: "Female" }, { name: "Male", y: @demographics.dig(:extras, :males, :total), color: male_color, drilldown: "Male" }] }], categories: [], title: "Gender", subtitle: "Click pie chart to view race breakdown", drilldown: { series: [{ name: "Female", id: "Female", borderColor: female_color, borderWidth: "5px", data: [{ name: "Female - Black", y: @demographics.dig(:extras, :females, :black), color: black_race_color },{ name: "Female - White", y: @demographics.dig(:extras, :females, :white), color: white_race_color },{ name: "Female - American Indian", y: @demographics.dig(:extras, :females, :american_indian), color: american_indian_race_color },{ name: "Female - Asian", y: @demographics.dig(:extras, :females, :asian), color: asian_race_color },{ name: "Female - Native Hawaiian", y: @demographics.dig(:extras, :females, :hawaiian), color: hawaiian_race_color },{ name: "Female - Multiple", y: @demographics.dig(:extras, :females, :multiple), color: multiple_race_color }]},{ name: "Male", id: "Male", borderColor: male_color, borderWidth: "5px", data: [{ name: "Male - Black", y: @demographics.dig(:extras, :males, :black), color: black_race_color },{ name: "Male - White", y: @demographics.dig(:extras, :males, :white), color: white_race_color },{ name: "Male - American Indian", y: @demographics.dig(:extras, :males, :american_indian), color: american_indian_race_color },{ name: "Male - Asian", y: @demographics.dig(:extras, :males, :asian), color: asian_race_color },{ name: "Male - Native Hawaiian", y: @demographics.dig(:extras, :males, :hawaiian), color: hawaiian_race_color },{ name: "Male - Multiple", y: @demographics.dig(:extras, :males, :multiple), color: multiple_race_color }]}] } }
       .col-sm-6
-        %div{ style: 'margin-bottom: 20px', data: { object: 'draw-chart-pie', series: @chart[:series].to_json, title: @chart[:title], drilldown: @chart[:drilldown].to_json, subtitle: @chart[:subtitle] } }
-  - if @demographics && @demographics[:tables]
-    - @demographics[:tables].each do |table|
-      = render 'reports/draw_advanced_table', table: table
+        %div{ style: "margin-bottom: 20px", data: { object: "draw-chart-pie", series: @chart[:series].to_json, title: @chart[:title], drilldown: @chart[:drilldown].to_json, subtitle: @chart[:subtitle] } }
+- if @demographics && @demographics[:tables]
+  - @demographics[:tables].each do |table|
+    .dashboard-container.dashboard-table
+      = render "reports/draw_advanced_table", table: table
 
-  .row{ style: 'margin-top: 20px' }
-    .col-md-4
-      = link_to reports_eligibility_status_consented_path, class: 'title-link' do
-        .jumbotron.text-center
-          %h4.text-muted.nowrap Eligibility - Consented
-          .report-number
-            %i.fa.fa-chevron-left
-    .col-md-4
+.row{ style: "margin-top: 20px" }
+  .col-md-4
+    = link_to reports_eligibility_status_consented_path, class: "title-link" do
       .jumbotron.text-center
-        %h4.text-muted Demographics
+        %h4.text-muted.nowrap Eligibility - Consented
         .report-number
-          %i.fa.fa-bar-chart
-    .col-md-4
-      = link_to reports_screened_path, class: 'title-link' do
-        .jumbotron.text-center
-          %h4.text-muted Screened
-          .report-number
-            %i.fa.fa-chevron-right
+          %i.fa.fa-chevron-left
+  .col-md-4
+    .jumbotron.text-center
+      %h4.text-muted Demographics
+      .report-number
+        %i.fa.fa-bar-chart
+  .col-md-4
+    = link_to reports_screened_path, class: "title-link" do
+      .jumbotron.text-center
+        %h4.text-muted Screened
+        .report-number
+          %i.fa.fa-chevron-right
 
 .jumbotron.jumbotron-custom-text
   - if @recruitment
     Data last updated
-    = Time.parse(@recruitment[:exported_at]).strftime('%a, %b %d at %I:%M %p.')
+    = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %d at %I:%M %p.")

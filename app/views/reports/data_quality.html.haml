@@ -5,28 +5,28 @@
 
 - content_for :header, "Data Quality"
 
-.section-body
-  - if @data_quality && @data_quality[:graphs]
-    - @data_quality[:graphs].each do |graph|
-      %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", chart_type: graph[:chart_type], series: graph[:series].to_json, categories: graph[:categories].to_json, title: graph[:title], yaxis: graph[:yaxis], xaxis: graph[:xaxis], yaxis_min: graph[:yaxis_min], yaxis_max: graph[:yaxis_max] } }
+- if @data_quality && @data_quality[:graphs]
+  - @data_quality[:graphs].each do |graph|
+    %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", chart_type: graph[:chart_type], series: graph[:series].to_json, categories: graph[:categories].to_json, title: graph[:title], yaxis: graph[:yaxis], xaxis: graph[:xaxis], yaxis_min: graph[:yaxis_min], yaxis_max: graph[:yaxis_max] } }
 
-  - if @data_quality && @data_quality[:tables]
-    - @data_quality[:tables].each do |table|
+- if @data_quality && @data_quality[:tables]
+  - @data_quality[:tables].each do |table|
+    .dashboard-container.dashboard-table
       = render "reports/draw_advanced_table", table: table
 
-  .row
-    .col-md-4
-      = link_to reports_randomized_path, class: "title-link" do
-        .jumbotron.text-center
-          %h4.text-muted Randomized
-          .report-number
-            %i.fa.fa-chevron-left
-    .col-md-4
+.row
+  .col-md-4
+    = link_to reports_randomized_path, class: "title-link" do
       .jumbotron.text-center
-        %h4.text-muted Data Quality
+        %h4.text-muted Randomized
         .report-number
-          %i.fa.fa-tint
-    .col-md-4
+          %i.fa.fa-chevron-left
+  .col-md-4
+    .jumbotron.text-center
+      %h4.text-muted Data Quality
+      .report-number
+        %i.fa.fa-tint
+  .col-md-4
 
 .jumbotron.jumbotron-custom-text
   - if @recruitment

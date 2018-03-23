@@ -11,33 +11,34 @@
 
 - if @data_inconsistencies
   - if @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.present?
-    %table.table.table-striped.table-borderless.table-hover
-      %thead
-        %tr
-          %th Check
-          - @data_inconsistencies[:totals].each do |total|
-            %th.nowrap.text-center= total[:short_name]
-          %th.text-center Total
-      %tfoot
-        %tr
-          %th Total
-          - total_count = 0
-          - @data_inconsistencies[:totals].each do |total|
-            - total_count += total[:count]
-            %th.nowrap.text-center= link_to total[:count], leaving_path(slice: total[:link])
-          %th.text-center= link_to total_count, leaving_path(slice: "https://tryslice.io/projects/pats/sheets?search=checks:any")
-      %tbody
-        - @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
+    .dashboard-container.dashboard-table
+      %table.table.table-striped.table-borderless.table-hover.table-sticky
+        %thead
           %tr
-            %td= row[:check]
-            - row[:cells].each do |cell|
+            %th Check
+            - @data_inconsistencies[:totals].each do |total|
+              %th.nowrap.text-center= total[:short_name]
+            %th.text-center Total
+        %tfoot
+          %tr
+            %th Total
+            - total_count = 0
+            - @data_inconsistencies[:totals].each do |total|
+              - total_count += total[:count]
+              %th.nowrap.text-center= link_to total[:count], leaving_path(slice: total[:link])
+            %th.text-center= link_to total_count, leaving_path(slice: "https://tryslice.io/projects/pats/sheets?search=checks:any")
+        %tbody
+          - @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
+            %tr
+              %td= row[:check]
+              - row[:cells].each do |cell|
+                %td.text-center
+                  - if cell[:count].to_i.zero?
+                    \-
+                  - else
+                    = link_to cell[:count], leaving_path(slice: cell[:link])
               %td.text-center
-                - if cell[:count].to_i.zero?
-                  \-
-                - else
-                  = link_to cell[:count], leaving_path(slice: cell[:link])
-            %td.text-center
-              %strong= link_to row[:total][:count], leaving_path(slice: row[:total][:link])
+                %strong= link_to row[:total][:count], leaving_path(slice: row[:total][:link])
 
   - else
     .jumbotron.jumbotron-custom-text
