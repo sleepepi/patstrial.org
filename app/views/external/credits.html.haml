@@ -1,8 +1,8 @@
-.section-heading
-  %h1 Credits
-  .section-description Special thanks to the following:
+- @title = "Credits"
+- content_for :header, @title
 
-.section-body
+.dashboard-container
+  %h2.dashboard-lead Special thanks to:
   %ul.lead
     %li
       %strong Joel S. Rube
@@ -10,4 +10,4 @@
       %small Artist of PATS Boy, PATS Girl, and PATS Logo
 
 = content_for :footer do
-  = render 'external/welcome'
+  = render "external/welcome"

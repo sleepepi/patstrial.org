@@ -1,7 +1,6 @@
 - @title = "Online Calculators"
-.section-heading
-  %h1= @title
+- content_for :header, @title
 
-.section-body
+.dashboard-container
   %ul
     %li= link_to "Pediatric BMI Z-Score Calculator", calculators_bmi_zscore_path

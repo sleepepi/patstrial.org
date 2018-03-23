@@ -1,8 +1,11 @@
 - @title = "Version"
 
-= render "external/welcome"
+- @theme = "royal"
 
-.section-body
-  %p.lead.text-center
-    Version
-    %strong= PatsTrial::VERSION::STRING
+.page-box.last-box.d-flex.align-items-center.theme-bg{ class: "theme-#{@theme}-focus-bg" }
+  .container
+    .jumbotron.jumbotron-transparent{ class: @theme != "default" ? "text-white" : nil }
+      = render "external/animated_logo"
+      .text-center{ style: "font-size: 1.25rem;" }
+        = "v#{PatsTrial::VERSION::STRING}"
+

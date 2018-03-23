@@ -5,15 +5,13 @@
 
 - content_for :header, @title
 
-.section-heading-internal
-  %h1= @title
 - Committee.order(:position).current.each do |committee|
-  .section-body
-    %h2
+  .dashboard-container.dashboard-table
+    %h2.dashboard-lead
       = committee.name
-      = link_to committee_path(committee.slug), class: "btn btn-sm btn-light" do
+      = link_to committee_path(committee.slug), class: "btn btn-sm btn-outline-primary" do
         Learn More
-        %span.glyphicon.glyphicon-new-window
+        %i.fa.fa-caret-right
     %table.table.table-striped.table-borderless.table-hover.table-sticky
       %thead
         %tr
@@ -22,7 +20,7 @@
           = th_sort_field @order, "members.email", "Email"
           = th_sort_field @order, "members.phone", "Phone"
           = th_sort_field @order, "members.role", "Role"
-          = th_sort_field @order, "members.staffid", "Staff ID"
+          = th_sort_field @order, "members.staffid", "Staff ID", extra_class: "nowrap"
       - committee.committee_members.includes(:member).order(@order).each do |committee_member|
         %tr
           %td
