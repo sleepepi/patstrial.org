@@ -8,6 +8,5 @@
 .jumbotron.jumbotron-custom-text
   = @video.name
 
-.section-body
-  .embed-responsive.embed-responsive-16by9
-    %iframe.embed-responsive-item{ src: @video.embed_url, webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true }
+.embed-responsive.embed-responsive-16by9
+  %iframe.embed-responsive-item{ src: @video.embed_url, webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true }

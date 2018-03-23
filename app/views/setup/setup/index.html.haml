@@ -17,7 +17,6 @@
       .card-footer
         .text-center
           = link_to admin_users_path, class: "btn btn-sm btn-primary" do
-            %span.glyphicon.glyphicon-cog
             Edit Users
 
   - if current_user.editor?
@@ -32,7 +31,6 @@
       .card-footer
         .text-center
           = link_to editor_members_path, class: "btn btn-sm btn-primary" do
-            %span.glyphicon.glyphicon-cog
             Edit Directory
 
     .card{ style: "min-height: 250px;" }
@@ -46,7 +44,6 @@
       .card-footer
         .text-center
           = link_to editor_categories_path, class: "btn btn-sm btn-primary" do
-            %span.glyphicon.glyphicon-cog
             Edit Folders
 
 .jumbotron.jumbotron-custom-text
