@@ -1,7 +1,6 @@
 # patstrial.org
 
 [![Build Status](https://travis-ci.org/sleepepi/patstrial.org.svg?branch=master)](https://travis-ci.org/sleepepi/patstrial.org)
-[![Dependency Status](https://gemnasium.com/sleepepi/patstrial.org.svg)](https://gemnasium.com/sleepepi/patstrial.org)
 [![Code Climate](https://codeclimate.com/github/sleepepi/patstrial.org/badges/gpa.svg)](https://codeclimate.com/github/sleepepi/patstrial.org)
 
 PATS Trial Website. Using Rails 5.2+ and Ruby 2.5+.
