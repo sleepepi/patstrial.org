@@ -1,41 +1,45 @@
-.section-heading
-  %h1 NDC Drug Search
+- @title = "NDC Drug Search"
 
-.section-body
-  .float-right.hidden-xs
-    .btn.btn-primary{ style: 'border: 0;cursor:default;margin-left:20px' }
-      = pluralize number_with_delimiter(@drugs.total_count), 'drug'
+- content_for :header do
+  .float-right.d-none.d-sm-block
+    .btn.btn-primary
+      = pluralize number_with_delimiter(@drugs.total_count), "drug"
       found
+  = @title
 
-  = form_tag drugs_path, method: :get, class: 'form-vertical' do
-    = hidden_field_tag :order, params[:order]
-    .input-group
-      = text_field_tag 'search', params[:search], class: 'form-control', placeholder: 'Search Drugs', autocomplete: 'off'
-      .input-group-btn
-        = submit_tag 'Search', class: 'btn btn-primary', name: nil
-        = link_to 'Reset', drugs_path, class: 'btn btn-light'
+= form_tag drugs_path, method: :get, class: "mb-3" do
+  = hidden_field_tag :order, params[:order]
+  .input-group
+    = text_field_tag :search, params[:search], class: "form-control form-control-lg", placeholder: "Search drugs", autocomplete: "off", autofocus: params[:search].blank?
+    .input-group-append
+      = submit_tag "Search", class: "btn btn-primary btn-lg", name: nil
+      = link_to "Reset", drugs_path, class: "btn btn-outline-primary btn-lg"
 
-.section-body
-  %table.table.table-fixed
-    %thead
-      %tr
-        = th_sort_field @order, 'drugs.product_ndc', 'Product NDC'
-        = th_sort_field @order, 'drugs.proprietary_name', 'Proprietary Name'
-        = th_sort_field @order, 'drugs.non_proprietary_name', 'Non Proprietary Name'
-        %th Labeler Name
-        %th Substance Name
-
-    %tbody
-      - @drugs.each do |drug|
+- if @drugs.present?
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %thead
         %tr
-          %td= link_to drug.product_ndc, drug
-          %td= drug.proprietary_name
-          %td= drug.non_proprietary_name
-          %td= drug.labeler_name
-          %td= drug.substance_name
+          = th_sort_field @order, "drugs.product_ndc", "Product NDC", extra_class: "nowrap"
+          = th_sort_field @order, "drugs.proprietary_name", "Proprietary Name"
+          = th_sort_field @order, "drugs.non_proprietary_name", "Non Proprietary Name"
+          %th Labeler Name
+          %th Substance Name
+
+      %tbody
+        - @drugs.each do |drug|
+          %tr
+            %td.nowrap= link_to drug.product_ndc, drug
+            %td= drug.proprietary_name
+            %td= drug.non_proprietary_name
+            %td= drug.labeler_name
+            %td= drug.substance_name
 
   .center-horizontally
-    = paginate @drugs, theme: 'bootstrap'
+    = paginate @drugs, theme: "bootstrap"
+- else
+  .jumbotron.jumbotron-custom-text
+    No drugs found.
 
 - if false
   %th Product ID

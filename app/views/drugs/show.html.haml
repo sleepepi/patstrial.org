@@ -1,99 +1,26 @@
 - @title = @drug.name_and_code
 
-.section-heading
-  %h1
-    = link_to 'NDC Drug Search', drugs_path
-    &middot;
-    = @title
+- content_for :header do
+  = link_to "NDC Drug Search", drugs_path
+  &middot;
+  = @title
 
-.section-body
-  %table.table.table-bordered
-    %tr
-      %td.text-right
-        %strong Product ID
-      %td= @drug.productid
-
-    %tr
-      %td.text-right
-        %strong Product NDC
-      %td= @drug.product_ndc
-
-    %tr
-      %td.text-right
-        %strong Product Type Name
-      %td= @drug.product_type_name
-
-    %tr
-      %td.text-right
-        %strong Proprietary Name
-      %td= @drug.proprietary_name
-
-    %tr
-      %td.text-right
-        %strong Proprietary Name Suffix
-      %td= @drug.proprietary_name_suffix
-
-    %tr
-      %td.text-right
-        %strong Non Proprietary Name
-      %td= @drug.non_proprietary_name
-
-    %tr
-      %td.text-right
-        %strong Dosage Form Name
-      %td= @drug.dosage_form_name
-
-    %tr
-      %td.text-right
-        %strong Route Name
-      %td= @drug.route_name
-
-    %tr
-      %td.text-right
-        %strong Start Marketing Date
-      %td= @drug.start_marketing_date
-
-    %tr
-      %td.text-right
-        %strong End Marketing Date
-      %td= @drug.end_marketing_date
-
-    %tr
-      %td.text-right
-        %strong Marketing Category Name
-      %td= @drug.marketing_category_name
-
-    %tr
-      %td.text-right
-        %strong Application Number
-      %td= @drug.application_number
-
-    %tr
-      %td.text-right
-        %strong Labeler Name
-      %td= @drug.labeler_name
-
-    %tr
-      %td.text-right
-        %strong Substance Name
-      %td= @drug.substance_name
-
-    %tr
-      %td.text-right
-        %strong Active Numerator Strength
-      %td= @drug.active_numerator_strength
-
-    %tr
-      %td.text-right
-        %strong Active Ingredient Unit
-      %td= @drug.active_ingred_unit
-
-    %tr
-      %td.text-right
-        %strong Pharm Classes
-      %td= @drug.pharm_classes
-
-    %tr
-      %td.text-right
-        %strong DEA Schedule
-      %td= @drug.dea_schedule
+.dashboard-container
+  = render "forms/horizontal/show/generic", title: "Product ID", content: @drug.productid
+  = render "forms/horizontal/show/generic", title: "Product NDC", content: @drug.product_ndc
+  = render "forms/horizontal/show/generic", title: "Product Type Name", content: @drug.product_type_name
+  = render "forms/horizontal/show/generic", title: "Proprietary Name", content: @drug.proprietary_name
+  = render "forms/horizontal/show/generic", title: "Proprietary Name Suffix", content: @drug.proprietary_name_suffix
+  = render "forms/horizontal/show/generic", title: "Non Proprietary Name", content: @drug.non_proprietary_name
+  = render "forms/horizontal/show/generic", title: "Dosage Form Name", content: @drug.dosage_form_name
+  = render "forms/horizontal/show/generic", title: "Route Name", content: @drug.route_name
+  = render "forms/horizontal/show/generic", title: "Start Marketing Date", content: @drug.start_marketing_date
+  = render "forms/horizontal/show/generic", title: "End Marketing Date", content: @drug.end_marketing_date
+  = render "forms/horizontal/show/generic", title: "Marketing Category Name", content: @drug.marketing_category_name
+  = render "forms/horizontal/show/generic", title: "Application Number", content: @drug.application_number
+  = render "forms/horizontal/show/generic", title: "Labeler Name", content: @drug.labeler_name
+  = render "forms/horizontal/show/generic", title: "Substance Name", content: @drug.substance_name
+  = render "forms/horizontal/show/generic", title: "Active Numerator Strength", content: @drug.active_numerator_strength
+  = render "forms/horizontal/show/generic", title: "Active Ingredient Unit", content: @drug.active_ingred_unit
+  = render "forms/horizontal/show/generic", title: "Pharm Classes", content: @drug.pharm_classes
+  = render "forms/horizontal/show/generic", title: "DEA Schedule", content: @drug.dea_schedule
