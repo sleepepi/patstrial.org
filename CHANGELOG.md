@@ -3,6 +3,7 @@
 ### Enhancements
 - **Gem Changes**
   - Updated to ruby 2.5.1
+  - Updated to rails 5.2.0
 
 ## 12.0.0 (March 23, 2018)
 
