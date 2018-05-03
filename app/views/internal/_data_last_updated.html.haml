@@ -1,0 +1,4 @@
+.jumbotron.jumbotron-custom-text
+  - if @recruitment
+    Data last updated
+    = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %-d at %-l:%M %p.")

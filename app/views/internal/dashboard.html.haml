@@ -70,7 +70,7 @@
   - if @recruitment
     .mb-3
       Data last updated
-      = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %d at %I:%M %p.")
+      = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %-d at %-l:%M %p.")
 
   %i.fa.fa-comment
   Please
