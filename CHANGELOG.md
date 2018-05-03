@@ -4,6 +4,7 @@
 - **General Changes**
   - Improved contrast of support email link on landing page
   - Removed leading zeros in "data last updated" string
+  - Improved password autocomplete
 - **Gem Changes**
   - Updated to bootstrap 4.1.1
 

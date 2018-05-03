@@ -3,7 +3,7 @@
   = render "forms/vertical/text_field", form: form, object: resource, key: :first_name, placeholder: rand(2).zero? ? "John" : "Jane"
   = render "forms/vertical/text_field", form: form, object: resource, key: :last_name, placeholder: "Smith"
   = render "forms/vertical/email_field", form: form, object: resource, key: :email, placeholder: "you@example.com"
-  = render "forms/vertical/password_field", form: form, object: resource, key: :password, placeholder: "Create a password"
+  = render "forms/vertical/password_field", form: form, object: resource, key: :password, placeholder: "Create a password", autocomplete: "new-password"
   =# render "forms/vertical/check_box", form: form, object: resource, key: :emails_enabled, key_name: "Email notifications", help_text: "Allow PATS Trial to send you emails?"
 
   .form-group.submit-btn-container
