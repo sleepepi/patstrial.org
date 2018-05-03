@@ -1,4 +1,4 @@
-## 12.1.1
+## 12.1.1 (May 3, 2018)
 
 ### Enhancements
 - **General Changes**
