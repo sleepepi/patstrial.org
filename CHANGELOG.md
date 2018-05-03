@@ -1,6 +1,8 @@
 ## 12.1.1
 
 ### Enhancements
+- **General Changes**
+  - Improved contrast of support email link on landing page
 - **Gem Changes**
   - Updated to bootstrap 4.1.1
 
