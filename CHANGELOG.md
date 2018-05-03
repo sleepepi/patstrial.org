@@ -1,5 +1,9 @@
 ## 12.1.1
 
+### Enhancements
+- **Gem Changes**
+  - Updated to bootstrap 4.1.1
+
 ## 12.1.0 (April 18, 2018)
 
 ### Enhancements
