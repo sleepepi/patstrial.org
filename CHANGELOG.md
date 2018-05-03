@@ -5,6 +5,7 @@
   - Improved contrast of support email link on landing page
   - Removed leading zeros in "data last updated" string
   - Improved password autocomplete
+  - PATS logo no longer wraps on small screens
 - **Gem Changes**
   - Updated to bootstrap 4.1.1
 

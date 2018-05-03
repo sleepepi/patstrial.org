@@ -1,5 +1,7 @@
 .letters {
   @include ignore-selection;
+
+  white-space: nowrap;
 }
 
 .animated-letter {
