@@ -6,6 +6,7 @@
 - **Gem Changes**
   - Update to rails 5.2.1
   - Update to pg 1.1.3
+  - Update to bootstrap 4.1.3
 
 ## 12.1.1 (May 3, 2018)
 
