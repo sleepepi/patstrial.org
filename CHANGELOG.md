@@ -3,6 +3,8 @@
 ### Enhancements
 - **General Changes**
   - Add updated Privacy Policy
+- **Gem Changes**
+  - Update to rails 5.2.1
 
 ## 12.1.1 (May 3, 2018)
 
