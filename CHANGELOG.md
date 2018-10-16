@@ -1,4 +1,4 @@
-## 13.0.0
+## 13.0.0 (October 16, 2018)
 
 ### Enhancements
 - **General Changes**
