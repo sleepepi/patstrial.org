@@ -1,5 +1,9 @@
 ## 13.0.0
 
+### Enhancements
+- **General Changes**
+  - Add updated Privacy Policy
+
 ## 12.1.1 (May 3, 2018)
 
 ### Enhancements

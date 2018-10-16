@@ -15,6 +15,7 @@
     = javascript_include_tag "application", data: { turbolinks_track: "reload" }
   - @theme = "royal"
   %body#top.full-page.theme-bg{ class: @theme ? "theme-#{@theme}-bg" : nil, data: { spy: "scroll", target: ".navbar", offset: "60" } }
+    = render "layouts/features/service_announcement", container: defined?(container) && container.present? ? container : "container"
     = render "layouts/features/flash_bar"
     #top-menu.top-menu= render "layouts/menu", container: yield(:container_class), menu: @theme ? "menu-#{@theme}" : nil, hide_logo: false
     = yield :header

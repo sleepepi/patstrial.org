@@ -19,6 +19,7 @@
       = yield :sidebar
       .col
         .page-box.last-box.p-0
+          = render "layouts/features/service_announcement", container: defined?(container) && container.present? ? container : "container"
           = render "layouts/features/flash_bar"
           #top-menu.top-menu= render "layouts/menu", container: "#{yield(:container_class)} px-lg-0", menu: @theme ? "menu-#{@theme}" : nil, hide_logo: true
           - if content_for?(:header)

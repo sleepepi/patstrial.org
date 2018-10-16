@@ -41,3 +41,11 @@ a.footer-link {
     }
   }
 }
+
+.no-underline {
+  &:focus,
+  &:hover {
+    outline: none;
+    text-decoration: none;
+  }
+}

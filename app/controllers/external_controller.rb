@@ -23,6 +23,10 @@ class ExternalController < ApplicationController
   # def credits
   # end
 
+  # # GET /privacy-policy
+  # def privacy_policy
+  # end
+
   # GET /version
   # GET /version.json
   def version

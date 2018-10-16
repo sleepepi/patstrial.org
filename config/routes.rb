@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     get :participate
     get :sites
     get :credits
+    get :privacy_policy, path: "privacy-policy"
     get :version
   end
 
