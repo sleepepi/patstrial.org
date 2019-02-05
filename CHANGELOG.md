@@ -3,6 +3,7 @@
 ### Enhancements
 - **General Changes**
   - Add settings page to allow users to update their email and password
+  - Members can now upload profile pictures
 - **Gem Changes**
   - Update to ruby 2.6.1
   - Update to rails 6.0.0.beta1

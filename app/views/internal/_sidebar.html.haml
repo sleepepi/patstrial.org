@@ -1,7 +1,6 @@
 - category_scope = Category.current.where(archived: false)
 - category_scope = category_scope.where(unblinded_only: false) unless current_user && current_user.can_view_unblinded_folder?
 
-
 .col-12.col-md-3.col-xl-2.sidebar-wrapper.d-none.d-md-block
   .sidebar
     #sidebar-nav-wrapper.sidebar-nav-wrapper.collapse

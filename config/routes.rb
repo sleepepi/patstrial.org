@@ -57,6 +57,12 @@ Rails.application.routes.draw do
     get :version
   end
 
+  resources :profiles, only: [] do
+    member do
+      get :picture
+    end
+  end
+
   namespace :reports do
     root to: redirect("dashboard")
     get :data_quality, path: "data-quality"

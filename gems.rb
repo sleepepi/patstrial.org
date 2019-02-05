@@ -17,6 +17,7 @@ gem "figaro",                     "~> 1.1.1"
 gem "font-awesome-sass",          "~> 5.6.1"
 gem "haml",                       "~> 5.0.4"
 gem "kaminari",                   "~> 1.1.1"
+gem "mini_magick",                "~> 4.9.2"
 
 # Rails defaults.
 gem "coffee-rails",               "~> 4.2"

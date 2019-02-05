@@ -4,8 +4,8 @@
       = link_to icon("fas", "ellipsis-v"), "#", class: "nav-link", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }
     - else
       = link_to "#", class: "nav-link dropdown-toggle", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } do
-        = current_user ? current_user.first_name : current_viewer.username
-        - if current_user && current_user.staff_id.present?
+        = current_user.first_name
+        - if current_user.staff_id.present?
           %code= current_user.staff_id
         = profile_picture_tag(current_user, size: 20)
 
@@ -15,7 +15,7 @@
         = link_to "Settings", settings_path, class: "dropdown-item"
 
         .dropdown-divider
-        - if current_user&.admin?
+        - if current_user.admin?
           = link_to "Admin", admin_path, class: "dropdown-item"
           .dropdown-divider
         = link_to "Sign out", destroy_user_session_path, class: "dropdown-item"
@@ -32,7 +32,7 @@
   - if current_page?(settings_path)
     %span.sr-only (current)
 
-- if current_user&.admin?
+- if current_user.admin?
   %li.nav-item.d-lg-none{ class: current_page?(admin_path) ? "active" : nil }
     = link_to admin_path, class: "nav-link" do
       Admin

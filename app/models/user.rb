@@ -11,6 +11,9 @@ class User < ApplicationRecord
   # Callbacks
   after_commit :notify_admins_in_background, on: :create
 
+  # Uploaders
+  mount_uploader :profile_picture, ResizableImageUploader
+
   # Concerns
   include Deletable
   include Forkable

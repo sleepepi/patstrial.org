@@ -3,12 +3,13 @@
 # Helps generate URLs for user profile pictures.
 module ProfilesHelper
   def profile_picture_tag(user, size: 128, style: nil)
-    # image_tag(
-    #   profile_picture_member_path(user.username),
-    #   alt: "",
-    #   class: "rounded img-ignore-selection",
-    #   size: "#{size}x#{size}",
-    #   style: style
-    # )
+    return if user.username.blank?
+
+    image_tag(
+      picture_profile_path(user.username, thumb: size <= 64 ? "1" : nil),
+      alt: "",
+      class: "rounded img-ignore-selection",
+      style: "max-height: #{size}px; max-width: #{size}px;"
+    )
   end
 end
