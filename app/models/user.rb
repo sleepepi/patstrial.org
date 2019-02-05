@@ -12,10 +12,19 @@ class User < ApplicationRecord
   after_commit :notify_admins_in_background, on: :create
 
   # Concerns
-  include Deletable, Forkable
+  include Deletable
+  include Forkable
 
   # Validations
   validates :first_name, :last_name, presence: true
+  # validates :username, presence: true
+  validates :username, format: {
+    with: /\A[a-zA-Z0-9]+\Z/i,
+    message: "may only contain letters or digits"
+  },
+                       exclusion: { in: %w(new edit show create update destroy) },
+                       allow_blank: true,
+                       uniqueness: { case_sensitive: false }
 
   # User Methods
   def name
@@ -26,9 +35,13 @@ class User < ApplicationRecord
     "#{first_name_was} #{last_name_was}"
   end
 
+  def full_name
+    name
+  end
+
   def staff_id
     member = Member.current.find_by email: email
-    member.staffid if member
+    member&.staffid
   end
 
   # Overriding Devise built-in active_for_authentication? method
@@ -57,6 +70,7 @@ class User < ApplicationRecord
 
   def notify_admins
     return unless EMAILS_ENABLED
+
     User.current.where(admin: true).find_each do |admin|
       UserMailer.notify_system_admin(admin, self).deliver_now
     end

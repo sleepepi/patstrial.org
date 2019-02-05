@@ -1,8 +1,9 @@
+<% confirmed_at = Time.zone.now %>
+
 admin:
   first_name: System
   last_name: Admin
   email: system_admin@example.com
-  encrypted_password: ""
   admin: true
   approved: true
 
@@ -17,26 +18,31 @@ viewer:
   first_name: Viewer
   last_name: User
   email: viewer@example.com
-  encrypted_password: ""
+  approved: true
+
+regular:
+  username: regular
+  # full_name: Regular User
+  first_name: Regular
+  last_name: User
+  email: regular@example.com
+  # confirmed_at: <%= confirmed_at %>
   approved: true
 
 pending:
   first_name: Pending
   last_name: Approval
   email: pending@example.com
-  encrypted_password: ""
 
 deleted:
   first_name: Deleted
   last_name: User
   email: deleted@example.com
-  encrypted_password: ""
   deleted: true
 
 unblinded:
   first_name: Safety
   last_name: Monitor
   email: unblinded@example.com
-  encrypted_password: ""
   unblinded: true
   approved: true

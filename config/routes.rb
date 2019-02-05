@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     post :bmi_zscore, path: "bmi-zscore", action: :bmi_zscore_calculate, as: :bmi_zscore_calculate
     get :bmi_zscore_result, path: "bmi-zscore/result"
     get "/", to: redirect("calculators/bmi-zscore")
-    # get "/", action: :index
     get "/(*path)", to: redirect("calculators")
   end
 
@@ -73,6 +72,24 @@ Rails.application.routes.draw do
     get :grades
     get :unscheduled_events, path: "unscheduled-events"
     get :data_inconsistencies, path: "data-inconsistencies"
+  end
+
+  get :settings, to: redirect("settings/profile")
+  namespace :settings do
+    get :profile
+    patch :update_profile, path: "profile"
+    patch :complete_profile, path: "complete-profile"
+    get :profile_picture, path: "profile/picture", to: redirect("settings/profile")
+    patch :update_profile_picture, path: "profile/picture"
+
+    get :account
+    patch :update_account, path: "account"
+    get :password, to: redirect("settings/account")
+    patch :update_password, path: "password"
+    delete :destroy, path: "account", as: "delete_account"
+
+    get :email
+    patch :update_email, path: "email"
   end
 
   scope module: :setup do
