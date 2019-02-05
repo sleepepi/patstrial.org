@@ -13,6 +13,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   def screenshot(file_name)
     return unless @screenshots_enabled
+
     @counter += 1
     relative_location = File.join(
       "docs",
