@@ -1,5 +1,9 @@
 ## 14.0.0
 
+### Enhancements
+- **Gem Changes**
+  - Update to ruby 2.6.1
+
 ## 13.0.0 (October 16, 2018)
 
 ### Enhancements
