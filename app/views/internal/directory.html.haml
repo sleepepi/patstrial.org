@@ -6,7 +6,7 @@
 - content_for :header, @title
 
 .jumbotron.jumbotron-custom-text
-  %i.fa.fa-envelope-o
+  = icon("far", "envelope")
   = mail_to ENV["support_email"], "Send us an email", subject: "PATS Directory Information"
   if you are not listed or if your information is incorrect.
 

@@ -7,7 +7,7 @@
   .float-right
     .dropdown
       = link_to "#", class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } do
-        %i.fa.fa-filter
+        = icon("fas", "filter")
         = @subject_status.titleize
       .dropdown-menu.dropdown-menu-right
         - ["screened", "consented", "eligible", "randomized"].each do |label|
@@ -44,17 +44,17 @@
       .jumbotron.text-center
         %h4.text-muted.nowrap Eligibility - Consented
         .report-number
-          %i.fa.fa-chevron-left
+          = icon("fas", "chevron-left")
   .col-md-4
     .jumbotron.text-center
       %h4.text-muted Demographics
       .report-number
-        %i.fa.fa-bar-chart
+        = icon("fas", "chart-bar")
   .col-md-4
     = link_to reports_screened_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Screened
         .report-number
-          %i.fa.fa-chevron-right
+          = icon("fas", "chevron-right")
 
 = render "internal/data_last_updated"

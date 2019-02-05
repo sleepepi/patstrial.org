@@ -25,7 +25,7 @@
       %tr
         %td.d-none.d-lg-table-cell.text-center
           - if document.archived?
-            %i.fa.fa-eye-slash.text-muted
+            = icon("fas", "eye-slash", class: "text-muted")
         %td= link_to document.name, editor_category_document_path(@category, document), class: "#{"text-muted" if document.archived?}"
         %td.d-none.d-lg-table-cell
           %code.nowrap= number_to_human_size document.document.size

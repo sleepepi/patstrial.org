@@ -27,7 +27,7 @@
         - @documents.each do |document|
           %tr
             %td.d-none.d-md-table-cell
-              %i.fa.fa-file
+              = icon("fas", "file")
             %td= link_to document.name, internal_category_document_path(@category.top_level, @category.slug, document.id), data: { turbolinks: false }
             %td.d-none.d-md-table-cell
               %code.nowrap= number_to_human_size document.document.size
@@ -49,13 +49,13 @@
         - @videos.each do |video|
           %tr
             %td.d-none.d-md-table-cell
-              %i.fa.fa-film
+              = icon("fas", "film")
             %td= link_to video.name, internal_category_video_path(@category.top_level, @category.slug, video.id)
             %td.d-none.d-sm-table-cell.nowrap= video.created_at.strftime("%m-%d-%Y")
       .text-center
         = paginate @videos, theme: "bootstrap"
 
 .jumbotron.jumbotron-custom-text
-  %i.fa.fa-comment
+  = icon("far", "comment")
   = mail_to ENV["support_email"], "Email us"
   if a document is outdated or you can"t find a specific document.

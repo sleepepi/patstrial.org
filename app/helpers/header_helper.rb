@@ -3,7 +3,7 @@
 # Helps simplify links across screen sizes for headers.
 module HeaderHelper
   def plus_or(label)
-    label_or(label, generic_tag("fa-plus"))
+    label_or(label, icon("fas", "plus"))
   end
 
   def label_or(label, small_label)
@@ -12,9 +12,5 @@ module HeaderHelper
     end
     span_md_lg = content_tag :span, label, class: %w(d-none d-md-inline-block)
     span_xs_sm + span_md_lg
-  end
-
-  def generic_tag(fa_class)
-    content_tag :i, nil, class: ["fa", fa_class], aria: { hidden: "true" }
   end
 end

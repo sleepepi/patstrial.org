@@ -16,12 +16,12 @@
     .jumbotron.text-center
       %h4.text-muted Eligibility - Screened
       .report-number
-        %i.fa.fa-list-alt
+        = icon("fas", "list-alt")
   .col-md-4
     = link_to reports_eligibility_status_consented_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Eligibility - Consented
         .report-number
-          %i.fa.fa-chevron-right
+          = icon("fas", "chevron-right")
 
 = render "internal/data_last_updated"

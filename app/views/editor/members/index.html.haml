@@ -33,7 +33,7 @@
         %td.d-none.d-lg-table-cell= member.staffid
         %td.d-none.d-lg-table-cell.text-center
           - if member.archived?
-            %i.fa.fa-eye-slash.text-muted
+            = icon("fas", "eye-slash", class: "text-muted")
         %td.text-center
           = render "layouts/edit_delete_dropdown", edit_url: edit_editor_member_path(member), delete_url: editor_member_path(member), delete_confirmation: "Delete #{member.name}?"
 

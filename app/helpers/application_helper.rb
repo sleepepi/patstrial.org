@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def simple_check(checked)
-    content_tag(:i, "", class: "fa #{checked ? "fa-check-square" : "fa-square-o"}")
+    checked ? icon("fas", "check-square") : icon("far", "square")
   end
 
   def public_page?

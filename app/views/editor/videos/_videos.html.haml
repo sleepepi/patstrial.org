@@ -9,7 +9,7 @@
     %tr
       %td.text-center
         - if video.archived?
-          %i.fa.fa-eye-slash.text-muted
+          = icon("fas", "eye-slash", class: "text-muted")
       %td= link_to video.name, editor_category_video_path(@category, video), style: "#{'text-decoration: line-through;' if video.archived?}"
       %td
         = link_to 'Edit', edit_editor_category_video_path(@category, video), class: 'btn btn-light btn-sm'

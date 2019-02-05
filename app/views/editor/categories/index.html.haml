@@ -30,7 +30,7 @@
         %td.d-none.d-lg-table-cell= category.slug
         %td.d-none.d-lg-table-cell
           - if category.archived?
-            %i.fa.fa-eye-slash.text-muted
+            = icon("fas", "eye-slash", class: "text-muted")
         %td.text-center
           = render "layouts/edit_delete_dropdown", edit_url: edit_editor_category_path(category), delete_url: editor_category_path(category), delete_confirmation: "Delete #{category.name}?"
 

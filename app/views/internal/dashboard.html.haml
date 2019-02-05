@@ -72,7 +72,7 @@
       Data last updated
       = Time.parse(@recruitment[:exported_at]).strftime("%a, %b %-d at %-l:%M %p.")
 
-  %i.fa.fa-comment
+  = icon("far", "comment")
   Please
   = mail_to ENV["support_email"], "contact us"
   with any questions you may have.

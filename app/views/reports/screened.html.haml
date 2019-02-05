@@ -17,7 +17,7 @@
       .jumbotron.text-center
         %h4.text-muted Demographics
         .report-number
-          %i.fa.fa-chevron-left
+          = icon("fas", "chevron-left")
   .col-md-4
     .jumbotron.text-center
       %h4.text-muted Screened
@@ -27,6 +27,6 @@
       .jumbotron.text-center
         %h4.text-muted Consented
         .report-number
-          %i.fa.fa-chevron-right
+          = icon("fas", "chevron-right")
 
 = render "internal/data_last_updated"

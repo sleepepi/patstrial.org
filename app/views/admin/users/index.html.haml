@@ -48,17 +48,17 @@
           .dropdown
             = link_to "#", class: "btn btn-light btn-sm dropdown-toggle", data: { toggle: "dropdown" } do
               .d-inline-block.d-sm-none
-                %i.fa.fa-cog
+                = icon("fas", "cog")
               .d-none.d-sm-inline-block Actions
 
             .dropdown-menu.dropdown-menu-right
               = link_to edit_admin_user_path(user), class: "dropdown-item" do
-                %i.fa.fa-pencil
+                = icon("fas", "pencil-alt")
                 Edit
               - unless current_user == user
                 .dropdown-divider
                 = link_to admin_user_path(user), method: :delete, data: { confirm: "Delete #{user.name}?" }, class: "dropdown-item text-danger" do
-                  %i.fa.fa-trash
+                  = icon("fas", "trash-alt")
                   Delete
 
 .center-horizontally.mb-3
