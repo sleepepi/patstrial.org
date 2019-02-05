@@ -28,7 +28,7 @@
           - if video.archived?
             = icon("fas", "eye-slash", class: "text-muted")
         %td= link_to video.name, editor_category_video_path(@category, video), style: "#{"text-decoration: line-through;" if video.archived?}"
-        %td.text-center
+        %td.text-center.nowrap
           = render "layouts/edit_delete_dropdown", edit_url: edit_editor_category_video_path(@category, video), delete_url: editor_category_video_path(@category, video), delete_confirmation: "Delete #{video.name}?"
 
 .center-horizontally

@@ -34,7 +34,7 @@
             = time_ago_in_words viewer.current_sign_in_at
             ago
         %td= number_with_delimiter viewer.sign_in_count
-        %td.text-center
+        %td.text-center.nowrap
           = render "layouts/edit_delete_dropdown", edit_url: edit_admin_viewer_path(viewer), delete_url: admin_viewer_path(viewer), delete_confirmation: "Delete #{viewer.username}?"
 
 .center-horizontally

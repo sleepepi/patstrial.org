@@ -23,7 +23,7 @@
       %tr
         %td= link_to site.name, editor_site_path(site)
         %td= site.address
-        %td.text-center
+        %td.text-center.nowrap
           = render "layouts/edit_delete_dropdown", edit_url: edit_editor_site_path(site), delete_url: editor_site_path(site), delete_confirmation: "Delete #{site.name}?"
 
 .center-horizontally
