@@ -1,0 +1,6 @@
+- if params[:theme].in?(PatsTrial::THEMES.collect(&:second))
+  - @theme = params[:theme]
+  -# elsif current_user&.theme.in?(PatsTrial::THEMES.collect(&:second))
+  -# @theme = current_user&.theme
+- else
+  - @theme = "default"

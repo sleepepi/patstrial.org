@@ -63,12 +63,6 @@
       }
     }
 
-    .brand-background {
-      .section-description {
-        color: map-get($theme, brand-white);
-      }
-    }
-
     .paper-clip {
       background: linear-gradient(map-get($theme, brand-white), map-get($theme, p50));
     }

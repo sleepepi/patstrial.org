@@ -1,4 +1,4 @@
-$royal: (
+$deep-purple: (
   brand-white: #fff,
   brand-black: $p900-grey,
 
@@ -14,20 +14,27 @@ $royal: (
   p900: $p900-deep-purple,
 
   primary: $p500-deep-purple,
-  accent: $a400-deep-purple,
+  accent: $p300-black,
+  success: null, // $p500-green
 
-  menu-bg: $p700-deep-purple,
+  selection-bg: $p200-black, // $p200-COLOR
+  selection-color: #fff,
+
+  menu-bg: null, // $p900-COLOR  TODO: WAS $p600-deep-purple
   menu-color: null, // brand-white
 
-  body-bg: $p50-grey,
-  body-color: $p900-deep-purple,
-  body-focus: $p800-deep-purple,
+  header-bg: $p900-deep-purple,
+  header-border: $p200-black,
 
-  footer-bg: $p700-deep-purple,
-  footer-color: #fff,
+  body-bg: $p900-deep-purple,
+  body-color: $p900-grey,
+  body-focus: $p700-deep-purple,
+
+  footer-bg: $p900-deep-purple, // $p100-grey
+  footer-color: #fff, // $p900-grey
 
   dashboard-bg: #fff,
-  form-title-bg: null, // $p500-COLOR
+  form-title-bg: $p500-deep-purple, // $p500-COLOR
   form-bg: $p50-grey,
 
   input-bg: null, // $white
@@ -35,7 +42,7 @@ $royal: (
 
   box-shadow-color: rgba(0, 0, 0, .15),
   shadow-color: rgba(0, 0, 0, .3),
-  text-muted: $p100-deep-purple,
-  link-color: $p300-deep-purple,
-  jumbotron-bg: $p100-grey,
+
+  blockquote-border: null, // $p200-grey
+  blockquote-color: null, // $p500-grey
 );

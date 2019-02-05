@@ -9,9 +9,7 @@
     position: relative;
 
     a {
-      border-bottom: 1px solid transparent;
-      border-right: 2px solid transparent;
-      border-radius: $border-radius 0 0 $border-radius;
+      border-left: 2px solid transparent;
       display: block;
       overflow: hidden;
       padding: 7px 15px;
@@ -27,106 +25,62 @@
 
     &.sidebar-menu-header {
       font-size: 85%;
+      font-variant: small-caps;
       font-weight: normal;
       letter-spacing: 1px;
       margin-bottom: 5px;
       padding-left: 15px;
       padding-right: 15px;
-      font-variant: small-caps;
+
+      a {
+        border: 0;
+        padding: 0;
+      }
     }
 
     // Add a margin to the top of a menu header if it has other menu items
     // preceding it.
     + .sidebar-menu-header {
-      margin-top: map-get($spacers, 4) // $spacer * 1.5;
+      margin-top: 20px;
     }
-
-    &.sidebar-menu-header-link,
-    &.sidebar-menu-header-link-unstyled {
-      font-size: 85%;
-      font-weight: normal;
-      letter-spacing: 1px;
-      margin-bottom: 5px;
-      font-variant: small-caps;
-    }
-
-    &.sidebar-menu-header-link-unstyled {
-      a,
-      a.active,
-      a:hover,
-      a:focus {
-        border: 0;
-        border-radius: 0;
-        display: block;
-        overflow: hidden;
-        padding: 0 15px;
-        text-overflow: ellipsis;
-      }
-    }
-
   }
 
-  &.sidebar-menu-root {
-    padding-top: 0;
-
-    @include media-breakpoint-up(md) {
-      @supports (position: sticky) {
-        position: sticky;
-        top: 0;
-        z-index: $zindex-sticky;
-      }
-    }
-
-    li {
-      a {
-        border-radius: 0 0 0 $border-radius;
-        font-size: 1.25rem;
-        font-weight: 300;
-        padding-top: 5px;
-        padding-bottom: 5px;
-      }
-    }
+  &.sidebar-menu-shadow {
+    border-radius: 3px;
   }
 }
 
 @each $name, $theme in $themes {
   .theme-#{$name}-bg {
     .sidebar-menu {
-      background-color: map-get($theme, brand-black);
-      color: map-get($theme, brand-white);
+      .badge-sidebar {
+        background-color: map-get($theme, p400);
+        color: map-get($theme, brand-white);
+      }
 
       .active,
       a:hover,
       a:focus {
-        $sidebar-link-active-bg: map-get($theme, p500);
-        @if map-get($theme, sidebar-link-active-bg) {
-          $sidebar-link-active-bg: map-get($theme, sidebar-link-active-bg);
-        }
-        $sidebar-link-active-border: map-get($theme, p200);
-        @if map-get($theme, sidebar-link-active-border) {
-          $sidebar-link-active-border: map-get($theme, sidebar-link-active-border);
-        }
-
-        background-color: $sidebar-link-active-bg;
-        border-bottom: 1px solid map-get($theme, brand-black);
-        border-right: 2px solid $sidebar-link-active-border;
+        background-color: map-get($theme, p400);
+        border-color: map-get($theme, header-border);
         color: map-get($theme, brand-white);
-        text-decoration: none;
+
+        > .badge-sidebar {
+          background-color: map-get($theme, brand-white);
+          color: map-get($theme, p400);
+        }
       }
 
-      li {
-        &.sidebar-menu-header-link a,
-        &.sidebar-menu-header-link-unstyled a {
-          color: map-get($theme, brand-white);
+      .sidebar-menu-header {
+        a {
+          background-color: initial;
+          color: map-get($theme, body-color);
         }
+      }
 
-        &.sidebar-menu-header-link-unstyled a {
-          .active,
-          &:hover,
-          &:focus {
-            background-color: inherit;
-          }
-        }
+      &.sidebar-menu-shadow {
+        background-color: map-get($theme, brand-white);
+        box-shadow: 0 1px 5px map-get($theme, box-shadow-color);
       }
     }
   }

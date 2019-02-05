@@ -1,21 +1,23 @@
-- footer = "footer-default" unless defined?(footer) && footer.present?
-.footer-container{ class: footer }
-  .container
+.footer-container.footer-custom
+  %div{ class: @container.presence || "container" }
     .footer
       .footer-on-top
         = image_tag "pats-girl.png", alt: "", height: "40px", style: "text-align: right;"
         = image_tag "pats-boy.png", alt: "", height: "40px", style: "text-align: right;"
       .nowrap.row
+
         .col
           &copy;
-          = Time.zone.today.year
-          = link_to "PATS Trial", root_path
+          .d-none.d-sm-inline= Time.zone.today.year
+          = link_to ENV["website_name"], root_path
+          \-
+          = link_to "NHLBI Funded", "https://clinicaltrials.gov/show/NCT02562040"
 
         .col.text-center.d-none.d-sm-block
           - if false
-            %small.px-2= link_to "Terms", terms_of_service_path
+            %small.px-2= link_to "Terms", terms_and_conditions_path
           %small.px-2= link_to "Privacy", privacy_policy_path
 
         .col.text-right
-          Funded by
-          = link_to "NHLBI", "https://clinicaltrials.gov/show/NCT02562040"
+          .d-none.d-md-inline powered by
+          = link_to image_tag("logos/slice-v5-transparent-logo.png", size: "96x32", alt: "", style: "margin-top: -10px;"), "https://tryslice.io"

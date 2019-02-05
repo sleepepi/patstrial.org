@@ -1,6 +1,5 @@
 - @title = "#{@committee.name_was} Edit"
 
-- content_for :container_class, "container-fluid"
 - content_for :sidebar, render("setup/sidebar")
 - content_for :header do
   = link_to @committee.name_was, editor_committee_path(@committee)

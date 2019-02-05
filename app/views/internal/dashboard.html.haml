@@ -1,8 +1,5 @@
 - @title = "Dashboard"
 
-- content_for :container_class, "container-fluid"
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header do
   - if @grades
     .float-right
@@ -18,6 +15,8 @@
           = render "reports/grade", percent: grade[:percent]
           = grade[:short_name]
   = @title
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
 
 - if @randomized
   .jumbotron

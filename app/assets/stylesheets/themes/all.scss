@@ -1,8 +1,10 @@
-// Variables
+// Themes
 
 @import 'themes/colors';
-@import 'themes/royal';
+@import 'themes/default';
+@import 'themes/deep_purple';
 
 $themes: (
-  royal: $royal
+  default: $default,
+  deep_purple: $deep-purple
 );

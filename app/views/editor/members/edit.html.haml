@@ -1,6 +1,5 @@
 - @title = "Edit Member"
 
-- content_for :container_class, "container-fluid"
 - content_for :sidebar, render("setup/sidebar")
 - content_for :header do
   = link_to @member.name_was, editor_member_path(@member)

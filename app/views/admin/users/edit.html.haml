@@ -1,6 +1,5 @@
 - @title = "Edit User"
 
-- content_for :container_class, "container-fluid"
 - content_for :sidebar, render("setup/sidebar")
 - content_for :header do
   = link_to @user.name_was, admin_user_path(@user)

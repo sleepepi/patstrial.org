@@ -1,6 +1,5 @@
 - @title = "#{@site.name_was} Edit"
 
-- content_for :container_class, "container-fluid"
 - content_for :sidebar, render("setup/sidebar")
 - content_for :header do
   = link_to @site.name_was, editor_site_path(@site)
