@@ -4,19 +4,12 @@
     %li.nav-item= link_to "Participate", current_page?(root_path) ? "#participate" : root_path(anchor: "participate"), data: { object: "remove-collapse-in scroll-anchor", target: ".navbar-full-menu" }, class: "nav-link"
     %li.nav-item= link_to "Sites", current_page?(root_path) ? "#sites" : root_path(anchor: "sites"), data: { object: "remove-collapse-in scroll-anchor", target: ".navbar-full-menu" }, class: "nav-link"
     %li.nav-item= link_to "Contact", current_page?(root_path) ? "#contact" : root_path(anchor: "contact"), data: { object: "remove-collapse-in scroll-anchor", target: ".navbar-full-menu" }, class: "nav-link"
-  - elsif current_user || current_viewer
+  - elsif current_user
     %li.nav-item{ class: "#{"active" if current_page?(dashboard_path)}" }= link_to "Dashboard", dashboard_path, class: "nav-link"
     %li.nav-item{ class: "#{"active" if current_page?(committees_path)}" }= link_to "Committees", committees_path, class: "nav-link"
     %li.nav-item{ class: "#{"active" if current_page?(directory_path)}" }= link_to "Directory", directory_path, class: "nav-link"
 
 %ul.navbar-nav
-  - if (current_user || current_viewer) && false # TODO: implement search
-    %li.nav-item{ class: current_page?(search_path) ? "active" : nil }
-      = link_to search_path, class: "nav-link" do
-        = icon("fas", "search", class: "d-none d-lg-inline")
-        Search
-      - if current_page?(search_path)
-        %span.sr-only (current)
   - if current_user
     = render "menu/dropdown_account"
   - else

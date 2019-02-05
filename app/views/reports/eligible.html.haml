@@ -1,8 +1,8 @@
 - @title = "Eligible - Reports"
 
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header, "Eligible"
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
 
 - if @eligible
   %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }

@@ -1,5 +1,5 @@
 - content_for :tabs do
-  - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(dashboard data_health report_card randomizations pareto))
+  - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(dashboard)) || params[:controller] == "reports"
   = link_to dashboard_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(dashboard_path)}" } do
     = icon("fas", "home")
     - if current_page
@@ -15,14 +15,13 @@
     - else
       .d-none.d-sm-inline Directory
 
-  - if false
-    - current_page = params[:controller].in?(%w(folders categories documents))
-    = link_to folders_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(folders_path)}" } do
-      = icon("fas", "file-alt")
-      - if current_page
-        Docs
-      - else
-        .d-none.d-sm-inline Docs
+  - current_page = params[:controller].in?(%w(folders categories documents)) || (params[:controller] == "internal" && params[:action] == "category")
+  = link_to documents_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(documents_path)}" } do
+    = icon("fas", "file-alt")
+    - if current_page
+      Docs
+    - else
+      .d-none.d-sm-inline Docs
 
   - current_page = params[:controller].in?(%w(settings))
   = link_to settings_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(settings_path)}" } do
@@ -41,11 +40,10 @@
       - else
         .d-none.d-sm-inline Reports
 
-  - if false
-    - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(search))
-    = link_to search_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(search_path)}" } do
-      = icon("fas", "search")
-      - if current_page
-        Search
-      - else
-        .d-none.d-sm-inline Search
+  - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(search))
+  = link_to search_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(search_path)}" } do
+    = icon("fas", "search")
+    - if current_page
+      Search
+    - else
+      .d-none.d-sm-inline Search

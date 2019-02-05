@@ -1,8 +1,8 @@
 - @title = "Randomized - Reports"
 
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header, "Randomized"
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
 
 - if @randomized
   %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }

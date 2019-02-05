@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 namespace :slugs do
-  desc 'Remove slugs from deleted models.'
+  desc "Remove slugs from deleted models."
   task clear_deleted: :environment do
     puts "Category slugs: #{Category.where(deleted: true).where.not(slug: nil).count}"
     Category.where(deleted: true).update_all(slug: nil)

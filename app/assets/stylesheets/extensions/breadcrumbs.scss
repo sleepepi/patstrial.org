@@ -1,4 +1,6 @@
 .breadcrumb-container {
+  background-color: $p100-grey;
+  border-bottom: 1px solid $p200-grey;
   list-style: none;
   padding: map-get($spacers, 2) 0;
 
@@ -17,6 +19,7 @@
     }
 
     > li+li::before {
+      color: $p300-grey;
       content: '\203A ';
       padding: 0 4px 0 0;
     }
@@ -28,23 +31,6 @@
 }
 
 .breadcrumb-muted {
+  color: $p500-grey;
   font-weight: 300;
-}
-
-@each $name, $theme in $themes {
-  .theme-#{$name}-bg {
-    .breadcrumb-container {
-      background-color: theme-color($theme, breadcrumb-bg, $breadcrumb-bg);
-
-      ol {
-        > li+li::before {
-          color: theme-color($theme, text-muted, $text-muted);
-        }
-      }
-    }
-
-    .breadcrumb-muted {
-      color: theme-color($theme, text-muted, $text-muted);
-    }
-  }
 }

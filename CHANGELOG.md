@@ -5,6 +5,7 @@
   - Navigation has been updated to break down long document menu into tabs
   - Add settings page to allow users to update their email and password
   - Members can now upload profile pictures
+  - Members can now search across documents, users, and sites
 - **Gem Changes**
   - Update to ruby 2.6.1
   - Update to rails 6.0.0.beta1

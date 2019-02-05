@@ -1,8 +1,8 @@
 - @title = "Report Card"
 
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header, @title
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
 
 .jumbotron.jumbotron-custom-text
   Overall data completion by site for randomized subjects.

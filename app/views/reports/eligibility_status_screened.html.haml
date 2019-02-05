@@ -1,8 +1,8 @@
 - @title = "Eligibility Status - Screened - Reports"
 
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header, "Eligiblity Status - Screened"
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
 
 - if @eligibility_status && @eligibility_status[:tables]
   - @eligibility_status[:tables].each do |table|

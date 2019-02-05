@@ -3,7 +3,7 @@
 # Allows viewers, editors, and admins to view internal pages and reports, and
 # download documents.
 class InternalController < ApplicationController
-  before_action :authenticate_viewer_or_current_user!
+  before_action :authenticate_user!
   before_action :set_category, only: [:category, :document, :video]
   before_action :set_document, only: [:document]
   before_action :set_video, only: [:video]
@@ -34,23 +34,26 @@ class InternalController < ApplicationController
 
   def document
     if @document.pdf?
-      send_file File.join(CarrierWave::Uploader::Base.root, @document.document.url),
-                type: "application/pdf", disposition: "inline"
+      send_file_if_present @document.document, type: "application/pdf", disposition: "inline"
     else
-      send_file File.join(CarrierWave::Uploader::Base.root, @document.document.url)
+      send_file_if_present @document.document
     end
   end
 
   # def video
   # end
 
+  # GET /search
+  def search
+    @search_documents = find_search_documents
+    render layout: "layouts/full_page"
+  end
+
   private
 
   def set_category
     category_scope = Category.current.where(archived: false)
-    unless current_user && current_user.can_view_unblinded_folder?
-      category_scope = category_scope.where(unblinded_only: false)
-    end
+    category_scope = category_scope.where(unblinded_only: false) unless current_user.can_view_unblinded_folder?
     @category = category_scope.find_by_param(params[:category])
     empty_response_or_root_path(dashboard_path) unless @category
   end
@@ -63,5 +66,16 @@ class InternalController < ApplicationController
   def set_video
     @video = @category.videos.where(archived: false).find_by(id: params[:video_id])
     empty_response_or_root_path(internal_category_path(@category)) unless @video
+  end
+
+  def find_search_documents
+    params[:search]&.squish!
+    if params[:search].present?
+      PgSearchDocument
+        .search_any_order(params[:search])
+        .page(params[:page]).per(10)
+    else
+      PgSearchDocument.none
+    end
   end
 end

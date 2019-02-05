@@ -1,8 +1,8 @@
 - @title = "Screened - Reports"
 
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header, "Screened"
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
 
 - if @screened && @screened[:total] > 0
   %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }

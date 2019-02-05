@@ -1,8 +1,12 @@
 - @title = @category.name
 
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header, @title
+= render "internal/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "docs", documents_path
+    %li.breadcrumb-muted= @category.name.downcase
+- content_for :sidebar, render("documents/sidebar")
 
 - if @category.description.present?
   .jumbotron.jumbotron-custom-text

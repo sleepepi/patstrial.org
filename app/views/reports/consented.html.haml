@@ -1,8 +1,8 @@
 - @title = "Consented - Reports"
 
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header, @title
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
 
 - if @consented
   %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @consented[:series].to_json, categories: @consented[:categories].to_json, title: @consented[:title], yaxis: @consented[:yaxis], xaxis: @consented[:xaxis] } }

@@ -18,6 +18,9 @@ class User < ApplicationRecord
   include Deletable
   include Forkable
 
+  include PgSearch
+  multisearchable against: [:first_name, :last_name, :email, :username, :keywords, :phone, :role] # TODO: full_name
+
   # Validations
   validates :first_name, :last_name, presence: true
   # validates :username, presence: true

@@ -2,7 +2,7 @@
 
 # Allows viewers, editors, and admins to view committees and committee members
 class CommitteesController < ApplicationController
-  before_action :authenticate_viewer_or_current_user!
+  before_action :authenticate_user!
   before_action :set_committee, only: :show
 
   layout "layouts/full_page_sidebar"

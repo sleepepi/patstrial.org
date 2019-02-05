@@ -6,9 +6,11 @@ class Document < ApplicationRecord
   mount_uploader :document, DocumentUploader
 
   # Concerns
+  include PgSearch
+  multisearchable against: [:document] # TODO: [:filename, :content_type]
 
   # Validations
-  validates :category_id, :document, presence: true
+  validates :document, presence: true
 
   # Relationships
   belongs_to :category
@@ -19,7 +21,7 @@ class Document < ApplicationRecord
   end
 
   def pdf?
-    extension == 'pdf'
+    extension == "pdf"
   end
 
   def extension

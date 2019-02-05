@@ -3,7 +3,11 @@
 # Members can belong to a single site. Sites are displayed publicly on website.
 class Site < ApplicationRecord
   # Concerns
-  include Deletable, Sluggable
+  include Deletable
+  include Sluggable
+
+  include PgSearch
+  multisearchable against: [:name, :slug] # TODO: :center_type
 
   # Validations
   validates :name, :slug, :address, presence: true

@@ -2,7 +2,7 @@
 
 # Displays core reports for the study.
 class ReportsController < ApplicationController
-  before_action :authenticate_viewer_or_current_user!
+  before_action :authenticate_user!
   before_action :load_recruitment
 
   layout "layouts/full_page_sidebar"

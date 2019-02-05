@@ -3,7 +3,8 @@
 # Allows members to be placed into a committee for sorting in the directory
 class Committee < ApplicationRecord
   # Concerns
-  include Deletable, Sluggable
+  include Deletable
+  include Sluggable
 
   # Validations
   validates :name, :slug, :position, presence: true
