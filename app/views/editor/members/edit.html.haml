@@ -1,8 +1,12 @@
-- @title = "Edit Member"
+- @title = "Edit Member - #{@member.name_was}"
 
+- content_for :header, @member.name_was
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "members", editor_members_path
+    %li= link_to @member.name_was.downcase, editor_member_path(@member)
+    %li.breadcrumb-muted edit
 - content_for :sidebar, render("setup/sidebar")
-- content_for :header do
-  = link_to @member.name_was, editor_member_path(@member)
-  Edit
 
 .dashboard-container= render "form", member: @member

@@ -10,6 +10,7 @@
   - Update styling of registration emails
 - **Admin Changes**
   - User index now has search filters
+  - Updated editor and admin setup interface
 - **Gem Changes**
   - Update to ruby 2.6.1
   - Update to rails 6.0.0.beta1

@@ -9,8 +9,8 @@ class Editor::MembersController < Editor::EditorController
 
   # GET /members
   def index
-    @order = scrub_order(Member, params[:order], "members.last_name")
-    @members = Member.current.order(@order).page(params[:page]).per(40)
+    scope = Member.current.search_any_order(params[:search])
+    @members = scope_order(scope).page(params[:page]).per(40)
   end
 
   # # GET /members/1
@@ -63,5 +63,10 @@ class Editor::MembersController < Editor::EditorController
       :first_name, :last_name, :staffid, :email, :phone, :role, :site_id,
       :archived
     )
+  end
+
+  def scope_order(scope)
+    @order = params[:order]
+    scope.order(Arel.sql(Member::ORDERS[params[:order]] || Member::DEFAULT_ORDER))
   end
 end

@@ -1,9 +1,12 @@
 - @title = "New Committee Member"
 
-- content_for :sidebar, render("setup/sidebar")
 - content_for :header, @title
-
-- @breadcrumbs = []
-- @breadcrumbs << [@committee.name, editor_committee_path(@committee)]
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "committees", committees_path
+    %li= link_to @committee.name.downcase, editor_committee_path(@committee)
+    %li.breadcrumb-muted new member
+- content_for :sidebar, render("setup/sidebar")
 
 .dashboard-container= render "form", committee_member: @committee_member

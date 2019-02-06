@@ -7,7 +7,7 @@
     %li= link_to "users", admin_users_path
     %li= link_to @user.username_was.downcase, admin_user_path(@user)
     %li.breadcrumb-muted edit
-- content_for :sidebar, render("admin/sidebar")
+- content_for :sidebar, render("setup/sidebar")
 
 .dashboard-container
   = render "admin/users/form", user: @user

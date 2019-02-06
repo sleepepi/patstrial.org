@@ -1,12 +1,17 @@
-- @title = @category.name
+- @title = "#{@category.name} - Folders"
 
-- content_for :sidebar, render("setup/sidebar")
 - content_for :header do
   .float-right
     = render "layouts/edit_delete_dropdown_lg", edit_url: edit_editor_category_path(@category), delete_url: editor_category_path(@category), delete_confirmation: "Delete \"#{@category.name}\"?"
-  = @title
+  = @category.name
   = link_to "View Documents", editor_category_documents_path(@category), class: "btn btn-sm btn-light"
   = link_to "View Videos", editor_category_videos_path(@category), class: "btn btn-sm btn-light"
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "folders", editor_categories_path
+    %li.breadcrumb-muted= @category.name.downcase
+- content_for :sidebar, render("setup/sidebar")
 
 .dashboard-container
   = render "forms/horizontal/show/text", object: @category, key: :name

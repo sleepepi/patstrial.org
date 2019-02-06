@@ -1,10 +1,13 @@
-- @title = "New Video"
+- @title = "New Video - #{@category.name}"
 
+- content_for :header, "New Video"
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "folders", editor_categories_path
+    %li= link_to @category.name.downcase, editor_category_path(@category)
+    %li= link_to "videos", editor_category_videos_path(@category)
+    %li.breadcrumb-muted new
 - content_for :sidebar, render("setup/sidebar")
-- content_for :header, @title
-
-- @breadcrumbs = []
-- @breadcrumbs << [@category.name, editor_category_path(@category)]
-- @breadcrumbs << ["Videos", editor_category_videos_path(@category)]
 
 .dashboard-container= render "form", video: @video

@@ -2,8 +2,20 @@
 
 # Members are directory listings that can be seen from dashboard.
 class Member < ApplicationRecord
+  # Constants
+  ORDERS = {
+    "name desc" => "members.last_name desc, members.first_name desc",
+    "name" => "members.last_name, members.first_name"
+  }
+  DEFAULT_ORDER = "members.last_name, members.first_name"
+
   # Concerns
   include Deletable
+
+  include Searchable
+  def self.searchable_attributes
+    %w(first_name last_name email role staffid)
+  end
 
   # Validations
   validates :first_name, :last_name, presence: true

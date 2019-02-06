@@ -1,8 +1,12 @@
-- @title = "#{@site.name_was} Edit"
+- @title = "Edit Site - #{@site.name_was}"
 
+- content_for :header, @site.name_was
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "sites", editor_sites_path
+    %li= link_to @site.name_was.downcase, editor_site_path(@site)
+    %li.breadcrumb-muted edit
 - content_for :sidebar, render("setup/sidebar")
-- content_for :header do
-  = link_to @site.name_was, editor_site_path(@site)
-  Edit
 
 .dashboard-container= render "form", site: @site

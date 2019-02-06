@@ -1,7 +1,12 @@
 - @title = "Setup"
 
-- content_for :sidebar, render("setup/sidebar")
+
 - content_for :header, @title
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li.breadcrumb-muted overview
+- content_for :sidebar, render("setup/sidebar")
 
 .card-group.mb-3
   - if current_user.admin?

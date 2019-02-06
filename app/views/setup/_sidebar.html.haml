@@ -6,7 +6,7 @@
           %li.sidebar-menu-header= render "sidebar/toggle", title: "Setup"
           %li= link_to "Overview", setup_path, class: (current_page?(setup_path) ? "active" : nil)
           - if current_user.editor?
-            %li= link_to "Committees", editor_committees_path, class: (params[:controller] == "editor/committees" ? "active" : nil)
+            %li= link_to "Committees", editor_committees_path, class: (params[:controller].in?(%w(editor/committees editor/committee_members)) ? "active" : nil)
             %li= link_to "Folders", editor_categories_path, class: (%w(editor/categories editor/documents editor/videos).include?(params[:controller]) ? "active" : nil)
             %li= link_to "Members", editor_members_path, class: (params[:controller] == "editor/members" ? "active" : nil)
             %li= link_to "Sites", editor_sites_path, class: (params[:controller] == "editor/sites" ? "active" : nil)

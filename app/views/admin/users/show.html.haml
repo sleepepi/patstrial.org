@@ -9,7 +9,7 @@
   %ol
     %li= link_to "users", admin_users_path
     %li.breadcrumb-muted= @user.username.downcase
-- content_for :sidebar, render("admin/sidebar")
+- content_for :sidebar, render("setup/sidebar")
 
 .dashboard-container
   = render "forms/horizontal/show/text", object: @user, key: :full_name

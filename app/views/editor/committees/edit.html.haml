@@ -1,8 +1,12 @@
-- @title = "#{@committee.name_was} Edit"
+- @title = "Edit Committee - #{@committee.name_was}"
 
+- content_for :header, @committee.name_was
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "committees", editor_committees_path
+    %li= link_to @committee.name_was.downcase, editor_committee_path(@committee)
+    %li.breadcrumb-muted edit
 - content_for :sidebar, render("setup/sidebar")
-- content_for :header do
-  = link_to @committee.name_was, editor_committee_path(@committee)
-  Edit
 
 .dashboard-container= render "form", committee: @committee

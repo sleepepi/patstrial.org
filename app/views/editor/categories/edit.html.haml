@@ -1,8 +1,12 @@
-- @title = "#{@category.name_was} Edit"
+- @title = "Edit Folder - #{@category.name_was}"
 
+- content_for :header, @category.name_was
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "folders", editor_categories_path
+    %li= link_to @category.name_was.downcase, editor_category_path(@category)
+    %li.breadcrumb-muted edit
 - content_for :sidebar, render("setup/sidebar")
-- content_for :header do
-  = link_to @category.name_was, editor_category_path(@category)
-  Edit
 
 .dashboard-container= render "form", category: @category
