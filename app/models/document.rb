@@ -42,7 +42,7 @@ class Document < ApplicationRecord
   end
 
   def content_type
-    MIME::Types.type_for(document.path).first.content_type
+    MIME::Types.type_for(document.path).first&.content_type
   end
 
   def self.content_type(filename)
