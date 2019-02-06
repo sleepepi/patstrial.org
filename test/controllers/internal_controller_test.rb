@@ -71,8 +71,7 @@ class InternalControllerTest < ActionDispatch::IntegrationTest
     get internal_category_document_url(categories(:one).top_level, categories(:one).slug, documents(:two))
     assert_not_nil assigns(:category)
     assert_not_nil assigns(:document)
-    assert_kind_of String, response.body
-    assert_equal File.binread(File.join(CarrierWave::Uploader::Base.root, assigns(:document).document.url)), response.body
+    assert_equal File.binread(assigns(:document).document.path), response.body
     assert_response :success
   end
 
@@ -81,8 +80,7 @@ class InternalControllerTest < ActionDispatch::IntegrationTest
     get internal_category_document_url(categories(:one).top_level, categories(:one).slug, documents(:pdf))
     assert_not_nil assigns(:category)
     assert_not_nil assigns(:document)
-    assert_kind_of String, response.body
-    assert_equal File.binread(File.join(CarrierWave::Uploader::Base.root, assigns(:document).document.url)), response.body
+    assert_equal File.binread(assigns(:document).document.path), response.body
     assert_response :success
   end
 
