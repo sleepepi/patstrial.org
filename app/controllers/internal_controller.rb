@@ -4,7 +4,7 @@
 # download documents.
 class InternalController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: [:category, :document, :video]
+  before_action :set_category, only: [:category, :document, :video, :download_all]
   before_action :set_document, only: [:document]
   before_action :set_video, only: [:video]
 
@@ -30,6 +30,12 @@ class InternalController < ApplicationController
     @order = scrub_order(Document, params[:order], "documents.document")
     @documents = @category.documents.where(archived: false).order(@order).page(params[:page]).per(40)
     @videos = @category.videos.where(archived: false).page(params[:page]).per(40)
+  end
+
+  # POST /:top_level/:category/download-all
+  def download_all
+    @category.generate_zipped_folder!
+    send_file_if_present @category.zipped_folder, filename: "#{@category.top_level.downcase.gsub(/\s/, "")}-#{@category.name.downcase.gsub(/\s/, "-")}.zip"
   end
 
   def document

@@ -123,6 +123,8 @@ Rails.application.routes.draw do
     get :leaving
     get :search
     get ":top_level/:category", action: :category, as: :internal_category
+    get ":top_level/:category/download-all", to: redirect("%{top_level}/%{category}")
+    post ":top_level/:category/download-all", action: :download_all, as: :download_all_internal_category
     get ":top_level/:category/documents/:document_id", action: :document, as: :internal_category_document
     get ":top_level/:category/videos/:video_id", action: :video, as: :internal_category_video
   end

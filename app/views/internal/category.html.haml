@@ -1,6 +1,12 @@
 - @title = @category.name
 
-- content_for :header, @title
+- content_for :header do
+  - if @documents.present?
+    .float-right.d-none.d-sm-block
+      = link_to download_all_internal_category_path(@category.top_level, @category), method: :post, class: "btn btn-primary btn-shadow" do
+        = icon("fas", "file-download")
+        Download folder
+  = @title
 = render "internal/tabs"
 - content_for :breadcrumbs do
   %ol

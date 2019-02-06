@@ -8,6 +8,7 @@
   - Members can now search across documents, users, and sites
   - Members now have a username
   - Update styling of registration emails
+  - All files in a folder can be downloaded as a single zip file
 - **Admin Changes**
   - User index now has search filters
   - Updated editor and admin setup interface
