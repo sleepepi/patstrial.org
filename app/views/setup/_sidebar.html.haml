@@ -12,4 +12,3 @@
             %li= link_to "Sites", editor_sites_path, class: (params[:controller] == "editor/sites" ? "active" : nil)
           - if current_user.admin?
             %li= link_to "Users", admin_users_path, class: (params[:controller] == "admin/users" ? "active" : nil)
-            %li= link_to "Viewers", admin_viewers_path, class: (params[:controller] == "admin/viewers" ? "active" : nil)
