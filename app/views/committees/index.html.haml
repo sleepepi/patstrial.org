@@ -1,8 +1,11 @@
 - @title = "Committees"
 
-- content_for :sidebar, render("internal/sidebar")
-
 - content_for :header, @title
+= render "internal/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li.breadcrumb-muted committees
+- content_for :sidebar, render("directory/sidebar")
 
 - Committee.order(:position).current.each do |committee|
   .dashboard-container.dashboard-table

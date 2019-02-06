@@ -7,7 +7,7 @@
     - else
       .d-none.d-sm-inline Dashboard
 
-  - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(directory)) || params[:controller].in?(%w(sites))
+  - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(directory)) || params[:controller].in?(%w(sites committees))
   = link_to directory_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(directory_path)}" } do
     = icon("fas", "users")
     - if current_page
