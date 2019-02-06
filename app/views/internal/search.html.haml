@@ -39,8 +39,7 @@
                       = render "files/icon", document: doc, extra: "fa-3x"
                     .d-inline{ style: "font-weight: 200;" }
                       .text-dark
-                        - if doc.category
-                          = link_to doc.name, internal_category_document_path(doc.category.top_level, doc.category, doc.id), data: { turbolinks: false }
+                        = link_to doc.name, internal_category_document_path(doc.category.top_level, doc.category, doc.id), data: { turbolinks: false }
                       .text-muted
                         = link_to doc.category.name, internal_category_path(doc.category.top_level, doc.category), class: "link-blend-muted"
                         = icon("fas", "caret-right")

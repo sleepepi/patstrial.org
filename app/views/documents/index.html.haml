@@ -6,3 +6,5 @@
   %ol
     %li.breadcrumb-muted docs
 - content_for :sidebar, render("documents/sidebar")
+
+#latest-uploads= render "files/latest_uploads", documents: @documents

@@ -12,6 +12,15 @@ class Document < ApplicationRecord
   # Validations
   validates :document, presence: true
 
+  # Scopes
+  scope :latest_files, -> do
+    joins(:category).merge(Category.current.where(archived: false)).reorder(created_at: :desc).limit(10)
+  end
+
+  scope :latest_files_blinded, -> do
+    joins(:category).merge(Category.current.where(archived: false, unblinded_only: false)).reorder(created_at: :desc).limit(10)
+  end
+
   # Relationships
   belongs_to :category
 
@@ -38,5 +47,9 @@ class Document < ApplicationRecord
 
   def self.content_type(filename)
     MIME::Types.type_for(filename).first.content_type
+  end
+
+  def byte_size
+    File.exist?(document.path) ? File.size(document.path) : 0
   end
 end

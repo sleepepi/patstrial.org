@@ -7,9 +7,10 @@
       .pt-3.py-md-3.mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
         %ul.sidebar-menu.sidebar-menu-shadow
           %li.sidebar-menu-header= render "sidebar/toggle", title: "Docs"
+          %li= link_to "Overview", documents_path, class: current_page?(documents_path) ? "active" : nil
           - category_scope.order(:top_level, :position).group_by(&:top_level).each do |top_level, categories|
             %li.sidebar-menu-header= top_level
             - categories.each do |category|
               - if category.documents.where(archived: false).present? || category.videos.where(archived: false).present?
                 %li
-                  = link_to category.name, internal_category_path(category.top_level, category.slug), class: (current_page?(internal_category_path(category.top_level, category.slug)) ? "active" : nil)
+                  %small= link_to category.name, internal_category_path(category.top_level, category.slug), class: (current_page?(internal_category_path(category.top_level, category.slug)) ? "active" : nil)
