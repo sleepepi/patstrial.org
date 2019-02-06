@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end
 
   include PgSearch
-  multisearchable against: [:full_name, :email, :username, :keywords, :phone, :role]
+  multisearchable against: [:full_name, :email, :username, :keywords, :phone, :role], unless: :deleted?
 
   # Validations
   validates :full_name, presence: true

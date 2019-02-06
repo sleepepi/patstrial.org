@@ -7,7 +7,7 @@ class Site < ApplicationRecord
   include Sluggable
 
   include PgSearch
-  multisearchable against: [:name, :slug] # TODO: :center_type
+  multisearchable against: [:name, :slug], unless: :deleted? # TODO: :center_type
 
   # Validations
   validates :name, :slug, :address, presence: true

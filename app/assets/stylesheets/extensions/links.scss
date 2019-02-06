@@ -1,5 +1,16 @@
 @each $name, $theme in $themes {
   .theme-#{$name}-bg {
+    .link-blend-muted {
+      color: theme-color($theme, text-muted, $text-muted);
+
+      &:hover,
+      &:focus,
+      &:active {
+        // color: $text-muted;
+        // text-decoration: none;
+      }
+    }
+
     @if map-get($theme, link-color) {
       a {
         color: map-get($theme, link-color);

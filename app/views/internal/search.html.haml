@@ -32,21 +32,20 @@
                 - user = document.searchable
                 = render "directory/contact", user: user
               - when "Document"
-                - document = document.searchable
+                - doc = document.searchable
                 .dashboard-container.dashboard-container-border-accent.mb-3
                   .d-flex.align-items-center
-                    .d-inline-block.mr-1.text-primary-muted.pr-3= icon("far", "file-alt", class: "fa-3x")
+                    .d-inline-block.mr-1.text-primary-muted.pr-3
+                      = render "files/icon", document: doc, extra: "fa-3x"
                     .d-inline{ style: "font-weight: 200;" }
                       .text-dark
-                        = link_to document.name, document_download_link(document), data: { turbolinks: false }
+                        - if doc.category
+                          = link_to doc.name, internal_category_document_path(doc.category.top_level, doc.category, doc.id), data: { turbolinks: false }
                       .text-muted
-                        -# TODO:
-                        =# link_to document.folder.category.name, category_folder_path(document.folder.category, document.folder), class: "link-blend-muted"
+                        = link_to doc.category.name, internal_category_path(doc.category.top_level, doc.category), class: "link-blend-muted"
                         = icon("fas", "caret-right")
-                        -# TODO:
-                        =# link_to document.folder.name, category_folder_path(document.folder.category, document.folder), class: "link-blend-muted"
                     - if false
-                      - if document.featured?
+                      - if doc.featured?
                         .ml-auto.d-none.d-sm-block
                           .d-inline-block.text-primary-muted= icon("fas", "star", class: "fa-3x", style: "color: #fbc02d;", data: { toggle: "tooltip", title: "Featured", container: "body", placement: "left" })
               - when "Site"
@@ -56,11 +55,23 @@
                     .d-inline-block.mr-1.text-primary-muted.pr-3= icon("fas", "map-marker-alt", class: "fa-3x")
                     .d-inline{ style: "font-weight: 200;" }
                       .text-dark
-                        = link_to site.name, site
+                        = link_to site.name, directory_path
                       .text-muted
-                        = succeed "," do
-                          = site.center_type_name
-                        = pluralize(site.users.count, "member")
+                        - if false
+                          = succeed "," do
+                            = site.center_type_name
+                        = pluralize(site.members.count, "member")
+              - when "Video"
+                - video = document.searchable
+                .dashboard-container.dashboard-container-border-accent.mb-3
+                  .d-flex.align-items-center
+                    .d-inline-block.mr-1.text-primary-muted.pr-3= icon("fas", "film", class: "fa-3x")
+                    .d-inline{ style: "font-weight: 200;" }
+                      .text-dark
+                        = link_to video.name, internal_category_video_path(video.category.top_level, video.category, video.id)
+                      .text-muted
+                        = link_to video.category.name, internal_category_path(video.category.top_level, video.category), class: "link-blend-muted"
+                        = icon("fas", "caret-right")
               - else
                 - if Rails.env.development?
                   .dashboard-container.dashboard-container-border-accent.mb-3

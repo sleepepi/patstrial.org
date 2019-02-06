@@ -7,7 +7,7 @@ class Document < ApplicationRecord
 
   # Concerns
   include PgSearch
-  multisearchable against: [:document] # TODO: [:filename, :content_type]
+  multisearchable against: [:document], unless: :category_deleted? # TODO: [:filename, :content_type]
 
   # Validations
   validates :document, presence: true
@@ -26,5 +26,17 @@ class Document < ApplicationRecord
 
   def extension
     document.file.extension.to_s.downcase
+  end
+
+  def category_deleted?
+    category.deleted?
+  end
+
+  def content_type
+    MIME::Types.type_for(document.path).first.content_type
+  end
+
+  def self.content_type(filename)
+    MIME::Types.type_for(filename).first.content_type
   end
 end
