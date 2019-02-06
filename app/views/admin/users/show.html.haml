@@ -1,30 +1,28 @@
-- @title = "Users"
+- @title = "#{@user.username} - Users"
 
-- content_for :sidebar, render("setup/sidebar")
 - content_for :header do
   .float-right
-    %span.dropdown
-      = link_to "#", class: "btn btn-light btn-sm dropdown-toggle", data: { toggle: "dropdown" } do
-        .d-inline-block.d-sm-none
-          = icon("fas", "cog")
-        .d-none.d-sm-inline-block Actions
-        %strong.caret
-      .dropdown-menu.dropdown-menu-right
-        = link_to edit_admin_user_path(@user), class: "dropdown-item" do
-          = icon("fas", "pencil-alt")
-          Edit
-        - unless current_user == @user
-          .dropdown-divider
-          = link_to admin_user_path(@user), method: :delete, data: { confirm: "Delete #{@user.name}?" }, class: "dropdown-item text-danger" do
-            = icon("fas", "trash-alt")
-            Delete
-  = @user.name
+    = render "layouts/edit_delete_dropdown", edit_url: edit_admin_user_path(@user), delete_url: admin_user_path(@user), delete_confirmation: "Delete #{@user.full_name}?"
+  = @user.full_name.presence || @user.username
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "users", admin_users_path
+    %li.breadcrumb-muted= @user.username.downcase
+- content_for :sidebar, render("admin/sidebar")
 
 .dashboard-container
-  = render "forms/horizontal/show/text", object: @user, key: :name
+  = render "forms/horizontal/show/text", object: @user, key: :full_name
+  = render "forms/horizontal/show/text", object: @user, key: :username
   = render "forms/horizontal/show/text", object: @user, key: :email
+  = render "forms/horizontal/show/text", object: @user, key: :phone
+  = render "forms/horizontal/show/text", object: @user, key: :role
   = render "forms/horizontal/show/generic", title: "Joined", content: @user.created_at&.strftime("%a, %B %-d, %Y at %-l:%M:%S %p")
+  =# render "forms/horizontal/show/generic", title: "Confirmation sent", content: @user.confirmation_sent_at&.strftime("%a, %B %-d, %Y at %-l:%M:%S %p")
+  =# render "forms/horizontal/show/generic", title: "Email confirmed", content: @user.confirmed_at&.strftime("%a, %B %-d, %Y at %-l:%M:%S %p")
+  =# render "forms/horizontal/show/generic", title: "Approval sent", content: @user.approval_sent_at&.strftime("%a, %B %-d, %Y at %-l:%M:%S %p")
   = render "forms/horizontal/show/generic", title: "Website Access", content: @user.approved? ? "Approved" : "Pending"
   = render "forms/horizontal/show/check_box", object: @user, key: :admin
   = render "forms/horizontal/show/check_box", object: @user, key: :editor
   = render "forms/horizontal/show/check_box", object: @user, key: :unblinded
+  = render "forms/horizontal/show/text", object: @user, key: :keywords if @user.keywords.present?

@@ -8,8 +8,8 @@ class Admin::UsersController < Admin::AdminController
 
   # GET /admin/users
   def index
-    @order = scrub_order(User, params[:order], "users.current_sign_in_at DESC")
-    @users = User.current.order(@order).page(params[:page]).per(40)
+    scope = User.current.search_any_order(params[:search])
+    @users = scope_order(scope).page(params[:page]).per(40)
   end
 
   # # GET /admin/users/1
@@ -18,9 +18,8 @@ class Admin::UsersController < Admin::AdminController
 
   # PATCH /admin/users/1
   def update
-    original_approval = @user.approved
     if @user.update(user_params)
-      UserMailer.status_approved(@user).deliver_now if EMAILS_ENABLED && original_approval.nil? && @user.approved?
+      @user.check_approval_email
       redirect_to admin_user_path(@user), notice: "User was successfully updated."
     else
       render :edit
@@ -42,7 +41,12 @@ class Admin::UsersController < Admin::AdminController
 
   def user_params
     params.require(:user).permit(
-      :first_name, :last_name, :email, :approved, :admin, :editor, :unblinded
+      :full_name, :email, :approved, :admin, :editor, :unblinded
     )
+  end
+
+  def scope_order(scope)
+    @order = params[:order]
+    scope.order(Arel.sql(User::ORDERS[params[:order]] || User::DEFAULT_ORDER))
   end
 end

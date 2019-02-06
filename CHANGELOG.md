@@ -6,6 +6,10 @@
   - Add settings page to allow users to update their email and password
   - Members can now upload profile pictures
   - Members can now search across documents, users, and sites
+  - Members now have a username
+  - Update styling of registration emails
+- **Admin Changes**
+  - User index now has search filters
 - **Gem Changes**
   - Update to ruby 2.6.1
   - Update to rails 6.0.0.beta1

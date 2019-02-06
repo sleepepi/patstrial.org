@@ -1,113 +1,103 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
-# Test to assure admins can edit and update users
-class Admin::UsersControllerTest < ActionController::TestCase
+# Tests to assure admins can approve users and set user roles.
+class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @admin = users(:admin)
     @editor = users(:editor)
-    @user = users(:pending)
+    @user = users(:regular)
   end
 
   def user_params
     {
-      first_name: 'First Name',
-      last_name: 'Last Name',
-      email: 'email@example.com',
-      approved: '1',
-      admin: '1',
-      editor: '1'
+      full_name: "Full Name",
+      username: "username",
+      email: "email@example.com",
+      approved: "1",
+      admin: "1",
+      editor: "1",
+      role: "Role",
+      # key_contact: "0",
+      keywords: "Nickname"
     }
   end
 
-  test 'should get index as admin' do
+  test "should get index as admin" do
     login(@admin)
-    get :index
-    assert_not_nil assigns(:users)
+    get admin_users_url
     assert_response :success
   end
 
-  test 'should not get index as editor' do
+  test "should not get index as editor" do
     login(@editor)
-    get :index
-    assert_nil assigns(:users)
-    assert_redirected_to dashboard_path
+    get admin_users_url
+    assert_redirected_to dashboard_url
   end
 
-  test 'should show user as admin' do
+  test "should show user as admin" do
     login(@admin)
-    get :show, params: { id: @user }
-    assert_not_nil assigns(:user)
+    get admin_user_url(@user)
     assert_response :success
   end
 
-  test 'should not show user as editor' do
+  test "should not show user as editor" do
     login(@editor)
-    get :show, params: { id: @user }
-    assert_nil assigns(:user)
-    assert_redirected_to dashboard_path
+    get admin_user_url(@user)
+    assert_redirected_to dashboard_url
   end
 
-  test 'should get edit as admin' do
+  test "should get edit as admin" do
     login(@admin)
-    get :edit, params: { id: @user }
-    assert_not_nil assigns(:user)
+    get edit_admin_user_url(@user)
     assert_response :success
   end
 
-  test 'should not get edit as editor' do
+  test "should not get edit as editor" do
     login(@editor)
-    get :edit, params: { id: @user }
-    assert_nil assigns(:user)
-    assert_redirected_to dashboard_path
+    get edit_admin_user_url(@user)
+    assert_redirected_to dashboard_url
   end
 
-  test 'should update user as admin' do
+  test "should update user as admin" do
     login(@admin)
-    patch :update, params: { id: @user, user: user_params }
-    assert_not_nil assigns(:user)
-    assert_equal 'First Name', assigns(:user).first_name
-    assert_equal 'Last Name', assigns(:user).last_name
-    assert_equal 'email@example.com', assigns(:user).email
-    assert_equal true, assigns(:user).approved
-    assert_equal true, assigns(:user).admin
-    assert_equal true, assigns(:user).editor
-    assert_redirected_to admin_user_path(assigns(:user))
+    patch admin_user_url(@user), params: { user: user_params }
+    @user.reload
+    assert_equal "Full Name", @user.full_name
+    # assert_equal "email@example.com", @user.unconfirmed_email
+    assert_equal "email@example.com", @user.email
+    assert_equal true, @user.approved
+    assert_equal true, @user.admin
+    assert_equal true, @user.editor
+    assert_redirected_to admin_user_url(@user)
   end
 
-  test 'should not update user with blank fields as admin' do
+  test "should not update user with blank full name as admin" do
     login(@admin)
-    patch :update, params: { id: @user, user: user_params.merge(first_name: '', last_name: '', email: '') }
-    assert_not_nil assigns(:user)
-    assert assigns(:user).errors.size > 0
-    assert_equal ["can't be blank"], assigns(:user).errors[:first_name]
-    assert_equal ["can't be blank"], assigns(:user).errors[:last_name]
-    assert_equal ["can't be blank"], assigns(:user).errors[:email]
-    assert_template :edit
+    patch admin_user_url(@user), params: { user: user_params.merge(full_name: "") }
     assert_response :success
   end
 
-  test 'should not update user as editor' do
+  test "should not update user as editor" do
     login(@editor)
-    patch :update, params: { id: @user, user: user_params }
-    assert_nil assigns(:user)
-    assert_redirected_to dashboard_path
+    patch admin_user_url(@user), params: { user: user_params }
+    assert_redirected_to dashboard_url
   end
 
-  test 'should destroy user as admin' do
+  test "should destroy user as admin" do
     login(@admin)
-    assert_difference('User.current.count', -1) do
-      delete :destroy, params: { id: @user }
+    assert_difference("User.current.count", -1) do
+      delete admin_user_url(@user)
     end
-    assert_redirected_to admin_users_path
+    assert_redirected_to admin_users_url
   end
 
-  test 'should not destroy user as editor' do
+  test "should not destroy user as editor" do
     login(@editor)
-    assert_difference('User.current.count', 0) do
-      delete :destroy, params: { id: @user }
+    assert_difference("User.current.count", 0) do
+      delete admin_user_url(@user)
     end
-    assert_redirected_to dashboard_path
+    assert_redirected_to dashboard_url
   end
 end

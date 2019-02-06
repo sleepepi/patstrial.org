@@ -1,48 +1,46 @@
 <% confirmed_at = Time.zone.now %>
 
 admin:
-  first_name: System
-  last_name: Admin
+  username: admin
+  full_name: System Admin
   email: system_admin@example.com
   admin: true
   approved: true
 
 editor:
-  first_name: Editor
-  last_name: User
+  username: editor
+  full_name: Editor User
   email: editor@example.com
   editor: true
   approved: true
 
 viewer:
-  first_name: Viewer
-  last_name: User
+  username: viewer
+  full_name: Viewer User
   email: viewer@example.com
   approved: true
 
 regular:
   username: regular
-  # full_name: Regular User
-  first_name: Regular
-  last_name: User
+  full_name: Regular User
   email: regular@example.com
   # confirmed_at: <%= confirmed_at %>
   approved: true
 
 pending:
-  first_name: Pending
-  last_name: Approval
+  username: pending
+  full_name: Pending Approval
   email: pending@example.com
 
 deleted:
-  first_name: Deleted
-  last_name: User
+  username: deleted
+  full_name: Deleted User
   email: deleted@example.com
   deleted: true
 
 unblinded:
-  first_name: Safety
-  last_name: Monitor
+  username: unblinded
+  full_name: Safety Monitor
   email: unblinded@example.com
   unblinded: true
   approved: true
