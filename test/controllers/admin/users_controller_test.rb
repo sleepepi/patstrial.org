@@ -67,6 +67,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     patch admin_user_url(@user), params: { user: user_params }
     @user.reload
     assert_equal "Full Name", @user.full_name
+    assert_equal "username", @user.username
     # assert_equal "email@example.com", @user.unconfirmed_email
     assert_equal "email@example.com", @user.email
     assert_equal true, @user.approved
