@@ -35,7 +35,8 @@ class InternalController < ApplicationController
   # POST /:top_level/:category/download-all
   def download_all
     @category.generate_zipped_folder!
-    send_file_if_present @category.zipped_folder, filename: "#{@category.top_level.downcase.gsub(/\s/, "")}-#{@category.name.downcase.gsub(/\s/, "-")}.zip"
+    filename = "patstrial-org-#{@category.top_level.parameterize}-#{@category.name.parameterize}.zip"
+    send_file_if_present @category.zipped_folder, filename: filename
   end
 
   def document
