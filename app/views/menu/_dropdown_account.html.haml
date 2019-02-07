@@ -4,7 +4,7 @@
       = link_to icon("fas", "ellipsis-v"), "#", class: "nav-link", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }
     - else
       = link_to "#", class: "nav-link dropdown-toggle", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } do
-        = current_user.first_name
+        = current_user.username
         - if current_user.staff_id.present?
           %code= current_user.staff_id
         = profile_picture_tag(current_user, size: 20)
