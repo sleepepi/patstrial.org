@@ -1,5 +1,9 @@
 ## 14.0.2
 
+### Enhancements
+- **General Changes**
+  - Improve contrast between sidebar headers and sidebar menu items
+
 ## 14.0.1 (February 7, 2019)
 
 ### Bug Fix
