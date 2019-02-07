@@ -9,6 +9,7 @@
   - Members now have a username
   - Update styling of registration emails
   - All files in a folder can be downloaded as a single zip file
+  - Editors can now upload zip files
 - **Admin Changes**
   - User index now has search filters
   - Updated editor and admin setup interface

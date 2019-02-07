@@ -6,6 +6,6 @@
   - method = :patch
 
 = form_with model: [document.category, document], url: url, method: method, local: true do |form|
-  = render "forms/horizontal/file_field", form: form, object: document, key: :document, help_text: "Allowed file types: doc, docx, pdf, rtf, xls, xlsx, csv"
+  = render "forms/horizontal/file_field", form: form, object: document, key: :document, help_text: "Allowed file types: doc, docx, pdf, rtf, xls, xlsx, csv, zip"
   = render "forms/horizontal/check_box", form: form, object: document, key: :archived
   = render "forms/horizontal/submit", form: form, object: [document.category, document], cancel: url
