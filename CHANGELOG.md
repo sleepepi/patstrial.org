@@ -13,6 +13,8 @@
 - **Admin Changes**
   - User index now has search filters
   - Updated editor and admin setup interface
+- **Site Changes**
+  - Editors can now assign numbers to sites
 - **Gem Changes**
   - Update to ruby 2.6.1
   - Update to rails 6.0.0.beta1

@@ -8,6 +8,7 @@
 = form_with model: site, url: url, method: method, local: true do |form|
   = render "forms/horizontal/text_field", form: form, object: site, key: :name, slug: "slug"
   = render "forms/horizontal/slug_field", form: form, object: site, key: :slug, key_name: "URL Slug"
+  = render "forms/horizontal/number_field", form: form, object: site, key: :number
   = render "forms/horizontal/text_field", form: form, object: site, key: :address, help_text: "Address Format: City, State, Country, Zip Code"
   = render "forms/horizontal/text_field", form: form, object: site, key: :contact, help_text: "Address Format: Contact Name, Phone, Email"
   = render "forms/horizontal/check_box", form: form, object: site, key: :recruiting_center

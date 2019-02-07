@@ -9,8 +9,8 @@ class Editor::SitesController < Editor::EditorController
 
   # GET /sites
   def index
-    @order = scrub_order(Site, params[:order], "sites.name")
-    @sites = Site.current.order(@order).page(params[:page]).per(40)
+    scope = Site.current.search_any_order(params[:search])
+    @sites = scope_order(scope).page(params[:page]).per(40)
   end
 
   # # GET /sites/1
@@ -59,7 +59,14 @@ class Editor::SitesController < Editor::EditorController
   end
 
   def site_params
-    params.require(:site).permit(:name, :slug, :address, :contact,
-                                 :recruiting_center, :coordinating_center)
+    params.require(:site).permit(
+      :name, :slug, :number, :address, :contact, :recruiting_center,
+      :coordinating_center
+    )
+  end
+
+  def scope_order(scope)
+    @order = params[:order]
+    scope.order(Arel.sql(Site::ORDERS[params[:order]] || Site::DEFAULT_ORDER))
   end
 end

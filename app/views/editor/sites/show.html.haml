@@ -13,6 +13,7 @@
 
 .dashboard-container
   = render "forms/horizontal/show/text", object: @site, key: :name
+  = render "forms/horizontal/show/text", object: @site, key: :number
   = render "forms/horizontal/show/text", object: @site, key: :slug, key_name: "URL Slug"
   = render "forms/horizontal/show/text", object: @site, key: :address
   = render "forms/horizontal/show/text", object: @site, key: :contact

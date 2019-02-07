@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-# Viewers, editors, and admins should be able to see read only committee pages
+# Viewers, editors, and admins should be able to see read only committee pages.
 class CommitteesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @viewer = users(:viewer)
