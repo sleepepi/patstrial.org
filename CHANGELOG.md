@@ -1,5 +1,8 @@
 ## 14.0.1
 
+### Bug Fix
+- Fix link to overeall data inconsistency checks filter in Slice
+
 ## 14.0.0 (February 7, 2019)
 
 ### Enhancements
