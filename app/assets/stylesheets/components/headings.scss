@@ -1,3 +1,37 @@
+.page-heading {
+  font-variant: small-caps;
+  font-weight: 300;
+  letter-spacing: .25rem;
+  position: relative;
+  text-shadow: none;
+  word-break: break-word;
+
+  .btn,
+  .dropdown-menu {
+    text-shadow: none;
+  }
+
+  code {
+    text-shadow: none;
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .page-heading {
+      text-shadow: 0 2px 3px map-get($theme, shadow-color);
+
+      > a:not([class]) {
+        color: map-get($theme, p200);
+
+        &:hover {
+          color: darken(map-get($theme, p200), 10%);
+        }
+      }
+    }
+  }
+}
+
 .header-container {
   padding: 20px 0;
   transition: $transition-bg;
@@ -22,8 +56,13 @@
       font-size: 41px;
     }
   }
-}
 
+  .dropdown,
+  .float-right {
+    font-variant: normal;
+    letter-spacing: normal;
+  }
+}
 
 @each $name, $theme in $themes {
   $header-bg: map-get($theme, p800);
@@ -34,33 +73,16 @@
   .theme-#{$name}-bg {
     .header-container {
       background-color: $header-bg;
+      @if map-get($theme, header-border) {
+        border-bottom: 2px solid map-get($theme, header-border);
+      }
       color: map-get($theme, brand-white);
+
+      &.header-container-no-border {
+        border: 0;
+      }
     }
   }
-}
-
-.page-heading {
-  word-break: break-word;
-}
-
-// TODO: Look at page-heading link styling.
-@each $name, $theme in $themes {
-  .theme-#{$name}-bg {
-    .page-heading {
-      // > a {
-      //   color: $breadcrumb-link-color;
-      // }
-
-      // > a:hover {
-      //   color: darken($breadcrumb-link-color, 10%);
-      // }
-    }
-  }
-}
-
-.heading-underline {
-  border-bottom: 1px solid $p200-deep-purple;
-  padding-bottom: 9px;
 }
 
 .header-container-hide {

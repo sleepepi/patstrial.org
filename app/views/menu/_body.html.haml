@@ -4,7 +4,7 @@
     %li.nav-item= link_to "Participate", current_page?(root_path) ? "#participate" : root_path(anchor: "participate"), data: { object: "remove-collapse-in scroll-anchor", target: ".navbar-full-menu" }, class: "nav-link"
     %li.nav-item= link_to "Sites", current_page?(root_path) ? "#sites" : root_path(anchor: "sites"), data: { object: "remove-collapse-in scroll-anchor", target: ".navbar-full-menu" }, class: "nav-link"
     %li.nav-item= link_to "Contact", current_page?(root_path) ? "#contact" : root_path(anchor: "contact"), data: { object: "remove-collapse-in scroll-anchor", target: ".navbar-full-menu" }, class: "nav-link"
-  - elsif current_user
+  - elsif current_user && false
     %li.nav-item{ class: "#{"active" if current_page?(dashboard_path)}" }= link_to "Dashboard", dashboard_path, class: "nav-link"
     %li.nav-item{ class: "#{"active" if current_page?(committees_path)}" }= link_to "Committees", committees_path, class: "nav-link"
     %li.nav-item{ class: "#{"active" if current_page?(directory_path)}" }= link_to "Directory", directory_path, class: "nav-link"

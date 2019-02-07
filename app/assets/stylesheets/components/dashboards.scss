@@ -25,6 +25,7 @@
 
 .dashboard-table {
   padding: map-get($spacers, 1) 0;
+  overflow-x: scroll;
 }
 
 .dashboard-lead {
