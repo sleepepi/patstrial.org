@@ -13,6 +13,6 @@ class Admin::AdminController < ApplicationController
   protected
 
   def check_admin
-    redirect_to dashboard_path, alert: 'Only admins may access that page.' unless current_user.admin?
+    redirect_to dashboard_path, alert: "Only admins may access that page." unless current_user.admin?
   end
 end

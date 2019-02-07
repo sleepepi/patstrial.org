@@ -2,7 +2,7 @@
 
 # Allows admins to approve new users and specify user roles
 class Admin::UsersController < Admin::AdminController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user_or_redirect, only: [:show, :edit, :update, :destroy]
 
   layout "layouts/full_page_sidebar"
 
@@ -34,14 +34,15 @@ class Admin::UsersController < Admin::AdminController
 
   protected
 
-  def set_user
-    @user = User.current.find_by_id params[:id]
+  def find_user_or_redirect
+    @user = User.current.find_by(id: params[:id])
     empty_response_or_root_path(admin_users_path) unless @user
   end
 
   def user_params
     params.require(:user).permit(
-      :full_name, :email, :approved, :admin, :editor, :unblinded
+      :full_name, :email, :approved, :admin, :editor, :unblinded, :role, :phone,
+      :keywords
     )
   end
 
