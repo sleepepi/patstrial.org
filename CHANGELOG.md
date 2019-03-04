@@ -1,5 +1,9 @@
 ## 15.0.0
 
+### Enhancements
+- **Gem Changes**
+  - Update to bootstrap 4.3.1
+
 ## 14.0.2 (February 7, 2019)
 
 ### Enhancements
