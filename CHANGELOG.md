@@ -2,6 +2,7 @@
 
 ### Enhancements
 - **Gem Changes**
+  - Update to rails 6.0.0.beta2
   - Update to bootstrap 4.3.1
   - Update to devise 4.6.1
 
