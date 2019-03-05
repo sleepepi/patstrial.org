@@ -1,4 +1,4 @@
-## 15.0.1
+## 15.0.1 (March 5, 2019)
 
 ### Bug Fix
 - Revert to rails 6.0.0.beta1
