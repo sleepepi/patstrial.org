@@ -49,7 +49,11 @@
   }
 }
 
-
+.table-cell-search-input {
+  display: block;
+  padding: 0 map-get($spacers, 2);
+  width: 100%;
+}
 
 .table .percent {
   border-right: 1px solid $p200-grey;

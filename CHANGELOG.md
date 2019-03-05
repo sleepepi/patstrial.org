@@ -2,6 +2,7 @@
 
 ### Bug Fix
 - Revert to rails 6.0.0.beta1
+- Fix spacing on table search inputs
 
 ## 15.0.0 (March 4, 2019)
 
