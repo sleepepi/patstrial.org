@@ -1,5 +1,9 @@
 ## 16.0.0
 
+### Enhancements
+- **General Changes**
+  - Login now once again redirects to the dashboard
+
 ## 15.0.1 (March 5, 2019)
 
 ### Bug Fix

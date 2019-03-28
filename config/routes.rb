@@ -119,6 +119,7 @@ Rails.application.routes.draw do
   # Needs to stay near bottom in order to handle "top_level" catch all.
   scope module: :internal do
     get :dashboard
+    get :dashboard, as: :user_root
     get :directory
     get :leaving
     get :search
