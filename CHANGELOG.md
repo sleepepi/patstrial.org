@@ -6,6 +6,7 @@
 - **Gem Changes**
   - Update to ruby 2.6.3
   - Update to rails 6.0.0.beta3
+  - Update to devise 4.6.2
 
 ## 15.0.1 (March 5, 2019)
 
