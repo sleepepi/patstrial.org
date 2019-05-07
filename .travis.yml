@@ -6,6 +6,7 @@ gemfile: "gems.rb"
 addons:
   postgresql: "9.6"
 before_script:
+- ruby lib/initial_setup.rb ../.travis_setup
 - cp config/.travis.database.yml config/database.yml
 - psql -c 'create database travis_test;' -U postgres
 - rails db:migrate
