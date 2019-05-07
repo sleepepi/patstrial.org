@@ -3,6 +3,8 @@
 ### Enhancements
 - **General Changes**
   - Login now once again redirects to the dashboard
+- **Gem Changes**
+  - Update to rails 6.0.0.beta3
 
 ## 15.0.1 (March 5, 2019)
 
