@@ -30,5 +30,8 @@ module PatsTrial
 
     # Add Calculators to autoload path
     config.autoload_paths << Rails.root.join("app", "models", "calculators")
+
+    # Add Slice models to autoload_paths.
+    config.autoload_paths << Rails.root.join("app", "models", "slice")
   end
 end

@@ -11,4 +11,6 @@
             %li= link_to "Members", editor_members_path, class: (params[:controller] == "editor/members" ? "active" : nil)
             %li= link_to "Sites", editor_sites_path, class: (params[:controller] == "editor/sites" ? "active" : nil)
           - if current_user.admin?
+            %li= link_to "Projects", projects_path, class: params[:controller] == "projects" ? "active" : nil
+            %li= link_to "Reports", reports_path, class: params[:controller] == "reports" ? "active" : nil
             %li= link_to "Users", admin_users_path, class: (params[:controller] == "admin/users" ? "active" : nil)

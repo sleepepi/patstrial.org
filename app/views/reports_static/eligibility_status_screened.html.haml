@@ -7,7 +7,7 @@
 - if @eligibility_status && @eligibility_status[:tables]
   - @eligibility_status[:tables].each do |table|
     .dashboard-container.dashboard-table
-      = render "reports/draw_advanced_table", table: table
+      = render "reports_static/draw_advanced_table", table: table
 
 .row{ style: "margin-top: 20px" }
   .col-md-4
@@ -17,7 +17,7 @@
       .report-number
         = icon("fas", "list-alt")
   .col-md-4
-    = link_to reports_eligibility_status_consented_path, class: "title-link" do
+    = link_to reports_static_eligibility_status_consented_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Eligibility - Consented
         .report-number

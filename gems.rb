@@ -20,6 +20,7 @@ gem "kaminari",                   "~> 1.1.1"
 gem "mini_magick",                "~> 4.9.2"
 gem "pg_search",                  "~> 2.1.4"
 gem "rubyzip",                    "~> 1.2.2"
+gem "jquery-ui-rails",            "~> 6.0.1"
 
 # Rails defaults.
 gem "coffee-rails",               "~> 4.2"

@@ -64,7 +64,18 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :reports do
+  resources :projects
+
+  resources :reports do
+    member do
+      get :refresh, to: redirect("reports/%{id}")
+      post :refresh
+    end
+  end
+
+  resources :report_rows, only: :new, path: "report-rows"
+
+  namespace :reports_static, path: "report/static" do
     root to: redirect("dashboard")
     get :data_quality, path: "data-quality"
     get :screened
@@ -123,6 +134,7 @@ Rails.application.routes.draw do
     get :directory
     get :leaving
     get :search
+    get :report_table, path: "report/:report_id"
     get ":top_level/:category", action: :category, as: :internal_category
     get ":top_level/:category/download-all", to: redirect("%{top_level}/%{category}")
     post ":top_level/:category/download-all", action: :download_all, as: :download_all_internal_category

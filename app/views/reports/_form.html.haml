@@ -1,0 +1,18 @@
+= form_with model: report, local: true do |form|
+  = render "forms/horizontal/select", form: form, object: report, key: :project_id, options: Project.order(:name).pluck(:name, :id), include_blank: "--Select a project--"
+  = render "forms/horizontal/text_field", form: form, object: report, key: :name, slug: "slug"
+  = render "forms/horizontal/slug_field", form: form, object: report, key: :slug
+  = render "forms/horizontal/text_field", form: form, object: report, key: :header_label
+  = render "forms/horizontal/check_box", form: form, object: report, key: :archived
+
+  .form-group.row
+    %label.col-md-2.col-form-label Rows
+    .col-md-10
+      .form-control-plaintext
+        = link_to "Add Row", new_report_row_path, method: :get, remote: true, class: "btn btn-sm btn-light"
+  %div{ data: { object: "report-rows-sortable" } }
+    = hidden_field_tag "report[report_row_ids][]", nil
+    - report.report_rows.each do |report_row|
+      = render "report_rows/show", report_row: report_row
+
+  = render "forms/horizontal/submit", form: form, object: report

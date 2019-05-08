@@ -1,0 +1,16 @@
+- @table_scroll = true # Note: Does not work if elements have "position: sticky;"
+.dashboard-container.dashboard-table{ style: "overflow-x: scroll;" }
+  %table.table.table-striped.table-borderless.table-hover
+    %thead
+      %tr
+        %th= report.header_label
+        - (report.header || []).each do |hash|
+          %th.text-center= hash["label"]
+    %tbody
+      - report.report_rows.each do |report_row|
+        - result = report_row.result || {}
+        %tr
+          %td= report_row.label
+          %td.text-center= table_number result["count"]
+          - (result["sites"] || []).each do |hash|
+            %td.text-center= table_number hash["count"]

@@ -7,13 +7,18 @@
           %li= link_to "Overview", dashboard_path, class: current_page?(dashboard_path) ? "active" : nil
           %li.sidebar-menu-header Reports
           %li
-            = link_to "Eligibility - Screened", reports_eligibility_status_screened_path, class: (current_page?(reports_eligibility_status_path) || current_page?(reports_eligibility_status_screened_path) ? "active" : nil)
-            = link_to "Eligibility - Consented", reports_eligibility_status_consented_path, class: (current_page?(reports_eligibility_status_consented_path) ? "active" : nil)
-            = link_to "Demographics", reports_demographics_status_path(subjects: "randomized"), class: (params[:controller] == "reports" && params[:action] == "demographics" ? "active" : nil)
-            = link_to "Screened", reports_screened_path, class: (current_page?(reports_screened_path) ? "active" : nil)
-            = link_to "Consented", reports_consented_path, class: (current_page?(reports_consented_path) ? "active" : nil)
-            = link_to "Eligible", reports_eligible_path, class: (current_page?(reports_eligible_path) ? "active" : nil)
-            = link_to "Randomized", reports_randomized_path, class: (current_page?(reports_randomized_path) ? "active" : nil)
-            = link_to "Data Quality", reports_data_quality_path, class: (current_page?(reports_data_quality_path) ? "active" : nil)
-            = link_to "Report Card", reports_grades_path, class: (current_page?(reports_grades_path) ? "active" : nil)
-            = link_to "Data Inconsistencies", reports_data_inconsistencies_path, class: (current_page?(reports_data_inconsistencies_path) ? "active" : nil)
+            = link_to "Eligibility - Screened", reports_static_eligibility_status_screened_path, class: (current_page?(reports_static_eligibility_status_path) || current_page?(reports_static_eligibility_status_screened_path) ? "active" : nil)
+            = link_to "Eligibility - Consented", reports_static_eligibility_status_consented_path, class: (current_page?(reports_static_eligibility_status_consented_path) ? "active" : nil)
+            = link_to "Demographics", reports_static_demographics_status_path(subjects: "randomized"), class: (params[:controller] == "reports" && params[:action] == "demographics" ? "active" : nil)
+            = link_to "Screened", reports_static_screened_path, class: (current_page?(reports_static_screened_path) ? "active" : nil)
+            = link_to "Consented", reports_static_consented_path, class: (current_page?(reports_static_consented_path) ? "active" : nil)
+            = link_to "Eligible", reports_static_eligible_path, class: (current_page?(reports_static_eligible_path) ? "active" : nil)
+            = link_to "Randomized", reports_static_randomized_path, class: (current_page?(reports_static_randomized_path) ? "active" : nil)
+            = link_to "Data Quality", reports_static_data_quality_path, class: (current_page?(reports_static_data_quality_path) ? "active" : nil)
+            = link_to "Report Card", reports_static_grades_path, class: (current_page?(reports_static_grades_path) ? "active" : nil)
+            = link_to "Data Inconsistencies", reports_static_data_inconsistencies_path, class: (current_page?(reports_static_data_inconsistencies_path) ? "active" : nil)
+          - reports = Report.where(archived: false)
+          - if reports.present?
+            %li.sidebar-menu-header Slice
+            - reports.each do |report|
+              %li= link_to report.name, report_table_path(report), class: current_page?(report_table_path(report)) ? "active" : nil

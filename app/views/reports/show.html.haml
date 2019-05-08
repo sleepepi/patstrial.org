@@ -1,0 +1,24 @@
+- @title = "#{@report.name} - Reports"
+- @menu_title = @report.name
+
+- content_for :header do
+  .float-right
+    = render "layouts/edit_delete_dropdown", edit_url: edit_report_path(@report), delete_url: @report, delete_confirmation: "Delete #{@report.name}?"
+  Reports
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "reports", reports_path
+    %li.breadcrumb-muted= @report.name.downcase
+- content_for :sidebar, render("setup/sidebar")
+
+.dashboard-container
+  = render "forms/horizontal/show/generic", title: "Slice project", content: render("reports/project", report: @report)
+  = render "forms/horizontal/show/text", object: @report, key: :name
+  = render "forms/horizontal/show/text", object: @report, key: :header_label
+  = render "forms/horizontal/show/generic", title: "Last updated", content: render("reports/last_updated", report: @report)
+  = render "forms/horizontal/show/check_box", object: @report, key: :archived
+
+  = render "forms/horizontal/show/generic", title: "Rows", content: render("report_rows/index", report: @report)
+
+= render "reports/table", report: @report

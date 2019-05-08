@@ -104,7 +104,7 @@ class InternalControllerTest < ActionDispatch::IntegrationTest
 
   test "should get leaving as viewer" do
     login(@viewer)
-    get leaving_url(slice: "https://tryslice.io")
+    get leaving_url(slice: ENV["slice_url"])
     assert_response :success
   end
 

@@ -18,7 +18,10 @@
 #= require turbolinks
 #= require popper
 #= require bootstrap
-
+#
+# For Sortable
+#= require jquery-ui/widgets/sortable
+#
 # External
 #= require external/highcharts/highcharts.src.js
 #= require external/highcharts/modules/drilldown.js

@@ -8,11 +8,11 @@
   %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @screened[:series].to_json, categories: @screened[:categories].to_json, title: @screened[:title], yaxis: @screened[:yaxis], xaxis: @screened[:xaxis] } }
 - if @screened && @screened[:table] && @screened[:table][:total] > 0
   .dashboard-container.dashboard-table
-    = render "reports/draw_table", table: @screened[:table]
+    = render "reports_static/draw_table", table: @screened[:table]
 
 .row
   .col-md-4
-    = link_to reports_demographics_status_path(subjects: "randomized"), class: "title-link" do
+    = link_to reports_static_demographics_status_path(subjects: "randomized"), class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Demographics
         .report-number
@@ -22,7 +22,7 @@
       %h4.text-muted Screened
       .report-number= number_with_delimiter @screened[:total] rescue 0
   .col-md-4
-    = link_to reports_consented_path, class: "title-link" do
+    = link_to reports_static_consented_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Consented
         .report-number

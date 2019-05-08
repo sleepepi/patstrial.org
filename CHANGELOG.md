@@ -3,6 +3,8 @@
 ### Enhancements
 - **General Changes**
   - Login now once again redirects to the dashboard
+- **Reports Added**
+  - Editors can now define reports to pull data from Slice
 - **Gem Changes**
   - Update to ruby 2.6.3
   - Update to rails 6.0.0.beta3

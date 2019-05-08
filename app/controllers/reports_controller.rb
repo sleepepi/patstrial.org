@@ -1,72 +1,82 @@
 # frozen_string_literal: true
 
-# Displays core reports for the study.
+# Allow admin to configure reports.
 class ReportsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_recruitment
+  before_action :check_admin!
+  before_action :find_report_or_redirect, only: [
+    :show, :edit, :update, :destroy, :refresh
+  ]
 
   layout "layouts/full_page_sidebar"
 
-  def data_quality
-    @data_quality = @recruitment.dig(:data_quality) if @recruitment
+  # POST /reports/:id/refresh
+  def refresh
+    status = @report.refresh!
+    if status.is_a?(Net::HTTPOK)
+      flash[:notice] = "Report was successfully refreshed."
+    else
+      flash[:notice] = "Refresh failed: #{status&.code} #{status&.message}"
+    end
+    redirect_to @report
   end
 
-  def demographics
-    @subject_status = if %w(screened consented eligible randomized).include?(params[:subjects])
-                        params[:subjects]
-                      else
-                        'randomized'
-                      end
-    @demographics = @recruitment.dig(:demographics, @subject_status.to_sym) if @recruitment
-    @demographics = @recruitment[:demographics] if @recruitment && @demographics.nil?
+  # GET /reports
+  def index
+    @reports = Report.all.page(params[:page]).per(20)
   end
 
-  def screened
-    @screened = @recruitment[:screened] if @recruitment
+  # # GET /reports/:id
+  # def show
+  # end
+
+  # GET /reports/new
+  def new
+    @report = Report.new
   end
 
-  def consented
-    @consented = @recruitment[:consented] if @recruitment
+  # # GET /reports/:id/edit
+  # def edit
+  # end
+
+  # POST /reports
+  def create
+    @report = Report.new(report_params)
+    if @report.save
+      redirect_to @report, notice: "Report was successfully created."
+    else
+      render :new
+    end
   end
 
-  def eligible
-    @eligible = @recruitment[:eligible] if @recruitment
+  # PATCH /reports/:id
+  def update
+    if @report.update(report_params)
+      redirect_to @report, notice: "Report was successfully updated."
+    else
+      render :edit
+    end
   end
 
-  def randomized
-    @randomized = @recruitment[:randomized] if @recruitment
-  end
-
-  def eligibility_status
-    redirect_to reports_eligibility_status_screened_path
-  end
-
-  def eligibility_status_screened
-    @eligibility_status = @recruitment[:eligibility_status] if @recruitment
-  end
-
-  def eligibility_status_consented
-    @eligibility_status = @recruitment[:eligibility_status_consented] if @recruitment
-  end
-
-  # GET /reports/grades
-  def grades
-    @grades = @recruitment.dig(:grades) if @recruitment
-  end
-
-  # GET /reports/unscheduled-events
-  def unscheduled_events
-    @unscheduled_events = @recruitment.dig(:unscheduled_events) if @recruitment
-  end
-
-  # GET /reports/data-inconsistencies
-  def data_inconsistencies
-    @data_inconsistencies = @recruitment.dig(:failing_checks) if @recruitment
+  # DELETE /reports/:id
+  def destroy
+    @report.destroy
+    redirect_to reports_path, notice: "Report was successfully deleted."
   end
 
   private
 
-  def load_recruitment
-    @recruitment = read_json(Rails.root.join('carrierwave', 'recruitment.json'))
+  def find_report_or_redirect
+    @report = Report.find_by_param(params[:id])
+    empty_response_or_root_path(reports_path) unless @report
+  end
+
+  def report_params
+    params.require(:report).permit(
+      :project_id, :name, :slug, :header_label, :archived,
+      row_hashes: [
+        :report_row_id, :label, :expression
+      ]
+    )
   end
 end

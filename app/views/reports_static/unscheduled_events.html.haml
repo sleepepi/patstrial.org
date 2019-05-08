@@ -13,16 +13,16 @@
   - if @adverse_events && @adverse_events[:graph]
     %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", chart_type: "column", series: @adverse_events[:graph][:series].to_json, categories: @adverse_events[:graph][:categories].to_json, title: @adverse_events[:graph][:title], yaxis: @adverse_events[:graph][:yaxis], xaxis: @adverse_events[:graph][:xaxis] } }
   - if @adverse_events && @adverse_events[:table] && false
-    = render "reports/draw_table", table: @adverse_events[:table]
+    = render "reports_static/draw_table", table: @adverse_events[:table]
 
   - @protocol_deviations = @unscheduled_events.dig(:protocol_deviations)
   - if @protocol_deviations && @protocol_deviations[:graph]
     %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", chart_type: "column", series: @protocol_deviations[:graph][:series].to_json, categories: @protocol_deviations[:graph][:categories].to_json, title: @protocol_deviations[:graph][:title], yaxis: @protocol_deviations[:graph][:yaxis], xaxis: @protocol_deviations[:graph][:xaxis] } }
   - if @protocol_deviations && @protocol_deviations[:table] && false
-    = render "reports/draw_table", table: @protocol_deviations[:table]
+    = render "reports_static/draw_table", table: @protocol_deviations[:table]
 
   - @unblinding_events = @unscheduled_events.dig(:unblinding_events)
   - if @unblinding_events && @unblinding_events[:graph]
     %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", chart_type: "column", series: @unblinding_events[:graph][:series].to_json, categories: @unblinding_events[:graph][:categories].to_json, title: @unblinding_events[:graph][:title], yaxis: @unblinding_events[:graph][:yaxis], xaxis: @unblinding_events[:graph][:xaxis] } }
   - if @unblinding_events && @unblinding_events[:table] && false
-    = render "reports/draw_table", table: @unblinding_events[:table]
+    = render "reports_static/draw_table", table: @unblinding_events[:table]

@@ -25,7 +25,7 @@
             - @data_inconsistencies[:totals].each do |total|
               - total_count += total[:count]
               %th.nowrap.text-center= link_to total[:count], leaving_path(slice: total[:link])
-            %th.text-center= link_to total_count, leaving_path(slice: "https://tryslice.io/projects/pats/sheets?search=checks:present")
+            %th.text-center= link_to total_count, leaving_path(slice: "#{ENV["slice_url"]}/projects/pats/sheets?search=checks:present")
         %tbody
           - @data_inconsistencies[:checks].reject { |hash| hash[:total][:count].zero? }.each do |row|
             %tr

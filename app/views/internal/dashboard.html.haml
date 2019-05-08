@@ -6,13 +6,13 @@
       - grade = @grades[:overall].first
       %div.text-right{ style: "font-size: 14px;" }
         %div{ style: "margin-bottom: 10px;" }
-          = link_to reports_grades_path do
+          = link_to reports_static_grades_path do
             Report Card
             %span.d-none.d-sm-inline Available
             &raquo;
         %div
           %span.d-none.d-sm-inline Top Site
-          = render "reports/grade", percent: grade[:percent]
+          = render "reports_static/grade", percent: grade[:percent]
           = grade[:short_name]
   = @title
 = render "internal/tabs"
@@ -21,7 +21,7 @@
 - if @randomized
   .jumbotron
     .float-right.text-center
-      = link_to reports_randomized_path, class: "title-link" do
+      = link_to reports_static_randomized_path, class: "title-link" do
         %h4.text-muted Randomized
         %h2= number_with_delimiter @randomized[:total]
     %h4.text-muted Scheme
@@ -36,17 +36,17 @@
 
 .row
   .col-md-4
-    = link_to reports_screened_path, class: "title-link" do
+    = link_to reports_static_screened_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Screened
         .report-number= number_with_delimiter @screened[:total] rescue 0
   .col-md-4
-    = link_to reports_consented_path, class: "title-link" do
+    = link_to reports_static_consented_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Consented
         .report-number= number_with_delimiter @consented[:total] rescue 0
   .col-md-4
-    = link_to reports_eligible_path, class: "title-link" do
+    = link_to reports_static_eligible_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Eligible
         .report-number= number_with_delimiter @eligible[:total] rescue 0
@@ -54,7 +54,7 @@
   .dashboard-container
     %p
       Note:
-      = link_to reports_eligibility_status_path do
+      = link_to reports_static_eligibility_status_path do
         %strong= number_with_delimiter @screened[:in_pipeline]
         of the total
         %strong= number_with_delimiter @screened[:total]
@@ -63,7 +63,7 @@
 
 - if @randomized && @randomized[:table] && @randomized[:table][:total] > 0
   .dashboard-container.dashboard-table
-    = render "reports/draw_table", table: @randomized[:table]
+    = render "reports_static/draw_table", table: @randomized[:table]
 
 .jumbotron.jumbotron-custom-text
   - if @recruitment

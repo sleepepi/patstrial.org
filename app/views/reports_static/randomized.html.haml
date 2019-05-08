@@ -8,11 +8,11 @@
   %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
 - if @randomized && @randomized[:table]
   .dashboard-container.dashboard-table
-    = render "reports/draw_table", table: @randomized[:table]
+    = render "reports_static/draw_table", table: @randomized[:table]
 
 .row
   .col-md-4
-    = link_to reports_eligible_path, class: "title-link" do
+    = link_to reports_static_eligible_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Eligible
         .report-number
@@ -22,7 +22,7 @@
       %h4.text-muted Randomized
       .report-number= number_with_delimiter @randomized[:total] rescue 0
   .col-md-4
-    = link_to reports_data_quality_path, class: "title-link" do
+    = link_to reports_static_data_quality_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Data Quality
         .report-number

@@ -1,8 +1,12 @@
 @extensionsReady = ->
   tooltipsReady()
 
+@objectsReady = ->
+  reportRowsSort()
+
 @turbolinksReady = ->
   extensionsReady()
+  objectsReady()
   fileDragReady()
   chartsReady()
   slidesReady()

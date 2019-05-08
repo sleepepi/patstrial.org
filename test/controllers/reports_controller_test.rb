@@ -2,81 +2,81 @@
 
 require "test_helper"
 
-# Tests to assure that reports load correctly.
+# Allow admins to create and update reports.
 class ReportsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @viewer = users(:viewer)
+    @admin = users(:admin)
+    @project = projects(:one)
+    @report = reports(:one)
   end
 
-  test "should get data quality" do
-    login(@viewer)
-    get reports_data_quality_url
+  def report_params
+    {
+      project_id: projects(:one).id,
+      name: "New Report",
+      slug: "new-report",
+      header_label: "Diagnosis",
+      archived: "0",
+      row_hashes: [
+        {
+          label: "Label 1",
+          expression: "1 = 1"
+        },
+        {
+          label: "Label 2",
+          expression: "1 = 0"
+        }
+      ]
+    }
+  end
+
+  test "should get index" do
+    login(@admin)
+    get reports_url
     assert_response :success
   end
 
-  test "should get screened" do
-    login(@viewer)
-    get reports_screened_url
+  test "should get new" do
+    login(@admin)
+    get new_report_url
     assert_response :success
   end
 
-  test "should get consented" do
-    login(@viewer)
-    get reports_consented_url
+  test "should create report" do
+    login(@admin)
+    assert_difference("ReportRow.count", 2) do
+      assert_difference("Report.count") do
+        post reports_url, params: { report: report_params }
+      end
+    end
+    assert_redirected_to report_url(Report.last)
+  end
+
+  test "should show report" do
+    login(@admin)
+    get report_url(@report)
     assert_response :success
   end
 
-  test "should get eligible" do
-    login(@viewer)
-    get reports_eligible_url
+  test "should get edit" do
+    login(@admin)
+    get edit_report_url(@report)
     assert_response :success
   end
 
-  test "should get randomized" do
-    login(@viewer)
-    get reports_randomized_url
-    assert_response :success
+  test "should update report" do
+    login(@admin)
+    patch report_url(@report), params: { report: report_params }
+    @report.reload
+    assert_redirected_to report_url(@report)
   end
 
-  test "should get demographics" do
-    login(@viewer)
-    get reports_demographics_url
-    assert_response :success
-  end
+  test "should destroy report" do
+    login(@admin)
+    assert_difference("Report.count", -1) do
+      delete report_url(@report)
+    end
 
-  test "should get eligibility status" do
-    login(@viewer)
-    get reports_eligibility_status_url
-    assert_redirected_to reports_eligibility_status_screened_path
-  end
-
-  test "should get eligibility status screened" do
-    login(@viewer)
-    get reports_eligibility_status_screened_url
-    assert_response :success
-  end
-
-  test "should get eligibility status consented" do
-    login(@viewer)
-    get reports_eligibility_status_consented_url
-    assert_response :success
-  end
-
-  test "should get grades" do
-    login(@viewer)
-    get reports_grades_url
-    assert_response :success
-  end
-
-  test "should get unscheduled events" do
-    login(@viewer)
-    get reports_unscheduled_events_url
-    assert_response :success
-  end
-
-  test "should get failing checks" do
-    login(@viewer)
-    get reports_data_inconsistencies_url
-    assert_response :success
+    assert_redirected_to reports_url
   end
 end

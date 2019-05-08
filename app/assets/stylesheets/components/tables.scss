@@ -88,3 +88,8 @@
     }
   }
 }
+
+// Does not work if ".table-sticky" class is used.
+.table-overflow-scroll {
+  overflow-x: scroll;
+}

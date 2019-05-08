@@ -50,4 +50,8 @@ class ApplicationController < ActionController::Base
       head :ok
     end
   end
+
+  def check_admin!
+    redirect_to dashboard_path unless current_user.admin?
+  end
 end
