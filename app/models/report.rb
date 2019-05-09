@@ -17,10 +17,6 @@ class Report < ApplicationRecord
 
   # Methods
 
-  def sites_enabled
-    "1"
-  end
-
   def refresh!
     return unless project
 
@@ -37,7 +33,7 @@ class Report < ApplicationRecord
 
   def subject_counts_api_url
     expressions = report_rows.pluck(:expression).collect { |exp| "expressions[]=#{CGI.escape(exp)}" }.join("&")
-    "#{project.slice_url}/subject-counts.json?#{expressions}&sites=#{sites_enabled}"
+    "#{project.slice_url}/subject-counts.json?#{expressions}&sites=#{sites_enabled ? "1" : "0"}"
   end
 
   def update_header_row(sites)

@@ -2,6 +2,7 @@ one:
   project: one
   name: Report One
   header_label: MyString
+  sites_enabled: true
   last_cached_at: 2019-04-30 16:44:06
   archived: false
 
@@ -9,5 +10,6 @@ two:
   project: one
   name: Report Two
   header_label: MyString
+  sites_enabled: true
   last_cached_at: 2019-04-30 16:44:06
   archived: false
