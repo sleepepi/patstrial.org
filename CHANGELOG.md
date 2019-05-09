@@ -1,4 +1,4 @@
-## 16.0.0
+## 16.0.0 (May 9, 2019)
 
 ### Enhancements
 - **General Changes**
