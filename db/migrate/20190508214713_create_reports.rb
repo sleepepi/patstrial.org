@@ -7,7 +7,7 @@ class CreateReports < ActiveRecord::Migration[6.0]
       t.string :header_label
       t.jsonb :header
       t.datetime :last_cached_at
-      t.boolean :archived
+      t.boolean :archived, null: false, default: false
       t.timestamps
 
       t.index :project_id

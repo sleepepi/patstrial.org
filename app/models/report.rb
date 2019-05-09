@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Displays and caches a single report from Slice.
 class Report < ApplicationRecord
   # Concerns
   include Sluggable

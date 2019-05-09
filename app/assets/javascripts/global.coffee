@@ -2,6 +2,7 @@
   tooltipsReady()
 
 @objectsReady = ->
+  pageReportsSort()
   reportRowsSort()
 
 @turbolinksReady = ->

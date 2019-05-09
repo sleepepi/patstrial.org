@@ -58,6 +58,12 @@ Rails.application.routes.draw do
     get :version
   end
 
+  resources :pages do
+    collection do
+      post :add_report, path: "add-report"
+    end
+  end
+
   resources :profiles, only: [] do
     member do
       get :picture
@@ -134,7 +140,7 @@ Rails.application.routes.draw do
     get :directory
     get :leaving
     get :search
-    get :report_table, path: "report/:report_id"
+    get :report_page, path: "report/:page_id"
     get ":top_level/:category", action: :category, as: :internal_category
     get ":top_level/:category/download-all", to: redirect("%{top_level}/%{category}")
     post ":top_level/:category/download-all", action: :download_all, as: :download_all_internal_category

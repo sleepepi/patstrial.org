@@ -6,11 +6,11 @@
           %li.sidebar-menu-header= render "sidebar/toggle", title: "Dashboard"
           %li= link_to "Overview", dashboard_path, class: current_page?(dashboard_path) ? "active" : nil
 
-          - reports = Report.where(archived: false)
-          - if reports.present?
+          - pages = Page.where(archived: false)
+          - if pages.present?
             %li.sidebar-menu-header Slice
-            - reports.each do |report|
-              %li= link_to report.name, report_table_path(report), class: current_page?(report_table_path(report)) ? "active" : nil
+            - pages.each do |page|
+              %li= link_to page.name, report_page_path(page), class: current_page?(report_page_path(page)) ? "active" : nil
 
           %li.sidebar-menu-header Reports
           %li

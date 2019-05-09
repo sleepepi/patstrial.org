@@ -1,0 +1,33 @@
+- @title = "Pages"
+
+- content_for :header do
+  .float-right
+    = link_to "New page", new_page_path, class: "btn btn-dark btn-shadow"
+  = @title
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  = render "layouts/per_page_breadcrumbs", per_page: 20, object_count: @pages.total_count
+  %ol
+    %li.breadcrumb-muted pages
+- content_for :sidebar, render("setup/sidebar")
+
+- if @pages.present?
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col
+      %col{ width: "1px" }
+      %thead
+        %tr
+          %th Name
+          %th.text-center Actions
+
+      %tbody
+        - @pages.each do |page|
+          %tr
+            %td= link_to page.name, page
+            %td.text-center= render "layouts/edit_delete_dropdown", edit_url: edit_page_path(page), delete_url: page, delete_confirmation: "Delete #{page.name}?"
+- else
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No pages found.
+    = link_to "Start over", pages_path if params[:search].present?

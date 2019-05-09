@@ -56,10 +56,10 @@ class InternalController < ApplicationController
     render layout: "layouts/full_page"
   end
 
-  # GET /report/:report_id
-  def report_table
-    @report = Report.where(archived: false).find_by_param(params[:report_id])
-    redirect_to root_path unless @report
+  # GET /report/:page_id
+  def report_page
+    @page = Page.where(archived: false).find_by_param(params[:page_id])
+    redirect_to root_path unless @page
   end
 
   private
