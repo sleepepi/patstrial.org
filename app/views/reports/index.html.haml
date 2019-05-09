@@ -29,7 +29,7 @@
         - @reports.each do |report|
           %tr
             %td= link_to report.name, report
-            %td= report.last_cached_at
+            %td= report.last_cached_at&.strftime("%b %-d, %Y at %-I:%M %p")
             %td.text-center= simple_check report.archived
             %td.text-center= render "layouts/edit_delete_dropdown", edit_url: edit_report_path(report), delete_url: report, delete_confirmation: "Delete #{report.name}?"
 - else
