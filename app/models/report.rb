@@ -67,13 +67,15 @@ class Report < ApplicationRecord
         report_row.update(
           position: index,
           label: row[:label],
-          expression: row[:expression]
+          expression: row[:expression],
+          muted: (row[:muted] == "1")
         )
       else
         report_rows.create(
           position: index,
           label: row[:label],
-          expression: row[:expression]
+          expression: row[:expression],
+          muted: (row[:muted] == "1")
         )
       end
     end

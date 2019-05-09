@@ -17,3 +17,11 @@
       = label_tag :label, "Expression", class: "col-md-2 col-form-label"
       .col-md-10
         = text_field_tag "report[row_hashes][][expression]", report_row.expression, class: "form-control", placeholder: "Enter Slice expression", autocomplete: "off", autocorrect: "off", autocapitalize: "none", spellcheck: "false"
+
+    .form-group.row
+      .col-md-2.col-form-label
+      .col-md-10
+        .custom-control.custom-checkbox
+          - id = "muted-checkbox-#{SecureRandom.hex(8)}"
+          = check_box_tag "report[row_hashes][][muted]", "1", report_row.muted, class: "custom-control-input", id: id
+          = label_tag id, "Muted", class: "custom-control-label"

@@ -13,6 +13,6 @@
   %div{ data: { object: "report-rows-sortable" } }
     = hidden_field_tag "report[report_row_ids][]", nil
     - report.report_rows.each do |report_row|
-      = render "report_rows/show", report_row: report_row
+      = render "report_rows/form", report_row: report_row
 
   = render "forms/horizontal/submit", form: form, object: report

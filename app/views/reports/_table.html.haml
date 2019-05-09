@@ -9,7 +9,7 @@
     %tbody
       - report.report_rows.each do |report_row|
         - result = report_row.result || {}
-        %tr
+        %tr{ class: report_row.muted? ? "text-muted" : nil }
           %td= report_row.label
           %td.text-center= table_number result["count"]
           - (result["sites"] || []).each do |hash|

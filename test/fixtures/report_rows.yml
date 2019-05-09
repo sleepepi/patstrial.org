@@ -6,6 +6,7 @@ one:
   expression: MyText
   position: 0
   # result:
+  muted: false
 
 two:
   report: one
@@ -13,3 +14,4 @@ two:
   expression: MyText
   position: 1
   # result:
+  muted: false
