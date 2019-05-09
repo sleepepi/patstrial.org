@@ -6,7 +6,7 @@
           %li.sidebar-menu-header= render "sidebar/toggle", title: "Dashboard"
           %li= link_to "Overview", dashboard_path, class: current_page?(dashboard_path) ? "active" : nil
 
-          - pages = Page.where(archived: false)
+          - pages = Page.where(archived: false).order(Arel.sql("position nulls last"))
           - if pages.present?
             %li.sidebar-menu-header Slice
             - pages.each do |page|
