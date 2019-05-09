@@ -2,9 +2,6 @@
 
 # Displays and caches a single report from Slice.
 class Report < ApplicationRecord
-  # Concerns
-  include Sluggable
-
   # Accessors
   attr_accessor :row_hashes
 
@@ -13,10 +10,6 @@ class Report < ApplicationRecord
 
   # Validations
   validates :name, presence: true
-  validates :slug, format: { with: /\A[a-z][a-z0-9\-]*\Z/ },
-                   exclusion: { in: %w(new edit create update destroy) },
-                   uniqueness: { case_sensitive: false },
-                   allow_nil: true
 
   # Relationships
   belongs_to :project

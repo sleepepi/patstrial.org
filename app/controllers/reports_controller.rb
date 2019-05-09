@@ -67,13 +67,13 @@ class ReportsController < ApplicationController
   private
 
   def find_report_or_redirect
-    @report = Report.find_by_param(params[:id])
+    @report = Report.find_by(id: params[:id])
     empty_response_or_root_path(reports_path) unless @report
   end
 
   def report_params
     params.require(:report).permit(
-      :project_id, :name, :slug, :header_label, :archived,
+      :project_id, :name, :header_label, :archived,
       row_hashes: [
         :report_row_id, :label, :expression
       ]
