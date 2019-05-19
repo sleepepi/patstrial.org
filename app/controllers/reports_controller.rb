@@ -73,7 +73,8 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(
-      :project_id, :name, :header_label, :sites_enabled, :archived,
+      :project_id, :report_type, :name,
+      :header_label, :sites_enabled, :archived,
       row_hashes: [
         :report_row_id, :label, :expression, :muted
       ]

@@ -15,11 +15,16 @@
 .dashboard-container
   = render "forms/horizontal/show/generic", title: "Slice project", content: render("reports/project", report: @report)
   = render "forms/horizontal/show/text", object: @report, key: :name
-  = render "forms/horizontal/show/text", object: @report, key: :header_label
   = render "forms/horizontal/show/generic", title: "Last updated", content: render("reports/last_updated", report: @report)
   = render "forms/horizontal/show/check_box", object: @report, key: :sites_enabled
   = render "forms/horizontal/show/check_box", object: @report, key: :archived
 
-  = render "forms/horizontal/show/generic", title: "Rows", content: render("report_rows/index", report: @report)
+  = render "forms/horizontal/show/text", object: @report, key: :report_type_name, key_name: "Report type"
+  - if @report.report_type == "expressions_by_site"
+    = render "forms/horizontal/show/text", object: @report, key: :header_label
+    = render "forms/horizontal/show/generic", title: "Rows", content: render("report_rows/index", report: @report)
+
+- if @report.report_type == "randomizations_by_site"
+  = render "reports/chart", report: @report
 
 = render "reports/table", report: @report

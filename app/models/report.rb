@@ -2,6 +2,33 @@
 
 # Displays and caches a single report from Slice.
 class Report < ApplicationRecord
+  # Constants
+  REPORT_TYPES = [
+    ["Randomizations by Site", "randomizations_by_site"],
+    ["Expressions by Site", "expressions_by_site"]
+  ]
+
+  EXPECTED_RANDOMIZATIONS = [
+    0,
+    0,
+    2.6666, 5.33333, 8,
+    13.33333, 18.66666, 24,
+    31.333333, 38.666666, 46,
+    56, 66, 76,
+    86.66666666, 97.333333, 108,
+    118.6666667, 129.3333333, 140,
+    150.6666667, 161.3333333, 172,
+    182.6666667, 193.3333333, 204,
+    214.6666667, 225.3333333, 236,
+    246.6666667, 257.3333333, 268,
+    278.6666667, 289.3333333, 300,
+    310.6666667, 321.3333333, 332,
+    342.6666667, 353.3333333, 364,
+    374.6666667, 385.3333333, 396,
+    406.6666667, 417.3333333, 428,
+    438.6666667, 449.3333333, 460
+  ]
+
   # Accessors
   attr_accessor :row_hashes
 
@@ -9,7 +36,7 @@ class Report < ApplicationRecord
   after_save :set_report_rows
 
   # Validations
-  validates :name, presence: true
+  validates :name, :report_type, presence: true
 
   # Relationships
   belongs_to :project
@@ -20,16 +47,38 @@ class Report < ApplicationRecord
   def refresh!
     return unless project
 
-    (json, status) = Slice::SendJson.get(subject_counts_api_url)
+    (json, status) = Slice::SendJson.get(report_api_url)
     return status unless status.is_a?(Net::HTTPOK)
 
     update_header_row(json["sites"] || [])
-    update_report_row_results(json["rows"] || [])
+    case report_type
+    when "randomizations_by_site"
+      create_report_row_results(json["rows"] || [])
+    when "expressions_by_site"
+      update_report_row_results(json["rows"] || [])
+    end
     update last_cached_at: Time.zone.now
     status
   end
 
+  def report_type_name
+    REPORT_TYPES.find { |_name, value| value == report_type }&.first
+  end
+
   private
+
+  def report_api_url
+    case report_type
+    when "randomizations_by_site"
+      randomizations_by_site_api_url
+    when "expressions_by_site"
+      subject_counts_api_url
+    end
+  end
+
+  def randomizations_by_site_api_url
+    "#{project.slice_url}/randomizations.json?sites=#{sites_enabled ? "1" : "0"}"
+  end
 
   def subject_counts_api_url
     expressions = report_rows.pluck(:expression).collect { |exp| "expressions[]=#{CGI.escape(exp)}" }.join("&")
@@ -45,6 +94,15 @@ class Report < ApplicationRecord
       }
     end
     update header: header
+  end
+
+  def create_report_row_results(results)
+    report_rows.where(position: nil).delete_all
+    results.each_with_index do |result, index|
+      report_row = report_rows.where(position: index).first_or_create(label: "Temp")
+      report_row.update(label: result["label"], result: result)
+    end
+    report_rows.where("position >= ?", results.size).delete_all
   end
 
   def update_report_row_results(results)

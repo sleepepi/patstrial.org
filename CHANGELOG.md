@@ -1,5 +1,12 @@
 ## 17.0.0
 
+### Enhancements
+- **Report Changes**
+  - Add support for randomizations report table and chart
+  - Reports can now specify a report type, including:
+    - "Expressions by Site"
+    - "Randomizations by Site"
+
 ## 16.0.0 (May 9, 2019)
 
 ### Enhancements
