@@ -29,6 +29,22 @@ class Report < ApplicationRecord
     438.6666667, 449.3333333, 460
   ]
 
+  ORDERS = {
+    "archived" => "reports.archived desc",
+    "active" => "reports.archived",
+    "cached" => "reports.last_cached_at",
+    "cached desc" => "reports.last_cached_at desc",
+    "name" => "reports.name",
+    "name desc" => "reports.name desc"
+  }
+  DEFAULT_ORDER = "reports.archived, reports.name"
+
+  # Concerns
+  include Searchable
+  def self.searchable_attributes
+    %w(name)
+  end
+
   # Accessors
   attr_accessor :row_hashes
 
