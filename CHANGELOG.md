@@ -16,6 +16,9 @@
   - Update to pg_search 2.2.0
   - Update to rubyzip 1.2.3
 
+### Tests
+- Add projects system tests
+
 ## 16.0.0 (May 9, 2019)
 
 ### Enhancements
