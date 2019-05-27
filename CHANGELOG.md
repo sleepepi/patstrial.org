@@ -1,6 +1,8 @@
 ## 17.0.0
 
 ### Enhancements
+- **General Changes**
+  - The dashboard now relies on the new randomizations report
 - **Report Changes**
   - Add support for randomizations report table and chart
   - Reports can now specify a report type, including:

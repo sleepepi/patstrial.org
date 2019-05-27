@@ -1,4 +1,5 @@
 - @table_scroll = true # Note: Does not work if elements have "position: sticky;"
+- counts = []
 .dashboard-container.dashboard-table{ style: "overflow-x: scroll;" }
   %table.table.table-striped.table-borderless.table-hover
     %thead
@@ -11,6 +12,18 @@
         - result = report_row.result || {}
         %tr{ class: report_row.muted? ? "text-muted" : nil }
           %td= report_row.label
-          %td.text-center= table_number result["count"]
-          - (result["sites"] || []).each do |hash|
-            %td.text-center= table_number hash["count"]
+          %td.text-center
+            - counts[0] ||= 0
+            - counts[0] += result["count"].to_i
+            = table_number result["count"]
+          - (result["sites"] || []).each_with_index do |hash, index|
+            %td.text-center
+              - counts[index + 1] ||= 0
+              - counts[index + 1] += hash["count"].to_i
+              = table_number hash["count"]
+    - if report.report_type == "randomizations_by_site"
+      %tfoot
+        %tr
+          %th Total
+          - counts.each do |count|
+            %th.text-center= table_number count
