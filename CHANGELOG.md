@@ -6,6 +6,8 @@
   - Reports can now specify a report type, including:
     - "Expressions by Site"
     - "Randomizations by Site"
+- **Gem Changes**
+  - Update to haml 5.1.1
 
 ## 16.0.0 (May 9, 2019)
 
