@@ -8,6 +8,7 @@
   - Reports can now specify a report type, including:
     - "Expressions by Site"
     - "Randomizations by Site"
+  - Add rake task to refresh reports on a scheduled basis
 - **Gem Changes**
   - Update to haml 5.1.1
   - Update to jbuilder 2.9

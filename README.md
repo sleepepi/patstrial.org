@@ -51,6 +51,15 @@ Open a browser and go to: [http://localhost](http://localhost)
 
 All done!
 
+## Setting up cron job tasks
+
+Edit cron jobs `sudo crontab -e` to run the task `lib/tasks/reports.rake`
+
+```
+SHELL=/bin/bash
+*/5 * * * * source /etc/profile.d/rvm.sh && cd /var/www/patstrial.org && rvm 2.6.3 && rails reports:refresh RAILS_ENV=production
+```
+
 ## Contributing to PATS Trial website
 
 - Check out the latest master to make sure the feature hasn't been implemented
