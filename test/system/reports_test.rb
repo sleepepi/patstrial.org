@@ -1,51 +1,60 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
+# Test for admins to view reports.
 class ReportsTest < ApplicationSystemTestCase
   setup do
     @report = reports(:one)
+    @admin = users(:admin)
   end
 
-  test "visiting the index" do
+  test "visit the index" do
+    visit_login(@admin)
     visit reports_url
     assert_selector "h1", text: "Reports"
+    screenshot("visit-reports-index")
   end
 
-  test "creating a Report" do
+  test "create a report" do
+    visit_login(@admin)
     visit reports_url
-    click_on "New Report"
-
-    check "Archived" if @report.archived
-    fill_in "Header label", with: @report.header_label
-    fill_in "Last cached at", with: @report.last_cached_at
-    fill_in "Name", with: @report.name
-    fill_in "Slug", with: @report.slug
+    screenshot("create-a-report")
+    click_on "New report"
+    select projects(:one).name, from: "report[project_id]"
+    select "Expressions by Site", from: "report[report_type]"
+    fill_in "report[name]", with: "Report One"
+    screenshot("create-a-report")
     click_on "Create Report"
-
     assert_text "Report was successfully created"
-    click_on "Back"
+    assert_selector "h1", text: "Reports"
+    screenshot("create-a-report")
   end
 
-  test "updating a Report" do
+  test "update a report" do
+    visit_login(@admin)
     visit reports_url
-    click_on "Edit", match: :first
-
-    check "Archived" if @report.archived
-    fill_in "Header label", with: @report.header_label
-    fill_in "Last cached at", with: @report.last_cached_at
-    fill_in "Name", with: @report.name
-    fill_in "Slug", with: @report.slug
+    screenshot("update-a-report")
+    click_on "Actions", match: :first
+    screenshot("update-a-report")
+    click_on "Edit"
+    fill_in "report[name]", with: "Updated Name"
+    screenshot("update-a-report")
     click_on "Update Report"
-
     assert_text "Report was successfully updated"
-    click_on "Back"
+    assert_selector "h1", text: "Reports"
+    screenshot("update-a-report")
   end
 
-  test "destroying a Report" do
+  test "destroy a report" do
+    visit_login(@admin)
     visit reports_url
+    screenshot("destroy-a-report")
+    click_on "Actions", match: :first
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "Delete"
     end
-
-    assert_text "Report was successfully destroyed"
+    assert_text "Report was successfully deleted"
+    screenshot("destroy-a-report")
   end
 end

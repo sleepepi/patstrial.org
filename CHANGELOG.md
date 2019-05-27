@@ -17,7 +17,7 @@
   - Update to rubyzip 1.2.3
 
 ### Tests
-- Add projects system tests
+- Add projects, pages, and reports system tests
 
 ## 16.0.0 (May 9, 2019)
 

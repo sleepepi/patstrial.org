@@ -1,49 +1,59 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
+# Test for admins to view pages.
 class PagesTest < ApplicationSystemTestCase
   setup do
     @page = pages(:one)
+    @admin = users(:admin)
   end
 
-  test "visiting the index" do
+  test "visit the index" do
+    visit_login(@admin)
     visit pages_url
     assert_selector "h1", text: "Pages"
+    screenshot("visit-pages-index")
   end
 
-  test "creating a Page" do
+  test "create a page" do
+    visit_login(@admin)
     visit pages_url
-    click_on "New Page"
-
-    check "Archived" if @page.archived
-    fill_in "Name", with: @page.name
-    fill_in "Position", with: @page.position
-    fill_in "Slug", with: @page.slug
+    screenshot("create-a-page")
+    click_on "New page"
+    fill_in "page[name]", with: "Page One"
+    fill_in "page[position]", with: "1"
+    screenshot("create-a-page")
     click_on "Create Page"
-
     assert_text "Page was successfully created"
-    click_on "Back"
+    assert_selector "h1", text: "Pages"
+    screenshot("create-a-page")
   end
 
-  test "updating a Page" do
+  test "update a page" do
+    visit_login(@admin)
     visit pages_url
-    click_on "Edit", match: :first
-
-    check "Archived" if @page.archived
-    fill_in "Name", with: @page.name
-    fill_in "Position", with: @page.position
-    fill_in "Slug", with: @page.slug
+    screenshot("update-a-page")
+    click_on "Actions", match: :first
+    screenshot("update-a-page")
+    click_on "Edit"
+    fill_in "page[name]", with: "Updated Name"
+    screenshot("update-a-page")
     click_on "Update Page"
-
     assert_text "Page was successfully updated"
-    click_on "Back"
+    assert_selector "h1", text: "Pages"
+    screenshot("update-a-page")
   end
 
-  test "destroying a Page" do
+  test "destroy a page" do
+    visit_login(@admin)
     visit pages_url
+    screenshot("destroy-a-page")
+    click_on "Actions", match: :first
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "Delete"
     end
-
-    assert_text "Page was successfully destroyed"
+    assert_text "Page was successfully deleted"
+    screenshot("destroy-a-page")
   end
 end
