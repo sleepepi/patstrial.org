@@ -57,9 +57,11 @@ class Report < ApplicationRecord
   # Relationships
   belongs_to :project
   has_many :report_rows, -> { order(Arel.sql("report_rows.position nulls last")) }, dependent: :destroy
+  def reverse_report_rows
+    report_rows.reorder(Arel.sql("report_rows.position desc nulls first"))
+  end
 
   # Methods
-
   def refresh!
     return unless project
 

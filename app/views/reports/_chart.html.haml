@@ -4,7 +4,7 @@
   - site = index + offset
   - series[site] = { name: header["label"], data: [] }
 
-- report.report_rows.each do |row|
+- report.reverse_report_rows.each do |row|
   - series[0][:current_total] += row.result["count"]
   - series[0][:data] << series[0][:current_total]
   - (row.result["sites"] || []).each_with_index do |site_hash, index|
@@ -14,7 +14,7 @@
     - series[site][:data] << series[site][:current_total]
 
 - categories = []
-- report.report_rows.each do |row|
+- report.reverse_report_rows.each do |row|
   - categories << row.result["label"]
 
 - if report.report_type == "randomizations_by_site"

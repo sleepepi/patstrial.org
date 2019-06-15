@@ -1,5 +1,9 @@
 ## 18.0.0
 
+### Enhancements
+- **Report Changes**
+  - Randomization reports now display months in descending format
+
 ## 17.0.0 (May 27, 2019)
 
 ### Enhancements
