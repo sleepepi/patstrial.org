@@ -4,11 +4,17 @@
 = render "internal/tabs"
 - content_for :sidebar, render("internal/sidebar")
 
-- if @eligible
-  %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }
-- if @eligible && @eligible[:table]
-  .dashboard-container.dashboard-table
-    = render "reports_static/draw_table", table: @eligible[:table]
+- report = Report.find_by(name: "Eligible")
+
+- if report
+  = render "reports/chart", report: report if report.by_month?
+  = render "reports/table", report: report
+- else
+  - if @eligible
+    %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }
+  - if @eligible && @eligible[:table]
+    .dashboard-container.dashboard-table
+      = render "reports_static/draw_table", table: @eligible[:table]
 
 .row
   .col-md-4
@@ -20,7 +26,11 @@
   .col-md-4
     .jumbotron.text-center
       %h4.text-muted Eligible
-      .report-number= number_with_delimiter @eligible[:total] rescue 0
+      .report-number
+        - if report
+          = number_with_delimiter report.total_count
+        - else
+          = number_with_delimiter @eligible[:total] rescue 0
   .col-md-4
     = link_to reports_static_randomized_path, class: "title-link" do
       .jumbotron.text-center

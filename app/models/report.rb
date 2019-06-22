@@ -91,6 +91,13 @@ class Report < ApplicationRecord
     %w(randomizations_by_site_by_month expression_by_site_by_month).include?(report_type)
   end
 
+  def total_count
+    report_rows.sum do |report_row|
+      result = report_row.result || {}
+      result["count"].to_i
+    end
+  end
+
   private
 
   def report_api_url
