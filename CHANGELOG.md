@@ -3,6 +3,8 @@
 ### Enhancements
 - **Report Changes**
   - Randomization reports now display months in descending format
+  - Added new report type to filter by site and by month to handle original
+    Screened, Consented, and Eligible charts and tables
 
 ## 17.0.0 (May 27, 2019)
 

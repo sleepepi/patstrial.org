@@ -1,6 +1,6 @@
 - @table_scroll = true # Note: Does not work if elements have "position: sticky;"
 - counts = []
-- if report.report_type == "randomizations_by_site"
+- if report.by_month?
   - report.report_rows.each do |report_row|
     - result = report_row.result || {}
     - counts[0] ||= 0
@@ -16,7 +16,7 @@
         %th= report.header_label
         - (report.header || []).each do |hash|
           %th.text-center= hash["label"]
-    - if report.report_type == "randomizations_by_site"
+    - if report.by_month?
       %thead
         %tr
           %th Total

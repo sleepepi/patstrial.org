@@ -20,11 +20,15 @@
   = render "forms/horizontal/show/check_box", object: @report, key: :archived
 
   = render "forms/horizontal/show/text", object: @report, key: :report_type_name, key_name: "Report type"
+  - if @report.report_type == "expression_by_site_by_month"
+    = render "forms/horizontal/show/text", object: @report, key: :filter_expression
+    = render "forms/horizontal/show/text", object: @report, key: :group_expression
+
   - if @report.report_type == "expressions_by_site"
     = render "forms/horizontal/show/text", object: @report, key: :header_label
     = render "forms/horizontal/show/generic", title: "Rows", content: render("report_rows/index", report: @report)
 
-- if @report.report_type == "randomizations_by_site"
+- if @report.by_month?
   = render "reports/chart", report: @report
 
 = render "reports/table", report: @report

@@ -22,4 +22,4 @@ randomizations:
   sites_enabled: true
   archived: false
   last_cached_at: 2019-05-19 11:51:36
-  report_type: randomizations_by_site
+  report_type: randomizations_by_site_by_month

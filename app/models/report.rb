@@ -4,8 +4,9 @@
 class Report < ApplicationRecord
   # Constants
   REPORT_TYPES = [
-    ["Randomizations by Site", "randomizations_by_site"],
-    ["Expressions by Site", "expressions_by_site"]
+    ["Expressions by Site", "expressions_by_site"],
+    ["Randomizations by Site by Month", "randomizations_by_site_by_month"],
+    ["Filter by Site by Month", "expression_by_site_by_month"]
   ]
 
   EXPECTED_RANDOMIZATIONS = [
@@ -45,6 +46,9 @@ class Report < ApplicationRecord
     %w(name)
   end
 
+  include Squishable
+  squish :name, :filter_expression, :group_expression
+
   # Accessors
   attr_accessor :row_hashes
 
@@ -70,7 +74,7 @@ class Report < ApplicationRecord
 
     update_header_row(json["sites"] || [])
     case report_type
-    when "randomizations_by_site"
+    when "randomizations_by_site_by_month", "expression_by_site_by_month"
       create_report_row_results(json["rows"] || [])
     when "expressions_by_site"
       update_report_row_results(json["rows"] || [])
@@ -83,19 +87,31 @@ class Report < ApplicationRecord
     REPORT_TYPES.find { |_name, value| value == report_type }&.first
   end
 
+  def by_month?
+    %w(randomizations_by_site_by_month expression_by_site_by_month).include?(report_type)
+  end
+
   private
 
   def report_api_url
     case report_type
-    when "randomizations_by_site"
-      randomizations_by_site_api_url
     when "expressions_by_site"
       subject_counts_api_url
+    when "randomizations_by_site_by_month"
+      randomizations_by_site_by_month_api_url
+    when "expression_by_site_by_month"
+      expression_by_site_by_month_api_url
     end
   end
 
-  def randomizations_by_site_api_url
+  def randomizations_by_site_by_month_api_url
     "#{project.slice_url}/randomizations.json?sites=#{sites_enabled ? "1" : "0"}"
+  end
+
+  def expression_by_site_by_month_api_url
+    "#{project.slice_url}/expression.json?sites=#{sites_enabled ? "1" : "0"}"\
+      "&filter=#{CGI.escape(filter_expression)}"\
+      "&group=#{CGI.escape(group_expression)}"
   end
 
   def subject_counts_api_url
