@@ -4,18 +4,19 @@
   - report_grades = Report.find_by(name: "Report Card")
   - if report_grades
     - data = report_grades.data&.with_indifferent_access
-    .float-right
-      - grade = data[:overall].first
-      %div.text-right{ style: "font-size: 14px;" }
-        %div{ style: "margin-bottom: 10px;" }
-          = link_to reports_static_grades_path do
-            Report Card
-            %span.d-none.d-sm-inline Available
-            &raquo;
-        %div
-          %span.d-none.d-sm-inline Top Site
-          = render "reports_static/grade", percent: grade[:percent]
-          = grade[:number_and_short_name]
+    - grade = data&.dig(:overall)&.first
+    - if grade
+      .float-right
+        %div.text-right{ style: "font-size: 14px;" }
+          .mb-2
+            = link_to reports_static_grades_path do
+              Report Card
+              %span.d-none.d-sm-inline Available
+              &raquo;
+          %div
+            %span.d-none.d-sm-inline Top Site
+            = render "reports_static/grade", percent: grade[:percent]
+            = grade[:number_and_short_name]
   - else
     - if @grades
       .float-right
