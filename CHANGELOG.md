@@ -6,6 +6,7 @@
   - Added new report type to filter by site and by month to handle original
     Screened, Consented, and Eligible charts and tables
   - Report pages display position on report page index
+  - Report pages can now be searched and filtered
 
 ## 17.0.0 (May 27, 2019)
 

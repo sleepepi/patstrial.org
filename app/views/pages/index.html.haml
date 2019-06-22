@@ -9,6 +9,8 @@
   = render "layouts/per_page_breadcrumbs", per_page: 20, object_count: @pages.total_count
   %ol
     %li.breadcrumb-muted pages
+    %li= link_to icon("fas", "search"), "#", data: { object: "toggle-search-container", target: "#search" }
+= render "search/simple", url: pages_path
 - content_for :sidebar, render("setup/sidebar")
 
 - if @pages.present?
@@ -17,10 +19,12 @@
       %col{ width: "1px" }
       %col
       %col{ width: "1px" }
+      %col{ width: "1px" }
       %thead
         %tr
-          %th.text-center Position
-          %th Name
+          %th.text-center= order_to "Position", primary: "position"
+          %th= order_to "Name", primary: "name"
+          %th.text-center= order_to "Archived", primary: "archived", secondary: "active"
           %th.text-center Actions
 
       %tbody
@@ -28,6 +32,7 @@
           %tr
             %td.text-center= page.position
             %td= link_to page.name, page
+            %td.text-center= simple_check page.archived
             %td.text-center= render "layouts/edit_delete_dropdown", edit_url: edit_page_path(page), delete_url: page, delete_confirmation: "Delete #{page.name}?"
 - else
   .jumbotron.jumbotron-custom-text

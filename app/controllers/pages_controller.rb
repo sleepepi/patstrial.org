@@ -13,9 +13,10 @@ class PagesController < ApplicationController
     @report = Report.new
   end
 
-  # GET /pages
+  # GET /reports
   def index
-    @pages = Page.all.page(params[:page]).per(20)
+    scope = Page.all.search_any_order(params[:search])
+    @pages = scope_order(scope).page(params[:page]).per(20)
   end
 
   # # GET /pages/1
@@ -70,5 +71,10 @@ class PagesController < ApplicationController
         :report_id
       ]
     )
+  end
+
+  def scope_order(scope)
+    @order = params[:order]
+    scope.order(Arel.sql(Page::ORDERS[params[:order]] || Page::DEFAULT_ORDER))
   end
 end

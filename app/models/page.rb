@@ -2,7 +2,23 @@
 
 # Displays a group of reports on a page accessible from the sidebar.
 class Page < ApplicationRecord
+  # Constants
+  ORDERS = {
+    "archived" => "pages.archived desc",
+    "active" => "pages.archived",
+    "position" => "pages.position",
+    "position desc" => "pages.position desc",
+    "name" => "pages.name",
+    "name desc" => "pages.name desc"
+  }
+  DEFAULT_ORDER = "pages.position nulls last"
+
   # Concerns
+  include Searchable
+  def self.searchable_attributes
+    %w(name slug)
+  end
+
   include Sluggable
 
   # Accessors
