@@ -8,8 +8,14 @@
   - @data_quality[:graphs].each do |graph|
     %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", chart_type: graph[:chart_type], series: graph[:series].to_json, categories: graph[:categories].to_json, title: graph[:title], yaxis: graph[:yaxis], xaxis: graph[:xaxis], yaxis_min: graph[:yaxis_min], yaxis_max: graph[:yaxis_max] } }
 
+- report = Report.find_by(name: "Data Quality - PSG Overall Study Quality")
+
+- if report
+  = render "reports/chart", report: report if report.chart?
+
 - if @data_quality && @data_quality[:tables]
-  - @data_quality[:tables].each do |table|
+  - @data_quality[:tables].each_with_index do |table, index|
+    - next if report && index.zero?
     .dashboard-container.dashboard-table
       = render "reports_static/draw_advanced_table", table: table
 
@@ -26,5 +32,3 @@
       .report-number
         = icon("fas", "tint")
   .col-md-4
-
-= render "internal/data_last_updated"
