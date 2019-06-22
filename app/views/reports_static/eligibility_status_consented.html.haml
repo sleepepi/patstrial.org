@@ -30,7 +30,6 @@
         - tooltip = "#{@eligibility_status[:consented_pending_randomization]} pending randomization"
         .progress-bar.progress-bar-striped.bg-secondary.nowrap{ style: "width: #{pending_randomization_percent}%;", data: { toggle: "tooltip", title: tooltip } }= tooltip
 
-
 - report = Report.find_by(name: "Eligibility status - Consented")
 - if report
   = render "reports/table", report: report if report.table?
@@ -49,7 +48,6 @@
 - report = Report.find_by(name: "PSG requirement not met - Consented")
 - if report
   = render "reports/table", report: report if report.table?
-  - report = nil
 
 - if false
   - if @eligibility_status && @eligibility_status[:tables]
@@ -75,5 +73,3 @@
         %h4.text-muted Demographics
         .report-number
           = icon("fas", "chevron-right")
-
-= render "internal/data_last_updated"
