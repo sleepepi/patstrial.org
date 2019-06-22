@@ -18,12 +18,12 @@
 = render "internal/tabs"
 - content_for :sidebar, render("internal/sidebar")
 
-- report = Report.find_by(name: "Randomizations")
+- report_randomizations = Report.find_by(name: "Randomizations")
 
-- if report
+- if report_randomizations
   - scheme_name = "PATS Treatment Assignment"
   - randomization_goal = Report::EXPECTED_RANDOMIZATIONS.last
-  - randomization_total = report.report_rows.sum do |row|
+  - randomization_total = report_randomizations.report_rows.sum do |row|
     - row.result["count"].to_i
   .jumbotron
     .float-right.text-center
@@ -50,8 +50,8 @@
         .progress{ style: "margin-top: 20px;margin-bottom: 0" }
           .progress-bar.progress-bar-striped.bg-primary{ style: "width: #{percent}%;min-width: 5em;" }= "#{@randomized[:total]} of #{@randomized[:randomization_goal]}"
 
-- if report
-  = render "reports/chart", report: report if report.report_type == "randomizations_by_site_by_month"
+- if report_randomizations
+  = render "reports/chart", report: report_randomizations if report_randomizations.report_type == "randomizations_by_site_by_month"
 - else
   - if @randomized && @randomized[:total] > 0
     .w-100{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @randomized[:series].to_json, categories: @randomized[:categories].to_json, title: @randomized[:title], yaxis: @randomized[:yaxis], xaxis: @randomized[:xaxis] } }
@@ -61,17 +61,32 @@
     = link_to reports_static_screened_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Screened
-        .report-number= number_with_delimiter @screened[:total] rescue 0
+        .report-number
+          - report_screened = Report.find_by(name: "Screened")
+          - if report_screened
+            = number_with_delimiter report_screened.total_count
+          - else
+            = number_with_delimiter @screened[:total] rescue 0
   .col-md-4
     = link_to reports_static_consented_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Consented
-        .report-number= number_with_delimiter @consented[:total] rescue 0
+        .report-number
+          - report_consented = Report.find_by(name: "Consented")
+          - if report_consented
+            = number_with_delimiter report_consented.total_count
+          - else
+            = number_with_delimiter @consented[:total] rescue 0
   .col-md-4
     = link_to reports_static_eligible_path, class: "title-link" do
       .jumbotron.text-center
         %h4.text-muted Eligible
-        .report-number= number_with_delimiter @eligible[:total] rescue 0
+        .report-number
+          - report_eligible = Report.find_by(name: "Eligible")
+          - if report_eligible
+            = number_with_delimiter report_eligible.total_count
+          - else
+            = number_with_delimiter @eligible[:total] rescue 0
 - if @screened && @screened[:in_pipeline] > 0
   .dashboard-container
     %p
@@ -83,18 +98,18 @@
         screened
       have not yet been assigned a final eligiblity status.
 
-- if report
-  = render "reports/table", report: report
+- if report_randomizations
+  = render "reports/table", report: report_randomizations
 - else
   - if @randomized && @randomized[:table] && @randomized[:table][:total] > 0
     .dashboard-container.dashboard-table
       = render "reports_static/draw_table", table: @randomized[:table]
 
 .jumbotron.jumbotron-custom-text
-  - if report
+  - if report_randomizations
     .mb-3
       Data last updated
-      = report.last_cached_at.strftime("%a, %b %-d at %-l:%M %p.")
+      = report_randomizations.last_cached_at.strftime("%a, %b %-d at %-l:%M %p.")
   - else
     - if @recruitment
       .mb-3
