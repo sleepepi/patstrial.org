@@ -14,16 +14,19 @@
 - if @pages.present?
   .dashboard-container.dashboard-table
     %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col{ width: "1px" }
       %col
       %col{ width: "1px" }
       %thead
         %tr
+          %th.text-center Position
           %th Name
           %th.text-center Actions
 
       %tbody
         - @pages.each do |page|
           %tr
+            %td.text-center= page.position
             %td= link_to page.name, page
             %td.text-center= render "layouts/edit_delete_dropdown", edit_url: edit_page_path(page), delete_url: page, delete_confirmation: "Delete #{page.name}?"
 - else
