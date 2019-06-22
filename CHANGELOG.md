@@ -9,6 +9,7 @@
   - Report pages can now be searched and filtered
   - Added the "Report Card" report
   - Added the "Data Checks" report
+  - Reports now refresh once per day, but can be refreshed manually
 
 ## 17.0.0 (May 27, 2019)
 
