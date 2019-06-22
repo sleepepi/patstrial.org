@@ -115,6 +115,13 @@ class Report < ApplicationRecord
     end
   end
 
+  def muted_row_count
+    report_rows.where(muted: true).sum do |report_row|
+      result = report_row.result || {}
+      result["count"].to_i
+    end
+  end
+
   private
 
   def report_api_url

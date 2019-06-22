@@ -104,16 +104,30 @@
             = number_with_delimiter report_eligible.total_count
           - else
             = number_with_delimiter @eligible[:total] rescue 0
-- if @screened && @screened[:in_pipeline] > 0
+
+- report_eligibility_screened = Report.find_by(name: "Eligibility status - Screened")
+- report_screened = Report.find_by(name: "Screened")
+- if report_screened && report_eligibility_screened&.muted_row_count&.positive?
   .dashboard-container
     %p
       Note:
       = link_to reports_static_eligibility_status_path do
-        %strong= number_with_delimiter @screened[:in_pipeline]
+        %strong= number_with_delimiter report_eligibility_screened.muted_row_count
         of the total
-        %strong= number_with_delimiter @screened[:total]
+        %strong= number_with_delimiter report_screened.total_count
         screened
       have not yet been assigned a final eligibility status.
+- else
+  - if @screened && @screened[:in_pipeline] > 0
+    .dashboard-container
+      %p
+        Note:
+        = link_to reports_static_eligibility_status_path do
+          %strong= number_with_delimiter @screened[:in_pipeline]
+          of the total
+          %strong= number_with_delimiter @screened[:total]
+          screened
+        have not yet been assigned a final eligibility status.
 
 - if report_randomizations
   = render "reports/table", report: report_randomizations
