@@ -7,8 +7,8 @@
 - report = Report.find_by(name: "Eligible")
 
 - if report
-  = render "reports/chart", report: report if report.by_month?
-  = render "reports/table", report: report
+  = render "reports/chart", report: report if report.chart?
+  = render "reports/table", report: report if report.table?
 - else
   - if @eligible
     %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @eligible[:series].to_json, categories: @eligible[:categories].to_json, title: @eligible[:title], yaxis: @eligible[:yaxis], xaxis: @eligible[:xaxis] } }

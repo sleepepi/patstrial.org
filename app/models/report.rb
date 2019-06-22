@@ -6,7 +6,8 @@ class Report < ApplicationRecord
   REPORT_TYPES = [
     ["Expressions by Site", "expressions_by_site"],
     ["Randomizations by Site by Month", "randomizations_by_site_by_month"],
-    ["Filter by Site by Month", "expression_by_site_by_month"]
+    ["Filter by Site by Month", "expression_by_site_by_month"],
+    ["Report Card", "report_card"]
   ]
 
   EXPECTED_RANDOMIZATIONS = [
@@ -72,12 +73,15 @@ class Report < ApplicationRecord
     (json, status) = Slice::SendJson.get(report_api_url)
     return status unless status.is_a?(Net::HTTPOK)
 
-    update_header_row(json["sites"] || [])
     case report_type
     when "randomizations_by_site_by_month", "expression_by_site_by_month"
+      update_header_row(json["sites"] || [])
       create_report_row_results(json["rows"] || [])
     when "expressions_by_site"
+      update_header_row(json["sites"] || [])
       update_report_row_results(json["rows"] || [])
+    else # "report_card"
+      update data: json
     end
     update last_cached_at: Time.zone.now
     status
@@ -89,6 +93,18 @@ class Report < ApplicationRecord
 
   def by_month?
     %w(randomizations_by_site_by_month expression_by_site_by_month).include?(report_type)
+  end
+
+  def chart?
+    by_month?
+  end
+
+  def table?
+    report_type.in?(%w(expressions_by_site randomizations_by_site_by_month expression_by_site_by_month))
+  end
+
+  def grades?
+    report_type == "report_card"
   end
 
   def total_count
@@ -108,6 +124,8 @@ class Report < ApplicationRecord
       randomizations_by_site_by_month_api_url
     when "expression_by_site_by_month"
       expression_by_site_by_month_api_url
+    when "report_card"
+      report_card_api_url
     end
   end
 
@@ -124,6 +142,10 @@ class Report < ApplicationRecord
   def subject_counts_api_url
     expressions = report_rows.pluck(:expression).collect { |exp| "expressions[]=#{CGI.escape(exp)}" }.join("&")
     "#{project.slice_url}/subject-counts.json?#{expressions}&sites=#{sites_enabled ? "1" : "0"}"
+  end
+
+  def report_card_api_url
+    "#{project.slice_url}/report-card.json"
   end
 
   def update_header_row(sites)

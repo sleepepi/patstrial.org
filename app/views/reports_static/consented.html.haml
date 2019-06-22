@@ -7,8 +7,8 @@
 - report = Report.find_by(name: "Consented")
 
 - if report
-  = render "reports/chart", report: report if report.by_month?
-  = render "reports/table", report: report
+  = render "reports/chart", report: report if report.chart?
+  = render "reports/table", report: report if report.table?
 - else
   - if @consented
     %div{ style: "margin-bottom: 20px", data: { object: "draw-chart", series: @consented[:series].to_json, categories: @consented[:categories].to_json, title: @consented[:title], yaxis: @consented[:yaxis], xaxis: @consented[:xaxis] } }

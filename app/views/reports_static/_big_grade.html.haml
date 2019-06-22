@@ -1,9 +1,7 @@
 .grade
   .grade-title
-    %span.nowrap= hash[:short_name]
+    %span.nowrap= hash[:number_and_short_name] || hash[:short_name]
   .report-number
-    = render 'reports_static/grade', percent: hash[:percent]
+    = render "reports_static/grade", percent: hash[:percent]
   - if hash[:percent].present?
-    %div{ style: 'margin-top: 20px;' }
-      %small
-        %span.percent= "#{hash[:percent]}%"
+    .mt-3.small.percent= "#{hash[:percent]}%"
