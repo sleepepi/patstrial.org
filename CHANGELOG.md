@@ -8,6 +8,7 @@
   - Report pages display position on report page index
   - Report pages can now be searched and filtered
   - Added the "Report Card" report
+  - Added the "Data Checks" report
 
 ## 17.0.0 (May 27, 2019)
 

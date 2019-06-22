@@ -1,6 +1,6 @@
 - @table_scroll = true # Note: Does not work if elements have "position: sticky;"
 - counts = []
-- if report.by_month?
+- if report.compute_totals?
   - report.report_rows.each do |report_row|
     - result = report_row.result || {}
     - counts[0] ||= 0
@@ -16,7 +16,7 @@
         %th= report.header_label
         - (report.header || []).each do |hash|
           %th.text-center= hash["label"]
-    - if report.by_month?
+    - if report.compute_totals?
       %thead
         %tr
           %th Total
@@ -28,7 +28,13 @@
         %tr{ class: report_row.muted? ? "text-muted" : nil }
           %td= report_row.label
           %td.text-center
-            = table_number result["count"]
+            - if result["link"].present? && result["count"].to_i.positive?
+              = link_to number_with_delimiter(result["count"]), leaving_path(slice: result["link"]), class: "text-dark"
+            - else
+              = table_number result["count"]
           - (result["sites"] || []).each_with_index do |hash, index|
             %td.text-center
-              = table_number hash["count"]
+              - if hash["link"].present? && hash["count"].to_i.positive?
+                = link_to number_with_delimiter(hash["count"]), leaving_path(slice: hash["link"]), class: "text-dark"
+              - else
+                = table_number hash["count"]

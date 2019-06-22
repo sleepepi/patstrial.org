@@ -7,7 +7,8 @@ class Report < ApplicationRecord
     ["Expressions by Site", "expressions_by_site"],
     ["Randomizations by Site by Month", "randomizations_by_site_by_month"],
     ["Filter by Site by Month", "expression_by_site_by_month"],
-    ["Report Card", "report_card"]
+    ["Report Card", "report_card"],
+    ["Data Checks", "data_checks"]
   ]
 
   EXPECTED_RANDOMIZATIONS = [
@@ -74,7 +75,7 @@ class Report < ApplicationRecord
     return status unless status.is_a?(Net::HTTPOK)
 
     case report_type
-    when "randomizations_by_site_by_month", "expression_by_site_by_month"
+    when "randomizations_by_site_by_month", "expression_by_site_by_month", "data_checks"
       update_header_row(json["sites"] || [])
       create_report_row_results(json["rows"] || [])
     when "expressions_by_site"
@@ -91,16 +92,16 @@ class Report < ApplicationRecord
     REPORT_TYPES.find { |_name, value| value == report_type }&.first
   end
 
-  def by_month?
-    %w(randomizations_by_site_by_month expression_by_site_by_month).include?(report_type)
+  def chart?
+    report_type.in?(%w(randomizations_by_site_by_month expression_by_site_by_month))
   end
 
-  def chart?
-    by_month?
+  def compute_totals?
+    report_type.in?(%w(randomizations_by_site_by_month expression_by_site_by_month data_checks))
   end
 
   def table?
-    report_type.in?(%w(expressions_by_site randomizations_by_site_by_month expression_by_site_by_month))
+    report_type.in?(%w(randomizations_by_site_by_month expression_by_site_by_month data_checks expressions_by_site))
   end
 
   def grades?
@@ -126,6 +127,8 @@ class Report < ApplicationRecord
       expression_by_site_by_month_api_url
     when "report_card"
       report_card_api_url
+    when "data_checks"
+      data_checks_api_url
     end
   end
 
@@ -146,6 +149,10 @@ class Report < ApplicationRecord
 
   def report_card_api_url
     "#{project.slice_url}/report-card.json"
+  end
+
+  def data_checks_api_url
+    "#{project.slice_url}/data-checks.json?sites=#{sites_enabled ? "1" : "0"}"
   end
 
   def update_header_row(sites)

@@ -1,9 +1,11 @@
 - @title = "Dashboard"
 
 - content_for :header do
-  - if @grades
+  - report_grades = Report.find_by(name: "Report Card")
+  - if report_grades
+    - data = report_grades.data&.with_indifferent_access
     .float-right
-      - grade = @grades[:overall].first
+      - grade = data[:overall].first
       %div.text-right{ style: "font-size: 14px;" }
         %div{ style: "margin-bottom: 10px;" }
           = link_to reports_static_grades_path do
@@ -13,7 +15,21 @@
         %div
           %span.d-none.d-sm-inline Top Site
           = render "reports_static/grade", percent: grade[:percent]
-          = grade[:short_name]
+          = grade[:number_and_short_name]
+  - else
+    - if @grades
+      .float-right
+        - grade = @grades[:overall].first
+        %div.text-right{ style: "font-size: 14px;" }
+          %div{ style: "margin-bottom: 10px;" }
+            = link_to reports_static_grades_path do
+              Report Card
+              %span.d-none.d-sm-inline Available
+              &raquo;
+          %div
+            %span.d-none.d-sm-inline Top Site
+            = render "reports_static/grade", percent: grade[:percent]
+            = grade[:short_name]
   = @title
 = render "internal/tabs"
 - content_for :sidebar, render("internal/sidebar")
