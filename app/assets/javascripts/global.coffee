@@ -1,3 +1,7 @@
+@componentsReady = ->
+  chartsReady()
+  slidesReady()
+
 @extensionsReady = ->
   tooltipsReady()
 
@@ -6,11 +10,10 @@
   reportRowsSort()
 
 @turbolinksReady = ->
+  componentsReady()
   extensionsReady()
   objectsReady()
   fileDragReady()
-  chartsReady()
-  slidesReady()
 
 # These functions only get called on the initial page visit (no turbolinks).
 # Browsers that don't support turbolinks will initialize all functions in
