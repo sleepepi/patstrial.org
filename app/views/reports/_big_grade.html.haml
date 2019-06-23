@@ -2,6 +2,6 @@
   .grade-title
     %span.nowrap= hash[:number_and_short_name] || hash[:short_name]
   .report-number
-    = render "reports_static/grade", percent: hash[:percent]
+    = render "reports/grade", percent: hash[:percent]
   - if hash[:percent].present?
     .mt-3.small.percent= "#{hash[:percent]}%"

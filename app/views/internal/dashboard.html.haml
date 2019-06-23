@@ -15,7 +15,7 @@
               &raquo;
           %div
             %span.d-none.d-sm-inline Top Site
-            = render "reports_static/grade", percent: grade[:percent]
+            = render "reports/grade", percent: grade[:percent]
             = grade[:number_and_short_name]
   - else
     - if @grades
@@ -29,7 +29,7 @@
               &raquo;
           %div
             %span.d-none.d-sm-inline Top Site
-            = render "reports_static/grade", percent: grade[:percent]
+            = render "reports/grade", percent: grade[:percent]
             = grade[:short_name]
   = @title
 = render "internal/tabs"
