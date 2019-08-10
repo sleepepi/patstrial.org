@@ -4,6 +4,7 @@
 - **Report Changes**
   - Report pages without any reports now display a message
   - Descriptions can be added to reports that support markdown formatting
+  - Left hand column of report tables now freeze when scrolling horizontally
 
 ## 18.0.0 (June 23, 2019)
 
