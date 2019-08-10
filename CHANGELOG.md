@@ -1,5 +1,9 @@
 ## 19.0.0
 
+### Enhancements
+- **Report Changes**
+  - Report pages without any reports now display a message
+
 ## 18.0.0 (June 23, 2019)
 
 ### Enhancements
