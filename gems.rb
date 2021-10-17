@@ -18,10 +18,10 @@ gem "font-awesome-sass",          "~> 5.15.1"
 gem "haml",                       "~> 5.2.2"
 gem "jquery-ui-rails",            "~> 6.0.1"
 gem "kaminari",                   "~> 1.2.1"
-gem "mini_magick",                "~> 4.9.2"
+gem "mini_magick",                "~> 4.11.0"
 gem "mime-types",                 "~> 3.3.1"
 gem "pg_search",                  "~> 2.3.5"
-gem "redcarpet",                  "~> 3.5.0"
+gem "redcarpet",                  "~> 3.5.1"
 gem "rubyzip",                    "~> 2.3.2"
 
 # Rails defaults.
