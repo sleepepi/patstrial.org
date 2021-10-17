@@ -6,7 +6,7 @@ class Document < ApplicationRecord
   mount_uploader :document, DocumentUploader
 
   # Concerns
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:document], unless: :category_deleted? # TODO: [:filename, :content_type]
 
   # Validations

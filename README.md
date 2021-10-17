@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/sleepepi/patstrial.org.svg?branch=master)](https://travis-ci.com/sleepepi/patstrial.org)
 [![Code Climate](https://codeclimate.com/github/sleepepi/patstrial.org/badges/gpa.svg)](https://codeclimate.com/github/sleepepi/patstrial.org)
 
-PATS Trial Website. Using Rails 6.0+ and Ruby 2.6+.
+PATS Trial Website. Using Rails 6.1+ and Ruby 3.0+.
 
 ## Installation
 
@@ -57,7 +57,7 @@ Edit cron jobs `sudo crontab -e` to run the task `lib/tasks/reports.rake`
 
 ```
 SHELL=/bin/bash
-*/5 * * * * source /etc/profile.d/rvm.sh && cd /var/www/patstrial.org && rvm 2.6.3 && rails reports:refresh RAILS_ENV=production
+*/5 * * * * source /etc/profile.d/rvm.sh && cd /var/www/patstrial.org && rvm 3.0.2 && rails reports:refresh RAILS_ENV=production
 ```
 
 ## Contributing to PATS Trial website

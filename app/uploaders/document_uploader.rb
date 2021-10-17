@@ -10,8 +10,8 @@ class DocumentUploader < CarrierWave::Uploader::Base
     File.join(model.class.to_s.underscore.pluralize, model.id.to_s, mounted_as.to_s)
   end
 
-  # Add a white list of extensions which are allowed to be uploaded.
-  def extension_whitelist
+  # Add a list of extensions which are allowed to be uploaded.
+  def extension_allowlist
     %w(doc docx rtf pdf xls xlsx csv zip)
   end
 end

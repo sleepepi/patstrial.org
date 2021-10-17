@@ -5,7 +5,7 @@ class Video < ApplicationRecord
   # Concerns
   include Deletable
 
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:name], unless: :deleted_or_category_deleted?
 
   # Validations

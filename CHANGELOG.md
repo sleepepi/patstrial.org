@@ -1,5 +1,21 @@
 ## 20.0.0
 
+### Enhancements
+- **Gem Changes**
+  - Update to ruby 3.0.2
+  - Update to rails 6.1.4.1
+  - Update to pg 1.2.3
+  - Update to bootstrap 4.6.0
+  - Update to carrierwave 2.2.2
+  - Update to devise 4.8.0
+  - Update to figaro 1.2.0
+  - Update to font-awesome-sass 5.15.1
+  - Update to haml 5.2.2
+  - Update to kaminari 1.2.1
+  - Add mime-types
+  - Update to pg_search 2.3.5
+  - Update to rubyzip 2.3.2
+
 ## 19.0.0 (August 10, 2019)
 
 ### Enhancements

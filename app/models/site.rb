@@ -22,7 +22,7 @@ class Site < ApplicationRecord
     %w(name slug number address contact)
   end
 
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:name, :slug, :address], unless: :deleted? # TODO: :center_type
 
   # Validations

@@ -13,7 +13,7 @@ class Editor::DocumentsControllerTest < ActionController::TestCase
 
   def document_params
     {
-      document: fixture_file_upload('../../test/support/documents/test_01.doc'),
+      document: fixture_file_upload('../../support/documents/test_01.doc'),
       archived: @document.archived
     }
   end
@@ -79,8 +79,8 @@ class Editor::DocumentsControllerTest < ActionController::TestCase
     assert_difference('Document.count', 2) do
       post :create_multiple, params: {
         category_id: @category,
-        documents: [fixture_file_upload('../../test/support/documents/test_01.docx'),
-                    fixture_file_upload('../../test/support/documents/test_01.pdf')]
+        documents: [fixture_file_upload('../../support/documents/test_01.docx'),
+                    fixture_file_upload('../../support/documents/test_01.pdf')]
       }, format: 'js'
     end
     assert_template 'index'
@@ -92,8 +92,8 @@ class Editor::DocumentsControllerTest < ActionController::TestCase
     assert_difference('Document.count', 0) do
       post :create_multiple, params: {
         category_id: @category,
-        documents: [fixture_file_upload('../../test/support/documents/test_01.docx'),
-                    fixture_file_upload('../../test/support/documents/test_01.pdf')]
+        documents: [fixture_file_upload('../../support/documents/test_01.docx'),
+                    fixture_file_upload('../../support/documents/test_01.pdf')]
       }, format: 'js'
     end
     assert_redirected_to dashboard_path
@@ -131,10 +131,10 @@ class Editor::DocumentsControllerTest < ActionController::TestCase
 
   test 'should not update document with invalid file' do
     login(@editor)
-    patch :update, params: { category_id: @category, id: @document, document: document_params.merge(document: fixture_file_upload('../../test/support/documents/test_01.txt')) }
+    patch :update, params: { category_id: @category, id: @document, document: document_params.merge(document: fixture_file_upload('../../support/documents/test_01.txt')) }
     assert_not_nil assigns(:document)
     assert assigns(:document).errors.size > 0
-    assert_equal "is not allowed to include \"txt\" files, allowed types: #{DocumentUploader.new.extension_whitelist.join(', ')}", assigns(:document).errors[:document].first
+    assert_equal "is not allowed to include \"txt\" files, allowed types: #{DocumentUploader.new.extension_allowlist.join(', ')}", assigns(:document).errors[:document].first
     assert_template 'edit'
     assert_response :success
   end
